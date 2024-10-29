@@ -1,0 +1,3082 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Refleksi</title>
+    <link rel="stylesheet" href="../../src/output.css" />
+    <link rel="stylesheet" href="refleksi.css" />
+    <style>
+      @font-face {
+        font-family: 'Lato';
+        src: url('../../font/Lato-Regular.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: 'Poppins';
+        src: url('../../font/Poppins-Regular.ttf') format('truetype');
+      }
+    </style>
+  </head>
+  <body class="bg-[#F9F7F3]">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-opacity-85 drop-shadow-md bg-[#F9F7F3]" id="navbar">
+      <header
+        class="container bg-opacity-90 mx-auto flex flex-wrap py-3 px-5 items-center justify-between border-[#D1EBE8] md:justify-center max-w-5xl md:px-10"
+      >
+        <div class="relative">
+          <a
+            href="../beranda/daftarmateri.html"
+            class="flex font-bold justify-center mx-auto items-center text-primary \"
+            id="judul"
+          >
+            <img src="../../img/logo.png" class="w-10" alt="" />
+            <span
+              class="ml-3 text-base font-extrabold relative font-lato tracking-wide text-hijauMuda"
+              >Transformasi Geometri
+            </span>
+          </a>
+        </div>
+
+        <div class="flex items-center relative md:hidden">
+          <div
+            class="flex gap-1 mr-2 cursor-pointer w-8 h-8 justify-center rounded-md items-center hover:bg-gray-200 active:bg-gray-200"
+            id="dropdownButton"
+          >
+            <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+            <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+            <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+          </div>
+        </div>
+      </header>
+    </nav>
+
+    <nav
+      id="dropdownMenu"
+      class="fixed z-40 top-[68px] -translate-y-[600px] rounded-md font-medium right-7 flex transition duration-300 ease-in-out items-center px-5 flex-col w-[280px] bg-opacity-90 border-l-2 bg-[#EBFEEB] drop-shadow-md"
+    >
+      <div>
+        <div
+          class="w-full relative ml-6 mt-20 h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+            <input type="checkbox" class="hidden peer checkboxPengertianTranslasi" disabled />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm font-medium ml-5">Pengertian Refleksi</div>
+          <div
+            class="px-4 py-2 bg-white absolute text-[14px] text-gray-400 font-bold -top-12 -left-8 rounded-md drop-shadow-md"
+          >
+            Sub Materi
+          </div>
+        </div>
+        <div
+          class="w-full relative ml-6 h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+            <input type="checkbox" class="hidden peer checkboxJarakTranslasi" disabled />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm leading-7 font-medium ml-5">
+            Pencerminan Terhadap Garis
+          </div>
+        </div>
+        <div
+          class="w-full relative ml-6 h-24 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <label class="inline-flex absolute drop-shadow-md -left-3 items-center">
+            <input type="checkbox" class="hidden peer checkboxArahTranslasi" disabled />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm leading-7 font-medium ml-5">
+            Pencerminan Terhadap Titik
+          </div>
+        </div>
+
+        <div
+          class="w-full relative pb-5 ml-6 h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <div class="absolute inset-y-1/2 -left-1 border-l-4 bg-[#EBFEEB] h-1/2"></div>
+          <label class="inline-flex drop-shadow-md absolute -left-3 items-center">
+            <input type="checkbox" class="hidden peer checkboxPenulisan" disabled />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm font-medium leading-7 ml-5">
+            Refleksi di kordinat kartesius
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
+
+    <!-- Notifikasi -->
+    <div>
+      <audio id="myAudio" class="hidden">
+        <source src="../../sound/salah.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <audio id="myAudio2" class="hidden">
+        <source src="../../sound/benar.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <audio id="myAudio3" class="hidden">
+        <source src="../../sound/warning-sound-6686.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <div class="w-full z-50 fixed top-0 rightAnswer hidden">
+        <div
+          class="container drop-shadow-md max-w-[500px] mx-auto px-5 gap-2 text-pretty h-screen flex items-center justify-center"
+        >
+          <img
+            src="../../img/pencerminan/Benar.png"
+            class="w-32 zoomOut opacity-0"
+            alt="Jawaban Benar"
+          />
+        </div>
+      </div>
+      <div class="w-full z-50 fixed top-0 wrongAnswer hidden">
+        <div
+          class="container drop-shadow-md max-w-[500px] mx-auto px-5 gap-2 text-pretty h-screen flex items-center font-poppins justify-center"
+        >
+          <img
+            src="../../img/pencerminan/ihi.png"
+            class="w-32 zoomOut opacity-0"
+            alt="Jawaban Salah"
+          />
+        </div>
+      </div>
+    </div>
+    <!-- Akhir Notifikasi -->
+
+    <!-- Isi -->
+    <div class="container w-full flex">
+      <!-- Indikator Pengetahuan -->
+      <div
+        id="Indikator"
+        class="w-1/5 pl-14 pr-10 fixed hidden md:block md:flex font-poppins bg-[#EBFEEB] pt-20 bg-opacity-80 flex justify-center items-center border-r-2 drop-shadow-md h-screen"
+      >
+        <div>
+          <div
+            class="w-full relative h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+          >
+            <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+              <input type="checkbox" class="hidden peer checkboxPengertianTranslasi" disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm font-medium ml-5">Pengertian Refleksi</div>
+            <div
+              class="px-4 py-2 bg-white absolute text-[14px] text-gray-400 font-bold -top-10 -left-8 rounded-md drop-shadow-md"
+            >
+              Sub Materi
+            </div>
+          </div>
+          <div
+            class="w-full relative h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+          >
+            <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+              <input type="checkbox" class="hidden peer checkboxJarakTranslasi" disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm font-medium ml-5">Pencerminan Terhadap Garis</div>
+          </div>
+          <div
+            class="w-full relative h-24 border-l-4 flex items-center drop-shadow-xl border-white"
+          >
+            <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+              <input type="checkbox" class="hidden peer checkboxArahTranslasi" disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm leading-7 font-medium ml-5">
+              Pencerminan Terhadap Titik
+            </div>
+          </div>
+
+          <div
+            class="w-full relative h-24 border-l-4 inset-y-1/2 flex items-center drop-shadow-xl border-white"
+          >
+            <div class="absolute inset-y-1/2 -left-1 border-l-4 bg-[#EBFEEB] h-1/2"></div>
+            <label class="inline-flex drop-shadow-md absolute -left-3 items-center">
+              <input type="checkbox" class="hidden peer checkboxPenulisan" disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm font-medium leading-7 ml-5">
+              Refleski di kordinat kartesius
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Akhir Indikator Pengetahuan -->
+
+      <!-- Materi -->
+      <div
+        class="md:w-4/5 w-full mat absolute right-0 font-poppins font-medium text-sm pb-40 text-secondary"
+      >
+        <div class="mt-28 px-3">
+          <div class="max-w-3xl mx-auto">
+            <div class="text-primary font-extrabold text-base flex gap-">
+              <div class="ml-3 md:ml-0 text-xl tracking-wide self-center">REFLEKSI</div>
+            </div>
+
+            <!-- Pengertian Refleksi -->
+            <div
+              id="materi"
+              class="mt-12 zoomIn relative border border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
+            >
+              <div
+                class="absolute px-5 py-2 bg-[#FFC09F] -top-4 rounded-md tracking-wide text-white"
+              >
+                Pengertian Refleksi
+              </div>
+              <div class="flex items-center drop-shadow-md mt-12 md:font-semibold">
+                <img src="../../img/Grafis/supermen.png" alt="" class="w-32 md:w-32 -ml-4" />
+                <div class="ml-">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Apakah kamu pernah mengamati bayangan kamu saat bercemin?
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Di bawah ini, Ali sedang bercermin di dalam kamarnya. Ayo kita amati bersama!
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 md:mt-6 md:ml-32 border-l-2 ml-4 relative border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Sisi kiri adalah Ali, sedangkan sisi kanan adalah bayangan Ali.</div>
+                </div>
+                <div class="relative w-[270px] mt-6 ml-8">
+                  <img src="../../img/pencerminan/kamar.png" class="w-1/2 absolute" alt="" />
+                  <img
+                    src="../../img/pencerminan/kamar.png"
+                    class="w-1/2 right-0 scale-x-[-1] absolute opacity-25"
+                    alt=""
+                  />
+                  <img
+                    src="../../img/pencerminan/ali.png"
+                    class="w-10 absolute top-8 left-20 aliGerak z-20"
+                    alt=""
+                  />
+                  <img
+                    src="../../img/pencerminan/ali.png"
+                    class="w-10 absolute top-8 right-20 scale-x-[-1] opacity-50 z-20 aliGerakminus"
+                    alt=""
+                  />
+                  <div
+                    class="h-[2px] bg-orange-300 w-[0px] expand-width absolute left-[px] top-[45px]"
+                  ></div>
+                </div>
+                <div class="font-semibold mt-40 text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Hal yang dapat kita amati adalah:</div>
+                </div>
+                <div class="flex items-center mt-4 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold text-primary">
+                    Bayangan Ali bentuknya sama persis dengan Ali.
+                  </div>
+                </div>
+                <div class="flex items-center mt-4 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold text-primary">
+                    Saat Ali mendekat ke cermin, maka bayangan Ali juga nampak mendekat ke cermin.
+                  </div>
+                </div>
+                <div class="flex items-center mt-4 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold text-primary">
+                    Bagian tubuh Ali seperti kepala berada dalam posisi yang tepat dan tegak lurus
+                    dengan bayangannya
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold">
+                <img src="../../img/Grafis/Unyu.png" alt="" class="w-32 -ml-3 md:w-32" />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Dari peristiwa di atas, semoga memberikan kamu gambaran tentang refleksi dalam
+                    matematika
+                  </div>
+                </div>
+              </div>
+              <div class="mt-8 md:mt-2 md:ml-24 border-l-2 ml-6 border-orange-300 drop-shadow-md">
+                <div class="font-semibold ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Dalam matematika Refleksi memiliki definisi :</div>
+                </div>
+                <div
+                  class="bg-orange-100 border-b ml-4 border-t mt-3 font-semibold max-w-lg border-orange-300 text- text-pretty py-3 px-4"
+                >
+                  Refleksi (pencerminan) adalah transformasi yang memindahkan objek berdasarkan
+                  sifat bayangan cermin.
+                </div>
+              </div>
+              <hr class="mt-12" />
+              <div
+                class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8"
+                id="akhirPengertiantranslasi"
+              >
+                <img src="../../img/Grafis/Nih.png" alt="" class="w-28 scale-x-[-1] md:w-32" />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Jadi objek yang dipindahkan harus sesuai sifat bayangan cermin
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg mt-2 text-pretty max-w-xl rounded-bl-xl rounded-tl-none"
+                  >
+                    Di materi ini, kita akan mencerminkan objek terhadap garis dan terhadap titik
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Akhir Pengertian Refleksi -->
+
+            <!-- Pencerminan terhadap Garis -->
+            <div
+              class="mt-16 zoomIn relative hidden border border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
+            >
+              <div
+                class="absolute px-5 py-2 bg-[#FFC09F] -top-4 rounded-md tracking-wide text-white"
+              >
+                Pencerminan terhadap Garis
+              </div>
+              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold">
+                <img src="../../img/Grafis/ooo.png" alt="" class="w-32 -ml-5 md:w-32" />
+                <div class="ml-">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Maksud dari pencerminan terhadap garis adalah kita merefleksikan sebuah objek
+                    terhadap sebuah garis
+                  </div>
+                </div>
+              </div>
+              <div class="mt-8 md:mt-0 md:ml-32 border-l-2 ml-6 border-orange-300 drop-shadow-md">
+                <div class="font-semibold ml-4 text-[11px] flex gap-2">
+                  <div>//</div>
+                  <div>
+                    Contoh: sebuah titik A ingin direfleksikan terhadap sebuah garis vertical.
+                  </div>
+                </div>
+                <div class="bg-blue-50 mt-4 p-3 ml-8 w-fit">
+                  <div class="relative">
+                    <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                    <div
+                      class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[85px] left-[26px]"
+                    >
+                      <div class="absolute -top-[18px] -left-[1px]">A</div>
+                    </div>
+                    <div
+                      class="w-[2px] h-full bg-green-600 absolute top-[0px] left-1/2 translate-x-[-1px]"
+                    ></div>
+                    <svg
+                      width="20"
+                      height="10"
+                      viewBox="0 0 20 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="absolute -rotate-45 scale-x-[-1] left-1/2 top-1/2"
+                    >
+                      <path
+                        d="M15.0125 3.75H0V6.25H15.0125V10L20 5L15.0125 0V3.75Z"
+                        fill="#FFA500"
+                      />
+                    </svg>
+                    <div class="text-orange-400 absolute top-[70px] left-[110px]">Cermin</div>
+                    <svg
+                      width="20"
+                      height="10"
+                      viewBox="0 0 20 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="absolute -rotate-45 scale-x-[-1] left-[30px] top-[60px]"
+                    >
+                      <path
+                        d="M15.0125 3.75H0V6.25H15.0125V10L20 5L15.0125 0V3.75Z"
+                        fill="#FFA500"
+                      />
+                    </svg>
+                    <div class="text-orange-400 absolute top-[42px] left-[47px]">Objek</div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center justify-end drop-shadow-md mt-16 md:mt-10 md:font-semibold"
+              >
+                <div class="mr-2">
+                  <div
+                    class="bg-gray-50 pl-4 pr-1 md:pr-4 py-3 rounded-lg text-pretty text-r max-w-[400px] rounded-br-xl rounded-tr-none"
+                  >
+                    Bagaimana menentukan hasil refleksi titik A terhadap garis tersebut?
+                  </div>
+                </div>
+                <img src="../../img/pertanyaan.png" alt="" class="w-20 md:w-28" />
+              </div>
+              <div class="flex items-center drop-shadow-md mt-10 md:mt-2 md:font-semibold pb-8">
+                <img
+                  src="../../img/Grafis/boss.png"
+                  alt=""
+                  class="w-28 -ml-2 md:ml-4 md:w-28 md:mr-2"
+                />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Untuk menentukannya kita perlu mengetahui sifat bayangan cermin.
+                  </div>
+                </div>
+              </div>
+              <div class="-mt-2 md:-mt-4 md:ml-32 pb-4 border-l-2 ml-4 border-orange-300">
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Perhatikan kembali hasil pengamatan saat Ali bercermin.</div>
+                </div>
+                <div
+                  class="font-semibold drop-shadow-none mt-4 text-[11px] text-orange-300 ml-6 flex gap-2"
+                >
+                  <div>/</div>
+                  <div>Bayangan Ali bentuknya sama persis dengan Ali, artinya:</div>
+                </div>
+                <div class="flex items-center mt-2 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-10" alt="" />
+                  <div class="font-semibold">
+                    Objek dan bayangan objek memiliki bentuk yang sama
+                  </div>
+                </div>
+                <hr class="ml-6 mt-4" />
+                <div
+                  class="font-semibold text-orange-300 drop-shadow-none mt-6 text-[11px] ml-6 flex gap-2"
+                >
+                  <div>/</div>
+                  <div>
+                    Saat Ali mendekat ke cermin, maka bayangan Ali juga mendekat ke cermin, artinya:
+                  </div>
+                </div>
+                <div class="flex items-start mt-2 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-10" alt="" />
+                  <div class="font-semibold">
+                    Jarak objek ke cermin sama dengan jarak bayangan objek ke cermin
+                  </div>
+                </div>
+                <hr class="ml-6 mt-4" />
+                <div
+                  class="font-semibold drop-shadow-none text-orange-300 mt-6 text-[11px] ml-6 flex gap-2"
+                >
+                  <div>/</div>
+                  <div>
+                    Bagian tubuh Ali seperti kepala berada dalam posisi yang tepat dan tegak lurus
+                    dengan bayangannya, artinya:
+                  </div>
+                </div>
+                <div class="flex items-start mt-2 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-10" alt="" />
+                  <div class="font-semibold">
+                    Jika kita menghubungkan objek dan bayangannya dengan sebuah garis, maka garis
+                    tersebut akan tegak lurus dengan garis cerminnya.
+                  </div>
+                </div>
+              </div>
+
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8">
+                <img
+                  src="../../img/Grafis/Nih.png"
+                  alt=""
+                  class="w-32 scale-x-[-1] md:w-32 md:mr-2"
+                />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Ketiga sifat di atas yang akan menjadi acuan kita saat merefleksikan objek
+                    terhadap sebuah garis.
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Yuk mari kita coba.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt- md:-mt-4 md:ml-32 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-sm"
+              >
+                <div
+                  class="font-semibold text-orange-300 drop-shadow-none text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 1, sebuah titik A dicerminkan terhadap garis vertikal</div>
+                </div>
+                <div class="bg-blue-50 mt-4 p-3 ml-8 w-fit">
+                  <div class="relative">
+                    <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                    <div
+                      class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[85px] left-[26px]"
+                    >
+                      <div class="absolute -top-[18px] -left-[1px]">A</div>
+                    </div>
+                    <div
+                      class="w-[2px] h-full bg-green-600 absolute top-[0px] left-1/2 translate-x-[-1px]"
+                    ></div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Pertama, tentukan jarak titik A ke garis cermin secara tegak lurus.
+                  </div>
+                </div>
+                <div class="flex gap-2 ml-12 item mt-3">
+                  <div class="relative cursor-pointer playTitikA" id="playTitik">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit zoomIn hidden">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[2px] h-full bg-green-600 absolute top-[0px] left-1/2 translate-x-[-1px]"
+                      ></div>
+                      <div class="absolute top-[75px] left-[30px] flex">
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul1 border-red-300"
+                        ></div>
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul2 border-red-300"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Setelah diperoleh jaraknya yaitu 2 satuan, selanjutnya tentukan posisi titik di
+                    sisi lain cermin yang berjarak 2 satuan juga dari cermin .
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-3 ml-12">
+                  <div class="relative cursor-pointer playTitikA" id="playTitikA">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit zoomIn hidden">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full opacity-0 zoomIn4 bg-green-400 text-green-400 absolute top-[85px] right-[26px]"
+                      ></div>
+                      <div
+                        class="w-[2px] h-full bg-green-600 absolute top-[0px] left-1/2 translate-x-[-1px]"
+                      ></div>
+                      <div class="absolute top-[75px] left-[30px] flex">
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity- border-red-300"
+                        ></div>
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity- border-red-300"
+                        ></div>
+                      </div>
+                      <div class="absolute top-[75px] right-[30px] flex">
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul1 border-red-300"
+                        ></div>
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul2 border-red-300"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">Titik tersebut adalah hasil refleksinya atau A’.</div>
+                </div>
+                <div class="flex gap-2 item mt-3 ml-12">
+                  <div class="relative cursor-pointer playTitikA">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit zoomIn hidden">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-400 titikA text-green-400 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                        <div class="absolute -top-[18px] -left-[1px] opacity-0 muncul6">A'</div>
+                      </div>
+                      <div
+                        class="w-[2px] h-full bg-green-600 absolute top-[0px] left-1/2 translate-x-[-1px]"
+                      ></div>
+                      <div class="absolute top-[75px] left-[30px] flex">
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul1a border-red-300"
+                        ></div>
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul1a border-red-300"
+                        ></div>
+                      </div>
+                      <div class="absolute top-[75px] right-[30px] flex">
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul2a border-red-300"
+                        ></div>
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul2a border-red-300"
+                        ></div>
+                      </div>
+                      <div
+                        class="w-[119px] bg-orange-400 muncul6 bg-opacity-40 opacity-0 h-[1px] border border-dashed absolute left-[30px] top-[87px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8">
+                <img
+                  src="../../img/Grafis/supermen.png"
+                  alt=""
+                  class="w-32 -ml-4 md:w-32 md:mr-2"
+                />
+                <div class="ml-">
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Ayo kita identifikasi kasus 1, apakah sudah memenuhi ketiga sifat bayangan
+                    cermin?
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-1 md:-mt-4 md:ml-32 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-sm"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Identifikasi kasus 1:</div>
+                </div>
+                <div class="flex items-center mt-4 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">Titik A dan titik A’ memiliki bentuk yang sama</div>
+                </div>
+                <div class="flex gap-2 ml-12 item mt-3">
+                  <div class="relative cursor-pointer playTitikA" id="playTitik">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit hidden zoomIn">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 zoomIn2 z-20 text-gray-300 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full zoomIn3 bg-green-400 z-20 text-green-400 absolute top-[85px] right-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                        <div class="absolute -top-[18px] -left-[1px]">A'</div>
+                      </div>
+                      <div
+                        class="w-[2px] h-full bg-green-600 absolute top-[0px] left-1/2 translate-x-[-1px]"
+                      ></div>
+                      <div
+                        class="w-[119px] bg-orange-400 bg-opacity-40 h-[1px] border border-dashed absolute left-[30px] top-[87px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Jarak titik A ke cermin dan jarak titik A’ ke cermin sama yaitu 2 satuan
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-3 ml-12">
+                  <div class="relative cursor-pointer playTitikA" id="playTitikA">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit hidden zoomIn">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 z-20 text-gray-300 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-400 z-20 text-green-400 absolute top-[85px] right-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                        <div class="absolute -top-[18px] -left-[1px]">A'</div>
+                      </div>
+                      <div
+                        class="w-[2px] h-full bg-green-600 absolute top-[0px] left-1/2 translate-x-[-1px]"
+                      ></div>
+                      <div class="absolute top-[75px] left-[30px] flex">
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul1a border-red-300"
+                        ></div>
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul1a border-red-300"
+                        ></div>
+                      </div>
+                      <div class="absolute top-[75px] right-[30px] flex">
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul2a border-red-300"
+                        ></div>
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul2a border-red-300"
+                        ></div>
+                      </div>
+                      <div
+                        class="w-[119px] bg-orange-400 bg-opacity-40 h-[1px] border border-dashed absolute left-[30px] top-[87px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Garis hubung titik A dan A’ tegak lurus dengan cerminnya (membentuk sudut siku
+                    siku).
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-3 ml-12">
+                  <div class="relative cursor-pointer playTitikA">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit hidden zoomIn">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 z-20 text-gray-300 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-400 z-20 text-green-400 absolute top-[85px] right-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                        <div class="absolute -top-[18px] -left-[1px]">A'</div>
+                      </div>
+                      <div
+                        class="w-[2px] h-full bg-green-600 absolute top-[0px] left-1/2 translate-x-[-1px]"
+                      ></div>
+                      <div
+                        class="w-[119px] bg-orange-400 bg-opacity-40 h-[1px] border border-dashed absolute left-[30px] top-[87px]"
+                      ></div>
+                      <svg
+                        width="15"
+                        height="30"
+                        viewBox="0 0 20 30"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="absolute rotate-45 scale-x-[-1] left-[105px] top-[90px]"
+                      >
+                        <path
+                          d="M15.0125 3.75H0V6.25H15.0125V10L20 5L15.0125 0V3.75Z"
+                          fill="#FFA500"
+                        />
+                      </svg>
+                      <div
+                        class="text-orange-400 text-[10px] w-20 absolute bottom-[50px] left-[120px]"
+                      >
+                        Garis hubung
+                      </div>
+                      <div
+                        class="w-4 h-4 border-l-2 border-t-2 absolute top-[71px] opacity-0 zoomIn2 left-[71px] border-orange-400"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8">
+                <img src="../../img/Grafis/hmm.png" alt="" class="w-28 -ml-4 md:w-28 md:mr-2" />
+                <div class="ml-">
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Jadi, sebuah objek dikatakan mengalami refleksi bila memenuhi ketiga sifat
+                    bayangan cermin.
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 mt-2 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Coba kamu jawab pertanyaan di bawah!
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt- md:mt-2 md:ml-32 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-sm"
+              >
+                <div
+                  class="font-semibold text-orange-300 drop-shadow-none text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 2, titik B ingin direfleksikan terhadap garis vertikal</div>
+                </div>
+                <div class="flex gap-2 ml-8 mt-3">
+                  <div class="relative cursor-pointer playTitikA" id="playTitik">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit zoomIn hidden">
+                    <div class="relative">
+                      <img src="../../img/Grid7.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-00 absolute top-[98px] left-[71px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">B</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 titikB absolute top-[98px] left-[71px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">B</div>
+                        <div class="absolute -top-[18px] -left-[1px] opacity-0 muncul6">B'</div>
+                      </div>
+                      <div
+                        class="w-[2px] h-full bg-green-600 absolute top-[0px] left-1/2 translate-x-[10px]"
+                      ></div>
+                      <div
+                        class="border-t-2 w-[36px] h-[36px] opacity-0 muncul1b absolute top-[82px] -rotate-45 origin-bottom-left left-[89px] rounded-full border-red-400"
+                      ></div>
+                      <div
+                        class="border-t-2 w-[36px] h-[36px] opacity-0 muncul2b absolute top-[55px] -rotate-45 origin-bottom-left right-[25px] rounded-full border-red-400"
+                      ></div>
+                      <div
+                        class="w-[70px] bg-orange-400 garisB1 bg-opacity-40 opacity-0 h-[1px] origin-bottom-left -rotate-45 border border-dashed absolute left-[75px] top-[100px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold">
+                    Apakah animasi di atas menunjukkan refleksi yang benar?
+                  </div>
+                </div>
+                <div class="flex mt-3 ml-16 space-x-3" id="titikB_yesno">
+                  <button
+                    onclick="falseButton()"
+                    class="py-1 px-4 text-white bg-green-500 hover:bg-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition-all"
+                  >
+                    Benar
+                  </button>
+                  <button
+                    onclick="trueButton()"
+                    class="py-2 px-4 text-white bg-red-500 hover:bg-red-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-all"
+                  >
+                    Salah
+                  </button>
+                </div>
+                <div id="resultMessage1" class="mt-3 zoomIn hidden ml-[68px] text-green-500">
+                  Refleksi yang dialami titik B kurang tepat
+                </div>
+
+                <div class="hidden zoomIn" id="nextresultMessage1">
+                  <div class="flex items-center mt-8 gap-2">
+                    <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                    <div class="font-semibold">
+                      Sifat bayangan cermin apa yang tidak dipenuhi titik B?.
+                    </div>
+                  </div>
+                  <div class="question-container">
+                    <div class="max-w-[350px] ml-12 mt-4 options">
+                      <div
+                        class="flex items-center gap-3 px-5 py-2 border-t border-b cursor-pointer pilihan"
+                      >
+                        <div class="text-orange-300 font-semibold">A.</div>
+                        <div>Bentuk titik B dan titik B' berbeda</div>
+                      </div>
+                      <div
+                        class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan"
+                      >
+                        <div class="text-orange-300 font-semibold">B.</div>
+                        <div>Jarak titik B ke cermin dan jarak titik B’ ke cermin berbeda</div>
+                      </div>
+                      <div
+                        class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan benar"
+                      >
+                        <div class="text-orange-300 font-semibold">C.</div>
+                        <div>Garis hubung titik B dan B’ tegak lurus dengan cerminnya</div>
+                      </div>
+                    </div>
+
+                    <button
+                      disabled
+                      class="px-3 py-1 cekJawaban bg-violet-400 ml-[50px] mt-4 text-white rounded-md text-[10px]"
+                    >
+                      Cek jawaban
+                    </button>
+                    <div class="ml-[50px] mt-4 jadiBenar hidden">
+                      jawaban yang benar: <span class="text-orange-400 font-semibold">B</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8">
+                <img src="../../img/Grafis/Unyu.png" alt="" class="w-32 -ml-4 md:w-32 md:mr-2" />
+                <div class="ml-1">
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Sehingga titik B tidak mengalami refleksi karena tidak memenuhi ketiga sifat
+                    bayangan cermin.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex items-center justify-end drop-shadow-md mt- md:-mt-6 md:font-semibold"
+              >
+                <div class="mr-2">
+                  <div
+                    class="bg-gray-50 pl-4 pr-1 md:pr-4 py-3 rounded-lg text-pretty text-r max-w-[400px] rounded-br-xl rounded-tr-none"
+                  >
+                    Apakah garis yang digunakan sebagai cermin harus vertikal?
+                  </div>
+                </div>
+                <img src="../../img/pertanyaan.png" alt="" class="w-20 md:w-28" />
+              </div>
+              <div class="flex items-center drop-shadow-md md:mt-4 mt-10 md:font-semibold pb-8">
+                <img
+                  src="../../img/Grafis/aaa.png"
+                  alt=""
+                  class="w-[120px] scale-x-[-1] -ml-4 md:w-28 md:mr-2"
+                />
+                <div class="ml-">
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Tidak, garis yang menjadi cermin bisa bermacam macam loh.
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Nih, Ali berikan contohnya.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt- md:mt-2 md:ml-32 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-sm"
+              >
+                <div
+                  class="font-semibold text-orange-300 drop-shadow-none text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 3, titik C direfleksikan terhadap garis horizontal</div>
+                </div>
+                <div class="flex gap-2 ml-8 mt-3">
+                  <div class="bg-blue-50 p-3 w-fit">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-00 absolute top-[55px] right-[55px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">C</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[55px] right-[55px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">C</div>
+                      </div>
+                      <div class="w-full h-[2px] bg-green-600 absolute top-1/2 left-0"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Tentukan jarak titik C ke garis cermin secara tegak lurus.
+                  </div>
+                </div>
+                <div class="flex gap-2 ml-12 item mt-3">
+                  <div class="relative cursor-pointer playTitikA" id="playTitik">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit hidden zoomIn">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-00 absolute top-[55px] right-[55px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">C</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[55px] right-[55px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">C</div>
+                      </div>
+                      <div class="w-full h-[2px] bg-green-600 absolute top-1/2 left-0"></div>
+                      <div class="absolute top-[59px] right-[47px] flex">
+                        <div
+                          class="border-r-2 w-[28px] h-[28px] rounded-full opacity-0 muncul1 border-red-300"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Jaraknya adalah 1 satuan, lalu tentukan posisi titik di sisi lain cermin yang
+                    berjarak 1 satuan juga dari cermin.
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-3 ml-12">
+                  <div class="relative cursor-pointer playTitikA" id="playTitikA">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit hidden zoomIn">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-00 absolute top-[55px] right-[55px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">C</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[55px] right-[55px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">C</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full opacity-0 zoomIn3 bg-green-400 text-green-400 absolute bottom-[55px] right-[55px]"
+                      ></div>
+                      <div class="w-full h-[2px] bg-green-600 absolute top-1/2 left-0"></div>
+                      <div class="absolute top-[59px] right-[47px] flex">
+                        <div
+                          class="border-r-2 w-[28px] h-[28px] rounded-full opacity- border-red-300"
+                        ></div>
+                      </div>
+                      <div class="absolute bottom-[59px] right-[47px] flex">
+                        <div
+                          class="border-r-2 w-[28px] h-[28px] rounded-full opacity-0 muncul1 border-red-300"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">Titik tersebut adalah titik C’.</div>
+                </div>
+                <div class="flex gap-2 item mt-3 ml-12">
+                  <div class="relative cursor-pointer playTitikA">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit hidden zoomIn">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-00 absolute top-[55px] right-[55px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">C</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-400 titikC text-green-400 absolute top-[55px] right-[55px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px] opacity-0">C</div>
+                        <div class="absolute -bottom-[18px] -left-[1px] opacity-0 muncul5">C'</div>
+                      </div>
+
+                      <div class="w-full h-[2px] bg-green-600 absolute top-1/2 left-0"></div>
+                      <div class="absolute top-[59px] right-[47px] flex">
+                        <div
+                          class="border-r-2 w-[28px] h-[28px] rounded-full opacity-0 muncul1a border-red-300"
+                        ></div>
+                      </div>
+                      <div class="absolute bottom-[59px] right-[47px] flex">
+                        <div
+                          class="border-r-2 w-[28px] h-[28px] rounded-full opacity-0 muncul2a border-red-300"
+                        ></div>
+                      </div>
+                      <div
+                        class="w-[1px] bg-orange-400 muncul6 bg-opacity-40 opacity-0 h-[60px] border border-dashed absolute right-[57px] top-[60px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold">
+                <img
+                  src="../../img/Grafis/eak.png"
+                  alt=""
+                  class="w-40 scale-x-[-1] -ml-4 md:w-40 md:mr-2"
+                />
+                <div class="ml1">
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Mudah kan? Asal kita memperthatikan sifat bayangan cerminnya.
+                  </div>
+                </div>
+              </div>
+
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-6 md:font-semibold pb-8">
+                <img src="../../img/Grafis/boss.png" alt="" class="w-28 md:w-28 md:mr-2" />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Selanjutnya kita akan mencerminkan sebuah ruas garis
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt- md:-mt-8 md:ml-32 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-sm"
+              >
+                <div
+                  class="font-semibold text-orange-300 drop-shadow-none text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 4, ruas garis AB direfleksikan terhadap garis miring</div>
+                </div>
+                <div class="flex gap-2 ml-8 mt-3">
+                  <div class="bg-blue-50 p-3 w-fit">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-300 text-green-300 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute bottom-[26px] left-[26px]"
+                      >
+                        <div class="absolute -bottom-[18px] -left-[1px]">B</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-300 text-green-300 absolute bottom-[26px] left-[26px]"
+                      >
+                        <div class="absolute -bottom-[18px] -left-[1px]">B</div>
+                      </div>
+                      <div
+                        class="bg-green-300 w-[2px] h-[65px] absolute top-[85px] left-[28px]"
+                      ></div>
+                      <div
+                        class="w-[245px] h-[2px] bg-green-600 absolute top-0 rotate-45 origin-bottom-left left-0"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Tentukan jarak masing masing titik A dan titik B ke garis cermin secara tegak
+                    lurus.
+                  </div>
+                </div>
+                <div class="flex gap-2 ml-12 item mt-3">
+                  <div class="relative cursor-pointer playTitikA" id="playTitik">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit zoomIn hidden">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-300 text-green-300 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute bottom-[26px] left-[26px]"
+                      >
+                        <div class="absolute -bottom-[18px] -left-[1px]">B</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-300 text-green-300 absolute bottom-[26px] left-[26px]"
+                      >
+                        <div class="absolute -bottom-[18px] -left-[1px]">B</div>
+                      </div>
+                      <div
+                        class="bg-green-300 w-[2px] h-[65px] absolute top-[85px] left-[28px]"
+                      ></div>
+                      <div
+                        class="w-[245px] h-[2px] bg-green-600 absolute top-0 rotate-45 origin-bottom-left left-0"
+                      ></div>
+                      <div
+                        class="border-t-2 w-[36px] h-[36px] muncul1AB opacity-0 absolute top-[65px] -rotate-45 origin-bottom-left left-[46px] rounded-full border-red-400"
+                      ></div>
+                      <div
+                        class="flex absolute -rotate-45 muncul2AB opacity-0 origin-bottom-left bottom-[17px] gap-1 left-[46px]"
+                      >
+                        <div class="border-t-2 w-[36px] h-[36px] rounded-full border-red-400"></div>
+                        <div class="border-t-2 w-[36px] h-[36px] rounded-full border-red-400"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Jarak titik A ke cermin adalah 1 satuan dan jarak titik B ke cermin adalah 2
+                    satuan. Saatnya kita menentukan titik di sisi lainnya dengan jaraknya masing
+                    masing.
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-3 ml-12">
+                  <div class="relative cursor-pointer playTitikA" id="playTitikA">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit hidden zoomIn">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-300 text-green-300 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute bottom-[26px] left-[26px]"
+                      >
+                        <div class="absolute -bottom-[18px] -left-[1px]">B</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-300 text-green-300 absolute bottom-[26px] left-[26px]"
+                      >
+                        <div class="absolute -bottom-[18px] -left-[1px]">B</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-300 opacity-0 zoomIn3 text-green-300 absolute top-[26px] left-[85px]"
+                      ></div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-300 opacity-0 zoomIn5 text-green-300 absolute right-[26px] top-[26px]"
+                      ></div>
+                      <div
+                        class="bg-green-300 w-[2px] h-[65px] absolute top-[85px] left-[28px]"
+                      ></div>
+                      <div
+                        class="w-[245px] h-[2px] bg-green-600 absolute top-0 rotate-45 origin-bottom-left left-0"
+                      ></div>
+                      <div
+                        class="border-t-2 w-[36px] h-[36px] absolute top-[65px] -rotate-45 origin-bottom-left left-[46px] rounded-full border-red-400"
+                      ></div>
+                      <div
+                        class="border-t-2 w-[36px] h-[36px] absolute top-[35px] muncul1AB opacity-0 -rotate-45 origin-bottom-left left-[74px] rounded-full border-red-400"
+                      ></div>
+                      <div
+                        class="flex absolute -rotate-45 origin-bottom-left bottom-[17px] gap-1 left-[46px]"
+                      >
+                        <div class="border-t-2 w-[36px] h-[36px] rounded-full border-red-400"></div>
+                        <div class="border-t-2 w-[36px] h-[36px] rounded-full border-red-400"></div>
+                      </div>
+                      <div
+                        class="flex absolute -rotate-45 origin-bottom-left top-[66px] opacity-0 muncul3AB gap-1 -right-[6px]"
+                      >
+                        <div class="border-t-2 w-[37px] h-[36px] rounded-full border-red-400"></div>
+                        <div class="border-t-2 w-[37px] h-[36px] rounded-full border-red-400"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Dan kita telah mendapatkan hasil refleksi dari ruas garis AB atau A'B'
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-3 ml-12">
+                  <div class="relative cursor-pointer playTitikA">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit zoomIn hidden">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full opacity-0 titikAB bg-green-300 text-green-300 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A'</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute bottom-[26px] left-[26px]"
+                      >
+                        <div class="absolute -bottom-[18px] -left-[1px]">B</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full opacity-0 bg-green-300 titikAB2 text-green-300 absolute bottom-[26px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">B'</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-300 text-green-300 absolute top-[26px] left-[85px]"
+                      ></div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-300 text-green-300 absolute right-[26px] top-[26px]"
+                      ></div>
+
+                      <div
+                        class="bg-gray-300 w-[2px] h-[65px] absolute top-[85px] left-[28px]"
+                      ></div>
+                      <div
+                        class="bg-green-300 garisAB w-[2px] h-[65px] absolute top-[85px] left-[28px]"
+                      ></div>
+                      <div
+                        class="w-[245px] h-[2px] bg-green-600 absolute top-0 rotate-45 origin-bottom-left left-0"
+                      ></div>
+                      <div
+                        class="w-[80px] bg-orange-400 bg-opacity-20 muncul5AB opacity-0 h-[1px] -rotate-45 origin-bottom-left border border-dashed absolute left-[30px] top-[87px]"
+                      ></div>
+                      <div
+                        class="w-[163px] bg-orange-400 bg-opacity-20 muncul5AB opacity-0 h-[1px] -rotate-45 origin-bottom-left border border-dashed absolute left-[30px] bottom-[30px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8">
+                <img src="../../img/Grafis/ide.png" alt="" class="w-36 md:w-36 -ml-7 md:mr-2" />
+                <div class="-ml-1">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Kuncinya adalah kamu perlu memastikan semua titiknya sesuai dengan sifat
+                    bayangan cermin.
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-" />
+              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8">
+                <img
+                  src="../../img/Grafis/bengis.png"
+                  alt=""
+                  class="w-36 md:w-36 scale-x-[-1] -ml-7 md:mr-2"
+                />
+                <div class="-ml-1">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Setelah ruas garis, saatnya kita mencoba merefleksikan bangun datar.
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Tapi kali ini kamu yang akan menentukan hasil refleksinya!
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt- md:-mt-6 md:ml-32 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-sm"
+              >
+                <div
+                  class="font-semibold text-orange-300 drop-shadow-none text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 5, Segitiga ABC akan direfleksikan pada sebuah garis vertical.</div>
+                </div>
+                <div class="flex gap-2 ml-8 mt-3">
+                  <div class="bg-blue-50 p-3 w-fit">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                      <div class="absolute left-[23px] top-[46px]">
+                        <svg
+                          width="47"
+                          height="101"
+                          viewBox="0 0 47 101"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M1.37264 48.847L46 2.96244V97.9143L1.37264 48.847Z"
+                            stroke="#01FF01"
+                            stroke-width="2"
+                          />
+                        </svg>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[46px] -left-[2px]"
+                        >
+                          <div class="absolute -top-[6px] -left-[10px]">C</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -top-[2px] -right-[2px]"
+                        >
+                          <div class="absolute -top-[16px] -left-[2px]">A</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -bottom-[2px] -right-[2px]"
+                        >
+                          <div class="absolute -bottom-[19px] -left-[px]">B</div>
+                        </div>
+                      </div>
+                      <div
+                        class="w-[2px] h-full bg-green-600 absolute top-0 left-1/2 -translate-x-[2px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Tentukan jarak masing-masing titik sudut segitiga ABC ke cermin.
+                  </div>
+                </div>
+                <ul class="list-disc mt-3 ml-16">
+                  <li>
+                    <div class="flex flex-wrap gap- items-center">
+                      <div class="flex items-center gap-2">
+                        <div class="">Jarak titik A ke cermin adalah</div>
+                      </div>
+                      <div class="flex items-center md:ml-0 translate-x-1 gap-2">
+                        <div class="">jarak</div>
+                        <input
+                          type="number"
+                          data-answer="1"
+                          class="w-10 border rounded-sm answerInput border-orange-300 text-center"
+                        />
+                      </div>
+                      <div class="ml-3">satuan</div>
+                    </div>
+                    <button
+                      class="px-3 py-1 bg-violet-400 checkAnswerButton translate-x-1 mt-3 text-white rounded-md text-[9px]"
+                    >
+                      Cek jawaban
+                    </button>
+                  </li>
+                  <li>
+                    <div class="flex flex-wrap mt-4 gap- items-center">
+                      <div class="flex items-center gap-2">
+                        <div class="">Jarak titik B ke cermin adalah</div>
+                      </div>
+                      <div class="flex items-center md:ml-0 translate-x-1 gap-2">
+                        <div class="">jarak</div>
+                        <input
+                          type="number"
+                          data-answer="1"
+                          class="w-10 border rounded-sm answerInput border-orange-300 text-center"
+                        />
+                      </div>
+                      <div class="ml-3">satuan</div>
+                    </div>
+                    <button
+                      class="px-3 py-1 bg-violet-400 translate-x-1 checkAnswerButton mt-3 text-white rounded-md text-[9px]"
+                    >
+                      Cek jawaban
+                    </button>
+                  </li>
+                  <li>
+                    <div class="flex flex-wrap mt-4 gap- items-center">
+                      <div class="flex items-center gap-2">
+                        <div class="">Jarak titik C ke cermin adalah</div>
+                      </div>
+                      <div class="flex items-center md:ml-0 translate-x-1 gap-2">
+                        <div class="">jarak</div>
+                        <input
+                          type="number"
+                          data-answer="3"
+                          class="w-10 border rounded-sm answerInput border-orange-300 text-center"
+                        />
+                      </div>
+                      <div class="ml-3">satuan</div>
+                    </div>
+                    <button
+                      class="px-3 py-1 bg-violet-400 checkAnswerButton translate-x-1 mt-3 text-white rounded-md text-[9px]"
+                    >
+                      Cek jawaban
+                    </button>
+                  </li>
+                </ul>
+
+                <div class="flex items-start mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 mt-1 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Tentukan posisi masing-masing titik di sisi lain cermin
+                    <span class="text-green-400"
+                      >(geser setiap titik sudut ke posisi yang menurut kamu benar)
+                    </span>
+                  </div>
+                </div>
+                <div class="bg-blue-50 p-3 mt-4 ml-12 w-fit">
+                  <div
+                    id="content"
+                    class="w-[200px] h-[200px] relative bg-[url('../img/Grid8.jpeg')] bg-cover"
+                  >
+                    <canvas id="geometryCanvas"></canvas>
+                    <div id="notification"></div>
+                    <div
+                      class="h-full w-[2px] absolute bg-hijau top-0 left-1/2"
+                      id="pusatRotasisoal"
+                    ></div>
+                  </div>
+                </div>
+
+                <button
+                  id="Check3"
+                  class="px-3 py-1 bg-violet-400 translate-x-1 mt-4 ml-12 text-white rounded-md text-[9px]"
+                >
+                  Cek jawaban
+                </button>
+
+                <p class="ml-3 font-semibold text-hijau hidden" id="benar3">Benar 🗸</p>
+                <p class="ml-3 font-semibold text-red-400 hidden" id="salah3">Salah X</p>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Jadi, seperti inilah refleksi dari segitiga ABC ke cermin.
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-3 ml-12">
+                  <div class="relative cursor-pointer playTitikA">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit zoomIn hidden">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                      <div class="absolute left-[25px] top-[46px]">
+                        <svg
+                          width="47"
+                          height="101"
+                          viewBox="0 0 47 101"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M1.37264 48.847L46 2.96244V97.9143L1.37264 48.847Z"
+                            stroke="#D8D7D7"
+                            stroke-width="2"
+                          />
+                        </svg>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute top-[46px] -left-[2px]"
+                        >
+                          <div class="absolute -top-[6px] -left-[10px]">C</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -top-[2px] -right-[2px]"
+                        >
+                          <div class="absolute -top-[16px] -left-[2px]">A</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[2px] -right-[2px]"
+                        >
+                          <div class="absolute -bottom-[19px] -left-[px]">B</div>
+                        </div>
+                      </div>
+                      <div class="absolute left-[25px] top-[46px] inilah">
+                        <svg
+                          width="47"
+                          height="101"
+                          viewBox="0 0 47 101"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M1.37264 48.847L46 2.96244V97.9143L1.37264 48.847Z"
+                            stroke="#01FF01"
+                            stroke-width="2"
+                          />
+                        </svg>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[46px] -left-[2px]"
+                        >
+                          <div class="absolute -top-[6px] -left-[10px] muncul1a">C</div>
+                          <div class="absolute -top-[8px] -left-[12px] opacity-0 muncul10aa">
+                            C'
+                          </div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -top-[2px] -right-[2px]"
+                        >
+                          <div class="absolute -top-[16px] -left-[2px] muncul1a">A</div>
+                          <div class="absolute -top-[16px] -left-[2px] opacity-0 muncul10aa">
+                            A'
+                          </div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -bottom-[2px] -right-[2px]"
+                        >
+                          <div class="absolute -bottom-[19px] -left-[px] muncul1a">B</div>
+                          <div class="absolute -bottom-[19px] -left-[px] opacity-0 muncul10aa">
+                            B'
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="w-[2px] h-full bg-green-600 absolute top-0 left-1/2 -translate-x-[2px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-12 md:font-semibold pb-8">
+                <img
+                  src="../../img/Grafis/Halo.png"
+                  alt=""
+                  class="w-28 md:w-28 scale-x-[-1] -ml- md:mr-2"
+                />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Ali rasa sudah cukup untuk membahasa pencerminan terhadap garis.
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Ali sudah siapkan konten yang semoga bisa memperlancar pemahaman kamu.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt- md:-mt-2 pb-8 md:ml-32 border-l-2 ml-6 border-orange-300 drop-shadow-sm"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>
+                    Pindahkan segitiga abu abu, maka segitiga hijau akan menunjukkan hasil
+                    pencerminannya
+                  </div>
+                </div>
+                <div class="flex gap-2 ml-8 mt-3" id="akhirJaraktranslasi">
+                  <div
+                    class="bg-white shadow-lg ml-4 mt-3 rounded-lg -translate-x-2 w-full md:mx-auto max-w-[400px]"
+                  >
+                    <div class="aspect-ratio-iframe">
+                      <iframe
+                        scrolling="no"
+                        title="Oi"
+                        src="https://www.geogebra.org/material/iframe/id/znxtchav/width/544/height/424/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false"
+                        width="544px"
+                        height="424px"
+                        style="border: 0px"
+                      >
+                      </iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Akhir Pencerminan terhadap Garis -->
+
+            <!-- Pencerminan terhadap titik -->
+            <div
+              class="mt-16 relative hidden zoomIn border border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
+            >
+              <div
+                class="absolute px-5 py-2 bg-[#FFC09F] -top-4 rounded-md tracking-wide text-white"
+              >
+                Pencerminan terhadap titik
+              </div>
+
+              <div class="flex items-center drop-shadow-md mt-12 md:font-semibold">
+                <img src="../../img/Grafis/ooo.png" alt="" class="w-32 -ml-6 md:w-32" />
+                <div class="-ml-1">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Ternyata sebuah titik juga bisa dijadikan sebuah cermin loh
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg mt-2 text-pretty max-w-xl rounded-bl-xl rounded-tl-none"
+                  >
+                    Yuk, perhatikan contohnya di bawah ini!
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 md:mt-2 md:ml-32 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div
+                  class="font-semibold text-orange-400 drop-shadow-none text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 1, titik A direfleksikan terhadap titik B</div>
+                </div>
+                <div class="bg-blue-50 mt-4 p-3 ml-8 w-fit">
+                  <div class="relative">
+                    <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                    <div
+                      class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[85px] left-[26px]"
+                    >
+                      <div class="absolute -top-[18px] -left-[1px]">A</div>
+                    </div>
+                    <div
+                      class="w-[6px] h-[6px] rounded-full bg-green-600 text-green-600 absolute top-[85px] left-[85px]"
+                    >
+                      <div class="absolute -top-[18px] -left-[1px]">B</div>
+                    </div>
+                    <svg
+                      width="20"
+                      height="10"
+                      viewBox="0 0 20 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="absolute -rotate-45 scale-x-[-1] left-1/2 top-[60px]"
+                    >
+                      <path
+                        d="M15.0125 3.75H0V6.25H15.0125V10L20 5L15.0125 0V3.75Z"
+                        fill="#FFA500"
+                      />
+                    </svg>
+                    <div class="text-orange-400 absolute top-[42px] left-[110px]">Cermin</div>
+                    <svg
+                      width="20"
+                      height="10"
+                      viewBox="0 0 20 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="absolute -rotate-45 scale-x-[-1] left-[30px] top-[60px]"
+                    >
+                      <path
+                        d="M15.0125 3.75H0V6.25H15.0125V10L20 5L15.0125 0V3.75Z"
+                        fill="#FFA500"
+                      />
+                    </svg>
+                    <div class="text-orange-400 absolute top-[42px] left-[47px]">Objek</div>
+                  </div>
+                </div>
+                <div class="flex items-start md:items-center mt-8 ml-4 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">Ini adalah hasil refleksinya.</div>
+                </div>
+                <div class="flex gap-2 ml-12 item mt-3">
+                  <div class="relative cursor-pointer playTitikA">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit hidden zoomIn">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-400 z-20 titikA text-green-400 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute top-[85px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-600 text-green-600 absolute top-[85px] left-[85px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">B</div>
+                      </div>
+                      <div class="absolute top-[75px] left-[30px] flex">
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul1a border-red-300"
+                        ></div>
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul1a border-red-300"
+                        ></div>
+                      </div>
+                      <div class="absolute top-[75px] right-[30px] flex">
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul2a border-red-300"
+                        ></div>
+                        <div
+                          class="border-t-2 w-[28px] h-[28px] rounded-full opacity-0 muncul2a border-red-300"
+                        ></div>
+                      </div>
+                      <div
+                        class="w-[119px] bg-orange-400 muncul6 bg-opacity-40 opacity-0 h-[1px] border border-dashed absolute left-[30px] top-[87px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex items-center justify-end drop-shadow-md mt-12 md:mt-4 md:font-semibold"
+              >
+                <div class="mr-2">
+                  <div
+                    class="pl-4 pr-1 md:pr-4 py-3 bg-gray-50 rounded-lg text-pretty max-w-[400px] rounded-br-xl rounded-tr-none"
+                  >
+                    Tampak tidak ada bedanya dengan pencerminan terhadap garis.
+                  </div>
+                </div>
+                <img src="../../img/pertanyaan.png" alt="" class="w-20 md:w-28" />
+              </div>
+              <div class="flex items-center drop-shadow-md mt-8 md:-mt-4 md:font-semibold">
+                <img src="../../img/Grafis/hmm.png" alt="" class="w-28 -ml-2 md:w-28" />
+                <div class="-ml-1">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Benar, kamu baru akan melihat perbedaannya saat kita mencerminan ruas garis dan
+                    bangun datar terhadap titik.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 md:mt-2 md:ml-32 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div
+                  class="font-semibold text-orange-400 drop-shadow-none text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 2, ruas garis AB direfleksikan terhadap titik C</div>
+                </div>
+                <div class="relative cursor-pointer ml-8 mt-3 playTitikA">
+                  <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                  <img
+                    src="../../img/klik.png"
+                    class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                    alt=""
+                  />
+                </div>
+                <div class="bg-blue-50 mt-4 p-3 ml-8 w-fit zoomIn hidden">
+                  <div class="relative">
+                    <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                    <div
+                      class="w-[6px] h-[6px] rounded-full z-20 bg-gray-300 text-gray-300 absolute top-[26px] left-[26px]"
+                    >
+                      <div class="absolute -top-[18px] -left-[1px]">A</div>
+                    </div>
+                    <div
+                      class="w-[6px] h-[6px] rounded-full z-20 bg-gray-300 text-gray-300 absolute bottom-[26px] left-[26px]"
+                    >
+                      <div class="absolute -bottom-[20px] -left-[1px]">B</div>
+                    </div>
+                    <div
+                      class="w-[6px] h-[6px] rounded-full z-20 bg-green-400 reflekA text-green-400 absolute top-[26px] left-[26px]"
+                    >
+                      <div class="absolute -top-[18px] -left-[1px] muncul3a">A</div>
+                      <div class="absolute -bottom-[20px] -left-[1px] opacity-0 muncul6">A'</div>
+                    </div>
+                    <div
+                      class="w-[6px] h-[6px] rounded-full z-20 bg-green-400 reflekB text-green-400 absolute bottom-[26px] left-[26px]"
+                    >
+                      <div class="absolute -bottom-[20px] -left-[1px] muncul8a">B</div>
+                      <div class="absolute -top-[18px] -left-[1px] opacity-0 muncul12">B'</div>
+                    </div>
+
+                    <div
+                      class="w-[6px] h-[6px] rounded-full z-20 bg-green-600 text-green-600 absolute top-[85px] left-[85px]"
+                    >
+                      <div class="absolute -top-[18px] -left-[1px]">C</div>
+                    </div>
+                    <div
+                      class="w-[2px] h-[119px] muncul13a z-20 bg-green-300 absolute top-[28px] left-[28px]"
+                    ></div>
+                    <div
+                      class="w-[2px] h-[119px] bg-gray-300 absolute top-[28px] left-[28px]"
+                    ></div>
+                    <div
+                      class="w-[2px] h-[0px] panjangGarisAB bg-green-300 absolute top-[28px] right-[28px]"
+                    ></div>
+                    <div
+                      class="absolute top-[7px] origin-bottom-left rotate-[47deg] left-[14px] flex"
+                    >
+                      <div
+                        class="border-t-2 w-[39px] h-[39px] rounded-full opacity-0 muncul1a border-red-300"
+                      ></div>
+                      <div
+                        class="border-t-2 w-[39px] h-[39px] rounded-full opacity-0 muncul1a border-red-300"
+                      ></div>
+                    </div>
+                    <div
+                      class="absolute top-[65px] origin-bottom-left rotate-[47deg] left-[76px] flex"
+                    >
+                      <div
+                        class="border-t-2 w-[39px] h-[39px] rounded-full opacity-0 muncul2a border-red-300"
+                      ></div>
+                      <div
+                        class="border-t-2 w-[39px] h-[39px] rounded-full opacity-0 muncul2a border-red-300"
+                      ></div>
+                    </div>
+                    <div
+                      class="absolute top-[57px] origin-bottom-left -rotate-[48deg] -right-[3px] flex"
+                    >
+                      <div
+                        class="border-b-2 w-[39px] h-[39px] rounded-full opacity-0 muncul7a border-red-300"
+                      ></div>
+                      <div
+                        class="border-b-2 w-[39px] h-[39px] rounded-full opacity-0 muncul7a border-red-300"
+                      ></div>
+                    </div>
+                    <div
+                      class="absolute bottom-[20px] origin-bottom-left -rotate-[45deg] left-[41px] flex"
+                    >
+                      <div
+                        class="border-b-2 w-[39px] h-[39px] rounded-full opacity-0 muncul6a border-red-300"
+                      ></div>
+                      <div
+                        class="border-b-2 w-[39px] h-[39px] rounded-full opacity-0 muncul6a border-red-300"
+                      ></div>
+                    </div>
+                    <div
+                      class="w-[170px] bg-orange-900 bg-opacity-20 origin-bottom-left garisC1 rotate-45 opacity-0 h-[1px] border border-dashed absolute left-[30px] top-[28px]"
+                    ></div>
+                    <div
+                      class="w-[170px] bg-orange-900 bg-opacity-20 garisB2 origin-bottom-left -rotate-45 opacity-0 h-[1px] border border-dashed absolute left-[30px] bottom-[28px]"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex items-center justify-end drop-shadow-md mt-12 md:mt-4 md:font-semibold"
+              >
+                <div class="mr-2">
+                  <div
+                    class="pl-4 pr-1 md:pr-4 py-3 bg-gray-50 rounded-lg text-pretty max-w-[400px] rounded-br-xl rounded-tr-none"
+                  >
+                    Wah, jadi hasil refleksinya seperti terbalik yah?
+                  </div>
+                </div>
+                <img src="../../img/pertanyaan.png" alt="" class="w-20 md:w-28" />
+              </div>
+              <div class="flex items-center drop-shadow-md mt-12 md:mt-4 md:font-semibold">
+                <img src="../../img/Grafis/supermen.png" alt="" class="w-32 -ml-2 md:w-32" />
+                <div class="-ml-1">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Benar banget, ketika objek direfleksikan terhadap garis maka hasilnya akan
+                    seperti terbalik
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 mt-1 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Yuk, kita bahas lengkap sifat bayangan cermin terhadap titik
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 md:mt-6 md:ml-32 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-sm"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Identifikasi kasus 2:</div>
+                </div>
+                <div class="bg-blue-50 mt-4 p-3 ml-8 w-fit">
+                  <div class="relative">
+                    <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                    <div
+                      class="w-[6px] h-[6px] rounded-full z-20 bg-gray-300 text-gray-300 absolute top-[26px] left-[26px]"
+                    >
+                      <div class="absolute -top-[18px] -left-[1px]">A</div>
+                    </div>
+                    <div
+                      class="w-[6px] h-[6px] rounded-full z-20 bg-gray-300 text-gray-300 absolute bottom-[26px] left-[26px]"
+                    >
+                      <div class="absolute -bottom-[20px] -left-[1px]">B</div>
+                    </div>
+                    <div
+                      class="w-[6px] h-[6px] rounded-full z-20 bg-green-400 text-green-400 absolute bottom-[26px] right-[26px]"
+                    >
+                      <div class="absolute -bottom-[20px] -left-[1px]">A'</div>
+                    </div>
+                    <div
+                      class="w-[6px] h-[6px] rounded-full z-20 bg-green-400 text-green-400 absolute top-[26px] right-[26px]"
+                    >
+                      <div class="absolute -top-[18px] -left-[1px]">B'</div>
+                    </div>
+
+                    <div
+                      class="w-[6px] h-[6px] rounded-full z-20 bg-green-600 text-green-600 absolute top-[85px] left-[85px]"
+                    >
+                      <div class="absolute -top-[18px] -left-[1px]">C</div>
+                    </div>
+
+                    <div
+                      class="w-[2px] h-[119px] bg-gray-300 absolute top-[28px] left-[28px]"
+                    ></div>
+                    <div
+                      class="w-[2px] h-[119px] bg-green-300 absolute top-[28px] right-[28px]"
+                    ></div>
+
+                    <div
+                      class="w-[170px] bg-orange-900 bg-opacity-20 origin-bottom-left rotate-45 h-[1px] border border-dashed absolute left-[30px] top-[28px]"
+                    ></div>
+                    <div
+                      class="w-[170px] bg-orange-900 bg-opacity-20 origin-bottom-left -rotate-45 h-[1px] border border-dashed absolute left-[30px] bottom-[28px]"
+                    ></div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Objek dan bayangan objek memiliki bentuk yang sama
+                  </div>
+                </div>
+                <div class="flex gap-2 ml-12 item mt-3">
+                  <div class="relative cursor-pointer playTitikA" id="playTitik">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit hidden zoomIn">
+                    <div class="relative">
+                      <img src="../../img/Grid6.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full z-20 zoomIn2 bg-gray-300 text-gray-300 absolute top-[26px] left-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full z-20 zoomIn2 bg-gray-300 text-gray-300 absolute bottom-[26px] left-[26px]"
+                      >
+                        <div class="absolute -bottom-[20px] -left-[1px]">B</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full z-20 zoomIn3 bg-green-400 text-green-400 absolute bottom-[26px] right-[26px]"
+                      >
+                        <div class="absolute -bottom-[20px] -left-[1px]">A'</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full z-20 zoomIn3 bg-green-400 text-green-400 absolute top-[26px] right-[26px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">B'</div>
+                      </div>
+
+                      <div
+                        class="w-[6px] h-[6px] rounded-full z-20 bg-green-600 text-green-600 absolute top-[85px] left-[85px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">C</div>
+                      </div>
+
+                      <div
+                        class="w-[2px] h-[119px] muncul1 bg-gray-300 absolute top-[28px] left-[28px]"
+                      ></div>
+                      <div
+                        class="w-[2px] h-[119px] muncul2 bg-green-300 absolute top-[28px] right-[28px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Jarak objek ke cermin sama dengan jarak bayangan objek ke cermin
+                  </div>
+                </div>
+                <div
+                  class="flex items-center justify-end drop-shadow-md mt-12 md:mt-8 md:font-semibold"
+                >
+                  <div class="mr-2">
+                    <div
+                      class="pl-4 pr-1 md:pr-4 py-3 ml-6 bg-gray-50 rounded-lg text-pretty max-w-[300px] rounded-br-xl rounded-tr-none"
+                    >
+                      Tapi garis penghubung objeknya tidak bisa tegak lurus lagi dengan cermin
+                    </div>
+                  </div>
+                  <img src="../../img/pertanyaan.png" alt="" class="w-20 md:w-28" />
+                </div>
+                <div
+                  class="flex items-center drop-shadow-md mt-4 md:mt-0 ml-4 mr-4 md:font-semibold"
+                >
+                  <img src="../../img/Grafis/ooo.png" alt="" class="w-24 -ml-2 md:w-24" />
+                  <div class="-ml-1">
+                    <div
+                      class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                    >
+                      Yup, sebagai gantinnya kamu hanya harus memastikan garis penghubungnya lurus.
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Garis hubung antara objek dan bayangan objek lurus.
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-12 md:font-semibold">
+                <img src="../../img/Grafis/Tanya.png" alt="" class="w-24 -ml-2 md:w-24" />
+                <div class="-ml-1">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Ali ingin mengetes pemahaman kamu nih tentang pencerminan terhadap titik.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt- md:mt-2 md:ml-32 pb-4 border-l-2 ml-6 mt-6 border-orange-300 drop-shadow-sm"
+              >
+                <div
+                  class="font-semibold text-orange-300 drop-shadow-none text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 3, titik E ingin direfleksikan terhadap titik F</div>
+                </div>
+                <div class="flex gap-2 ml-8 mt-3">
+                  <div class="relative cursor-pointer playTitikA" id="playTitik">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit zoomIn hidden">
+                    <div class="relative">
+                      <img src="../../img/Grid7.jpeg" class="w-44 44" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute bottom-[46px] left-[46px]"
+                      >
+                        <div class="absolute -top-[18px] left-[1px]">E</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-400 titikE text-green-400 absolute bottom-[46px] left-[46px]"
+                      >
+                        <div class="absolute -top-[18px] left-[1px]">E</div>
+                        <div class="absolute -top-[18px] left-[1px] opacity-0 muncul4">E'</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-500 text-green-500 absolute top-[73px] right-[73px]"
+                      >
+                        <div class="absolute -top-[18px] left-[1px]">F</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold">
+                    Apakah animasi di atas menunjukkan refleksi yang benar?
+                  </div>
+                </div>
+                <div class="flex mt-3 ml-16 space-x-3" id="titikE_yesno">
+                  <button
+                    onclick="falseButtonE()"
+                    class="py-1 px-4 text-white bg-green-500 hover:bg-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition-all"
+                  >
+                    Benar
+                  </button>
+                  <button
+                    onclick="trueButtonE()"
+                    class="py-2 px-4 text-white bg-red-500 hover:bg-red-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-all"
+                  >
+                    Salah
+                  </button>
+                </div>
+                <div id="resultMessage2" class="mt-3 zoomIn hidden ml-[68px] text-green-500">
+                  Refleksi yang dialami titik E kurang tepat
+                </div>
+
+                <div id="nextresultMessage2" class="zoomIn hidden">
+                  <div class="flex items-start mt-8 gap-2">
+                    <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                    <div class="font-semibold">
+                      Sifat bayangan cermin apa yang tidak dipenuhi titik E?.
+                      <span class="text-green-400">(Jawaban yang benar lebih dari satu)</span>
+                    </div>
+                  </div>
+                  <div class="select-container">
+                    <div class="ml-[70px] mt-4">
+                      <label class="inline-flex flex-wrap items-start mb-2 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          class="form-checkbox h-5 w-5 mt-2 md:mt-0 text-blue-600 cursor-pointer"
+                          id="checkbox1"
+                        />
+                        <span class="ml-3 text-gray-700 w-48 md:w-80"
+                          >Bentuk titik B dan titik B' berbeda</span
+                        >
+                      </label>
+
+                      <label class="inline-flex items-start mb-2 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          class="form-checkbox h-5 w-5 mt-2 text-green-600 cursor-pointer"
+                          id="checkbox2"
+                        />
+                        <span class="ml-3 text-gray-700 w-48 md:w-80"
+                          >Jarak titik B ke cermin dan jarak titik B’ ke cermin berbeda</span
+                        >
+                      </label>
+
+                      <label class="inline-flex items-start mb-2 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          class="form-checkbox h-5 w-5 mt-2 text-red-600 cursor-pointer"
+                          id="checkbox3"
+                        />
+                        <span class="ml-3 text-gray-700 w-48 md:w-80"
+                          >Garis hubung antara objek dan bayangan objek tidak lurus.</span
+                        >
+                      </label>
+                    </div>
+
+                    <button
+                      disabled
+                      class="px-3 py-1 cekJawaban4 bg-violet-400 ml-[70px] mt-4 text-white rounded-md text-[10px]"
+                    >
+                      Cek jawaban
+                    </button>
+                    <div class="ml-[50px] mt-4 ml-[70px] jadiBenar4 text-green-400 hidden">
+                      jawaban yang benar:
+                      <span class="text-orange-400 font-semibold">pilihan kedua dan ketiga</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-12 md:font-semibold">
+                <img src="../../img/Grafis/supermen.png" alt="" class="w-32 -ml-2 md:w-32" />
+                <div class="-ml-1">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Saatnya kita merefleksikan bangun datar terhadap titik nih.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-6 md:mt-2 md:ml-32 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-sm"
+              >
+                <div
+                  class="font-semibold text-orange-300 drop-shadow-none text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 4, Segitiga ABC akan direfleksikan terhadap titik D.</div>
+                </div>
+                <div class="flex gap-2 ml-8 mt-3">
+                  <div class="bg-blue-50 p-3 w-fit">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                      <div class="absolute left-[73px] -top-[27px]">
+                        <svg
+                          width="47"
+                          height="148"
+                          viewBox="0 0 47 148"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="-rotate-90"
+                        >
+                          <path
+                            d="M1.18711 71.5544L46 3.82369V143.983L1.18711 71.5544Z"
+                            stroke="#01FF01"
+                            stroke-width="2"
+                          />
+                        </svg>
+
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[95px] left-[18px]"
+                        >
+                          <div class="absolute -bottom-[19px] -left-[2px]">C</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[48px] -left-[52px]"
+                        >
+                          <div class="absolute -top-[16px] -left-[2px]">A</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[48px] -right-[52px]"
+                        >
+                          <div class="absolute -top-[16px] -left-[px]">B</div>
+                        </div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-600 text-green-600 absolute top-[93px] left-[93px]"
+                      >
+                        <div class="absolute -top-[6px] left-[7px]">D</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Tentukan jarak masing-masing titik sudut segitiga ABC ke cermin.
+                  </div>
+                </div>
+                <ul class="list-disc mt-3 ml-16">
+                  <li>
+                    <div class="flex flex-wrap gap- items-center">
+                      <div class="flex items-center gap-2">
+                        <div class="">Jarak titik A ke cermin adalah</div>
+                      </div>
+                      <div class="flex items-center md:ml-0 translate-x-1 gap-2">
+                        <div class=""></div>
+                        <input
+                          type="number"
+                          data-answer="3"
+                          class="w-10 border rounded-sm answerInput border-orange-300 text-center"
+                        />
+                      </div>
+                      <div class="ml-3">satuan</div>
+                    </div>
+                    <button
+                      class="px-3 py-1 bg-violet-400 checkAnswerButton translate-x-1 mt-3 text-white rounded-md text-[9px]"
+                    >
+                      Cek jawaban
+                    </button>
+                  </li>
+                  <li>
+                    <div class="flex flex-wrap mt-4 gap- items-center">
+                      <div class="flex items-center gap-2">
+                        <div class="">Jarak titik B ke cermin adalah</div>
+                      </div>
+                      <div class="flex items-center md:ml-0 translate-x-1 gap-2">
+                        <div class=""></div>
+                        <input
+                          type="number"
+                          data-answer="3"
+                          class="w-10 border rounded-sm answerInput border-orange-300 text-center"
+                        />
+                      </div>
+                      <div class="ml-3">satuan</div>
+                    </div>
+                    <button
+                      class="px-3 py-1 bg-violet-400 checkAnswerButton translate-x-1 mt-3 text-white rounded-md text-[9px]"
+                    >
+                      Cek jawaban
+                    </button>
+                  </li>
+                  <li>
+                    <div class="flex flex-wrap mt-4 gap- items-center">
+                      <div class="flex items-center gap-2">
+                        <div class="">Jarak titik C ke cermin adalah</div>
+                      </div>
+                      <div class="flex items-center md:ml-0 translate-x-1 gap-2">
+                        <div class=""></div>
+                        <input
+                          type="number"
+                          data-answer="1"
+                          class="w-10 border rounded-sm answerInput border-orange-300 text-center"
+                        />
+                      </div>
+                      <div class="ml-3">satuan</div>
+                    </div>
+                    <button
+                      class="px-3 py-1 bg-violet-400 checkAnswerButton translate-x-1 mt-3 text-white rounded-md text-[9px]"
+                    >
+                      Cek jawaban
+                    </button>
+                  </li>
+                </ul>
+
+                <div class="flex items-start mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 mt-1 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Tentukan posisi masing-masing titik di sisi lain cermin
+                    <span class="text-green-400"
+                      >(geser setiap titik sudut ke posisi yang menurut kamu benar)
+                    </span>
+                  </div>
+                </div>
+                <div class="bg-blue-50 p-3 mt-4 ml-12 w-fit">
+                  <div
+                    id="content2"
+                    class="w-[200px] h-[200px] relative bg-[url('../img/Grid8.jpeg')] bg-cover"
+                  >
+                    <canvas id="geometryCanvas2"></canvas>
+                    <div id="notification2"></div>
+                    <div
+                      class="h-[6px] w-[6px] rounded-full absolute bg-hijau top-1/2 -translate-x-[3px] -translate-y-[2px] left-1/2"
+                    >
+                      <div class="absolute -top-[6px] left-[7px]">D</div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  id="Check4"
+                  class="px-3 py-1 bg-violet-400 translate-x-1 mt-4 ml-12 text-white rounded-md text-[9px]"
+                >
+                  Cek jawaban
+                </button>
+
+                <p class="ml-3 font-semibold text-hijau hidden" id="benar4">Benar 🗸</p>
+                <p class="ml-3 font-semibold text-red-400 hidden" id="salah4">Salah X</p>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Jadi, seperti inilah refleksi dari segitiga ABC ke cermin.
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-3 ml-12">
+                  <div class="relative cursor-pointer playTitikA">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit zoomIn hidden">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                      <div class="absolute left-[73px] -top-[27px]">
+                        <svg
+                          width="47"
+                          height="148"
+                          viewBox="0 0 47 148"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="-rotate-90"
+                        >
+                          <path
+                            d="M1.18711 71.5544L46 3.82369V143.983L1.18711 71.5544Z"
+                            stroke="#D8D7D7"
+                            stroke-width="2"
+                          />
+                        </svg>
+
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute top-[95px] left-[18px]"
+                        >
+                          <div class="absolute -bottom-[19px] -left-[2px]">C</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute top-[48px] -left-[52px]"
+                        >
+                          <div class="absolute -top-[16px] -left-[2px]">A</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute top-[48px] -right-[52px]"
+                        >
+                          <div class="absolute -top-[16px] -left-[px]">B</div>
+                        </div>
+                      </div>
+                      <div class="absolute left-[73px] reflekGarisABC -top-[27px]">
+                        <svg
+                          width="47"
+                          height="148"
+                          viewBox="0 0 47 148"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="-rotate-90"
+                        >
+                          <path
+                            d="M1.18711 71.5544L46 3.82369V143.983L1.18711 71.5544Z"
+                            stroke="#01FF01"
+                            stroke-width="2"
+                          />
+                        </svg>
+
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[95px] left-[18px]"
+                        >
+                          <div class="absolute -bottom-[19px] -left-[2px] muncul0a">C</div>
+                          <div
+                            class="absolute -bottom-[19px] -left-[2px] rotate-180 opacity-0 muncul10a"
+                          >
+                            C'
+                          </div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[48px] -left-[52px]"
+                        >
+                          <div class="absolute -top-[16px] -left-[2px] muncul0a">A</div>
+                          <div
+                            class="absolute -top-[16px] -left-[2px] rotate-180 opacity-0 muncul10a"
+                          >
+                            A'
+                          </div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[48px] -right-[52px]"
+                        >
+                          <div class="absolute -top-[16px] -left-[px] muncul0a">B</div>
+                          <div
+                            class="absolute -top-[16px] -left-[px] rotate-180 opacity-0 muncul10a"
+                          >
+                            B'
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-600 text-green-600 z-20 absolute top-[93px] left-[93px]"
+                      >
+                        <div class="absolute -top-[6px] left-[7px]">D</div>
+                      </div>
+                      <div
+                        class="w-[2px] bg-orange-400 bg-opacity-10 opacity-0 h-[207px] garisB1 -rotate-45 origin-top-left border border-dashed absolute left-[18px] top-[20px]"
+                      ></div>
+                      <div
+                        class="w-[2px] bg-orange-400 bg-opacity-10 opacity-0 h-[207px] garisC4 rotate-45 origin-top-right border border-dashed absolute right-[18px] top-[20px]"
+                      ></div>
+                      <div
+                        class="w-[2px] bg-orange-400 bg-opacity-10 opacity-0 h-[50px] muncul6 border border-dashed absolute right-[96px] top-[70px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-12 md:font-semibold">
+                <img
+                  src="../../img/Grafis/Nih.png"
+                  alt=""
+                  class="w-28 scale-x-[-1] -ml-2 md:w-32"
+                />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Di bawah ini adalah konten yang Ali harap bisa membuat kamu lebih familiar
+                    dengan pencerminan terhadap titik
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-6 md:mt-2 md:ml-32 pb-8 border-l-2 ml-6 border-orange-300 drop-shadow-sm"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>
+                    Pindahkan segitiga berwarna abu abu, maka segitiga berwarna hijau akan
+                    menunjukkan hasil refleksinya terhadap titik P
+                  </div>
+                </div>
+                <div
+                  id="akhirCerminTitik"
+                  class="bg-white scale-90 shadow-lg mt-3 rounded-lg ml-6 -translate-x-2 w-full md:mx-auto max-w-[400px]"
+                >
+                  <div class="aspect-ratio-iframe2">
+                    <iframe
+                      scrolling="no"
+                      title="Reflleski FIks"
+                      src="https://www.geogebra.org/material/iframe/id/qjydb5ta/width/544/height/424/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false"
+                      width="544px"
+                      height="424px"
+                      style="border: 0px"
+                    >
+                    </iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Akhir Pencerminan terhadap titik -->
+
+            <!-- Pencerminan di kordinat kartesius -->
+            <div
+              class="mt-16 relative hidden zoomIn border border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
+            >
+              <div
+                class="absolute px-5 py-2 bg-[#FFC09F] -top-4 rounded-md tracking-wide text-white"
+              >
+                Pencerminan di kordinat kartesius
+              </div>
+
+              <div class="flex items-center drop-shadow-md mt-12 md:font-semibold">
+                <img src="../../img/Grafis/Unyu.png" alt="" class="w-32 -ml-4 md:w-32" />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Kamu sudah melewati pembahasan refleksi terhadap garis dan titik
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg mt-2 text-pretty max-w-xl rounded-bl-xl rounded-tl-none"
+                  >
+                    Namun tidak lengkap rasanya jika kita tidak mencoba refleksi di kordinat
+                    kartesius.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 md:mt-6 md:ml-32 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>
+                    Pertanyaan 1, Titik <span class="text-green-400">K ( 2 , -1 ) </span>akan
+                    direfleksikan terhadap garis <span class="text-green-400">x = -1</span>
+                  </div>
+                </div>
+                <div class="bg-blue-50 mt-4 p-3 ml-8 w-fit">
+                  <div class="relative">
+                    <img src="../../img/Grapik2.jpg" class="w-48 h-48" alt="" />
+                    <div
+                      class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute bottom-[72px] right-[50px]"
+                    >
+                      <div class="absolute -top-[18px] -left-[1px]">A</div>
+                    </div>
+                    <div
+                      class="bg-green-600 w-[2px] h-full absolute top-0 left-[73px] bg-opacity-70"
+                    ></div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 ml-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Pada kordinat berapakah titik K'?
+                    <span class="text-orange-300 drop-shadow-none">(pilihan ganda)</span>
+                  </div>
+                </div>
+                <div class="question-container">
+                  <div class="max-w-[350px] ml-12 mt-4 options">
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-t border-b cursor-pointer pilihan"
+                    >
+                      <div class="text-orange-300 font-semibold">A.</div>
+                      <div>K' ( 1 , 4 )</div>
+                    </div>
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan"
+                    >
+                      <div class="text-orange-300 font-semibold">B.</div>
+                      <div>K' ( -4 , 1 )</div>
+                    </div>
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan benar"
+                    >
+                      <div class="text-orange-300 font-semibold">C.</div>
+                      <div>K' ( -4 , -1 )</div>
+                    </div>
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan"
+                    >
+                      <div class="text-orange-300 font-semibold">D.</div>
+                      <div>K' ( -1 , 4 )</div>
+                    </div>
+                  </div>
+
+                  <button
+                    disabled
+                    class="px-3 py-1 cekJawaban bg-violet-400 ml-[50px] mt-4 text-white rounded-md text-[10px]"
+                  >
+                    Cek jawaban
+                  </button>
+                  <div class="ml-[50px] mt-4 jadiBenar hidden">
+                    jawaban yang benar: <span class="text-orange-400 font-semibold">C</span>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-8 md:mt-10 md:ml-32 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>
+                    Pertanyaan 2, Titik <span class="text-green-400">H ( -3 , 3 ) </span>akan
+                    direfleksikan terhadap titik <span class="text-green-400">O ( 0 , 0 )</span>
+                  </div>
+                </div>
+
+                <div class="flex items-start mt-4 ml-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 h-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Tentukan kordinat titik H'
+
+                    <span class="text-orange-400 drop-shadow-none"
+                      >(Klik pada kordinat untuk memunculkan titik lalu cek jawabanmu pada tombol
+                      "Check")</span
+                    >
+                  </div>
+                </div>
+                <div class="bg-blue-50 p-3 mt-4 ml-[70px] w-fit">
+                  <div class="w-[200px] h-[200px] relative bg-[url('../img/Grapik3.jpg')] bg-cover">
+                    <canvas id="canvas3" width="200" height="200"></canvas>
+                    <div id="notification3"></div>
+                    <div
+                      class="absolute bg-green-600 w-[6px] h-[6px] rounded-full left-1/2 -translate-x-[2px] -translate-y-[2px] top-1/2"
+                    >
+                      <div class="absolute text-green-600 left-1 -top-[15px]">O</div>
+                    </div>
+                    <div
+                      class="absolute bg-green-400 w-[6px] h-[6px] rounded-full left-[23px] top-[23px]"
+                    >
+                      <div class="absolute text-green-400 left-1 -top-[15px]">H</div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  id="Check5"
+                  class="px-3 py-1 bg-violet-400 translate-x-1 mt-4 ml-[70px] text-white rounded-md text-[9px]"
+                >
+                  Cek jawaban
+                </button>
+
+                <p class="ml-3 font-semibold text-hijau hidden" id="benar5">Benar 🗸</p>
+                <p class="ml-3 font-semibold text-red-400 hidden" id="salah5">Salah X</p>
+              </div>
+
+              <div
+                class="mt-8 md:mt-10 md:ml-32 border-l-2 ml-6 border-orange-300 pb-8 drop-shadow-sm"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>
+                    Pertanyaan 3, Trapesium ABCD direfleksikan dan hasil refkelsinya seperti
+                    berikut.
+                  </div>
+                </div>
+                <div class="bg-blue-50 mt-4 p-3 ml-8 w-fit">
+                  <div class="relative">
+                    <img src="../../img/Grapik2.jpg" class="w-48 h-48" alt="" />
+
+                    <div class="absolute top-[28px] left-[52px]">
+                      <svg
+                        width="88"
+                        height="44"
+                        viewBox="0 0 88 44"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="opacity-45"
+                      >
+                        <path d="M23 0H65.5L88 44H0L23 0Z" fill="#D8D7D7" />
+                      </svg>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -top-[3px] left-[20px]"
+                      >
+                        <div class="absolute -top-[8px] -left-[10px]">A</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -top-[3px] right-[20px]"
+                      >
+                        <div class="absolute -top-[8px] -right-[10px]">B</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[3px] right-[0px]"
+                      >
+                        <div class="absolute -top-[8px] -right-[10px]">D</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[3px] left-[0px]"
+                      >
+                        <div class="absolute -top-[8px] -left-[10px]">C</div>
+                      </div>
+                    </div>
+                    <div class="absolute scale-y-[-1] bottom-[31px] left-[52px]">
+                      <svg
+                        width="88"
+                        height="44"
+                        viewBox="0 0 88 44"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="opacity-45"
+                      >
+                        <path d="M23 0H65.5L88 44H0L23 0Z" fill="#77F477" />
+                      </svg>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-200 text-green-400 absolute -top-[3px] left-[20px]"
+                      >
+                        <div class="absolute -top-[8px] scale-y-[-1] -left-[12px]">A'</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-200 text-green-400 absolute -top-[3px] right-[20px]"
+                      >
+                        <div class="absolute -top-[8px] scale-y-[-1] -right-[12px]">B'</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-200 text-green-400 absolute -bottom-[3px] right-[0px]"
+                      >
+                        <div class="absolute -top-[8px] scale-y-[-1] -right-[12px]">C'</div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-200 text-green-400 absolute -bottom-[3px] left-[0px]"
+                      >
+                        <div class="absolute -top-[8px] scale-y-[-1] -left-[12px]">D'</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-6 ml-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold text-primary">
+                    Manakah yang sesuai menjadi cerminnya
+                  </div>
+                </div>
+                <div class="question-container">
+                  <div class="max-w-[350px] ml-12 mt-4 options">
+                    <div class="relative">
+                      <div
+                        class="flex items-center gap-3 px-2 py-2 border-t border-b cursor-pointer pilihan"
+                      >
+                        <div class="text-orange-300 ml-3 font-semibold">A.</div>
+                        <div class="flex flex-col gap-2 mt- zoomIn">
+                          <div class="bg-blue-50 mt-4 p-3 w-fit">
+                            <div class="relative">
+                              <img src="../../img/Grapik2.jpg" class="w-44 h-44" alt="" />
+
+                              <div
+                                class="absolute bg-green-500 w-full h-[2px] -translate-y-1 top-1/2"
+                              ></div>
+                            </div>
+                          </div>
+                          <div class="text-center text-green-500">Garis y = 0</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="relative">
+                      <div
+                        class="flex items-center gap-3 px-2 py-2 border-b border-t cursor-pointer pilihan benar"
+                      >
+                        <div class="text-orange-300 font-semibold">B.</div>
+                        <div class="flex flex-col gap-2 mt- zoomIn">
+                          <div class="bg-blue-50 mt-4 p-3 w-fit">
+                            <div class="relative">
+                              <img src="../../img/Grapik2.jpg" class="w-44 h-44" alt="" />
+
+                              <div
+                                class="absolute bg-green-500 w-[6px] h-[6px] rounded-full left-1/2 -translate-x-[4px] -translate-y-[5px] top-1/2"
+                              >
+                                <div class="absolute text-green-400 left-2 -top-[15px]">O</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="text-center text-green-500">Titik O ( 0 , 0 )</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="relative">
+                      <div
+                        class="flex items-center gap-3 px-2 py-2 border-b border-t cursor-pointer pilihan"
+                      >
+                        <div class="text-orange-300 font-semibold">C.</div>
+                        <div class="flex flex-col gap-2 mt- zoomIn">
+                          <div class="bg-blue-50 mt-4 p-3 w-fit">
+                            <div class="relative">
+                              <img src="../../img/Grapik2.jpg" class="w-44 h-44" alt="" />
+
+                              <div
+                                class="absolute bg-green-500 w-[2px] h-full -translate-x-0 top-0 left-1/2"
+                              ></div>
+                            </div>
+                          </div>
+                          <div class="text-center text-green-500">Garis x = 0</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    disabled
+                    class="px-3 py-1 cekJawaban bg-violet-400 ml-[50px] mt-4 text-white rounded-md text-[10px]"
+                  >
+                    Cek jawaban
+                  </button>
+                  <div class="ml-[50px] mt-4 jadiBenar hidden">
+                    jawaban yang benar: <span class="text-orange-400 font-semibold">B</span>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-12 md:font-semibold">
+                <img
+                  src="../../img/Grafis/Senang.png"
+                  alt=""
+                  class="w-28 scale-x-[-1] -ml- md:w-28"
+                />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Di bawah ini adalah pertanyaan terakhir sebelum kita melangkah ke jenis
+                    transformasi berikutnya yaitu Rotasi
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 md:mt-2 md:ml-32 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>
+                    Pertanyaan 4, Segitiga ABC dengan kordinat
+                    <span class="text-green-400">A ( -1 , 3 ) </span>,
+                    <span class="text-green-400">B ( -3 , 1 ) </span>,
+                    <span class="text-green-400">C ( -1 , 1 ) </span> direfleksikan terhadap garis
+                    <span class="text-green-400">y = x</span>
+                  </div>
+                </div>
+                <div class="bg-blue-50 p-3 mt-4 ml-12 w-fit">
+                  <div
+                    id="content"
+                    class="w-[200px] h-[200px] relative bg-[url('../img/Grapik3.jpg')] bg-cover"
+                  >
+                    <canvas id="geometryCanvas6"></canvas>
+
+                    <div
+                      class="h-[2px] w-[280px] absolute bg-hijau bottom-0 left-0 origin-bottom-left -rotate-45"
+                    ></div>
+                  </div>
+                </div>
+
+                <button
+                  id="Check6"
+                  class="px-3 py-1 bg-violet-400 translate-x-1 mt-4 ml-12 text-white rounded-md text-[9px]"
+                >
+                  Cek jawaban
+                </button>
+
+                <p class="ml-3 font-semibold text-hijau hidden" id="benar6">Benar 🗸</p>
+                <p class="ml-3 font-semibold text-red-400 hidden" id="salah6">Salah X</p>
+              </div>
+            </div>
+            <!-- Akhir Pencerminan di kordinat kartesius -->
+          </div>
+        </div>
+        <!-- Footer -->
+        <nav
+          class="fixed font-poppins text-xs bg-opacity-70 text-white bottom-0 w-full md:w-4/5 border-t-2 bg-[#F9F7F3]"
+        >
+          <footer
+            class="container mx-auto flex flex-wrap py-5 px-5 items-center justify-end border-[#D1EBE8] md:px-10"
+          >
+            <div class="relative cursor-pointer" id="showNextDivButton">
+              <img
+                src="../../img/klik.png"
+                class="absolute w-8 h-8 hidden scale-x-[-1] z-10 -top-2 -left-3 info cursor-pointer animate-pulse"
+                alt=""
+              />
+              <a class="px-3 py-2 bg-[#F7A072] drop-shadow-md rounded-md" id="tombolNext"
+                >Selanjutnya
+              </a>
+
+              <img
+                src="../../img/klik.png"
+                class="absolute w-8 scale-x-[-1] -top-2 hidden -left-3 animate-pulse"
+                alt=""
+                id="nextMateri"
+              />
+            </div>
+            <div class="relative cursor-pointer hidden" id="showaja">
+              <img
+                src="../../img/klik.png"
+                class="absolute w-8 h-8 scale-x-[-1] z-10 -top-2 -left-3 info cursor-pointer animate-pulse"
+                alt=""
+              />
+              <a
+                href="../rotasi/rotasi.html"
+                class="px-3 py-2 bg-[#F7A072] drop-shadow-md rounded-md"
+                id="nextMax"
+                >Materi Selanjutnya: Rotasi
+              </a>
+
+              <img
+                src="../../img/klik.png"
+                class="absolute w-8 scale-x-[-1] -top-2 -left-3 animate-pulse"
+                alt=""
+                id="nextMateri"
+              />
+            </div>
+          </footer>
+        </nav>
+        <!-- Akhir Footer -->
+      </div>
+    </div>
+    <!-- Akhir Isi -->
+
+    <script src="refleksi.js"></script>
+  </body>
+</html>

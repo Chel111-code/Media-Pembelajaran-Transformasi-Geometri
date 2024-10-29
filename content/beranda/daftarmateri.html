@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Materi</title>
+    <link rel="stylesheet" href="../../src/output.css" />
+    <style>
+      @font-face {
+        font-family: 'Poppins';
+        src: url('../../font/Poppins-Regular.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: 'Lato';
+        src: url('../../font/Lato-Regular.ttf') format('truetype');
+      }
+      /* style.css */
+
+      /* Gaya umum untuk kubus */
+      .cube {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        transform-style: preserve-3d;
+        transform: rotateX(30deg) rotateY(45deg);
+        animation: rotate-cube 12s infinite ease-in-out;
+      }
+
+      /* Gaya untuk setiap sisi kubus */
+      .face {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-color: #fff;
+        border: 2px solid #000;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Masing-masing sisi dengan posisi dan warna */
+      .front {
+        background-color: rgb(248, 105, 105);
+        transform: rotateY(0deg) translateZ(30px);
+      }
+      .back {
+        background-color: rgb(132, 218, 249);
+        transform: rotateY(180deg) translateZ(30px);
+      }
+      .right {
+        background-color: rgb(7, 205, 7);
+        transform: rotateY(90deg) translateZ(30px);
+      }
+      .left {
+        background-color: yellow;
+        transform: rotateY(-90deg) translateZ(30px);
+      }
+      .top {
+        background-color: lime;
+        transform: rotateX(90deg) translateZ(30px);
+      }
+      .bottom {
+        background-color: orange;
+        transform: rotateX(-90deg) translateZ(30px);
+      }
+
+      /* Animasi untuk rotasi kubus */
+      @keyframes rotate-cube {
+        8% {
+          transform: rotateX(30deg) rotateY(45deg);
+        }
+        16% {
+          transform: rotateX(30deg) rotateY(135deg);
+        }
+        24% {
+          transform: rotateX(30deg) rotateY(225deg);
+        }
+        32% {
+          transform: rotateX(30deg) rotateY(315deg);
+        }
+        40% {
+          transform: rotateX(120deg) rotateY(315deg);
+        }
+        48% {
+          transform: rotateX(210deg) rotateY(315deg);
+        }
+        56% {
+          transform: rotateX(300deg) rotateY(315deg);
+        }
+        64% {
+          transform: rotateX(210deg) rotateY(315deg);
+        }
+        72% {
+          transform: rotateX(120deg) rotateY(315deg);
+        }
+        80% {
+          transform: rotateX(30deg) rotateY(315deg);
+        }
+        88% {
+          transform: rotateX(30deg) rotateY(225deg);
+        }
+        100% {
+          transform: rotateX(30deg) rotateY(135deg);
+        }
+      }
+
+      @keyframes ndanimation {
+        7% {
+          transform: translateX(-40px);
+        }
+        14% {
+          transform: translateX(40px);
+        }
+        21% {
+          transform: translateX(-40px) rotateY(180deg);
+        }
+        28% {
+          transform: translateX(0px) rotateX(360deg);
+        }
+        35% {
+          transform: scale(1.5);
+        }
+        43% {
+          transform: scale(0.5);
+        }
+        50% {
+          transform: scale(1);
+        }
+        57% {
+          transform: scale(0.5);
+        }
+        65% {
+          transform: scale(1.5);
+        }
+        72% {
+          transform: translateX(0px) rotateX(360deg);
+        }
+        79% {
+          transform: translateX(-40px) rotateY(180deg);
+        }
+        90% {
+          transform: translateX(40px);
+        }
+        100% {
+          transform: translateX(-40px);
+        }
+      }
+
+      .ndanimation {
+        animation: ndanimation 13s infinite;
+      }
+      body {
+        perspective: 800px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-[#FBFDFE] font-poppins">
+    <nav class="w-full flex justify-center">
+      <div
+        id="navbar"
+        class="container flex flex-wrap px-2 top-0 py-3 flex-row items-center justify-between w-screen md:px-4 z-50 fixed"
+      >
+        <a class="flex font-bold justify-center mx-auto items-center text-primary tras" id="judul">
+          <img src="../../img/logo.png" class="w-10" alt="" />
+          <span class="ml-3 text-lg font-extrabold relative font-lato tracking-wide text-hijauMuda"
+            >Transformasi Geometri</span
+          >
+        </a>
+      </div>
+    </nav>
+
+    <section
+      class="text-gray-600 relative overflow-hidden mx-auto container text-[14px] font-medium leading-6 tracking-wide max-w-7xl h-screen justify-center flex items-center"
+    >
+      <img src="img/background.png" class="absolute -z-20 md:block hidden" alt="" />
+      <img src="img/bg-2.png" class="absolute -z-20 h-screen rotate-180 opacity-15" alt="" />
+      <div
+        class="container mx-auto md:pl-6 md:-mt-10 md:mx-auto flex py-6 md:flex-row md:justify-center flex-col items-center w-full max-w-4xl"
+      >
+        <div
+          class="flex flex-col px-5 md:justify-center md:text-left items-center mx-auto text-center md:mt-8"
+        >
+          <h1
+            class="text-xl drop-shadow-xl text-primary md:text-2xl text-center leading-8 tracking-wide mb-3 mt-6 md:mt-0 font-extrabold md:px-8"
+          >
+            Daftar Materi
+          </h1>
+          <div class="mt-6 md:mt-10 flex flex-wrap justify-center gap-8 md:gap-12">
+            <a href="../transformasi/tutorial.html">
+              <div
+                class="w-64 h-48 cursor-pointer hover:scale-110 bg-green-200 p-[4px] rounded-2xl shadow-lg border-2 border-gray-100"
+              >
+                <div class="w-full bg-[#FFFCFC] h-36 rounded-2xl border-gray-100 border">
+                  <div class="cube mx-auto mt-10">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face right"></div>
+                    <div class="face left"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                  </div>
+                </div>
+                <p class="mt-2 text-gray-700 font-semibold text-[13px] text-center">
+                  Apa itu Transformasi?
+                </p>
+              </div>
+            </a>
+            <a href="jenistransformasi.html">
+              <div
+                class="w-64 h-48 cursor-pointer hover:scale-110 bg-green-200 p-[4px] rounded-2xl shadow-lg border-2 border-gray-100"
+              >
+                <div
+                  class="w-full bg-[#FFFCFC] flex justify-center items-center h-36 rounded-2xl border-gray-100 border"
+                >
+                  <svg
+                    width="76"
+                    height="67"
+                    viewBox="0 0 76 67"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="ndanimation"
+                  >
+                    <g filter="url(#filter0_d_260_3)">
+                      <path
+                        d="M37.134 0.499999C37.5189 -0.166668 38.4811 -0.166667 38.866 0.5L71.775 57.5C72.1599 58.1667 71.6788 59 70.909 59H5.09103C4.32123 59 3.84011 58.1667 4.22501 57.5L37.134 0.499999Z"
+                        fill="#FDBA74"
+                        fill-opacity="0.77"
+                        shape-rendering="crispEdges"
+                      />
+                    </g>
+                    <defs>
+                      <filter
+                        id="filter0_d_260_3"
+                        x="0.0898438"
+                        y="0"
+                        width="75.8203"
+                        height="67"
+                        filterUnits="userSpaceOnUse"
+                        color-interpolation-filters="sRGB"
+                      >
+                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                        <feColorMatrix
+                          in="SourceAlpha"
+                          type="matrix"
+                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                          result="hardAlpha"
+                        />
+                        <feOffset dy="4" />
+                        <feGaussianBlur stdDeviation="2" />
+                        <feComposite in2="hardAlpha" operator="out" />
+                        <feColorMatrix
+                          type="matrix"
+                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                        />
+                        <feBlend
+                          mode="normal"
+                          in2="BackgroundImageFix"
+                          result="effect1_dropShadow_260_3"
+                        />
+                        <feBlend
+                          mode="normal"
+                          in="SourceGraphic"
+                          in2="effect1_dropShadow_260_3"
+                          result="shape"
+                        />
+                      </filter>
+                    </defs>
+                  </svg>
+                </div>
+                <p class="mt-2 text-gray-700 font-semibold text-[13px] text-center">
+                  Jenis Jenis Transformasi
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      window.addEventListener('scroll', function () {
+        var navbar = document.getElementById('navbar');
+        if (window.scrollY > 0) {
+          navbar.classList.add('border-b-2', 'bg-opacity-90', 'bg-[#FBFDFE]');
+        } else {
+          navbar.classList.remove('border-b-2', 'bg-opacity-90', 'bg-[#FBFDFE]');
+        }
+      });
+
+      document.getElementById('buttonDaftar').addEventListener('click', function () {
+        const daftarMateri = document.getElementById('daftarMateri');
+        daftarMateri.classList.remove('hidden');
+        daftarMateri.scrollIntoView({ behavior: 'smooth' });
+      });
+    </script>
+  </body>
+</html>

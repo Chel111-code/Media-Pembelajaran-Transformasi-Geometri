@@ -1,0 +1,456 @@
+@keyframes zoomIn {
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 100;
+  }
+}
+
+.zoomIn {
+  animation: zoomIn 1s forwards;
+}
+
+@keyframes pindah {
+  0% {
+    transform: translateX(300px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.pindah {
+  animation: pindah 0.5s forwards;
+}
+
+@keyframes zoomOut {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.zoomOut {
+  animation: zoomOut 1s linear;
+}
+
+@keyframes meja {
+  100% {
+    transform: translateX(120px);
+  }
+}
+
+.meja {
+  animation: meja 3s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes titikA {
+  100% {
+    transform: translateX(91px);
+  }
+}
+
+.titikA {
+  animation: titikA 3s forwards;
+  animation-delay: 1s;
+}
+
+.titikAdelay {
+  animation: titikA 3s forwards;
+  animation-delay: 4s;
+}
+
+@keyframes titikB {
+  100% {
+    transform: translateY(63px);
+  }
+}
+
+.titikBdelay {
+  animation: titikB 3s forwards;
+  animation-delay: 3s;
+}
+
+@keyframes titikC {
+  50% {
+    transform: translateX(-96px);
+  }
+  100% {
+    transform: translateX(-96px) translateY(-31px);
+  }
+}
+
+.titikC {
+  animation: titikC 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes titikD {
+  100% {
+    transform: translateY(-95px);
+  }
+}
+
+.titikD {
+  animation: titikD 3s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes titikE {
+  50% {
+    transform: translateX(64px);
+  }
+  100% {
+    transform: translateX(64px) translateY(-64px);
+  }
+}
+
+.titikE {
+  animation: titikE 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes ruasgarisAB {
+  50% {
+    transform: translateX(-59px);
+  }
+  100% {
+    transform: translateX(-59px) translateY(30px);
+  }
+}
+
+.ruasgarisAB {
+  animation: ruasgarisAB 4s forwards;
+  animation-delay: 1s;
+}
+
+.ruasgarisAB2 {
+  animation: ruasgarisAB 4s forwards;
+  animation-delay: 5s;
+}
+
+@keyframes garis {
+  50% {
+    transform: translateX(-60px) rotate(-118deg);
+  }
+  100% {
+    transform: translateX(-60px) translateY(30px) rotate(-118deg);
+  }
+}
+
+.garis {
+  animation: garis 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes zoomIn2 {
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.zoomIn2 {
+  animation: zoomIn2 1s forwards;
+  animation-delay: 1s;
+}
+
+.zoomIn3 {
+  animation: zoomIn2 1s forwards;
+  animation-delay: 2s;
+}
+
+.zoomIn4 {
+  animation: zoomIn2 1s forwards;
+  animation-delay: 3s;
+}
+
+.muncul1 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 1s;
+}
+.muncul2 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 2s;
+}
+.muncul3 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 3s;
+}
+.muncul4 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 4s;
+}
+.muncul5 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 5s;
+}
+.muncul6 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 6s;
+}
+.muncul9 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 9s;
+}
+.muncul13 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 13s;
+}
+
+@keyframes panjangAB {
+  to {
+    width: 68px;
+  }
+}
+
+.panjangAB {
+  animation: panjangAB 3s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes segitigaABC {
+  50% {
+    transform: translateX(59px);
+  }
+  100% {
+    transform: translateX(59px) translateY(-59px);
+  }
+}
+
+.segitigaABC {
+  animation: segitigaABC 4s forwards;
+  animation-delay: 1s;
+}
+
+.segitigaABC2 {
+  animation: segitigaABC 4s forwards;
+  animation-delay: 5s;
+}
+
+.segitigaABC3 {
+  animation: segitigaABC 4s forwards;
+  animation-delay: 9s;
+}
+
+@keyframes panjangABC {
+  to {
+    height: 68px;
+  }
+}
+
+.panjangABC {
+  animation: panjangABC 3s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes panjangABC2 {
+  to {
+    height: 63px;
+  }
+}
+
+.panjangABC2 {
+  animation: panjangABC2 3s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes panjangABC3 {
+  to {
+    height: 63px;
+    origin: top;
+  }
+}
+
+.panjangABC3 {
+  animation: panjangABC3 3s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes garisABC {
+  50% {
+    transform: translateX(59px) rotate(62deg);
+  }
+  100% {
+    transform: translateX(59px) translateY(-59px) rotate(62deg);
+  }
+}
+
+.garisABC {
+  animation: garisABC 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes garisABC2 {
+  50% {
+    transform: translateX(59px) rotate(-62deg);
+  }
+  100% {
+    transform: translateX(59px) translateY(-59px) rotate(-62deg);
+  }
+}
+
+.garisABC2 {
+  animation: garisABC2 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes kordinatABC {
+  50% {
+    transform: translateX(89px);
+  }
+  100% {
+    transform: translateX(89px) translateY(22px);
+  }
+}
+
+.kordinatABC {
+  animation: kordinatABC 4s forwards;
+  animation-delay: 1s;
+}
+.kordinatABC2 {
+  animation: kordinatABC 4s forwards;
+  animation-delay: 5s;
+}
+.kordinatABC3 {
+  animation: kordinatABC 4s forwards;
+  animation-delay: 9s;
+}
+
+@keyframes gariskordinatABC {
+  50% {
+    transform: translateX(89px) rotate(-18deg);
+    transform-origin: bottom left;
+  }
+  100% {
+    transform: translateX(89px) translateY(22px) rotate(-18deg);
+    transform-origin: bottom left;
+  }
+}
+
+.gariskordinatABC {
+  animation: gariskordinatABC 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes gariskordinatABC2 {
+  50% {
+    transform: translateX(89px) rotate(62deg);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: translateX(89px) translateY(22px) rotate(62deg);
+    transform-origin: bottom;
+  }
+}
+
+.gariskordinatABC2 {
+  animation: gariskordinatABC2 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes gariskordinatABC3 {
+  50% {
+    transform: translateX(89px) rotate(-56deg);
+    transform-origin: top right;
+  }
+  100% {
+    transform: translateX(89px) translateY(22px) rotate(-56deg);
+    transform-origin: top right;
+  }
+}
+
+.gariskordinatABC3 {
+  animation: gariskordinatABC3 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes panjangkordinatABC {
+  to {
+    height: 73px;
+  }
+}
+
+.panjangkordinatABC {
+  animation: panjangkordinatABC 3s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes panjangkordinatABC2 {
+  to {
+    height: 50px;
+  }
+}
+
+.panjangkordinatABC2 {
+  animation: panjangkordinatABC2 3s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes panjangkordinatABC3 {
+  to {
+    height: 80px;
+    origin: top;
+  }
+}
+
+.panjangkordinatABC3 {
+  animation: panjangkordinatABC3 3s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes persegiABCD {
+  50% {
+    transform: translateX(-69px);
+  }
+  100% {
+    transform: translateX(-69px) translateY(-46px);
+  }
+}
+
+.persegiABCD {
+  animation: persegiABCD 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes persegiABCD2 {
+  50% {
+    transform: translateY(46px);
+  }
+  100% {
+    transform: translateX(69px) translateY(46px);
+  }
+}
+
+.persegiABCD2 {
+  animation: persegiABCD2 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes persegiABCD3 {
+  50% {
+    transform: translateX(-69px);
+  }
+  100% {
+    transform: translateX(-69px) translateY(23px);
+  }
+}
+
+.persegiABCD3 {
+  animation: persegiABCD3 4s forwards;
+  animation-delay: 1s;
+}

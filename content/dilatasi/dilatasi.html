@@ -1,0 +1,3541 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dilatasi</title>
+    <link rel="stylesheet" href="../../src/output.css" />
+    <link rel="stylesheet" href="dilatasi.css" />
+
+    <style>
+      @font-face {
+        font-family: 'Lato';
+        src: url('../../font/Lato-Regular.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: 'Poppins';
+        src: url('../../font/Poppins-Regular.ttf') format('truetype');
+      }
+    </style>
+  </head>
+  <body class="bg-[#F9F7F3]">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-opacity-85 drop-shadow-md bg-[#F9F7F3]" id="navbar">
+      <header
+        class="container bg-opacity-90 mx-auto flex flex-wrap py-3 px-5 items-center justify-between border-[#D1EBE8] md:justify-center max-w-5xl md:px-10"
+      >
+        <div class="relative">
+          <a
+            href="../beranda/daftarmateri.html"
+            class="flex font-bold justify-center mx-auto items-center text-primary \"
+            id="judul"
+          >
+            <img src="../../img/logo.png" class="w-10" alt="" />
+            <span
+              class="ml-3 text-base font-extrabold relative font-lato tracking-wide text-hijauMuda"
+              >Transformasi Geometri
+            </span>
+          </a>
+        </div>
+
+        <div class="flex items-center relative md:hidden">
+          <div
+            class="flex gap-1 mr-2 cursor-pointer w-8 h-8 justify-center rounded-md items-center hover:bg-gray-200 active:bg-gray-200"
+            id="dropdownButton"
+          >
+            <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+            <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+            <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+          </div>
+        </div>
+      </header>
+    </nav>
+
+    <nav
+      id="dropdownMenu"
+      class="fixed z-40 top-[68px] pb-4 -translate-y-[600px] rounded-md font-medium right-7 flex transition duration-300 ease-in-out items-center px-5 flex-col w-[280px] bg-opacity-90 border-l-2 bg-[#EBFEEB] drop-shadow-md"
+    >
+      <div>
+        <div
+          class="w-full relative ml-6 mt-20 h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+            <input type="checkbox" class="hidden peer checkboxPengertianTranslasi" disabled />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm font-medium ml-5">Kesebangunan</div>
+          <div
+            class="px-4 py-2 bg-white absolute text-[14px] text-gray-400 font-bold -top-12 -left-8 rounded-md drop-shadow-md"
+          >
+            Sub Materi
+          </div>
+        </div>
+        <div
+          class="w-full relative ml-6 h-16 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+            <input type="checkbox" class="hidden peer checkboxJarakTranslasi" disabled />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm leading-7 font-medium ml-5">Pengertian Dilatasi</div>
+        </div>
+        <div
+          class="w-full relative ml-6 h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <label class="inline-flex absolute drop-shadow-md -left-3 items-center">
+            <input type="checkbox" class="hidden peer checkboxArahTranslasi" disabled />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm leading-7 font-medium ml-5">Pusat Dilatasi</div>
+        </div>
+        <div
+          class="w-full relative pb-5 ml-6 h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <label class="inline-flex drop-shadow-md absolute -left-3 items-center">
+            <input type="checkbox" class="hidden peer checkboxPenulisan" disabled />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm font-medium leading-7 ml-5">Skala Dilatasi</div>
+        </div>
+        <div
+          class="w-full relative pb-5 ml-6 h-14 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <div class="absolute inset-y-1/2 -left-1 border-l-4 bg-[#EBFEEB] h-1/2"></div>
+          <label class="inline-flex drop-shadow-md absolute -left-3 items-center">
+            <input type="checkbox" class="hidden peer checkboxKordinat" disabled />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm font-medium leading-7 ml-5">
+            Dilatasi di kordinat kartesius
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
+
+    <!-- Notifikasi -->
+    <audio id="myAudio" class="hidden">
+      <source src="../../sound/salah.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="myAudio2" class="hidden">
+      <source src="../../sound/benar.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="myAudio3" class="hidden">
+      <source src="../../sound/warning-sound-6686.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="notifnih" class="hidden">
+      <source src="../../sound/notif.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <div
+      id="notif"
+      class="fixed inset-0 bg-gray-100 z-50 hidden bg-opacity-50 flex items-center justify-center"
+    >
+      <div class="w-[280px] bg-[#FDFD97] mt-16 mx-auto p-3 rounded-lg shadow-lg relative">
+        <div
+          class="bg-[#FBFDFE] border-[1px] text-[13px] py-6 px-[20px] leading-6 text-center shadow-inner text-primary font-bold rounded-lg"
+        >
+          Kamu harus menyelesaikan halaman ini dulu!
+        </div>
+        <img src="../../img/info.png" class="absolute w-[70px] -top-6 -left-6" alt="" />
+      </div>
+    </div>
+    <div class="w-full z-50 fixed top-0 rightAnswer hidden">
+      <div
+        class="container drop-shadow-md max-w-[500px] mx-auto px-5 gap-2 text-pretty h-screen flex items-center justify-center"
+      >
+        <img
+          src="../../img/pencerminan/Benar.png"
+          class="w-32 zoomOut opacity-0"
+          alt="Jawaban Benar"
+        />
+      </div>
+    </div>
+    <div class="w-full z-50 fixed top-0 wrongAnswer hidden">
+      <div
+        class="container drop-shadow-md max-w-[500px] mx-auto px-5 gap-2 text-pretty h-screen flex items-center font-poppins justify-center"
+      >
+        <img
+          src="../../img/pencerminan/ihi.png"
+          class="w-32 zoomOut opacity-0"
+          alt="Jawaban Salah"
+        />
+      </div>
+    </div>
+    <div class="fixed bottom-14 right-5 flex items-end z-50">
+      <!-- Character image -->
+      <!-- Chatbox container -->
+      <div
+        id="chatbox"
+        class="w-72 bg-gray-700 pindah hidden bg-opacity-70 rounded-lg p-4 text-white shadow-lg animate-fadeIn font-sans"
+      >
+        <!-- Chatbox header with title and close button -->
+        <div class="flex justify-between items-center mb-3">
+          <h2 class="text-lg font-bold">Semua Materi Selesai!</h2>
+          <button id="closeChatbox" class="text-white text-2xl font-bold focus:outline-none">
+            &times;
+          </button>
+        </div>
+
+        <!-- Chatbox body -->
+        <div class="text-sm leading-7">
+          Hebat, kamu berhasil menyelesaikan semua materinya. Sampai jumpa yaa di materi materi
+          berikutnya yaa (kalau ada).
+        </div>
+
+        <!-- Start button -->
+      </div>
+    </div>
+    <!-- Akhir Notifikasi -->
+
+    <!-- Isi -->
+    <div class="container w-full flex">
+      <!-- Indikator Pengetahuan -->
+      <div
+        id="Indikator"
+        class="w-1/5 pl-14 pr-10 fixed hidden md:block md:flex font-poppins bg-[#EBFEEB] pt-20 bg-opacity-80 flex justify-center items-center border-r-2 drop-shadow-md h-screen"
+      >
+        <div>
+          <div
+            class="w-full relative h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+          >
+            <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+              <input type="checkbox" class="hidden peer checkboxPengertianTranslasi" disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm font-medium ml-5">Kesebangunan</div>
+            <div
+              class="px-4 py-2 bg-white absolute text-[14px] text-gray-400 font-bold -top-10 -left-8 rounded-md drop-shadow-md"
+            >
+              Sub Materi
+            </div>
+          </div>
+          <div
+            class="w-full relative h-16 border-l-4 flex items-center drop-shadow-xl border-white"
+          >
+            <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+              <input type="checkbox" class="hidden peer checkboxJarakTranslasi" disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm font-medium ml-5">Pengertian Dilatasi</div>
+          </div>
+          <div
+            class="w-full relative h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+          >
+            <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+              <input type="checkbox" class="hidden peer checkboxArahTranslasi" disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm leading-7 font-medium ml-5">Pusat Dilatasi</div>
+          </div>
+          <div
+            class="w-full relative h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+          >
+            <label class="inline-flex absolute drop-shadow-md -left-3 items-center">
+              <input type="checkbox" class="hidden peer checkboxPenulisan" disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm leading-7 font-medium ml-5">Skala Dilatasi</div>
+          </div>
+          <div
+            class="w-full relative h-20 border-l-4 inset-y-1/2 flex items-center drop-shadow-xl border-white"
+          >
+            <div class="absolute inset-y-1/2 -left-1 border-l-4 bg-[#EBFEEB] h-1/2"></div>
+            <label class="inline-flex drop-shadow-md absolute -left-3 items-center">
+              <input type="checkbox" class="hidden peer checkboxKordinat" disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm font-medium leading-7 ml-5">
+              Dilatasi di kordinat kartesius
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Akhir Indikator Pengetahuan -->
+
+      <!-- Materi -->
+      <div
+        class="md:w-4/5 w-full mat absolute right-0 font-poppins font-medium text-sm pb-40 text-secondary"
+      >
+        <div class="mt-28 px-3">
+          <div class="max-w-3xl mx-auto">
+            <div class="text-primary font-extrabold text-base flex gap-">
+              <div class="ml-3 md:ml-0 text-xl tracking-wide self-center">DILATASI</div>
+            </div>
+
+            <!-- Pengertian Dilatasi -->
+            <div
+              id="materi"
+              class="mt-12 relative border border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
+            >
+              <div
+                class="absolute px-5 py-2 bg-[#FFC09F] -top-4 rounded-md tracking-wide text-white"
+              >
+                Kesebangunan
+              </div>
+              <div class="flex items-center drop-shadow-md mt-12 md:font-semibold">
+                <img src="../../img/Grafis/tanya3.png" alt="" class="w-28 md:w-32" />
+                <div class="ml-">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Sebelumnya kamu sudah mempelajari kesebangunan tidak?
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex items-center justify-end drop-shadow-md mt-6 md:mt-0 md:font-semibold"
+              >
+                <div class="mr-2">
+                  <div class="flex flex-col">
+                    <div>Jawabanmu:</div>
+                    <div class="mt-2">
+                      <button
+                        onclick="sudah()"
+                        id="sudah"
+                        class="px-4 py-2 bg-green-400 rounded-md tracking-wider hover:bg-green-300 mr-2 text-gray-50"
+                      >
+                        Sudah
+                      </button>
+                      <button
+                        onclick="belum()"
+                        id="belum"
+                        class="px-4 py-2 bg-red-400 rounded-md tracking-wider hover:bg-red-300 text-gray-50"
+                      >
+                        Belum
+                      </button>
+                    </div>
+                    <div class="text-red-400 font-semibold belum hidden text-center">Belum</div>
+                    <div class="text-green-400 font-semibold sudah text-center hidden">Sudah</div>
+                  </div>
+                </div>
+                <img src="../../img/pertanyaan.png" alt="" class="w-20 md:w-28" />
+              </div>
+              <div
+                class="flex items-center wahyu hidden zoomIn drop-shadow-md mt-10 md:mt-2 md:font-semibold"
+              >
+                <img src="../../img/Grafis/supermen.png" alt="" class="w-28 md:w-32" />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Bagus, di bawah ini Ali akan jelaskan kesebangunan lagi agar kamu tidak lupa.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex items-center hidden zoomIn drop-shadow-md mt-10 md:mt-2 md:font-semibold"
+              >
+                <img
+                  src="../../img/Grafis/Halo.png"
+                  alt=""
+                  class="scale-x-[-1] w-24 md:w-[105px]"
+                />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Tidak apa-apa, Ali akan berikan menjelaskan kesebangunan di bawah ini!
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 hidden zoomIn2 md:ml-28 pb-4 md:translate-x-2 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold ml-4 text-[11px] flex gap-2">
+                  <div>//</div>
+                  <div>Terdapat dua syarat agar sebuah objek dikatakan sebangun: :</div>
+                </div>
+                <ul class="list-disc ml-12 mt-2 max-w-[400px] pb-2 text-orange-400">
+                  <li>Sudut sudut yang bersesuaian sama besar</li>
+                </ul>
+                <div class="ml-12 mt-4 flex items-center w-[230px] justify-around">
+                  <div class="relative w-[50px] h-[50px]">
+                    <!-- Garis atas -->
+                    <div class="absolute top-0 left-0 y1 w-[50px] h-[2px] bg-green-400"></div>
+
+                    <!-- Garis kanan -->
+                    <div class="absolute top-0 right-0 y2 w-[2px] h-[50px] bg-green-400"></div>
+
+                    <!-- Garis bawah -->
+                    <div class="absolute bottom-0 left-0 y3 w-[50px] h-[2px] bg-green-400"></div>
+
+                    <!-- Garis kiri -->
+                    <div class="absolute top-0 left-0 y4 w-[2px] x4 h-[50px] bg-green-400"></div>
+                  </div>
+                  <div class="relative w-[100px] h-[100px]">
+                    <!-- Garis atas -->
+                    <div class="absolute top-0 left-0 w-[100px] y1 h-[2px] bg-red-400"></div>
+
+                    <!-- Garis kanan -->
+                    <div
+                      class="absolute top-0 right-0 w-[2px] y2 zoomIn2 h-[100px] bg-red-400"
+                    ></div>
+
+                    <!-- Garis bawah -->
+                    <div
+                      class="absolute bottom-0 left-0 w-[100px] y3 zoomIn3 h-[2px] bg-red-400"
+                    ></div>
+
+                    <!-- Garis kiri -->
+                    <div
+                      class="absolute top-0 left-0 w-[2px] y4 zoomIn4 h-[100px] bg-red-400"
+                    ></div>
+                  </div>
+                </div>
+                <ul class="list-disc ml-12 mt-16 max-w-[400px] pb-2 text-orange-400">
+                  <li>
+                    Sisi- sisi yang bersesuaian memiliki perbandingan panjang yang sama
+                    (proporsional)
+                  </li>
+                </ul>
+                <div class="ml-12 mt-4 flex items-center w-[230px] justify-around">
+                  <div class="relative w-[50px] h-[50px]">
+                    <!-- Garis atas -->
+                    <div class="absolute top-0 left-0 x1 w-[50px] h-[2px] bg-green-400"></div>
+
+                    <!-- Garis kanan -->
+                    <div class="absolute top-0 right-0 x2 w-[2px] h-[50px] bg-green-400"></div>
+
+                    <!-- Garis bawah -->
+                    <div class="absolute bottom-0 left-0 x3 w-[50px] h-[2px] bg-green-400"></div>
+
+                    <!-- Garis kiri -->
+                    <div class="absolute top-0 left-0 w-[2px] x4 h-[50px] bg-green-400"></div>
+                  </div>
+                  <div class="relative w-[100px] h-[100px]">
+                    <!-- Garis atas -->
+                    <div class="absolute top-0 left-0 w-[100px] x1 h-[2px] bg-red-400"></div>
+
+                    <!-- Garis kanan -->
+                    <div
+                      class="absolute top-0 right-0 w-[2px] x2 zoomIn2 h-[100px] bg-red-400"
+                    ></div>
+
+                    <!-- Garis bawah -->
+                    <div
+                      class="absolute bottom-0 left-0 w-[100px] x3 zoomIn3 h-[2px] bg-red-400"
+                    ></div>
+
+                    <!-- Garis kiri -->
+                    <div
+                      class="absolute top-0 left-0 w-[2px] x4 zoomIn4 h-[100px] bg-red-400"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold">
+                <img src="../../img/Grafis/Unyu.png" alt="" class="w-[120px] -ml-3 md:w-32" />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Mari kita bahas contoh dua bangun datar yang sebangun
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 md:-mt-4 md:ml-32 pb-4 md:translate-x-2 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold ml-4 text-[11px] flex gap-2">
+                  <div>//</div>
+                  <div>
+                    Terdapat segitiga ABC dan segitiga EFG yang ternyata sebangun karena memenuhi
+                    dua syarat kesebangunnan.
+                  </div>
+                </div>
+                <div class="flex ml-16 mt-6 h-36 w-48 justify-between items-center">
+                  <div class="relative">
+                    <svg
+                      width="46"
+                      height="60"
+                      viewBox="0 0 46 61"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M1.35693 59.5V1.5L44.8569 59.5H1.35693Z" stroke="#55E255" />
+                    </svg>
+
+                    <div class="absolute -top-4 -left-[3px] text-green-400">A</div>
+                    <div class="absolute top-[58px] -left-[3px] text-green-400">B</div>
+                    <div class="absolute top-[58px] left-[40px] text-green-400">C</div>
+                    <div class="absolute top-[58px] left-[20px] text-gray-400 text-[10px]">3</div>
+                    <div class="absolute top-[26px] -left-[10px] text-gray-400 text-[10px]">4</div>
+                    <div class="absolute top-[26px] left-[35px] text-gray-400 text-[10px]">5</div>
+                  </div>
+                  <div class="relative">
+                    <svg
+                      width="90"
+                      height="110"
+                      viewBox="0 0 90 111"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M0.5 109.5V1.4007L88.9449 109.5H0.5Z" stroke="#55E255" />
+                    </svg>
+
+                    <div class="absolute -top-4 -left-[3px] text-green-400">E</div>
+                    <div class="absolute top-[108px] -left-[3px] text-green-400">F</div>
+                    <div class="absolute top-[108px] left-[85px] text-green-400">G</div>
+                    <div class="absolute top-[px] left-[40px] text-gray-400 text-[10px]">6</div>
+                    <div class="absolute top-[50px] -left-[10px] text-gray-400 text-[10px]">8</div>
+                    <div class="absolute top-[43px] left-[55px] text-gray-400 text-[10px]">10</div>
+                  </div>
+                </div>
+                <ul class="list-disc ml-12 mt-6 max-w-[400px] pb-2 text-orange-400">
+                  <li>Sudut sudut yang bersesuaian sama besar</li>
+                </ul>
+                <div>
+                  <div class="flex items-center mt-2 gap-2 ml-8">
+                    <img src="../../img/Point.png" class="w-5 ml-4" alt="" />
+                    <div class="font-semibold">∠A dan ∠E besar sudutnya 45°</div>
+                  </div>
+                  <div class="flex ml-20 mt-4 h-36 w-48 justify-between items-center">
+                    <div class="relative">
+                      <svg
+                        width="45"
+                        height="61"
+                        viewBox="0 0 45 61"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <line x1="0.5" y1="1" x2="0.5" y2="61" stroke="#55E255" />
+                        <path d="M0.5 1L44.5 60.5" stroke="#55E255" />
+                      </svg>
+
+                      <div class="absolute -top-4 -left-[3px] text-green-400">A</div>
+                    </div>
+                    <div class="relative">
+                      <svg
+                        width="91"
+                        height="111"
+                        viewBox="0 0 91 111"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <line x1="0.5" y1="1" x2="0.5" y2="111" stroke="#55E255" />
+                        <path d="M1.01124 1L90 110.083" stroke="#55E255" />
+                      </svg>
+
+                      <div class="absolute -top-4 -left-[3px] text-green-400">E</div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center mt-2 gap-2 ml-8">
+                    <img src="../../img/Point.png" class="w-5 ml-4" alt="" />
+                    <div class="font-semibold">∠B dan ∠F besar sudutnya 90°</div>
+                  </div>
+                  <div class="flex ml-20 mt-2 h-36 w-48 justify-between items-center">
+                    <div class="relative">
+                      <svg
+                        width="45"
+                        height="61"
+                        viewBox="0 0 45 61"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <line x1="0.5" x2="0.5" y2="60" stroke="#55E255" />
+                        <path d="M0.251395 59.7266L45 59.728" stroke="#55E255" />
+                      </svg>
+
+                      <div class="absolute top-[58px] -left-[3px] text-green-400">B</div>
+                    </div>
+                    <div class="relative">
+                      <svg
+                        width="90"
+                        height="110"
+                        viewBox="0 0 90 110"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <line x1="0.5" x2="0.5" y2="110" stroke="#55E255" />
+                        <path d="M0.5 109.499L89.5 109.5" stroke="#55E255" />
+                      </svg>
+
+                      <div class="absolute top-[108px] -left-[3px] text-green-400">F</div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center mt-6 gap-2 ml-8">
+                    <img src="../../img/Point.png" class="w-5 ml-4" alt="" />
+                    <div class="font-semibold">∠C dan ∠G besar sudutnya 45°</div>
+                  </div>
+                  <div class="flex ml-20 mt-2 h-36 w-48 justify-between items-center">
+                    <div class="relative">
+                      <svg
+                        width="45"
+                        height="62"
+                        viewBox="0 0 45 62"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M0.5 1L44.5 60.5" stroke="#55E255" />
+                        <path d="M0.251395 60.7266L45 60.728" stroke="#55E255" />
+                      </svg>
+
+                      <div class="absolute top-[58px] left-[40px] text-green-400">C</div>
+                    </div>
+                    <div class="relative">
+                      <svg
+                        width="91"
+                        height="112"
+                        viewBox="0 0 91 112"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M0.751224 1L89.2456 110.58" stroke="#55E255" />
+                        <path d="M0.251465 110.998L90.2515 111" stroke="#55E255" />
+                      </svg>
+
+                      <div class="absolute top-[108px] left-[85px] text-green-400">G</div>
+                    </div>
+                  </div>
+                </div>
+                <ul class="list-disc ml-12 mt-8 max-w-[400px] pb-2 text-orange-400">
+                  <li>
+                    Sisi- sisi yang bersesuaian memiliki perbandingan panjang yang sama
+                    (proporsional)
+                  </li>
+                </ul>
+                <div>
+                  <div class="flex items-center mt-2 gap-2 ml-8">
+                    <img src="../../img/Point.png" class="w-5 ml-4" alt="" />
+                    <div class="font-semibold">Perbandingan sisi AB dan sisi EF</div>
+                  </div>
+                  <div class="flex gap-2 items-center mt-3 ml-20">
+                    <div class="inline-flex text-orange-400 flex-col items-center">
+                      <span class="font-bold">sisi AB</span>
+                      <hr class="w-full border-t-2 border-gray-400 my-1" />
+                      <span class="font-bold">sisi EF</span>
+                    </div>
+                    <div>=</div>
+                    <div class="inline-flex flex-col items-center">
+                      <span class="font-bold">4</span>
+                      <hr class="w-full border-t-2 border-gray-400 my-1" />
+                      <span class="font-bold">8</span>
+                    </div>
+                    <div>=</div>
+                    <div class="inline-flex flex-col items-center">
+                      <span class="font-bold">1</span>
+                      <hr class="w-full border-t-2 border-gray-400 my-1" />
+                      <span class="font-bold">2</span>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center mt-6 gap-2 ml-8">
+                    <img src="../../img/Point.png" class="w-5 ml-4" alt="" />
+                    <div class="font-semibold">Perbandingan sisi BC dan sisi FG</div>
+                  </div>
+                  <div class="flex gap-2 items-center mt-3 ml-20">
+                    <div class="inline-flex text-orange-400 flex-col items-center">
+                      <span class="font-bold">sisi BC</span>
+                      <hr class="w-full border-t-2 border-gray-400 my-1" />
+                      <span class="font-bold">sisi FG</span>
+                    </div>
+                    <div>=</div>
+                    <div class="inline-flex flex-col items-center">
+                      <span class="font-bold">3</span>
+                      <hr class="w-full border-t-2 border-gray-400 my-1" />
+                      <span class="font-bold">6</span>
+                    </div>
+                    <div>=</div>
+                    <div class="inline-flex flex-col items-center">
+                      <span class="font-bold">1</span>
+                      <hr class="w-full border-t-2 border-gray-400 my-1" />
+                      <span class="font-bold">2</span>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center mt-6 gap-2 ml-8">
+                    <img src="../../img/Point.png" class="w-5 ml-4" alt="" />
+                    <div class="font-semibold">Perbandingan sisi AC dan sisi EG</div>
+                  </div>
+                  <div class="flex gap-2 items-center mt-3 ml-20">
+                    <div class="inline-flex text-orange-400 flex-col items-center">
+                      <span class="font-bold">sisi AC</span>
+                      <hr class="w-full border-t-2 border-gray-400 my-1" />
+                      <span class="font-bold">sisi EG</span>
+                    </div>
+                    <div>=</div>
+                    <div class="inline-flex flex-col items-center">
+                      <span class="font-bold">5</span>
+                      <hr class="w-full border-t-2 border-gray-400 my-1" />
+                      <span class="font-bold">10</span>
+                    </div>
+                    <div>=</div>
+                    <div class="inline-flex flex-col items-center">
+                      <span class="font-bold">1</span>
+                      <hr class="w-full border-t-2 border-gray-400 my-1" />
+                      <span class="font-bold">2</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8">
+                <img src="../../img/Grafis/Nih.png" alt="" class="w-28 scale-x-[-1] md:w-[120px]" />
+                <div class="ml-2 md:ml-4">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-2 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Seperti itulah cara pengecekan kesebangunan
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-2 py-3 rounded-lg mt-2 text-pretty max-w-xl rounded-bl-xl rounded-tl-none"
+                  >
+                    Bagaimana dengan kedua bangun datar di bawah ini?
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 md:-mt-4 md:ml-32 pb-4 md:translate-x-2 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold ml-4 text-[11px] flex gap-2">
+                  <div>//</div>
+                  <div>Terdapat persegi panjang ABCD dan persegi panjang EFGH</div>
+                </div>
+                <div class="flex ml-16 mt-6 h-36 w-48 justify-center gap-16 items-center">
+                  <div class="relative">
+                    <svg
+                      width="45"
+                      height="45"
+                      viewBox="0 0 45 46"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect x="0.5" y="0.5" width="44" height="44" stroke="#55E255" />
+                    </svg>
+
+                    <div class="absolute -top-4 -left-[3px] text-green-400">A</div>
+                    <div class="absolute top-[41px] -left-[3px] text-green-400">B</div>
+                    <div class="absolute top-[41px] left-[40px] text-green-400">C</div>
+                    <div class="absolute -top-4 left-[40px] text-green-400">D</div>
+                    <div class="absolute top-[42px] left-[20px] text-gray-400 text-[10px]">3</div>
+                    <div class="absolute top-[15px] -left-[10px] text-gray-400 text-[10px]">3</div>
+                    <div class="absolute top-[15px] left-[48px] text-gray-400 text-[10px]">3</div>
+                    <div class="absolute -top-[17px] left-[20px] text-gray-400 text-[10px]">3</div>
+                  </div>
+                  <div class="relative">
+                    <svg
+                      width="90"
+                      height="75"
+                      viewBox="0 0 90 75"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect x="0.5" y="0.5" width="89" height="74" stroke="#55E255" />
+                    </svg>
+
+                    <div class="absolute -top-4 -left-[3px] text-green-400">E</div>
+                    <div class="absolute top-[70px] -left-[3px] text-green-400">F</div>
+                    <div class="absolute top-[70px] left-[85px] text-green-400">G</div>
+                    <div class="absolute -top-4 left-[85px] text-green-400">H</div>
+                    <div class="absolute top-[72px] left-[42px] text-gray-400 text-[10px]">6</div>
+                    <div class="absolute top-[30px] -left-[10px] text-gray-400 text-[10px]">5</div>
+                    <div class="absolute top-[30px] left-[93px] text-gray-400 text-[10px]">5</div>
+                    <div class="absolute -top-[17px] left-[42px] text-gray-400 text-[10px]">6</div>
+                  </div>
+                </div>
+                <div class="flex items-start mt-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold -mt-1">
+                    Apakah persegi panjang ABCD dan persegi panjang EFGH sebangun?
+                  </div>
+                </div>
+                <div class="flex mt-3 ml-16 space-x-3" id="titikB_yesno">
+                  <button
+                    onclick="falseButton()"
+                    class="py-1 px-5 text-white bg-green-500 hover:bg-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition-all"
+                  >
+                    Ya
+                  </button>
+                  <button
+                    onclick="trueButton()"
+                    class="py-2 px-4 text-white bg-red-500 hover:bg-red-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-all"
+                  >
+                    Tidak
+                  </button>
+                </div>
+                <div id="resultMessage1" class="mt-3 zoomIn hidden ml-[68px] text-orange-500">
+                  Kedua persegi panjang di atas tidak sebangun
+                </div>
+                <div class="zoomIn hidden" id="nextresultMessage1">
+                  <div class="flex items-start mt-10 gap-2">
+                    <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                    <div class="font-semibold -mt-2">
+                      Apa syarat yang tidak dipenuhi segitiga ABC dan segitiga EFG sehingga tidak
+                      sebangun?
+                    </div>
+                  </div>
+                  <div class="question-container">
+                    <div class="max-w-[350px] ml-12 mt-4 options">
+                      <div
+                        class="flex items-center gap-3 px-5 py-2 border-t border-b cursor-pointer pilihan benar"
+                      >
+                        <div class="text-orange-300 font-semibold">A.</div>
+                        <div>
+                          Sisi- sisi yang bersesuaian tidak memiliki perbandingan panjang yang sama
+                          (tidak proporsional)
+                        </div>
+                      </div>
+                      <div
+                        class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan"
+                      >
+                        <div class="text-orange-300 font-semibold">B.</div>
+                        <div>Sudut sudut yang bersesuaian tidak sama besar</div>
+                      </div>
+                    </div>
+
+                    <button
+                      disabled
+                      class="px-3 py-1 cekJawaban bg-violet-400 ml-[50px] mt-4 text-white rounded-md text-[10px]"
+                    >
+                      Cek jawaban
+                    </button>
+                    <div class="ml-[50px] mt-4 jadiBenar hidden">
+                      jawaban yang benar: <span class="text-orange-400 font-semibold">B</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center justify-end drop-shadow-md mt-10 md:font-semibold">
+                <div class="mr-2">
+                  <div
+                    class="bg-gray-50 pl-4 pr-1 md:pr-4 py-3 rounded-lg text-pretty text-r max-w-[400px] rounded-br-xl rounded-tr-none"
+                  >
+                    Kenapa kita membahas kesebangunan padahal materinya kan dilatasi?
+                  </div>
+                </div>
+                <img src="../../img/pertanyaan.png" alt="" class="w-20 md:w-28" />
+              </div>
+              <div
+                class="flex items-center drop-shadow-md mt-10 md:mt-2 md:font-semibold pb-8"
+                id="akhirPengertiantranslasi"
+              >
+                <img
+                  src="../../img/Grafis/Senang.png"
+                  alt=""
+                  class="w-[100px] md:w-[110px] scale-x-[-1]"
+                />
+                <div class="ml-3">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-2 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Konsep kesebangunan sangat erat kaitannya dengan dilatasi loh.
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-2 py-3 rounded-lg mt-2 text-pretty max-w-xl rounded-bl-xl rounded-tl-none"
+                  >
+                    Yuk klik tombol selanjutnya jika kamu sudah tidak sabar belajar dilatasi!
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Akhir Pengertian Dilatasi -->
+
+            <!-- Pengertian Dilatasi -->
+            <div
+              id="materi"
+              class="mt-12 relative border hidden zoomIn border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
+            >
+              <div
+                class="absolute px-5 py-2 bg-[#FFC09F] -top-4 rounded-md tracking-wide text-white"
+              >
+                Pengertian Dilatasi
+              </div>
+              <div class="flex items-center drop-shadow-md mt-12 md:font-semibold">
+                <img src="../../img/Grafis/hmm.png" alt="" class="w-[105px] md:w-[105px]" />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Konsep kesebangunan dalam kehidupan sehari hari bisa kita lihat saat kita ingin
+                    mencetak pas foto.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 md:mt-2 md:ml-28 border-l-2 ml-6 relative border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Ada tiga buah pas foto yang dicetak dengan ukuran yang berbeda.</div>
+                </div>
+                <div class="mt-8 ml-8 justify-center flex gap-8 flex-wrap">
+                  <div class="relative">
+                    <img src="../../img/photo_3781932.png" class="w-20" alt="" />
+                    <div class="absolute -top-4 left-[35px] font-semibold">2</div>
+                    <div class="absolute top-[30px] left-[75px] font-semibold">3</div>
+                  </div>
+                  <div class="relative">
+                    <img src="../../img/photo_3781932.png" class="w-28" alt="" />
+                    <div class="absolute -top-4 left-[50px] font-semibold">3</div>
+                    <div class="absolute top-[50px] left-[104px] font-semibold">4</div>
+                  </div>
+                  <div class="relative">
+                    <img src="../../img/photo_3781932.png" class="w-36" alt="" />
+                    <div class="absolute -top-4 left-[65px] font-semibold">4</div>
+                    <div class="absolute top-[60px] left-[135px] font-semibold">6</div>
+                  </div>
+                </div>
+                <div class="flex items-start md:items-center mt-10 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold -mt-2">
+                    Dari ketiga pas foto di atas, mana yang sebangun?
+                  </div>
+                </div>
+                <div class="question-container">
+                  <div class="max-w-[350px] ml-12 mt-4 options">
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-t border-b cursor-pointer pilihan"
+                    >
+                      <div class="text-orange-300 font-semibold">A.</div>
+                      <div>2x3 dan 3x4</div>
+                    </div>
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan benar"
+                    >
+                      <div class="text-orange-300 font-semibold">B.</div>
+                      <div>2x3 dan 4x6</div>
+                    </div>
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan"
+                    >
+                      <div class="text-orange-300 font-semibold">B.</div>
+                      <div>3x4 dan 4x6</div>
+                    </div>
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-t border-b cursor-pointer pilihan"
+                    >
+                      <div class="text-orange-300 font-semibold">A.</div>
+                      <div>2x3, 3x4, dan 4x6</div>
+                    </div>
+                  </div>
+
+                  <button
+                    disabled
+                    class="px-3 py-1 cekJawaban bg-violet-400 ml-[50px] mt-4 text-white rounded-md text-[10px]"
+                  >
+                    Cek jawaban
+                  </button>
+                  <div class="ml-[50px] mt-4 jadiBenar hidden">
+                    jawaban yang benar: <span class="text-orange-400 font-semibold">B</span>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-6" />
+              <div
+                class="flex items-center justify-end drop-shadow-md mt-10 md:mt-8 md:font-semibold"
+              >
+                <div class="mr-2">
+                  <div
+                    class="bg-gray-50 pl-4 pr-1 md:pr-4 py-3 rounded-lg text-pretty text-r max-w-[400px] rounded-br-xl rounded-tr-none"
+                  >
+                    Eh, kenapa kita masih membahas kesebangunan?
+                  </div>
+                </div>
+                <img src="../../img/pertanyaan.png" alt="" class="w-20 md:w-28" />
+              </div>
+              <div class="flex items-center drop-shadow-md mt-10 md:mt-4 md:font-semibold">
+                <img src="../../img/Grafis/Unyu.png" alt="" class="w-[120px] -ml-3 md:w-32" />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Hehe, Ali lakukan itu agar kamu lebih paham lagi tentang konsep kesebangunan.
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 mt-2 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Saatnya masuk ke pengertian dari dilatasi:
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 md:mt-10 md:ml-16 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Dalam matematika Dilatasi memiliki definisi :</div>
+                </div>
+                <div
+                  class="bg-orange-100 border-b ml-6 border-t mt-3 font-semibold max-w-lg border-orange-300 text- text-pretty py-3 px-4"
+                >
+                  Dilatasi adalah proses mengubah ukuran suatu objek secara proporisonal tanpa
+                  mengubah bentuknya dengan titik pusat dan skala tertentu.
+                </div>
+              </div>
+              <hr class="mt-6" />
+              <div
+                class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8"
+                id="akhirJarakTranslasi"
+              >
+                <img src="../../img/Grafis/Nih.png" alt="" class="w-28 scale-x-[-1] md:w-[120px]" />
+                <div class="ml-2 md:ml-4">
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Dengan kata lain objek dan bayangan objek itu harus sebangun yah.
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-2 py-3 rounded-lg mt-2 text-pretty max-w-xl rounded-bl-xl rounded-tl-none"
+                  >
+                    Nah kamu kan sudah tau kesebangunan, jadi kita akan langsung membahas pusat
+                    dilatasi dan skala dilatasi!
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Akhir Pengertian Dilatasi -->
+
+            <!-- Pusat Dilatasi -->
+            <div
+              class="mt-16 pb-8 relative hidden zoomIn border border-[#629460] text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
+            >
+              <div
+                class="absolute px-5 py-2 bg-[#FFC09F] -top-4 rounded-md tracking-wide text-white"
+              >
+                Pusat Dilatasi
+              </div>
+              <div class="mt-16 border-l-2 ml-2 md:ml-0 border-orange-300 drop-shadow-md">
+                <div class="font-semibold ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Definisi Pusat Dilatasi :</div>
+                </div>
+                <div
+                  class="bg-orange-100 border-b ml-4 border-t mt-3 font-semibold max-w-lg border-orange-300 text- text-pretty py-3 px-4"
+                >
+                  Pusat dilatasi adalah titik acuan di mana semua titik pada suatu objek bergerak
+                  menjauh atau mendekat dari titik tersebut.
+                </div>
+              </div>
+              <div class="flex items-center drop-shadow-md mt-8 md:-ml-6 md:font-semibold">
+                <img
+                  src="../../img/Grafis/Halooo.png"
+                  alt=""
+                  class="w-[150px] scale-x-[-1] -ml-4"
+                />
+                <div class="md:ml-3">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Ali akan menunjukkan seperti apa itu pusat dilatasi.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 pb-4 md:mt-2 md:ml-32 border-l-2 ml-6 relative border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Sebuah segitiga ABC akan didilatasikan terhadap titik P.</div>
+                </div>
+                <div class="flex gap-2 item mt-3">
+                  <div class="bg-blue-50 p-3 w-fit ml-8">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                      <div class="absolute bottom-[19px] left-[18px]">
+                        <svg
+                          width="57"
+                          height="56"
+                          viewBox="0 0 57 56"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle
+                            cx="53.5"
+                            cy="52.5"
+                            r="3.5"
+                            transform="rotate(-90 53.5 52.5)"
+                            fill="#55E255"
+                          />
+                          <circle
+                            cx="3.5"
+                            cy="3.5"
+                            r="3.5"
+                            transform="rotate(-90 3.5 3.5)"
+                            fill="#55E255"
+                          />
+                          <circle
+                            cx="53.5"
+                            cy="3.5"
+                            r="3.5"
+                            transform="rotate(-90 53.5 3.5)"
+                            fill="#55E255"
+                          />
+                          <path d="M53 52.2929L4.70711 4H53V52.2929Z" stroke="#55E255" />
+                        </svg>
+                        <div class="absolute text-green-400 -top-[16px]">A</div>
+                        <div class="absolute text-green-400 -top-[16px] right-0">B</div>
+                        <div class="absolute text-green-400 -bottom-[18px] right-0">C</div>
+                      </div>
+
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-red-400 text-red-400 absolute bottom-[19px] left-[19px]"
+                      >
+                        <div class="absolute -top-[7px] -left-[10px]">P</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-12 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold">
+                    Artinya segitiga ABC akan bergerak menjauh atau mendekat dari titik P.
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-3 ml-8">
+                  <div class="bg-blue-50 p-3 w-fit ml-8">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                      <div class="absolute bottom-[20px] left-[20px]">
+                        <svg
+                          width="51"
+                          height="51"
+                          viewBox="0 0 51 51"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="z-20"
+                        >
+                          <path d="M50 49.2929L1.70711 1H50V49.2929Z" stroke="#d1d5db " />
+                        </svg>
+                        <div
+                          class="w-[7px] h-[7px] rounded-full z-20 bg-gray-200 text-gray-200 absolute top-[-3px] -left-[2px]"
+                        >
+                          <div class="absolute -top-[17px] -left-[0px]">A</div>
+                        </div>
+                        <div
+                          class="w-[7px] h-[7px] z-20 rounded-full bg-gray-200 text-gray-200 absolute top-[-3px] -right-[2px]"
+                        >
+                          <div class="absolute -top-[17px] -left-[0px]">B</div>
+                        </div>
+                        <div
+                          class="w-[7px] h-[7px] z-20 rounded-full bg-gray-200 text-gray-200 absolute bottom-[-2px] -right-[2px]"
+                        >
+                          <div class="absolute -bottom-[17px] -left-[1px]">C</div>
+                        </div>
+                      </div>
+                      <div class="absolute bottom-[20px] left-[20px] z-20 dilateABC">
+                        <svg
+                          width="51"
+                          height="51"
+                          viewBox="0 0 51 51"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="z-20"
+                        >
+                          <path d="M50 49.2929L1.70711 1H50V49.2929Z" stroke="#55E255" />
+                        </svg>
+                        <div
+                          class="w-[7px] h-[7px] labelABC rounded-full z-20 bg-green-400 text-green-400 absolute top-[-3px] -left-[2px]"
+                        >
+                          <div class="absolute -top-[17px] -left-[0px]">A'</div>
+                        </div>
+                        <div
+                          class="w-[7px] h-[7px] labelABC z-20 rounded-full bg-green-400 text-green-400 absolute top-[-3px] -right-[2px]"
+                        >
+                          <div class="absolute -top-[17px] -left-[0px]">B'</div>
+                        </div>
+                        <div
+                          class="w-[7px] h-[7px] labelABC z-20 rounded-full bg-green-400 text-green-400 absolute bottom-[-2px] -right-[2px]"
+                        >
+                          <div class="absolute -bottom-[17px] -left-[1px]">C'</div>
+                        </div>
+                      </div>
+                      <div class="absolute left-[20px] bottom-[20px]">
+                        <div
+                          class="h-[2px] w-[50px] bottom-[1px] absolute border-dashed border border-gray-200"
+                        ></div>
+                        <div
+                          class="h-[2px] w-[70px] -rotate-90 origin-left left-[2px] absolute border-dashed border border-gray-200"
+                        ></div>
+                        <div
+                          class="h-[2px] w-[50px] -rotate-45 origin-left bottom-[1px] left-[2px] absolute border-dashed border border-gray-200"
+                        ></div>
+                      </div>
+                      <div class="absolute left-[20px] bottom-[20px]">
+                        <div
+                          class="h-[2px] w-[0px] bottom-[1px] hubungAdit absolute border-dashed border border-orange-200"
+                        ></div>
+                        <div
+                          class="h-[2px] w-[0px] -rotate-90 origin-left left-[2px] hubungAdit absolute border-dashed border border-orange-200"
+                        ></div>
+                        <div
+                          class="h-[2px] w-[0px] -rotate-45 origin-left bottom-[1px] hubungBdit left-[2px] absolute border-dashed border border-orange-200"
+                        ></div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-red-400 z-20 text-red-400 absolute bottom-[19px] left-[19px]"
+                      >
+                        <div class="absolute -top-[7px] -left-[10px]">P</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-wrap mt-10">
+                  <div class="flex items-start md:items-center gap-2">
+                    <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                    <div class="font-semibold -mt-1">
+                      Saat segitiga ABC bergerak menjauh dari tiitk P maka ukuran segitiga ABC ...
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <select
+                      id="options"
+                      data-answer="option1"
+                      class="block w-32 ml-[68px] p-1 border answerInput border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-300"
+                    >
+                      <option value="" disabled selected hidden>Pilih jawaban</option>
+                      <option value="option1">membesar</option>
+                      <option value="option2">mengecil</option>
+                    </select>
+                  </div>
+                </div>
+                <button
+                  class="px-3 py-1 bg-violet-400 ml-[68px] mt-4 checkAnswerButton text-white rounded-md text-[10px]"
+                >
+                  Cek jawaban
+                </button>
+                <div class="flex flex-wrap mt-8">
+                  <div class="flex items-start md:items-center gap-2">
+                    <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                    <div class="font-semibold -mt-1">
+                      Sedangkan saat segitiga ABC mendekat, ukurannya ...
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <select
+                      id="options"
+                      data-answer="option1"
+                      class="block w-32 ml-[68px] p-1 border answerInput border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-300"
+                    >
+                      <option value="" disabled selected hidden>Pilih jawaban</option>
+                      <option value="option2">membesar</option>
+                      <option value="option1">mengecil</option>
+                    </select>
+                  </div>
+                </div>
+                <button
+                  class="px-3 py-1 bg-violet-400 ml-[68px] mt-4 checkAnswerButton text-white rounded-md text-[10px]"
+                >
+                  Cek jawaban
+                </button>
+              </div>
+              <div
+                class="flex items-center justify-end drop-shadow-md mt-10 md:mt-4 md:font-semibold"
+              >
+                <div class="mr-2">
+                  <div
+                    class="bg-gray-50 px-4 md:pr-4 py-3 rounded-lg text-pretty text-r max-w-[400px] rounded-br-xl rounded-tr-none"
+                  >
+                    Apa fungsi garis berwarna oranye?
+                  </div>
+                </div>
+                <img src="../../img/pertanyaan.png" alt="" class="w-20 md:w-28" />
+              </div>
+              <div class="flex items-center drop-shadow-md mt-10 md:mt-2 md:font-semibold">
+                <img src="../../img/Grafis/ide.png" alt="" class="w-[140px] -ml-5" />
+                <div class="ml-1">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 md:pr-4 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Garis tersebut adalah garis hubung antara pusat dilatasi, objek, dan hasil
+                    dilatasi objek.
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 mt-2 py-3 md:pr-4 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Kita akan membahas fungsinya nanti.
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold">
+                <img src="../../img/Grafis/ooo.png" alt="" class="w-[130px] -ml-3 md:w-32" />
+                <div class="-ml-2 md:ml-0">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 md:pr-4 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Sama seperti pusat rotasi, pusat diltasi juga bisa berada di luar objek, bisa di
+                    dalam objek.
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 mt-2 py-3 md:pr-4 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Berikut contohnya!
+                  </div>
+                </div>
+              </div>
+              ,
+
+              <div
+                class="mt-4 md:-mt-2 md:ml-28 translate-x-2 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Contoh 1, Persegi ABCD didilatasikan terhadap titik E.</div>
+                </div>
+
+                <div class="flex gap-2 item mt-3">
+                  <div class="bg-blue-50 p-3 w-fit ml-8">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-red-400 z-20 text-red-400 absolute top-[92px] left-[92px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[0px]">E</div>
+                      </div>
+                      <div
+                        class="border-gray-200 border absolute w-[97px] z-20 h-[97px] top-[48px] left-[47px]"
+                      >
+                        <div class="">
+                          <div
+                            class="w-[7px] h-[7px] rounded-full z-20 bg-gray-300 text-gray-300 absolute top-[-4px] -left-[4px]"
+                          >
+                            <div class="absolute -top-[17px] -left-[0px]">A</div>
+                          </div>
+                          <div
+                            class="w-[7px] h-[7px] z-20 rounded-full bg-gray-300 text-gray-300 absolute top-[-4px] -right-[4px]"
+                          >
+                            <div class="absolute -top-[17px] -left-[0px]">B</div>
+                          </div>
+                          <div
+                            class="w-[7px] h-[7px] z-20 rounded-full bg-gray-300 text-gray-300 absolute bottom-[-4px] -right-[4px]"
+                          >
+                            <div class="absolute -bottom-[17px] -left-[1px]">D</div>
+                          </div>
+                          <div
+                            class="w-[7px] h-[7px] z-20 rounded-full bg-gray-300 text-gray-300 absolute bottom-[-4px] -left-[4px]"
+                          >
+                            <div class="absolute -bottom-[17px] -left-[1px]">C</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="border-green-400 border absolute w-[97px] z-20 h-[97px] top-[48px] left-[47px] dilateABCD"
+                      >
+                        <div class="">
+                          <div
+                            class="w-[7px] h-[7px] rounded-full labelABCD z-20 bg-green-400 text-green-400 absolute top-[-4px] -left-[4px]"
+                          >
+                            <div class="absolute -top-[17px] -left-[0px]">A'</div>
+                          </div>
+                          <div
+                            class="w-[7px] h-[7px] z-20 rounded-full labelABCD bg-green-400 text-green-400 absolute top-[-4px] -right-[4px]"
+                          >
+                            <div class="absolute -top-[17px] -left-[0px]">B'</div>
+                          </div>
+                          <div
+                            class="w-[7px] h-[7px] z-20 rounded-full labelABCD bg-green-400 text-green-400 absolute bottom-[-4px] -right-[4px]"
+                          >
+                            <div class="absolute -bottom-[17px] -left-[1px]">D'</div>
+                          </div>
+                          <div
+                            class="w-[7px] h-[7px] z-20 rounded-full labelABCD bg-green-400 text-green-400 absolute bottom-[-4px] -left-[4px]"
+                          >
+                            <div class="absolute -bottom-[17px] -left-[1px]">C'</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="absolute left-[93px] bottom-[93px]">
+                        <div
+                          class="h-[2px] w-[69px] bottom-[1px] origin-left rotate-[135deg] absolute border-dashed border border-gray-200"
+                        ></div>
+                        <div
+                          class="h-[2px] w-[69px] bottom-[1px] origin-left rotate-[-135deg] absolute border-dashed border border-gray-200"
+                        ></div>
+                        <div
+                          class="h-[2px] w-[69px] rotate-45 origin-left left-[2px] bottom-[1px] absolute border-dashed border border-gray-200"
+                        ></div>
+                        <div
+                          class="h-[2px] w-[69px] -rotate-45 origin-left bottom-[1px] left-[2px] absolute border-dashed border border-gray-200"
+                        ></div>
+                      </div>
+                      <div class="absolute left-[93px] bottom-[93px]">
+                        <div
+                          class="h-[2px] w-[0px] hubungABCDdit bottom-[1px] origin-left rotate-[135deg] absolute border-dashed border border-orange-200"
+                        ></div>
+                        <div
+                          class="h-[2px] w-[0px] hubungABCDdit bottom-[1px] origin-left rotate-[-135deg] absolute border-dashed border border-orange-200"
+                        ></div>
+                        <div
+                          class="h-[2px] w-[0px] hubungABCDdit rotate-45 origin-left left-[2px] bottom-[1px] absolute border-dashed border border-orange-200"
+                        ></div>
+                        <div
+                          class="h-[2px] w-[0px] hubungABCDdit -rotate-45 origin-left bottom-[1px] left-[2px] absolute border-dashed border border-orange-200"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 md:mt-12 md:ml-28 translate-x-2 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Contoh 2, ruas garis BC didilatasikan terhadap titik D.</div>
+                </div>
+
+                <div class="flex gap-2 item mt-3">
+                  <div class="bg-blue-50 p-3 w-fit ml-8">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-red-400 z-20 text-red-400 absolute bottom-[45px] left-[92px]"
+                      >
+                        <div class="absolute -bottom-[20px] -left-[2px]">D</div>
+                      </div>
+                      <div class="absolute top-[95px] left-[47px] z-20">
+                        <svg
+                          width="97"
+                          height="2"
+                          viewBox="0 0 97 2"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M0 1L48.5 1L96.5 1" stroke="#e5e7eb " />
+                        </svg>
+
+                        <div
+                          class="w-[7px] h-[7px] rounded-full z-20 bg-gray-300 text-gray-300 absolute top-[-3px] -left-[4px]"
+                        >
+                          <div class="absolute -top-[17px] -left-[0px]">B</div>
+                        </div>
+                        <div
+                          class="w-[7px] h-[7px] rounded-full z-20 bg-gray-300 text-gray-300 absolute top-[-3px] -right-[4px]"
+                        >
+                          <div class="absolute -top-[17px] -left-[0px]">C</div>
+                        </div>
+                      </div>
+                      <div class="absolute top-[95px] left-[47px] z-20 dilateBC">
+                        <svg
+                          width="97"
+                          height="2"
+                          viewBox="0 0 97 2"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M0 1L48.5 1L96.5 1" stroke="#55E255" />
+                        </svg>
+
+                        <div
+                          class="w-[7px] h-[7px] rounded-full labelABC z-20 bg-green-400 text-green-400 absolute top-[-3px] -left-[4px]"
+                        >
+                          <div class="absolute -top-[17px] -left-[0px]">B'</div>
+                        </div>
+                        <div
+                          class="w-[7px] h-[7px] rounded-full labelABC z-20 bg-green-400 text-green-400 absolute top-[-3px] -right-[4px]"
+                        >
+                          <div class="absolute -top-[17px] -left-[0px]">C'</div>
+                        </div>
+                      </div>
+                      <div class="absolute left-[93px] bottom-[47px]">
+                        <div
+                          class="h-[2px] w-[0px] hubungBCDdit bottom-[1px] origin-left -rotate-[43deg] absolute border-dashed border border-orange-200"
+                        ></div>
+                        <div
+                          class="h-[2px] w-[0px] hubungBCDdit bottom-[1px] origin-left rotate-[-135deg] absolute border-dashed border border-orange-200"
+                        ></div>
+                      </div>
+                      <div class="absolute left-[93px] bottom-[47px]">
+                        <div
+                          class="h-[2px] w-[70px] bottom-[1px] origin-left -rotate-[43deg] absolute border-dashed border border-gray-200"
+                        ></div>
+                        <div
+                          class="h-[2px] w-[70px] bottom-[1px] origin-left rotate-[-135deg] absolute border-dashed border border-gray-200"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 md:mt-12 md:ml-28 translate-x-2 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Contoh 3, segitiga DEF didilatasikan seperti di bawah ini.</div>
+                </div>
+
+                <div class="flex gap-2 item mt-3">
+                  <div class="bg-blue-50 p-3 w-fit ml-8">
+                    <div class="relative">
+                      <img src="../../img/GridBanyak.jpeg" class="w-48 h-48" alt="" />
+                      <div class="absolute bottom-[19px] z-20 left-[18px] dilatedDEF">
+                        <svg
+                          width="78"
+                          height="77"
+                          viewBox="0 0 78 77"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M0.818445 76.5L39.4943 1.10659L77.191 76.5H0.818445Z"
+                            stroke="#55E255"
+                          />
+                        </svg>
+                        <div
+                          class="w-[7px] h-[7px] rounded-full labelABC z-20 bg-green-400 text-green-400 absolute top-[-3px] left-[36px]"
+                        >
+                          <div class="absolute -top-[17px] -left-[0px]">D'</div>
+                        </div>
+                        <div
+                          class="w-[7px] h-[7px] rounded-full labelABC z-20 bg-green-400 text-green-400 absolute -bottom-1 -left-1"
+                        >
+                          <div class="absolute -left-[0px] -bottom-[19px]">E</div>
+                        </div>
+                        <div
+                          class="w-[7px] h-[7px] rounded-full labelABC z-20 bg-green-400 text-green-400 absolute -bottom-1 -right-1"
+                        >
+                          <div class="absolute -left-[0px] -bottom-[19px]">F'</div>
+                        </div>
+                      </div>
+                      <div class="absolute bottom-[19px] left-[18px]">
+                        <svg
+                          width="78"
+                          height="77"
+                          viewBox="0 0 78 77"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M0.818445 76.5L39.4943 1.10659L77.191 76.5H0.818445Z"
+                            stroke="#e5e7eb "
+                          />
+                        </svg>
+                        <div
+                          class="w-[7px] h-[7px] rounded-full bg-gray-200 text-gray-200 absolute top-[-3px] left-[36px]"
+                        >
+                          <div class="absolute -top-[17px] -left-[0px]">D'</div>
+                        </div>
+
+                        <div
+                          class="w-[7px] h-[7px] rounded-full bg-gray-200 text-gray-200 absolute -bottom-1 -right-1"
+                        >
+                          <div class="absolute -left-[0px] -bottom-[19px]">F'</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold">Pusat dilatasinya adalah ?</div>
+                </div>
+                <div class="question-container2">
+                  <div class="max-w-[350px] ml-12 mt-4">
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-t border-b cursor-pointer pilihan2"
+                    >
+                      <div class="text-orange-300 font-semibold">A.</div>
+                      <div>Titik D</div>
+                    </div>
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan2"
+                    >
+                      <div class="text-orange-300 font-semibold">B.</div>
+                      <div>Titik F</div>
+                    </div>
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan2 benar2"
+                    >
+                      <div class="text-orange-300 font-semibold">C.</div>
+                      <div>Titik E</div>
+                    </div>
+                  </div>
+
+                  <button
+                    disabled
+                    class="px-3 py-1 cekJawaban2 bg-violet-400 ml-[50px] mt-4 text-white rounded-md text-[10px]"
+                  >
+                    Cek jawaban
+                  </button>
+                  <div class="ml-[50px] mt-4 jadiBenar2 hidden">
+                    jawaban yang benar: <span class="text-orange-400 font-semibold">C</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Akhir Pusat Dilatasi -->
+
+            <!-- Skala Dilatasi -->
+            <div
+              class="mt-16 relative border hidden zoomIn border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
+            >
+              <div
+                class="absolute px-5 py-2 bg-[#FFC09F] -top-4 rounded-md tracking-wide text-white"
+              >
+                Skala Dilatasi
+              </div>
+              <div class="mt-16 border-l-2 ml-2 md:ml-0 border-orange-300 drop-shadow-md">
+                <div class="font-semibold ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Definisi Skala Dilatasi :</div>
+                </div>
+                <div
+                  class="bg-orange-100 border-b ml-4 border-t mt-3 font-semibold max-w-lg border-orange-300 text- text-pretty py-3 px-4"
+                >
+                  Skala dilatasi adalah faktor yang menentukan seberapa besar atau kecil suatu objek
+                  akan berubah ukurannya saat proses dilatasi
+                </div>
+              </div>
+              <div class="flex items-center drop-shadow-md mt-12 md:font-semibold">
+                <img src="../../img/Grafis/hmm.png" alt="" class="w-28 md:w-28" />
+                <div class="ml-">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Yuk kita lihat peran skala dalam dilatasi pada konten dibawah ini
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-8 md:mt-2 md:ml-28 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-sm"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>
+                    Pilih angka yang akan menjadi skala dilatasi segitiga ABC terhadap titik P.
+                  </div>
+                </div>
+                <div class="flex items-center mt-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="flex items-center gap-3">
+                    <div class="text-primary font-bold">Skala Dilatasi</div>
+                    <div class="flex items-center translate-x-1 gap-2">
+                      <select
+                        id="selectSkala"
+                        data-answer="option4"
+                        class="block w-28 p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-300"
+                      >
+                        <option value="" disabled selected hidden>Pilih skala</option>
+                        <option value="option2">0.5</option>
+                        <option value="option3">1</option>
+                        <option value="option4">2</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="p-2 md:scale-110 w-fit mt-4 md:mt-8 ml-12 md:ml-16 rounded-lg shadow-lg bg-[#DAFFEF]"
+                >
+                  <div class="border-1.5 w-[230px] h-[230px] bg-[#FBFDFE] shadow-inner">
+                    <canvas id="canvas9" width="230" height="230" class="z-50"></canvas>
+                  </div>
+                </div>
+                <button
+                  id="translate-btn"
+                  class="px-2 py-1 bg-green-400 mt-4 md:mt-8 rounded-md ml-12 md:ml-14 text-[11px] text-white tracking-wide"
+                >
+                  Dilatasi
+                </button>
+              </div>
+
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold">
+                <img src="../../img/Grafis/Tanya.png" alt="" class="w-[100px]" />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 md:pr-4 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Setelah mencoba konten di atas, Ali punya beberapa pertanyaan nih untuk
+                    memastikan pemahaman kamu.
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-8 md:mt-2 pb-4 md:ml-28 border-l-2 ml-6 relative border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>Mari satukan pemahaman berdasarkan hasil observasi.</div>
+                </div>
+                <div class="flex items-start mt-4 gap-2 md:gap-4">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold max-w-[300px]">
+                    Saat skala 2, ukuran objek
+                    <select
+                      data-answer="option2"
+                      class="block w-48 p-1 border mt-2 answerInput border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-300"
+                    >
+                      <option value="" disabled selected hidden><span>Pilih jawaban</span></option>
+                      <option value="option2">membesar 2 kali lipat</option>
+                      <option value="option3">mengecil setengah kali lipat</option>
+                      <option value="option4">tetap</option>
+                    </select>
+                  </div>
+                </div>
+                <button
+                  class="px-3 py-1 bg-violet-400 md:ml-20 ml-[70px] mt-4 checkAnswerButton text-white rounded-md text-[10px]"
+                >
+                  Cek jawaban
+                </button>
+
+                <div class="flex items-start mt-8 gap-2 md:gap-4">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold max-w-[300px]">
+                    Saat skala 1, ukuran objek ...
+                    <select
+                      data-answer="option4"
+                      class="block w-48 p-1 mt-2 border answerInput border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-300"
+                    >
+                      <option value="" disabled selected hidden><span>Pilih jawaban</span></option>
+                      <option value="option2">membesar 2 kali lipat</option>
+                      <option value="option3">mengecil setengah kali lipat</option>
+                      <option value="option4">tetap</option>
+                    </select>
+                  </div>
+                </div>
+                <button
+                  class="px-3 py-1 bg-violet-400 md:ml-20 ml-[70px] mt-4 checkAnswerButton text-white rounded-md text-[10px]"
+                >
+                  Cek jawaban
+                </button>
+
+                <div class="flex items-start mt-8 gap-2 md:gap-4">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold max-w-[300px]">
+                    Saat skala 0.5, ukuran objek
+                    <select
+                      data-answer="option3"
+                      class="block w-48 p-1 border answerInput mt-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-300"
+                    >
+                      <option value="" disabled selected hidden><span>Pilih jawaban</span></option>
+                      <option value="option2">membesar 2 kali lipat</option>
+                      <option value="option3">mengecil setengah kali lipat</option>
+                      <option value="option4">tetap</option>
+                    </select>
+                  </div>
+                </div>
+                <button
+                  class="px-3 py-1 bg-violet-400 md:ml-20 ml-[70px] mt-4 checkAnswerButton text-white rounded-md text-[10px]"
+                >
+                  Cek jawaban
+                </button>
+              </div>
+
+              <hr class="mt-6" />
+              <div
+                class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8"
+                id="akhirArahTranslasi"
+              >
+                <img src="../../img/Grafis/supermen.png" alt="" class="w-[128px] -ml-3" />
+                <div class="ml-">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-2 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Jadi, ukuran objek setelah di dilatasi itu ditentukan melalui skalanya.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex items-center justify-end drop-shadow-md mt- md:mt-4 md:font-semibold"
+              >
+                <div class="mr-2">
+                  <div
+                    class="bg-gray-50 px-4 md:pr-4 py-3 rounded-lg text-pretty text-r max-w-[400px] rounded-br-xl rounded-tr-none"
+                  >
+                    Tapi, bagaimana cara menentukan posisi hasil dilatasinya?
+                  </div>
+                </div>
+                <img src="../../img/pertanyaan.png" alt="" class="w-20 md:w-28" />
+              </div>
+              <div
+                class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8"
+                id="akhirArahTranslasi"
+              >
+                <img src="../../img/Grafis/hmm.png" alt="" class="w-[110px] -ml-3" />
+                <div class="ml-">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-2 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Nah, skala dilatasi juga berperan loh dalam menentukan posisi hasil dilatasi
+                    objek loh.
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-2 py-3 mt-2 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Ali akan menjeaslkannya melalui kasus dilatasi pada titik
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-4 md:-mt-2 md:ml-[105px] pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div
+                  class="font-semibold text-orange-400 drop-shadow-none text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 1, titik A didilatasikan terhadap titik P dengan skala 2.</div>
+                </div>
+
+                <div class="flex gap-2 item mt-3">
+                  <div class="bg-blue-50 p-3 w-fit ml-8">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute top-[118px] right-[69px]"
+                      >
+                        <div class="absolute -top-[18px] -left-[1px]">A</div>
+                      </div>
+
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-red-400 text-red-400 absolute top-[118px] left-[68px]"
+                      >
+                        <div class="absolute -top-[18px] left-[0px]">P</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold -mt-1">
+                    Sebuah titik tidak memiliki ukuran, jadi titik hanya akan menjauh atau mendekat
+                    ke pusat dilatasi berdasarkan skalanya
+                  </div>
+                </div>
+
+                <div class="flex items-start mt-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold -translate-y-1">
+                    Pertama, tentukan pusat dilatasi dan skalanya.
+                  </div>
+                </div>
+                <ul class="list-disc ml-20 translate-x-1 mt-">
+                  <li><span class="text-orange-500">Pusat dilatasi:</span> titik P</li>
+                  <li>
+                    <span class="text-orange-500">Skala dilatasi:</span> 2 (artinya objek akan
+                    menjauh dari titik P )
+                  </li>
+                </ul>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold">
+                    Tarik garis hubung dari pusat dilatasi ke titik A, kita namakan garis AP.
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-2">
+                  <div class="relative cursor-pointer playTitikA ml-16 translate-x-1">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="hidden zoomIn">
+                    <div class="bg-blue-50 mt-1 p-3 w-fit ml-16">
+                      <div class="relative">
+                        <img src="../../img/Grid8.jpeg" class="w-48 h-48" alt="" />
+
+                        <div
+                          class="w-[6px] z-20 h-[6px] rounded-full bg-red-400 text-red-400 absolute top-[118px] left-[68px]"
+                        >
+                          <div class="absolute -top-[18px] left-[0px]">P</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 z-20 absolute top-[118px] right-[69px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">A</div>
+                        </div>
+                        <div
+                          class="w-[0px] hubung50px border border-dashed border-orange-300 absolute left-[70px] top-[120px]"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold">
+                    Karena skala 2, maka panjang garis AP akan menjadi dua kali lipat
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-2">
+                  <div class="relative cursor-pointer playTitikA ml-16 translate-x-1">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="zoomIn hidden">
+                    <div class="bg-blue-50 mt-1 p-3 w-fit ml-16">
+                      <div class="relative">
+                        <img src="../../img/Grid8.jpeg" class="w-48 h-48" alt="" />
+
+                        <div
+                          class="w-[6px] z-20 h-[6px] rounded-full bg-red-400 text-red-400 absolute top-[118px] left-[68px]"
+                        >
+                          <div class="absolute -top-[18px] left-[0px]">P</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 z-20 absolute top-[118px] right-[69px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">A</div>
+                        </div>
+
+                        <div
+                          class="w-[50px] hubung100px border border-dashed border-orange-300 absolute left-[69px] top-[120px]"
+                        ></div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 opacity-0 zoomIn3 text-green-400 z-20 absolute top-[118px] right-[21px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">A'</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold -mt-1">
+                    Setelah memannjangkan garis AP diperoleh lah titik A’ sebagai hasil dilatasinya.
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center justify-end drop-shadow-md mt-8 md:mt-8 md:font-semibold"
+              >
+                <div class="mr-2">
+                  <div
+                    class="bg-gray-50 pl-4 pr-4 md:pr-4 py-3 rounded-lg text-pretty text-r max-w-[400px] rounded-br-xl rounded-tr-none"
+                  >
+                    Jadi panjang garis hubung juga akan memanjang atau memendek sesuai skala
+                    dilatasi?
+                  </div>
+                </div>
+                <img src="../../img/pertanyaan.png" alt="" class="w-20 md:w-28" />
+              </div>
+              <div class="flex items-center drop-shadow-md mt-10 md:-mt-4 md:font-semibold pb-8">
+                <img
+                  src="../../img/Grafis/ooo.png"
+                  alt=""
+                  class="w-32 -ml-4 md:-translate-x-3 md:mr-2"
+                />
+                <div class="md:-ml-3">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Benar banget, dari garis hubung inilah posisi hasil dilatasi ditemukan.
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt- md:-mt-4 md:ml-28 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div
+                  class="font-semibold drop-shadow-none text-orange-400 text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 2, titik B didilatasikan terhadap titik P dengan skala 0.5</div>
+                </div>
+
+                <div class="flex gap-2 item mt-3">
+                  <div class="bg-blue-50 p-3 w-fit ml-8">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute bottom-[19px] left-[68px]"
+                      >
+                        <div class="absolute -bottom-[20px] -left-[1px]">B</div>
+                      </div>
+
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-red-400 text-red-400 absolute top-[19px] left-[68px]"
+                      >
+                        <div class="absolute -top-[18px] left-[0px]">P</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold">Tentukan pusat dilatasi dan skala dilatasinya</div>
+                </div>
+                <ul class="list-disc ml-20 translate-x-1 mt-2">
+                  <li>
+                    <span class="text-green-500">Pusat rotasi:</span>
+                    <div class="flex items-center mt-1 gap-2">
+                      <div class="flex items-center gap-2">
+                        <select
+                          id="options"
+                          data-answer="option2"
+                          class="block w-28 p-1 border answerInput border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-300"
+                        >
+                          <option value="" disabled selected hidden>Pilih pusat</option>
+                          <option value="option1">titik A</option>
+                          <option value="option2">titik P</option>
+                        </select>
+                      </div>
+                      <button
+                        class="px-3 py-1 bg-violet-400 checkAnswerButton text-white rounded-md text-[10px]"
+                      >
+                        Cek jawaban
+                      </button>
+                    </div>
+                  </li>
+                  <li class="mt-6">
+                    <span class="text-green-500">Skala dilatasi:</span>
+                    <div class="flex items-center mt-1 gap-2">
+                      <div class="flex items-center gap-2">
+                        <select
+                          id="options"
+                          data-answer="option1"
+                          class="block w-28 p-1 border answerInput border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-300"
+                        >
+                          <option value="" disabled selected hidden>Pilih skala</option>
+                          <option value="option1">0.5</option>
+                          <option value="option2">1</option>
+                          <option value="option2">2</option>
+                        </select>
+                      </div>
+                      <button
+                        class="px-3 py-1 bg-violet-400 checkAnswerButton text-white rounded-md text-[10px]"
+                      >
+                        Cek jawaban
+                      </button>
+                    </div>
+                  </li>
+                </ul>
+                <div class="flex items-start mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold -translate-y-1">
+                    Tarik garis hubung dari pusat dilatasi ke titik B, kita namakan garis BP
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-2">
+                  <div class="relative cursor-pointer playTitikA ml-16 translate-x-1">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="hidden zoomIn">
+                    <div class="bg-blue-50 p-3 w-fit ml-16">
+                      <div class="relative">
+                        <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 z-20 absolute bottom-[19px] left-[68px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">B</div>
+                        </div>
+
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-red-400 text-red-400 z-20 absolute top-[19px] left-[68px]"
+                        >
+                          <div class="absolute -top-[18px] left-[0px]">P</div>
+                        </div>
+                        <div
+                          class="w-[2px] h-[0px] hubung145px border border-dashed border-orange-300 absolute top-[22px] left-[70px]"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold">
+                    Karena skala 0.5, maka panjang garis hubungnya menjadi setengah kali lipat.
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-2">
+                  <div class="relative cursor-pointer playTitikA ml-16 translate-x-1">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="zoomIn hidden">
+                    <div class="bg-blue-50 p-3 w-fit ml-16">
+                      <div class="relative">
+                        <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 z-20 absolute bottom-[19px] left-[68px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">B</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 zoomIn3 opacity-0 text-green-400 z-20 absolute bottom-[93px] left-[68px]"
+                        >
+                          <div class="absolute -bottom-[8px] left-[10px]">B'</div>
+                        </div>
+
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-red-400 text-red-400 z-20 absolute top-[19px] left-[68px]"
+                        >
+                          <div class="absolute -top-[18px] left-[0px]">P</div>
+                        </div>
+                        <div
+                          class="w-[2px] h-[145px] border border-dashed border-gray-300 absolute top-[22px] left-[70px]"
+                        ></div>
+                        <div
+                          class="w-[2px] h-[145px] hubung73px border border-dashed border-orange-300 absolute top-[22px] left-[70px]"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold">Diperoleh lah titik B’.</div>
+                </div>
+              </div>
+
+              <div class="mt-12 md:ml-28 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md">
+                <div
+                  class="font-semibold drop-shadow-none text-orange-400 text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 3, titik C didilatasikan terhadap titik P seperti di bawah!</div>
+                </div>
+                <div class="flex gap-2 item mt-2">
+                  <div class="relative cursor-pointer playTitikA ml-8 translate-x-1">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="hidden zoomIn">
+                    <div class="flex gap-2 item mt-3">
+                      <div class="bg-blue-50 p-3 w-fit ml-8">
+                        <div class="relative">
+                          <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                          <div
+                            class="w-[6px] h-[6px] rounded-full bg-gray-300 z-20 text-gray-300 absolute top-[44px] right-[69px]"
+                          >
+                            <div class="absolute -top-[18px] -left-[1px]">C</div>
+                          </div>
+                          <div
+                            class="w-[6px] h-[6px] dilateCtoP rounded-full bg-green-400 z-20 text-green-400 absolute top-[44px] right-[69px]"
+                          >
+                            <div class="absolute -top-[18px] -left-[1px]">C</div>
+                            <div class="absolute -top-[18px] opacity-0 zoomIn3 -left-[1px]">C'</div>
+                          </div>
+
+                          <div
+                            class="w-[6px] h-[6px] rounded-full bg-red-400 z-20 text-red-400 absolute top-[44px] right-[44px]"
+                          >
+                            <div class="absolute -top-[18px] left-[0px]">P</div>
+                          </div>
+                          <div
+                            class="absolute w-[0px] hubung73px2 border border-dashed border-orange-300 top-[47px] origin-left rotate-180 left-[143px]"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start mt-10 ml-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-4" alt="" />
+                  <div class="font-semibold -mt-2">
+                    Berapakah skala dilatasi titik C terhadap titik P?
+                    <span class="text-orange-300 drop-shadow-none">(pilihan ganda)</span>
+                  </div>
+                </div>
+                <div class="question-container">
+                  <div class="max-w-[350px] ml-12 mt-4 options">
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-t border-b cursor-pointer pilihan"
+                    >
+                      <div class="text-orange-300 font-semibold">A.</div>
+                      <div>0.5</div>
+                    </div>
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan"
+                    >
+                      <div class="text-orange-300 font-semibold">B.</div>
+                      <div>1</div>
+                    </div>
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan"
+                    >
+                      <div class="text-orange-300 font-semibold">C.</div>
+                      <div>2</div>
+                    </div>
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan benar"
+                    >
+                      <div class="text-orange-300 font-semibold">D.</div>
+                      <div>3</div>
+                    </div>
+                  </div>
+
+                  <button
+                    disabled
+                    class="px-3 py-1 cekJawaban bg-violet-400 ml-[50px] mt-4 text-white rounded-md text-[10px]"
+                  >
+                    Cek jawaban
+                  </button>
+                  <div class="ml-[50px] mt-4 jadiBenar hidden">
+                    jawaban yang benar: <span class="text-orange-400 font-semibold">C</span>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-6" />
+              <div
+                class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8"
+                id="akhirSudutRotasi"
+              >
+                <img
+                  src="../../img/Grafis/bengis.png"
+                  alt=""
+                  class="w-32 scale-x-[-1] -ml-6 md:w-32 md:mr-2"
+                />
+                <div class="ml-">
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Dengan kasus kasus di atas, Ali harap kamu paham dengan konsep skala dilatasi
+                    yah.
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] mt-2 px-4 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Selanjutnya Ali ingin berikan contoh kasus dilatasi pada ruas garis dan bangun
+                    datar.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt- md:-mt-4 md:ml-28 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div
+                  class="font-semibold drop-shadow-none text-orange-400 text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 4, ruas garis AB didilatasikan terhadap titik C dengan skala 2.</div>
+                </div>
+
+                <div class="flex gap-2 item mt-3">
+                  <div class="bg-blue-50 p-3 w-fit ml-8">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+
+                      <div class="w-[2px] h-[50px] bg-green-400 absolute top-[71px] left-[94px]">
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -top-[2px] -left-[2px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">A</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -bottom-[2px] -left-[2px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">B</div>
+                        </div>
+                      </div>
+
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-red-400 text-red-400 absolute top-[69px] left-[44px]"
+                      >
+                        <div class="absolute -top-[18px] left-[0px]">P</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold">
+                    Tarik garis hubung dari pusat dilatasi ke titik A dan titik B
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-2">
+                  <div class="relative cursor-pointer playTitikA ml-16 translate-x-1">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="hidden zoomIn">
+                    <div class="bg-blue-50 p-3 w-fit ml-16">
+                      <div class="relative">
+                        <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                        <div
+                          class="w-[2px] h-[50px] bg-green-400 absolute top-[71px] z-20 left-[94px]"
+                        >
+                          <div
+                            class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -top-[2px] -left-[2px]"
+                          >
+                            <div class="absolute -top-[18px] -left-[1px]">A</div>
+                          </div>
+                          <div
+                            class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -bottom-[2px] -left-[2px]"
+                          >
+                            <div class="absolute -bottom-[20px] -left-[1px]">B</div>
+                          </div>
+                        </div>
+
+                        <div
+                          class="w-[6px] h-[6px] rounded-full z-20 bg-red-400 text-red-400 absolute top-[69px] left-[44px]"
+                        >
+                          <div class="absolute -top-[18px] left-[0px]">P</div>
+                        </div>
+                        <div
+                          class="w-[0px] hubung50px border border-dashed border-orange-300 absolute top-[71px] left-[46px]"
+                        ></div>
+                        <div
+                          class="w-[0px] hubung70px origin-left rotate-45 border border-dashed border-orange-300 absolute top-[71px] left-[46px]"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold -translate-y-1">
+                    Karena skala 2, kedua garis hubung akan memanjang 2 kali lipat.
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-2">
+                  <div class="relative cursor-pointer playTitikA ml-16 translate-x-1">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="hidden zoomIn">
+                    <div class="bg-blue-50 p-3 w-fit ml-16">
+                      <div class="relative">
+                        <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                        <div
+                          class="w-[2px] h-[50px] bg-gray-300 absolute top-[71px] z-20 left-[94px]"
+                        >
+                          <div
+                            class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -top-[2px] -left-[2px]"
+                          >
+                            <div class="absolute -top-[18px] -left-[1px]">A</div>
+                          </div>
+                          <div
+                            class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[2px] -left-[2px]"
+                          >
+                            <div class="absolute -bottom-[20px] -left-[1px]">B</div>
+                          </div>
+                        </div>
+
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-red-400 text-red-400 absolute top-[69px] left-[44px]"
+                        >
+                          <div class="absolute -top-[18px] left-[0px]">P</div>
+                        </div>
+                        <div
+                          class="w-[50px] hubung100px border border-dashed border-orange-300 absolute top-[71px] left-[46px]"
+                        >
+                          <div
+                            class="w-[6px] h-[6px] rounded-full opacity-0 zoomIn3 bg-green-400 text-green-400 absolute -top-[3px] -right-[2px]"
+                          >
+                            <div class="absolute -top-[18px] -left-[1px]">A'</div>
+                          </div>
+                        </div>
+                        <div
+                          class="w-[70px] hubung150px origin-left rotate-45 border border-dashed border-orange-300 absolute top-[71px] left-[46px]"
+                        ></div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 opacity-0 zoomIn3 text-green-400 absolute bottom-[20px] right-[46px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">B'</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold -mt-1">
+                    Hubungkan titik A’ dan titik B’ untuk mendapatkan hasil dilatasi garis AB atau
+                    garis A’B’.
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-2">
+                  <div class="relative cursor-pointer playTitikA ml-16 translate-x-1">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="hidden zoomIn">
+                    <div class="bg-blue-50 p-3 w-fit ml-16">
+                      <div class="relative">
+                        <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                        <div
+                          class="w-[2px] h-[50px] bg-green-400 absolute top-[71px] z-20 left-[94px]"
+                        >
+                          <div
+                            class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -top-[2px] -left-[2px]"
+                          >
+                            <div class="absolute -top-[18px] -left-[1px]">A</div>
+                          </div>
+                          <div
+                            class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -bottom-[2px] -left-[2px]"
+                          >
+                            <div class="absolute -bottom-[20px] -left-[1px]">B</div>
+                          </div>
+                        </div>
+                        <div
+                          class="w-[2px] h-[0px] hubung100px2 bg-green-400 absolute top-[71px] z-20 left-[142px]"
+                        >
+                          <div
+                            class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -top-[2px] -left-[2px]"
+                          >
+                            <div class="absolute -top-[18px] -left-[1px]">A'</div>
+                          </div>
+                        </div>
+
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-red-400 text-red-400 absolute top-[69px] left-[44px]"
+                        >
+                          <div class="absolute -top-[18px] left-[0px]">P</div>
+                        </div>
+                        <div
+                          class="w-[100px] border border-dashed border-orange-300 absolute top-[71px] left-[46px]"
+                        ></div>
+                        <div
+                          class="w-[140px] origin-left rotate-45 border border-dashed border-orange-300 absolute top-[71px] left-[46px]"
+                        ></div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute bottom-[20px] right-[46px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">B'</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold">
+                    Diperoleh garis A'B' yang ukuran/panjangnya dua kali lipat garis AB.
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-2">
+                  <div class="relative cursor-pointer playTitikA ml-16 translate-x-1">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="hidden zoomIn">
+                    <div class="bg-blue-50 p-3 w-fit ml-16">
+                      <div class="relative">
+                        <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                        <div
+                          class="w-[2px] h-[50px] bg-gray-300 absolute top-[71px] z-20 left-[94px]"
+                        >
+                          <div
+                            class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -top-[2px] -left-[2px]"
+                          >
+                            <div class="absolute -top-[18px] -left-[1px]">A</div>
+                          </div>
+                          <div
+                            class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[2px] -left-[2px]"
+                          >
+                            <div class="absolute -bottom-[20px] -left-[1px]">B</div>
+                          </div>
+                        </div>
+                        <div
+                          class="w-[2px] h-[50px] dilateAB bg-green-400 absolute top-[71px] z-20 left-[94px]"
+                        >
+                          <div
+                            class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -top-[2px] -left-[2px]"
+                          >
+                            <div class="absolute -top-[18px] -left-[1px]">A</div>
+                            <div class="absolute -top-[18px] -left-[1px] opacity-0 zoomIn3">A'</div>
+                          </div>
+                          <div
+                            class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -bottom-[2px] -left-[2px]"
+                          >
+                            <div class="absolute -bottom-[20px] -left-[1px]">B</div>
+                            <div class="absolute -bottom-[20px] -left-[1px] opacity-0 zoomIn3">
+                              B'
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          class="w-[6px] h-[6px] rounded-full z-20 bg-red-400 text-red-400 absolute top-[69px] left-[44px]"
+                        >
+                          <div class="absolute -top-[18px] left-[0px]">P</div>
+                        </div>
+                        <div
+                          class="w-[0px] hubung100px border border-dashed border-orange-300 absolute top-[71px] left-[46px]"
+                        ></div>
+                        <div
+                          class="w-[0px] hubung150px origin-left rotate-45 border border-dashed border-orange-300 absolute top-[71px] left-[46px]"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-12 md:ml-28 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md">
+                <div
+                  class="font-semibold drop-shadow-none text-orange-400 text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 5, persegi ABCD didilatasikan terhadap titik E dengan skala 0.5.</div>
+                </div>
+
+                <div class="flex gap-2 item mt-3">
+                  <div class="bg-blue-50 p-3 w-fit ml-8">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+
+                      <div
+                        class="w-[100px] h-[100px] border-2 border-green-400 absolute top-[71px] left-[45px]"
+                      >
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -top-[4px] -left-[4px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">A</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -bottom-[4px] -left-[4px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">C</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -top-[4px] -right-[4px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">B</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -bottom-[4px] -right-[4px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">D</div>
+                        </div>
+                      </div>
+
+                      <div
+                        class="w-[6px] h-[6px] rounded-full bg-red-400 text-red-400 absolute bottom-[69px] left-[92px]"
+                      >
+                        <div class="absolute -top-[18px] left-[0px]">E</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-10 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold">
+                    Tarik garis hubung dari pusat dilatasi ke titik A, B, C, dan D.
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-2">
+                  <div class="relative cursor-pointer playTitikA ml-16 translate-x-1">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 hidden zoomIn p-3 w-fit ml-16">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                      <div
+                        class="w-[100px] z-20 h-[100px] border-2 border-green-400 absolute top-[71px] left-[45px]"
+                      >
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -top-[4px] -left-[4px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">A</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -bottom-[4px] -left-[4px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">C</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -top-[4px] -right-[4px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">B</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-green-400 text-green-400 absolute -bottom-[4px] -right-[4px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">D</div>
+                        </div>
+                      </div>
+
+                      <div
+                        class="w-[6px] h-[6px] rounded-full z-20 bg-red-400 text-red-400 absolute bottom-[69px] left-[92px]"
+                      >
+                        <div class="absolute -top-[18px] left-[0px]">E</div>
+                      </div>
+                      <div
+                        class="w-[0px] origin-left hubung70px rotate-45 border border-dashed border-orange-300 absolute bottom-[71px] left-[93px]"
+                      ></div>
+                      <div
+                        class="w-[0px] origin-left hubung70px -rotate-45 border border-dashed border-orange-300 absolute bottom-[71px] left-[96px]"
+                      ></div>
+                      <div
+                        class="w-[0px] origin-left hubung70px rotate-[135deg] border border-dashed border-orange-300 absolute bottom-[70px] left-[96px]"
+                      ></div>
+                      <div
+                        class="w-[0px] origin-left hubung70px -rotate-[135deg] border border-dashed border-orange-300 absolute bottom-[71px] left-[93px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold -translate-y-1">
+                    Karena skala 0.5, garis hubung akan memendek 0.5 kali lipat.
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-2">
+                  <div class="relative cursor-pointer playTitikA ml-16 translate-x-1">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit hidden zoomIn ml-16">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                      <div
+                        class="w-[100px] z-20 h-[100px] border-2 border-gray-300 absolute top-[71px] left-[45px]"
+                      >
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -top-[4px] -left-[4px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">A</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[4px] -left-[4px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">C</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -top-[4px] -right-[4px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">B</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[4px] -right-[4px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">D</div>
+                        </div>
+                      </div>
+                      <div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full opacity-0 zoomIn3 z-20 bg-green-400 text-green-400 absolute top-[92px] left-[66px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">A'</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full opacity-0 zoomIn3 z-20 bg-green-400 text-green-400 absolute top-[92px] right-[68px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">B'</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full opacity-0 zoomIn3 z-20 bg-green-400 text-green-400 absolute bottom-[44px] left-[66px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">C'</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full opacity-0 zoomIn3 z-20 bg-green-400 text-green-400 absolute bottom-[44px] right-[68px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">D'</div>
+                        </div>
+                      </div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full z-20 bg-red-400 text-red-400 absolute bottom-[69px] left-[92px]"
+                      >
+                        <div class="absolute -top-[18px] left-[0px]">E</div>
+                      </div>
+                      <div
+                        class="w-[70px] hubung35px origin-left rotate-45 border border-dashed border-orange-300 absolute bottom-[71px] left-[93px]"
+                      ></div>
+                      <div
+                        class="w-[70px] hubung35px origin-left -rotate-45 border border-dashed border-orange-300 absolute bottom-[71px] left-[96px]"
+                      ></div>
+                      <div
+                        class="w-[70px] hubung35px origin-left rotate-[135deg] border border-dashed border-orange-300 absolute bottom-[70px] left-[96px]"
+                      ></div>
+                      <div
+                        class="w-[70px] hubung35px origin-left -rotate-[135deg] border border-dashed border-orange-300 absolute bottom-[71px] left-[93px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold -mt-1">
+                    Hubungkan titik A’, B’, C', dan D' untuk mendapatkan hasil dilatasi persegi ABCD
+                    atau garis A’B’C'D'
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-2">
+                  <div class="relative cursor-pointer playTitikA ml-16 translate-x-1">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit ml-16 hidden zoomIn">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                      <div
+                        class="w-[100px] z-20 h-[100px] border-2 border-gray-300 absolute top-[71px] left-[45px]"
+                      >
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -top-[4px] -left-[4px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">A</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[4px] -left-[4px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">C</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -top-[4px] -right-[4px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">B</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[4px] -right-[4px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">D</div>
+                        </div>
+                      </div>
+                      <div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full z-20 bg-green-400 text-green-400 absolute top-[92px] left-[66px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">A'</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full z-20 bg-green-400 text-green-400 absolute top-[92px] right-[68px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">B'</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full z-20 bg-green-400 text-green-400 absolute bottom-[44px] left-[66px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">C'</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full z-20 bg-green-400 text-green-400 absolute bottom-[44px] right-[68px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">D'</div>
+                        </div>
+                      </div>
+                      <div
+                        class="bg-green-400 w-[0px] hubung50px h-[2px] absolute top-[95px] left-[68px]"
+                      ></div>
+                      <div
+                        class="bg-green-400 w-[0px] hubung50px h-[2px] origin-left rotate-90 absolute top-[95px] left-[69px]"
+                      ></div>
+                      <div
+                        class="bg-green-400 w-[0px] hubung50px h-[2px] origin-right -rotate-90 absolute top-[95px] right-[71px]"
+                      ></div>
+                      <div
+                        class="bg-green-400 w-[0px] hubung50px h-[2px] absolute bottom-[46px] left-[68px]"
+                      ></div>
+                      <div
+                        class="w-[6px] h-[6px] rounded-full z-20 bg-red-400 text-red-400 absolute bottom-[69px] left-[92px]"
+                      >
+                        <div class="absolute -top-[18px] left-[0px]">E</div>
+                      </div>
+                      <div
+                        class="w-[35px] origin-left rotate-45 border border-dashed border-orange-300 absolute bottom-[71px] left-[93px]"
+                      ></div>
+                      <div
+                        class="w-[35px] origin-left -rotate-45 border border-dashed border-orange-300 absolute bottom-[71px] left-[96px]"
+                      ></div>
+                      <div
+                        class="w-[35px] origin-left rotate-[135deg] border border-dashed border-orange-300 absolute bottom-[70px] left-[96px]"
+                      ></div>
+                      <div
+                        class="w-[35px] origin-left -rotate-[135deg] border border-dashed border-orange-300 absolute bottom-[71px] left-[93px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center mt-8 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8" alt="" />
+                  <div class="font-semibold">
+                    Diperoleh persegi A'B'C'D' yang ukuran/panjangnya setengah kali lipat persegi
+                    ABCD
+                  </div>
+                </div>
+                <div class="flex gap-2 item mt-2">
+                  <div class="relative cursor-pointer playTitikA ml-16 translate-x-1">
+                    <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                    <img
+                      src="../../img/klik.png"
+                      class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                      alt=""
+                    />
+                  </div>
+                  <div class="bg-blue-50 p-3 w-fit ml-16 hidden zoomIn">
+                    <div class="relative">
+                      <img src="../../img/Grid8.jpeg" class="w-48 48" alt="" />
+                      <div
+                        class="w-[100px] z-20 h-[100px] border-2 border-gray-300 absolute top-[71px] left-[45px]"
+                      >
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -top-[4px] -left-[4px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">A</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[4px] -left-[4px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">C</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -top-[4px] -right-[4px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">B</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[4px] -right-[4px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">D</div>
+                        </div>
+                      </div>
+                      <div
+                        class="w-[100px] z-20 h-[100px] border-[3px] border-green-400 dilateABCD2 absolute top-[71px] left-[45px]"
+                      >
+                        <div
+                          class="w-[6px] h-[6px] rounded-full besar2 bg-green-400 text-green-400 absolute -top-[4px] -left-[4px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">A</div>
+                          <div class="absolute -top-[18px] -left-[1px] opacity-0 zoomIn3">A'</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full besar2 bg-green-400 text-green-400 absolute -bottom-[4px] -left-[4px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">C</div>
+                          <div class="absolute -bottom-[20px] -left-[1px] opacity-0 zoomIn3">
+                            C'
+                          </div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full besar2 bg-green-400 text-green-400 absolute -top-[4px] -right-[4px]"
+                        >
+                          <div class="absolute -top-[18px] -left-[1px]">B</div>
+                          <div class="absolute -top-[18px] -left-[1px] opacity-0 zoomIn3">B'</div>
+                        </div>
+                        <div
+                          class="w-[6px] h-[6px] rounded-full besar2 bg-green-400 text-green-400 absolute -bottom-[4px] -right-[4px]"
+                        >
+                          <div class="absolute -bottom-[20px] -left-[1px]">D</div>
+                          <div class="absolute -bottom-[20px] -left-[1px] opacity-0 zoomIn3">
+                            D'
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        class="w-[6px] h-[6px] rounded-full z-20 bg-red-400 text-red-400 absolute bottom-[69px] left-[92px]"
+                      >
+                        <div class="absolute -top-[18px] left-[0px]">E</div>
+                      </div>
+                      <div
+                        class="w-[70px] hubung35px origin-left rotate-45 border border-dashed border-orange-300 absolute bottom-[71px] left-[93px]"
+                      ></div>
+                      <div
+                        class="w-[70px] hubung35px origin-left -rotate-45 border border-dashed border-orange-300 absolute bottom-[71px] left-[96px]"
+                      ></div>
+                      <div
+                        class="w-[70px] hubung35px origin-left rotate-[135deg] border border-dashed border-orange-300 absolute bottom-[70px] left-[96px]"
+                      ></div>
+                      <div
+                        class="w-[70px] hubung35px origin-left -rotate-[135deg] border border-dashed border-orange-300 absolute bottom-[71px] left-[93px]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-16 md:ml-28 border-l-2 ml-6 border-orange-300 pb-8 drop-shadow-sm">
+                <div
+                  class="font-semibold drop-shadow-none text-orange-400 text-[11px] ml-4 flex gap-2"
+                >
+                  <div>//</div>
+                  <div>Kasus 6, segitiga ABC didilatasikan terhadap titik A dengan skala 3</div>
+                </div>
+                <div class="flex items-start mt-4 gap-2">
+                  <img src="../../img/Point.png" class="w-7 ml-8 md:mt-6" alt="" />
+                  <div class="font-semibold text-primary">Manakah hasil dilatasi yang sesuai?</div>
+                </div>
+                <div class="question-container3">
+                  <div class="max-w-[350px] ml-12 mt-4">
+                    <div class="relative">
+                      <div class="absolute cursor-pointer left-14 top-3 playPilgand">
+                        <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                        <img
+                          src="../../img/klik.png"
+                          class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        class="flex items-center gap-3 pl-2 py-4 border-t border-b cursor-pointer pilihan3 benar3"
+                      >
+                        <div class="text-orange-300 font-semibold">A.</div>
+                        <div class="flex gap-2 mt-3 hidden zoomIn">
+                          <div class="bg-blue-50 p-2 relative">
+                            <img src="../../img/Grid8.jpeg" class="w-44" alt="" />
+                            <div class="absolute top-[29px] left-[74px]">
+                              <svg
+                                width="45"
+                                height="45"
+                                viewBox="0 0 45 45"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M22.5 0.5L43.9998 44.5"
+                                  stroke="#d1d5db"
+                                  stroke-width="0.5"
+                                />
+                                <path d="M0 44.5H44.5" stroke="#d1d5db" stroke-width="0.5" />
+                                <path
+                                  d="M22.5 0.5L0.499651 44.4997"
+                                  stroke="#d1d5db"
+                                  stroke-width="0.5"
+                                />
+                              </svg>
+
+                              <div
+                                class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -top-[3px] left-[19px]"
+                              >
+                                <div class="absolute -left-[1px] -top-[15px]">A</div>
+                              </div>
+                              <div
+                                class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[2px] -left-[3px]"
+                              >
+                                <div class="absolute -left-[11px] -top-[8px]">B</div>
+                              </div>
+                              <div
+                                class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[2px] -right-[3px]"
+                              >
+                                <div class="absolute -right-[12px] -top-[8px]">C</div>
+                              </div>
+                            </div>
+                            <div class="absolute top-[29px] left-[74px] dilateABC2">
+                              <svg
+                                width="45"
+                                height="45"
+                                viewBox="0 0 45 45"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M22.5 0.5L43.9998 44.5"
+                                  stroke="#55E255"
+                                  stroke-width="0.5"
+                                />
+                                <path d="M0 44.5H44.5" stroke="#55E255" stroke-width="0.5" />
+                                <path
+                                  d="M22.5 0.5L0.499651 44.4997"
+                                  stroke="#55E255"
+                                  stroke-width="0.5"
+                                />
+                              </svg>
+
+                              <div
+                                class="w-[6px] h-[6px] rounded-full labekdilateABC2 bg-green-400 text-green-400 absolute -top-[3px] left-[19px]"
+                              >
+                                <div class="absolute -left-[1px] -top-[15px]">A</div>
+                                <div class="absolute -left-[1px] -top-[15px] opacity-0 zoomIn3">
+                                  A
+                                </div>
+                              </div>
+                              <div
+                                class="w-[6px] h-[6px] rounded-full labekdilateABC2 bg-green-400 text-green-400 absolute -bottom-[2px] -left-[3px]"
+                              >
+                                <div class="absolute -left-[11px] -top-[8px]">B</div>
+                                <div class="absolute -left-[11px] -top-[8px] opacity-0 zoomIn3">
+                                  B'
+                                </div>
+                              </div>
+                              <div
+                                class="w-[6px] h-[6px] rounded-full labekdilateABC2 bg-green-400 text-green-400 absolute -bottom-[2px] -right-[3px]"
+                              >
+                                <div class="absolute -right-[12px] -top-[8px]">C</div>
+                                <div class="absolute -right-[13px] -top-[8px] opacity-0 zoomIn3">
+                                  C'
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="relative">
+                      <div class="absolute cursor-pointer left-14 top-3 playPilgand">
+                        <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                        <img
+                          src="../../img/klik.png"
+                          class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        class="flex items-center gap-3 pl-2 py-4 border-b border-t cursor-pointer pilihan3"
+                      >
+                        <div class="text-orange-300 font-semibold">B.</div>
+                        <div class="flex gap-2 hidden zoomIn mt-3">
+                          <div class="bg-blue-50 p-2 relative">
+                            <img src="../../img/Grid8.jpeg" class="w-44" alt="" />
+                            <div class="absolute top-[29px] left-[74px]">
+                              <svg
+                                width="45"
+                                height="45"
+                                viewBox="0 0 45 45"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M22.5 0.5L43.9998 44.5"
+                                  stroke="#d1d5db"
+                                  stroke-width="0.5"
+                                />
+                                <path d="M0 44.5H44.5" stroke="#d1d5db" stroke-width="0.5" />
+                                <path
+                                  d="M22.5 0.5L0.499651 44.4997"
+                                  stroke="#d1d5db"
+                                  stroke-width="0.5"
+                                />
+                              </svg>
+
+                              <div
+                                class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -top-[3px] left-[19px]"
+                              >
+                                <div class="absolute -left-[1px] -top-[15px]">A</div>
+                              </div>
+                              <div
+                                class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[2px] -left-[3px]"
+                              >
+                                <div class="absolute -left-[11px] -top-[8px]">B</div>
+                              </div>
+                              <div
+                                class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[2px] -right-[3px]"
+                              >
+                                <div class="absolute -right-[12px] -top-[8px]">C</div>
+                              </div>
+                            </div>
+                            <div class="absolute top-[29px] left-[74px] dilateABC3">
+                              <svg
+                                width="45"
+                                height="45"
+                                viewBox="0 0 45 45"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M22.5 0.5L43.9998 44.5"
+                                  stroke="#55E255"
+                                  stroke-width="0.5"
+                                />
+                                <path d="M0 44.5H44.5" stroke="#55E255" stroke-width="0.5" />
+                                <path
+                                  d="M22.5 0.5L0.499651 44.4997"
+                                  stroke="#55E255"
+                                  stroke-width="0.5"
+                                />
+                              </svg>
+
+                              <div
+                                class="w-[6px] h-[6px] rounded-full labekdilateABC3 bg-green-400 text-green-400 absolute -top-[3px] left-[19px]"
+                              >
+                                <div class="absolute -left-[1px] -top-[15px]">A</div>
+                                <div class="absolute -left-[1px] -top-[15px] opacity-0 zoomIn3">
+                                  A
+                                </div>
+                              </div>
+                              <div
+                                class="w-[6px] h-[6px] rounded-full labekdilateABC3 bg-green-400 text-green-400 absolute -bottom-[2px] -left-[3px]"
+                              >
+                                <div class="absolute -left-[11px] -top-[8px]">B</div>
+                                <div class="absolute -left-[11px] -top-[8px] opacity-0 zoomIn3">
+                                  B'
+                                </div>
+                              </div>
+                              <div
+                                class="w-[6px] h-[6px] rounded-full labekdilateABC3 bg-green-400 text-green-400 absolute -bottom-[2px] -right-[3px]"
+                              >
+                                <div class="absolute -right-[12px] -top-[8px]">C</div>
+                                <div class="absolute -right-[13px] -top-[8px] opacity-0 zoomIn3">
+                                  C'
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="relative">
+                      <div class="absolute cursor-pointer left-14 top-3 playPilgand">
+                        <img src="../../img/play.png" class="w-7 h-7" alt="" />
+                        <img
+                          src="../../img/klik.png"
+                          class="w-7 scale-x-[-1] absolute top-3 -left-2 animate-pulse"
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        class="flex items-center gap-3 pl-2 py-4 border-b border-t cursor-pointer pilihan3"
+                      >
+                        <div class="text-orange-300 font-semibold">C.</div>
+                        <div class="flex gap-2 zoomIn hidden mt-3">
+                          <div class="bg-blue-50 p-2 relative">
+                            <img src="../../img/Grid8.jpeg" class="w-44" alt="" />
+                            <div class="absolute top-[29px] left-[74px]">
+                              <svg
+                                width="45"
+                                height="45"
+                                viewBox="0 0 45 45"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M22.5 0.5L43.9998 44.5"
+                                  stroke="#d1d5db"
+                                  stroke-width="0.5"
+                                />
+                                <path d="M0 44.5H44.5" stroke="#d1d5db" stroke-width="0.5" />
+                                <path
+                                  d="M22.5 0.5L0.499651 44.4997"
+                                  stroke="#d1d5db"
+                                  stroke-width="0.5"
+                                />
+                              </svg>
+
+                              <div
+                                class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -top-[3px] left-[19px]"
+                              >
+                                <div class="absolute -left-[1px] -top-[15px]">A</div>
+                              </div>
+                              <div
+                                class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[2px] -left-[3px]"
+                              >
+                                <div class="absolute -left-[11px] -top-[8px]">B</div>
+                              </div>
+                              <div
+                                class="w-[6px] h-[6px] rounded-full bg-gray-300 text-gray-300 absolute -bottom-[2px] -right-[3px]"
+                              >
+                                <div class="absolute -right-[12px] -top-[8px]">C</div>
+                              </div>
+                            </div>
+                            <div class="absolute top-[29px] left-[74px] dilateABC4">
+                              <svg
+                                width="45"
+                                height="45"
+                                viewBox="0 0 45 45"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M22.5 0.5L43.9998 44.5"
+                                  stroke="#55E255"
+                                  stroke-width="0.5"
+                                />
+                                <path d="M0 44.5H44.5" stroke="#55E255" stroke-width="0.5" />
+                                <path
+                                  d="M22.5 0.5L0.499651 44.4997"
+                                  stroke="#55E255"
+                                  stroke-width="0.5"
+                                />
+                              </svg>
+
+                              <div
+                                class="w-[6px] h-[6px] rounded-full labekdilateABC3 bg-green-400 text-green-400 absolute -top-[3px] left-[19px]"
+                              >
+                                <div class="absolute -left-[1px] -top-[15px]">A</div>
+                                <div class="absolute -left-[1px] -top-[15px] opacity-0 zoomIn3">
+                                  A
+                                </div>
+                              </div>
+                              <div
+                                class="w-[6px] h-[6px] rounded-full labekdilateABC3 bg-green-400 text-green-400 absolute -bottom-[2px] -left-[3px]"
+                              >
+                                <div class="absolute -left-[11px] -top-[8px]">B</div>
+                                <div class="absolute -left-[11px] -top-[8px] opacity-0 zoomIn3">
+                                  B'
+                                </div>
+                              </div>
+                              <div
+                                class="w-[6px] h-[6px] rounded-full labekdilateABC3 bg-green-400 text-green-400 absolute -bottom-[2px] -right-[3px]"
+                              >
+                                <div class="absolute -right-[12px] -top-[8px]">C</div>
+                                <div class="absolute -right-[13px] -top-[8px] opacity-0 zoomIn3">
+                                  C'
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    disabled
+                    class="px-3 py-1 cekJawaban3 bg-violet-400 ml-[50px] mt-4 text-white rounded-md text-[10px]"
+                  >
+                    Cek jawaban
+                  </button>
+                  <div class="ml-[50px] mt-4 jadiBenar3 hidden">
+                    jawaban yang benar: <span class="text-orange-400 font-semibold">B</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Akhir Skala Dilatasi -->
+
+            <!-- rotasi di kordinar kartesius -->
+            <div
+              class="mt-16 relative hidden zoomIn border border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
+            >
+              <div
+                class="absolute px-5 py-2 bg-[#FFC09F] -top-4 rounded-md tracking-wide text-white"
+              >
+                Rotasi di kordinat kartesius
+              </div>
+
+              <div class="flex items-center drop-shadow-md mt-12 md:font-semibold">
+                <img src="../../img/Grafis/Unyu.png" alt="" class="w-[115px] -ml-4" />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Nah, setelah kamu mengetahui cara melakukan dilatasi maka saatnya kita melakukan
+                    dilatasi di kordinat kartesius!
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-12 md:mt-10 md:ml-28 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>
+                    Pertanyaan 1, Titik <span class="text-green-400">A ( 2 , 2 ) </span>akan
+                    didilatasikan terhadap titik
+                    <span class="text-green-400">O ( 0 , 0 )</span> dengan skala 0.5.
+                  </div>
+                </div>
+
+                <div class="flex items-start mt-4 ml-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 h-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Tentukan kordinat titik A'
+
+                    <span class="text-orange-400 drop-shadow-none"
+                      >(Klik pada kordinat untuk memunculkan titik lalu cek jawabanmu)</span
+                    >
+                  </div>
+                </div>
+                <div class="bg-blue-50 p-3 mt-4 ml-[70px] w-fit">
+                  <div class="w-[200px] h-[200px] relative bg-[url('../img/Grapik3.jpg')] bg-cover">
+                    <canvas id="canvas3" width="200" height="200"></canvas>
+                    <div id="notification3"></div>
+                    <div
+                      class="absolute bg-green-400 w-[6px] h-[6px] rounded-full top-[47px] left-[148px]"
+                    >
+                      <div class="absolute text-green-400 left-1 -top-[15px]">A</div>
+                    </div>
+                    <div
+                      class="absolute bg-green-400 w-[6px] h-[6px] rounded-full left-[97px] top-[97px]"
+                    >
+                      <div class="absolute text-green-400 left-1 -top-[17px]">O</div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  id="Check5"
+                  class="px-3 py-1 bg-violet-400 translate-x-1 mt-4 ml-[70px] text-white rounded-md text-[9px]"
+                >
+                  Cek jawaban
+                </button>
+
+                <p class="ml-3 font-semibold text-hijau hidden" id="benar5">Benar 🗸</p>
+                <p class="ml-3 font-semibold text-red-400 hidden" id="salah5">Salah X</p>
+              </div>
+
+              <div
+                class="mt-12 md:mt-10 md:ml-28 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>
+                    Pertanyaan 2, Ruas garis BC didilatasikan dengan skala 2 dan hasil rotasinya
+                    atau ruas garis B'C' seperti di bawah ini.
+                  </div>
+                </div>
+                <div class="bg-blue-50 mt-4 p-3 ml-8 w-fit">
+                  <div class="relative">
+                    <img src="../../img/Grapik2.jpg" class="w-52 h-52" alt="" />
+                    <div class="absolute top-[75px] right-[28px]">
+                      <svg
+                        width="55"
+                        height="53"
+                        viewBox="0 0 55 53"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M4 4L52 52.5" stroke="transparent" stroke-dasharray="2 2" />
+                        <path d="M52 4V52.5" stroke="transparent" stroke-dasharray="2 2" />
+                        <circle
+                          cx="3.5"
+                          cy="3.5"
+                          r="3.5"
+                          transform="rotate(-90 3.5 3.5)"
+                          fill="#d1d5db"
+                        />
+                        <circle
+                          cx="51.5"
+                          cy="3.5"
+                          r="3.5"
+                          transform="rotate(-90 51.5 3.5)"
+                          fill="#d1d5db"
+                        />
+                        <path d="M3.5 4H51.5" stroke="#d1d5db " />
+                      </svg>
+                      <div class="text-gray-300 absolute -left-[12px] -top-[7px]">B</div>
+                      <div class="text-gray-300 absolute -right-[12px] -top-[7px]">C</div>
+                    </div>
+                    <div class="absolute top-[75px] right-[28px] dilateBC2">
+                      <svg
+                        width="55"
+                        height="53"
+                        viewBox="0 0 55 53"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M4 4L52 52.5" stroke="transparent" stroke-dasharray="2 2" />
+                        <path d="M52 4V52.5" stroke="transparent" stroke-dasharray="2 2" />
+
+                        <path d="M3.5 4H51.5" stroke="#55E255" />
+                      </svg>
+                      <div
+                        class="h-[6px] w-[6px] absolute bg-green-400 rounded-full top-[1px] -left-[1px] labekdilateABC3"
+                      ></div>
+                      <div
+                        class="h-[6px] w-[6px] absolute bg-green-400 rounded-full top-[1px] -right-[1px] labekdilateABC3"
+                      ></div>
+                      <div class="text-green-400 absolute -left-[12px] -top-[7px] wow1">B</div>
+                      <div class="text-green-400 absolute -right-[12px] -top-[7px] wow2">C</div>
+                    </div>
+                    <div class="text-green-400 absolute left-[90px] top-[20px] zoomIn3 opacity-0">
+                      B'
+                    </div>
+                    <div class="text-green-400 absolute -right-[6px] top-[20px] zoomIn3 opacity-0">
+                      C'
+                    </div>
+                    <div
+                      class="absolute bg-red-300 w-[6px] h-[6px] rounded-full left-[149px] bottom-[79px]"
+                    >
+                      <div class="absolute text-red-400 left-1 -top-[17px]">R</div>
+                    </div>
+                    <div
+                      class="absolute bg-red-300 w-[6px] h-[6px] rounded-full left-[149px] bottom-[102px]"
+                    >
+                      <div class="absolute text-red-400 left-1 -top-[17px]">Q</div>
+                    </div>
+                    <div
+                      class="absolute bg-red-300 w-[6px] h-[6px] rounded-full left-[149px] bottom-[151px]"
+                    >
+                      <div class="absolute text-red-400 left-1 -top-[17px]">S</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-start mt-8 ml-6 gap-2">
+                  <img src="../../img/Point.png" class="w-7 h-7 ml-4" alt="" />
+                  <div class="font-semibold">
+                    Yang manakah titik yang sesuai menjadi pusat rotasi ruas garis CD?
+                  </div>
+                </div>
+
+                <div class="question-container">
+                  <div class="max-w-[350px] ml-12 mt-4 options">
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-t border-b cursor-pointer pilihan benar"
+                    >
+                      <div class="text-orange-300 font-semibold">A.</div>
+                      <div>titik R</div>
+                    </div>
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan"
+                    >
+                      <div class="text-orange-300 font-semibold">B.</div>
+                      <div>titik S</div>
+                    </div>
+                    <div
+                      class="flex items-center gap-3 px-5 py-2 border-b border-t cursor-pointer pilihan"
+                    >
+                      <div class="text-orange-300 font-semibold">C.</div>
+                      <div>titik Q</div>
+                    </div>
+                  </div>
+
+                  <button
+                    disabled
+                    class="px-3 py-1 cekJawaban bg-violet-400 ml-[50px] mt-4 text-white rounded-md text-[10px]"
+                  >
+                    Cek jawaban
+                  </button>
+                  <div class="ml-[50px] mt-4 jadiBenar hidden">
+                    jawaban yang benar: <span class="text-orange-400 font-semibold">A</span>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-12 md:mt-10 md:ml-28 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md"
+              >
+                <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
+                  <div>//</div>
+                  <div>
+                    Pertanyaan 3, Segitiga ABC dengan kordinat
+                    <span class="text-green-400">A ( -1 , 3 ) </span>,
+                    <span class="text-green-400">B ( -3 , 0 ) </span>,
+                    <span class="text-green-400">C ( 0 , 0 ) </span> diditalatasikan terhadap titik
+                    P dengan skala 2
+                  </div>
+                </div>
+                <div class="bg-blue-50 p-3 mt-4 ml-12 w-fit">
+                  <div
+                    id="content"
+                    class="w-[200px] h-[200px] relative bg-[url('../img/Grapik3.jpg')] bg-cover"
+                  >
+                    <canvas id="geometryCanvas6"></canvas>
+
+                    <div
+                      class="h-[6px] w-[6px] bg-red-400 absolute left-[24px] top-[24px] rounded-full -translate-y-[2px] -translate-x-[2px]"
+                    >
+                      <div class="absolute text-red-400 -top-3 -right-3 text-sm">P</div>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  id="Check6"
+                  class="px-3 py-1 bg-violet-400 translate-x-1 mt-4 ml-12 text-white rounded-md text-[9px]"
+                >
+                  Cek jawaban
+                </button>
+
+                <p class="ml-3 font-semibold text-hijau hidden" id="benar6">Benar 🗸</p>
+                <p class="ml-3 font-semibold text-red-400 hidden" id="salah6">Salah X</p>
+              </div>
+              <hr class="mt-6" />
+              <div
+                class="flex items-center drop-shadow-md mt-12 md:font-semibold"
+                id="akhirKordinatRotasi"
+              >
+                <img src="../../img/Grafis/boss.png" alt="" class="w-[100px]" />
+                <div class="ml-">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Kamu tau tidak bahwa kamu telah melewati semua materi jenis-jenis transformasi?
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 mt-2 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Dengan begitu, pertemuan kita telah berakhir. Sampai Jumpa!
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Akhir rotasi di kordinat kartesius -->
+          </div>
+          <!-- Footer -->
+          <nav
+            class="fixed font-poppins text-xs bg-opacity-70 text-white bottom-0 w-full md:w-4/5 border-t-2 bg-[#F9F7F3]"
+          >
+            <footer
+              class="container mx-auto flex flex-wrap py-5 px-5 items-center border-[#D1EBE8] md:px-10"
+            >
+              <div class="relative cursor-pointer hidden mx-auto" id="showaja">
+                <img
+                  src="../../img/klik.png"
+                  class="absolute w-8 h-8 scale-x-[-1] z-10 -top-2 -left-3 info cursor-pointer animate-pulse"
+                  alt=""
+                />
+                <a
+                  href="../beranda/daftarmateri.html"
+                  class="px-3 py-2 bg-[#F7A072] drop-shadow-md rounded-md"
+                  id="nextMax"
+                  >Materi Selesai</a
+                >
+                <img
+                  src="../../img/klik.png"
+                  class="absolute w-8 scale-x-[-1] -top-2 -left-3 animate-pulse"
+                  alt=""
+                />
+              </div>
+
+              <div class="relative cursor-pointer self-end ml-auto" id="showNextDivButton">
+                <img
+                  src="../../img/klik.png"
+                  class="absolute w-8 h-8 hidden scale-x-[-1] z-10 -top-2 -left-3 info cursor-pointer animate-pulse"
+                  alt=""
+                />
+                <a class="px-3 py-2 bg-[#F7A072] drop-shadow-md rounded-md" id="tombolNext"
+                  >Selanjutnya</a
+                >
+                <img
+                  src="../../img/klik.png"
+                  class="absolute w-8 scale-x-[-1] -top-2 hidden -left-3 animate-pulse"
+                  alt=""
+                  id="nextMateri"
+                />
+              </div>
+            </footer>
+          </nav>
+          <!-- Akhir Footer -->
+        </div>
+      </div>
+    </div>
+
+    <script src="dilaatsi.js"></script>
+  </body>
+</html>

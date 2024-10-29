@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial</title>
+    <link rel="stylesheet" href="../../src/output.css" />
+    <link rel="stylesheet" href="../../keyframes/transformasi/tutorial.css" />
+
+    <style>
+      @font-face {
+        font-family: 'Lato';
+        src: url('../../font/Lato-Regular.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: 'Poppins';
+        src: url('../../font/Poppins-Regular.ttf') format('truetype');
+      }
+    </style>
+  </head>
+  <body class="bg-[#F9F7F3]">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-opacity-85 drop-shadow-md bg-[#F9F7F3]" id="navbar">
+      <header
+        class="container bg-opacity-90 mx-auto flex flex-wrap py-3 px-5 items-center justify-between border-[#D1EBE8] md:justify-center max-w-5xl md:px-10"
+      >
+        <div class="relative">
+          <a
+            href="../beranda/daftarmateri.html"
+            class="flex font-bold justify-center mx-auto items-center text-primary \"
+            id="judul"
+          >
+            <img src="../../img/logo.png" class="w-10" alt="" />
+            <span
+              class="ml-3 text-base font-extrabold relative font-lato tracking-wide text-hijauMuda"
+              >Transformasi Geometri
+            </span>
+          </a>
+        </div>
+
+        <div class="flex items-center relative md:hidden">
+          <div
+            class="flex gap-1 mr-2 cursor-pointer w-8 h-8 justify-center rounded-md items-center hover:bg-gray-200 active:bg-gray-200"
+            id="dropdownButton"
+          >
+            <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+            <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+            <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+          </div>
+        </div>
+      </header>
+    </nav>
+
+    <nav
+      id="dropdownMenu"
+      class="fixed z-40 top-[68px] -translate-y-[500px] rounded-md font-medium right-7 flex transition duration-300 ease-in-out items-center px-5 flex-col w-[280px] bg-opacity-90 border-l-2 bg-[#EBFEEB] drop-shadow-md"
+    >
+      <div>
+        <div
+          class="w-full relative ml-6 mt-20 h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+            <input type="checkbox" class="hidden peer" checked disabled />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm font-medium ml-5">Pengertian Transformasi</div>
+          <div
+            class="px-4 py-2 bg-white absolute text-[14px] text-gray-400 font-bold -top-12 -left-8 rounded-md drop-shadow-md"
+          >
+            Sub Materi
+          </div>
+        </div>
+        <div
+          class="w-full relative ml-6 h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+            <input type="checkbox" class="hidden peer" disabled checked />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm leading-7 font-medium ml-5">
+            Pengertian Transformasi Geometri
+          </div>
+        </div>
+        <div
+          class="w-full relative ml-6 h-24 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <label class="inline-flex absolute drop-shadow-md -left-3 items-center">
+            <input type="checkbox" class="hidden peer" disabled checked />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm leading-7 font-medium ml-5">
+            Objek Sebelum dan Setelah Bertransformasi
+          </div>
+        </div>
+        <div
+          class="w-full relative pb-5 ml-6 h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <div class="absolute inset-y-1/2 -left-1 border-l-4 bg-[#EBFEEB] h-1/2"></div>
+          <label class="inline-flex drop-shadow-md absolute -left-3 items-center">
+            <input type="checkbox" class="hidden peer" disabled id="checkboxTransformasi2" />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm font-medium leading-7 ml-5">
+            Uji Pemahaman Transformasi
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
+
+    <!-- Notifikasi -->
+    <audio id="myAudio" class="hidden">
+      <source src="../../sound/salah.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="myAudio2" class="hidden">
+      <source src="../../sound/benar.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="myAudio3" class="hidden">
+      <source src="../../sound/warning-sound-6686.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="notifnih" class="hidden">
+      <source src="../../sound/notif.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <div
+      id="popupBenar"
+      class="fixed inset-0 bg-gray-100 z-50 bg-opacity-50 hidden flex items-center justify-center"
+    >
+      <div class="">
+        <img src="../../img/pencerminan/Benar.png" class="w-40" alt="" />
+      </div>
+    </div>
+    <div
+      id="popupSalah"
+      class="fixed inset-0 bg-gray-100 z-50 bg-opacity-50 hidden flex items-center justify-center"
+    >
+      <div class="">
+        <img src="../../img/pencerminan/ihi.png" class="w-40" alt="" />
+      </div>
+    </div>
+    <div
+      id="notif"
+      class="fixed inset-0 bg-gray-100 z-50 hidden bg-opacity-50 flex items-center justify-center"
+    >
+      <div class="w-[280px] bg-[#FDFD97] mt-16 mx-auto p-3 rounded-lg shadow-lg relative">
+        <div
+          class="bg-[#FBFDFE] border-[1px] text-[13px] py-6 px-[20px] leading-6 text-center shadow-inner text-primary font-bold rounded-lg"
+        >
+          Kamu harus menyelesaikan halaman ini dulu!
+        </div>
+        <img src="../../img/info.png" class="absolute w-[70px] -top-6 -left-6" alt="" />
+      </div>
+    </div>
+    <div class="fixed bottom-14 right-5 flex items-end z-50">
+      <!-- Character image -->
+
+      <!-- Chatbox container -->
+      <div
+        id="chatbox"
+        class="w-72 bg-gray-700 bg-opacity-70 hidden pindah rounded-lg p-4 text-white shadow-lg animate-fadeIn font-sans"
+      >
+        <!-- Chatbox header with title and close button -->
+        <div class="flex justify-between items-center mb-3">
+          <h2 class="text-lg font-bold">Tranfromasi, Selesai!</h2>
+          <button id="closeChatbox" class="text-white text-2xl font-bold focus:outline-none">
+            &times;
+          </button>
+        </div>
+
+        <!-- Chatbox body -->
+        <div class="text-sm leading-7">
+          Hebat, kamu telah menyelesaikan semua sub materi transformasi. Tekan
+          <span class="px-3 py-2 text-xs bg-[#F7A072] drop-shadow-md inline-block rounded-md">
+            >> Translasi
+          </span>
+          untuk pindah ke jenis transformasi yang pertama yakni Translasi.
+        </div>
+
+        <!-- Start button -->
+      </div>
+    </div>
+    <!-- Akhir Notifikasi -->
+
+    <!-- Isi -->
+    <div class="container w-full flex">
+      <!-- Indikator Pengetahuan -->
+      <div
+        id="Indikator"
+        class="w-1/5 pl-14 pr-10 fixed hidden md:block md:flex font-poppins bg-[#EBFEEB] pt-20 bg-opacity-80 flex justify-center items-center border-r-2 drop-shadow-md h-screen"
+      >
+        <div>
+          <div
+            class="w-full relative h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+          >
+            <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+              <input type="checkbox" class="hidden peer" checked disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm font-medium ml-5">Pengertian Transformasi</div>
+            <div
+              class="px-4 py-2 bg-white absolute text-[14px] text-gray-400 font-bold -top-10 -left-8 rounded-md drop-shadow-md"
+            >
+              Sub Materi
+            </div>
+          </div>
+          <div
+            class="w-full relative h-24 border-l-4 flex items-center drop-shadow-xl border-white"
+          >
+            <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+              <input type="checkbox" class="hidden peer" disabled checked />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm leading-7 font-medium ml-5">
+              Pengertian Transformasi Geometri
+            </div>
+          </div>
+          <div
+            class="w-full relative h-24 border-l-4 flex items-center drop-shadow-xl border-white"
+          >
+            <label class="inline-flex absolute drop-shadow-md -left-3 items-center">
+              <input type="checkbox" class="hidden peer" disabled checked />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm leading-7 font-medium ml-5">
+              Objek Sebelum dan Setelah Bertransformasi
+            </div>
+          </div>
+          <div
+            class="w-full relative h-24 border-l-4 inset-y-1/2 flex items-center drop-shadow-xl border-white"
+          >
+            <div class="absolute inset-y-1/2 -left-1 border-l-4 bg-[#EBFEEB] h-1/2"></div>
+            <label class="inline-flex drop-shadow-md absolute -left-3 items-center">
+              <input type="checkbox" class="hidden peer" id="checkboxTransformasi1" disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm font-medium leading-7 ml-5">
+              Uji Pemahaman Transformasi
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Akhir Indikator Pengetahuan -->
+
+      <!-- Materi -->
+      <div
+        class="md:w-4/5 w-full mat absolute right-0 font-poppins font-medium text-sm pb-40 text-secondary"
+      >
+        <div class="mt-28 px-6">
+          <div class="max-w-2xl mx-auto">
+            <div class="text-primary font-extrabold text-base flex gap-">
+              <img
+                src="../../img/tespemahaman.png"
+                class="w-14 h-14 md:-left-4 left-4 -top-16"
+                alt=""
+              />
+              <div class="ml-3 text-lg self-center">Tes Pemahaman</div>
+            </div>
+
+            <div
+              id="tesPemahaman1"
+              class="mt-10 md:ml-10 border-2 zoomIn max-w-[450px] relative border-[#629460] text-[12px] pb-6 drop-shadow-xl leading-[22px] rounded-lg md:px-12 px-5"
+            >
+              <div
+                class="bg-orange-300 px-4 py-2 absolute -top-5 text-white font-semibold tracking-wider rounded-lg"
+              >
+                Soal Pertama
+              </div>
+              <div class="w-full px-2 mt-10 font-semibold relative max-w-md" id="TesPertama1">
+                <p class="mt-2">Perhatikan transformasi yang terjadi pada segitiga berikut</p>
+                <div class="mt-6 text-sm w-64 mx-auto relative mb-44" id="tescuy1">
+                  <div id="animateTescuy1" class="mt-10 hidden">
+                    <div class="absolute -top-[18px] -left-3 z-20 animasi_cermin_tes">
+                      <svg
+                        width="115"
+                        height="115"
+                        viewBox="0 0 115 115"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        id="tes_pengetahuan_1"
+                      >
+                        <path
+                          d="M80.0795 30.6755C83.0857 29.8919 85.7987 32.6849 84.9281 35.6671L69.0111 90.193C68.1521 93.1357 64.4381 94.0581 62.3022 91.8592L23.2541 51.6604C21.1181 49.4615 22.1479 45.7758 25.1143 45.0026L80.0795 30.6755Z"
+                          fill="#8FBFFF"
+                        />
+                      </svg>
+                      <div class="absolute kebalikan opacity-0 top-7 font-normal left-2">A'</div>
+                      <div class="absolute kebalikan opacity-0 font-normal top-3 right-5">B'</div>
+                      <div class="absolute kebalikan opacity-0 font-normal bottom-0 right-10">
+                        C'
+                      </div>
+                    </div>
+                    <svg
+                      width="115"
+                      height="115"
+                      viewBox="0 0 115 115"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      id="tes_pengetahuan_1"
+                      class="opacity-60 absolute -top-[18px] -left-3"
+                    >
+                      <path
+                        d="M80.0795 30.6755C83.0857 29.8919 85.7987 32.6849 84.9281 35.6671L69.0111 90.193C68.1521 93.1357 64.4381 94.0581 62.3022 91.8592L23.2541 51.6604C21.1181 49.4615 22.1479 45.7758 25.1143 45.0026L80.0795 30.6755Z"
+                        fill="#D9D9D9"
+                      />
+                      <path
+                        d="M10.024 43L13.864 34.6H14.74L18.58 43H17.644L14.116 35.116H14.476L10.948 43H10.024ZM11.536 40.756L11.8 40.036H16.684L16.948 40.756H11.536Z"
+                        fill="#5F6C7B"
+                      />
+                      <path
+                        d="M67.016 107.072C66.384 107.072 65.8 106.968 65.264 106.76C64.728 106.544 64.264 106.244 63.872 105.86C63.48 105.476 63.172 105.024 62.948 104.504C62.732 103.984 62.624 103.416 62.624 102.8C62.624 102.184 62.732 101.616 62.948 101.096C63.172 100.576 63.48 100.124 63.872 99.74C64.272 99.356 64.74 99.06 65.276 98.852C65.812 98.636 66.396 98.528 67.028 98.528C67.636 98.528 68.208 98.632 68.744 98.84C69.28 99.04 69.732 99.344 70.1 99.752L69.536 100.316C69.192 99.964 68.812 99.712 68.396 99.56C67.98 99.4 67.532 99.32 67.052 99.32C66.548 99.32 66.08 99.408 65.648 99.584C65.216 99.752 64.84 99.996 64.52 100.316C64.2 100.628 63.948 100.996 63.764 101.42C63.588 101.836 63.5 102.296 63.5 102.8C63.5 103.304 63.588 103.768 63.764 104.192C63.948 104.608 64.2 104.976 64.52 105.296C64.84 105.608 65.216 105.852 65.648 106.028C66.08 106.196 66.548 106.28 67.052 106.28C67.532 106.28 67.98 106.2 68.396 106.04C68.812 105.88 69.192 105.624 69.536 105.272L70.1 105.836C69.732 106.244 69.28 106.552 68.744 106.76C68.208 106.968 67.632 107.072 67.016 107.072Z"
+                        fill="#5F6C7B"
+                      />
+                      <path
+                        d="M86.368 28V19.6H89.992C90.928 19.6 91.652 19.788 92.164 20.164C92.684 20.54 92.944 21.072 92.944 21.76C92.944 22.216 92.836 22.6 92.62 22.912C92.412 23.224 92.124 23.46 91.756 23.62C91.396 23.78 91 23.86 90.568 23.86L90.772 23.572C91.308 23.572 91.768 23.656 92.152 23.824C92.544 23.984 92.848 24.228 93.064 24.556C93.28 24.876 93.388 25.276 93.388 25.756C93.388 26.468 93.124 27.02 92.596 27.412C92.076 27.804 91.288 28 90.232 28H86.368ZM87.256 27.268H90.22C90.956 27.268 91.52 27.144 91.912 26.896C92.304 26.64 92.5 26.236 92.5 25.684C92.5 25.14 92.304 24.744 91.912 24.496C91.52 24.24 90.956 24.112 90.22 24.112H87.16V23.38H89.932C90.604 23.38 91.124 23.252 91.492 22.996C91.868 22.74 92.056 22.36 92.056 21.856C92.056 21.344 91.868 20.964 91.492 20.716C91.124 20.46 90.604 20.332 89.932 20.332H87.256V27.268Z"
+                        fill="#5F6C7B"
+                      />
+                    </svg>
+                  </div>
+                  <svg
+                    width="54"
+                    height="54"
+                    viewBox="0 0 54 54"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="absolute top-6 left-24 cursor-pointer"
+                    onclick="removeanimateTescuy1()"
+                    id="play2"
+                  >
+                    <path
+                      d="M21.3333 38.6667L37.3333 26.6667L21.3333 14.6667V38.6667ZM26.6667 0C11.9467 0 0 11.9467 0 26.6667C0 41.3867 11.9467 53.3333 26.6667 53.3333C41.3867 53.3333 53.3333 41.3867 53.3333 26.6667C53.3333 11.9467 41.3867 0 26.6667 0ZM26.6667 48C14.9067 48 5.33333 38.4267 5.33333 26.6667C5.33333 14.9067 14.9067 5.33333 26.6667 5.33333C38.4267 5.33333 48 14.9067 48 26.6667C48 38.4267 38.4267 48 26.6667 48Z"
+                      fill="#DDDDDD"
+                    />
+                  </svg>
+                </div>
+                <p class="mt-8">Pada transformasi di atas, terjadi perubahan pada?</p>
+
+                <div
+                  class="flex items-center border-t-2 border-b-2 py-[8px] cursor-pointer mt-3"
+                  id="A1"
+                >
+                  <button
+                    class="h-7 w-7 border-2 border-primary rounded-full text-black"
+                    id="buttonA1"
+                  >
+                    A
+                  </button>
+                  <p class="ml-4">posisi segitiga</p>
+                </div>
+
+                <div class="flex items-center border-b-2 py-[8px] cursor-pointer" id="B1">
+                  <button
+                    class="h-7 w-7 border-2 border-primary rounded-full text-black"
+                    id="buttonB1"
+                  >
+                    B
+                  </button>
+                  <p class="ml-4">ukuran segitiga</p>
+                </div>
+
+                <div class="flex items-center border-b-2 py-[8px] cursor-pointer" id="C1">
+                  <button
+                    class="h-7 w-7 border-2 border-primary rounded-full text-black"
+                    id="buttonC1"
+                  >
+                    C
+                  </button>
+                  <p class="ml-4">ukuran dan posisi segitiga</p>
+                </div>
+
+                <button
+                  class="py-2 px-3 bg-hijau cursor-pointer rounded-md text-white mt-4 text-[12px]"
+                  disabled
+                  id="Check1"
+                >
+                  Cek Jawaban
+                </button>
+
+                <p class="ml-3 font-semibold text-hijau hidden" id="benar1">Benar ✔️</p>
+                <p class="ml-3 font-semibold text-red-400 hidden" id="salah1">Salah X</p>
+              </div>
+            </div>
+            <div
+              id="tesPemahaman2"
+              class="mt-16 border-2 hidden zoomIn max-w-[450px] md:ml-10 relative border-[#629460] text-[12px] pb-6 drop-shadow-xl leading-[22px] rounded-lg md:px-12 px-5"
+            >
+              <div
+                class="bg-orange-300 px-4 py-2 absolute -top-5 text-white font-semibold tracking-wider rounded-lg"
+              >
+                Soal Kedua
+              </div>
+              <div class="w-full font-semibold mt-6 px-2 relative max-w-md" id="TesKedua">
+                <p class="mt-9 mb-4">
+                  Cobalah kamu menggambar segitiga dengan kordinat titik sudutnya di ( -2 , 0 ) , (
+                  1 , -2 ) , ( 2 , 1 )
+                </p>
+
+                <div
+                  id="content"
+                  class="w-[240px] h-[240px] relative bg-[url('../img/Rotasi/Grapik.jpg')] bg-cover mx-auto mt-6"
+                >
+                  <canvas id="geometryCanvas"></canvas>
+                  <div id="notification"></div>
+                </div>
+                <p class="mt-6">
+                  Tekan dan tahan titik sudut, lalu geser ketempat yang kamu mau
+                  <span class="text-hijauMuda">( Kamu harus mengerjakannya hingga benar )</span>
+                </p>
+
+                <button
+                  class="py-2 px-3 bg-hijau rounded-md text-white mt-4 text-[12px]"
+                  id="Check3"
+                >
+                  Cek Jawaban
+                </button>
+
+                <p class="ml-3 font-semibold text-hijau hidden" id="benar3">Benar ✔️</p>
+                <p class="ml-3 font-semibold text-red-400 hidden" id="salah3">Salah X</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav
+          class="fixed font-poppins text-xs text-white bottom-0 w-full md:w-4/5 border-t-2 bg-[#F9F7F3]"
+        >
+          <footer
+            class="container bg-opacity-90 mx-auto flex flex-wrap py-5 px-5 items-center justify-between border-[#D1EBE8] md:px-10"
+          >
+            <div class="relative">
+              <a
+                class="px-3 py-2 border-2 text-orange-400 border-orange-400 drop-shadow-md rounded-md"
+                href="page3.html"
+                >Sebelumnya
+              </a>
+            </div>
+            <div class="relative">
+              <img
+                src="../../img/klik.png"
+                class="absolute w-8 h-8 hidden scale-x-[-1] z-10 -top-2 -left-3 info cursor-pointer animate-pulse"
+                alt=""
+                id="klikNext"
+              />
+              <img
+                src="../../img/klik.png"
+                class="absolute w-8 h-8 hidden scale-x-[-1] z-10 -top-2 -left-3 info cursor-pointer animate-pulse"
+                alt=""
+                id="klikNext"
+              />
+              <a
+                class="px-3 py-2 bg-[#F7A072] hidden hover:scale-110 drop-shadow-md rounded-md"
+                id="tombolNext"
+                href="../translasi/page1.html"
+              >
+                >> Translasi
+              </a>
+            </div>
+          </footer>
+        </nav>
+      </div>
+      <!-- AKhir Materi -->
+    </div>
+    <!-- Akhir Isi -->
+
+    <script src="../../script/transformasi/page4.js"></script>
+  </body>
+</html>

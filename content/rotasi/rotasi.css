@@ -1,0 +1,462 @@
+@keyframes roda {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.roda {
+  animation: roda 3s linear infinite;
+}
+
+.orbit {
+  animation: orbit 5s linear infinite;
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(48px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(48px) rotate(-360deg);
+  }
+}
+
+@keyframes pusatB {
+  0% {
+    transform: rotate(0deg) translate(58px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(58px) rotate(-360deg);
+  }
+}
+
+.pusatB {
+  animation: pusatB 5s linear infinite;
+}
+
+@keyframes searahJam {
+  0% {
+    transform-origin: bottom right;
+  }
+  100% {
+    transform: translate(0) rotate(360deg);
+    transform-origin: bottom right;
+  }
+}
+
+.searahJam {
+  animation: searahJam 5s linear infinite;
+}
+
+@keyframes lawan {
+  100% {
+    transform: translate(0) rotate(-360deg);
+  }
+}
+
+.lawan {
+  animation: lawan 5s linear infinite;
+}
+
+@keyframes lawan2 {
+  100% {
+    transform: translate(0) rotate(360deg);
+  }
+}
+
+.lawan2 {
+  animation: lawan2 5s linear infinite;
+}
+
+@keyframes searahJam2 {
+  0% {
+    transform: translate(0) rotate(0deg);
+    transform-origin: top;
+  }
+  25% {
+    transform: translateX(5px) rotate(90deg);
+    transform-origin: top;
+  }
+  50% {
+    transform: translateY(5px) rotate(180deg);
+    transform-origin: top;
+  }
+  75% {
+    transform: translateX(-5px) rotate(270deg);
+    transform-origin: top;
+  }
+  100% {
+    transform: translate(0) rotate(360deg);
+    transform-origin: top;
+  }
+}
+
+.searahJam2 {
+  animation: searahJam2 5s linear infinite;
+}
+
+@keyframes searah3 {
+  0% {
+    transform-origin: right;
+  }
+  100% {
+    transform: translate(0) rotate(360deg);
+    transform-origin: right;
+  }
+}
+
+.searah3 {
+  animation: searah3 5s linear infinite;
+}
+
+@keyframes searah4 {
+  0% {
+    transform-origin: left;
+  }
+  100% {
+    transform: translate(0) rotate(360deg);
+    transform-origin: left;
+  }
+}
+
+.searah4 {
+  animation: searah4 5s linear infinite;
+}
+
+@keyframes searah5 {
+  0% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: translate(0) rotate(360deg);
+    transform-origin: bottom;
+  }
+}
+
+.searah5 {
+  animation: searah5 5s linear infinite;
+}
+
+@keyframes searah6 {
+  0% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: translate(0) rotate(-360deg);
+    transform-origin: bottom;
+  }
+}
+
+.searah6 {
+  animation: searah6 5s linear infinite;
+}
+
+@keyframes takSearah {
+  0% {
+    transform-origin: right;
+  }
+  100% {
+    transform: translate(0) rotate(-360deg);
+    transform-origin: right;
+  }
+}
+
+.takSearah {
+  animation: takSearah 5s linear infinite;
+}
+
+.rotasiFull {
+  transition: transform 1s ease-in-out;
+}
+
+@keyframes AtoB {
+  to {
+    width: 100px;
+  }
+}
+
+.AtoB {
+  animation: AtoB 2s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes zoomIn {
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 100;
+  }
+}
+
+.zoomIn {
+  animation: zoomIn 1s forwards;
+}
+
+@keyframes rotasiAtoB {
+  0% {
+    transform-origin: left;
+  }
+  100% {
+    transform: translateX(-1px) translateY(-2px) rotate(-90deg);
+    transform-origin: left;
+  }
+}
+
+.rotasiAtoB {
+  animation: rotasiAtoB 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes lawan90 {
+  100% {
+    transform: translate(0) rotate(90deg);
+  }
+}
+
+.lawan90 {
+  animation: lawan90 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes muncul {
+  100% {
+    opacity: 100;
+  }
+}
+
+.muncul6 {
+  animation: muncul 1s forwards;
+  animation-delay: 5s;
+}
+.muncul12 {
+  animation: muncul 1s forwards;
+  animation-delay: 9s;
+}
+
+@keyframes AtoC {
+  to {
+    width: 55px;
+  }
+}
+
+.AtoC {
+  animation: AtoC 2s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes BtoC {
+  to {
+    width: 110px;
+  }
+}
+
+.BtoC {
+  animation: BtoC 2s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes rotasiAtoC {
+  0% {
+    transform-origin: bottom left;
+  }
+  100% {
+    transform: translateX(-1px) translateY(-2px) rotate(90deg);
+    transform-origin: bottom left;
+  }
+}
+
+.rotasiAtoC {
+  animation: rotasiAtoC 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes lawan-90 {
+  99% {
+    transform: translate(0) rotate(-90deg);
+    opacity: 100;
+  }
+  100% {
+    transform: translate(0) rotate(-90deg);
+    opacity: 0;
+  }
+}
+
+.lawan-90 {
+  animation: lawan-90 4.5s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes rotasiBtoC {
+  0% {
+    transform-origin: top left;
+  }
+  100% {
+    transform: translateX(2px) rotate(90deg);
+    transform-origin: top left;
+  }
+}
+
+.rotasiBtoC {
+  animation: rotasiBtoC 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes BtoA {
+  to {
+    width: 122px;
+  }
+}
+
+.BtoA {
+  animation: BtoA 2s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes rotasiBA {
+  0% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: translateX(-1px) rotate(-180deg);
+    transform-origin: bottom;
+  }
+}
+
+.rotasiBA {
+  animation: rotasiBA 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes rotasiBC {
+  0% {
+    transform-origin: left;
+  }
+  100% {
+    transform: translateX(0px) rotate(-180deg);
+    transform-origin: left;
+  }
+}
+
+.rotasiBC {
+  animation: rotasiBC 4s forwards;
+  animation-delay: 5s;
+}
+
+.rotasiBC2 {
+  animation: rotasiBC 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes lawan180 {
+  99% {
+    transform: translateY(-2px) rotate(180deg);
+    opacity: 100;
+  }
+  100% {
+    transform: translateY(-2px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.lawan180 {
+  animation: lawan180 4.5s forwards;
+  animation-delay: 1s;
+}
+
+.lawan1802 {
+  animation: lawan180 4.5s forwards;
+  animation-delay: 5s;
+}
+
+@keyframes AtoCaksen {
+  to {
+    width: 80px;
+  }
+}
+
+.AtoCaksen {
+  animation: AtoCaksen 2s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes rotasiAB2 {
+  0% {
+    transform: rotate(-45deg);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: rotate(45deg);
+    transform-origin: bottom;
+  }
+}
+
+.rotasiAB2 {
+  animation: rotasiAB2 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes lawanyo {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+}
+
+.lawanyo {
+  animation: lawanyo 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes rotasiCD {
+  0% {
+    transform-origin: right bottom;
+  }
+  100% {
+    transform: rotate(-180deg) translateX(7px) translateY(2px);
+    transform-origin: right bottom;
+  }
+}
+
+.rotasiCD {
+  animation: rotasiCD 4s forwards;
+  animation-delay: 1s;
+}
+
+/* Untuk browser berbasis WebKit (Chrome, Safari, dll.) */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Untuk Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+@keyframes zoomOut {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.zoomOut {
+  animation: zoomOut 1s linear;
+}

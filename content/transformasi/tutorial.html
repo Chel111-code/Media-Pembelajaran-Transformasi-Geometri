@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apa itu Transformasi?</title>
+    <link rel="stylesheet" href="../../src/output.css" />
+    <link rel="stylesheet" href="../../keyframes/transformasi/tutorial.css" />
+
+    <style>
+      @font-face {
+        font-family: 'Lato';
+        src: url('../../font/Lato-Regular.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: 'Poppins';
+        src: url('../../font/Poppins-Regular.ttf') format('truetype');
+      }
+    </style>
+  </head>
+  <body class="bg-[#F9F7F3]">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-opacity-85 drop-shadow-md bg-[#F9F7F3]" id="navbar">
+      <header
+        class="container bg-opacity-90 mx-auto flex flex-wrap py-3 px-5 items-center justify-between border-[#D1EBE8] md:justify-center max-w-5xl md:px-10"
+      >
+        <div class="relative">
+          <a
+            href="../beranda/daftarmateri.html"
+            class="flex font-bold justify-center mx-auto items-center text-primary \"
+            id="judul"
+          >
+            <img src="../../img/logo.png" class="w-10" alt="" />
+            <span
+              class="ml-3 text-base font-extrabold relative font-lato tracking-wide text-hijauMuda"
+              >Transformasi Geometri
+            </span>
+          </a>
+          <img
+            src="../../img/daftarMateri/info.png"
+            class="absolute w-8 h-8 top-7 left-7 info cursor-pointer animate-bounce"
+            id=""
+            alt=""
+          />
+          <div
+            class="absolute hidden zoominPalsu font-poppins w-[250px] justify-end flex flex-col -bottom- left-20 -translate-x-12 border-l-[14px] border-blue-400 bg-white pr-7 pl-5 pt-5 pb-3 rounded-lg drop-shadow-md"
+          >
+            <div class="text-secondary font-normal text-xs mt-3 leading-6">
+              Logo Transformasi Geometri ini akan mengarahkan kamu ke halaman daftar materi saat
+              diklik.
+            </div>
+            <button
+              class="py-2 px-3 w-12 border-2 text-xs -mt-0 okInfo self-end text-blue-400 font-semibold rounded-md border-blue-400"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center relative md:hidden">
+          <div
+            class="flex gap-1 mr-2 cursor-pointer w-8 h-8 justify-center rounded-md items-center hover:bg-gray-200 active:bg-gray-200"
+            id="dropdownButton"
+          >
+            <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+            <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+            <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+          </div>
+          <img
+            src="../../img/daftarMateri/info.png"
+            class="absolute w-8 h-8 top-7 -left-4 info cursor-pointer animate-bounce"
+            id=""
+            alt=""
+          />
+          <div
+            class="absolute hidden font-poppins justify-end flex flex-col -bottom-48 -left-48 zoominPalsu -translate-x-12 border-r-[14px] border-blue-400 bg-white pl-7 pr-5 pt-5 pb-3 rounded-lg drop-shadow-md"
+          >
+            <div
+              class="flex gap-1 cursor-pointer w-8 h-8 justify-center rounded-md items-center hover:bg-gray-200 active:bg-gray-200"
+            >
+              <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+              <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+              <span class="w-[5px] h-[5px] bg-green-400 rounded-full"></span>
+            </div>
+            <div class="text-secondary font-normal text-xs mt-3 leading-6">
+              Tombol ini dapat kamu tekan untuk melihat daftar sub materi.
+            </div>
+            <button
+              class="py-2 px-3 w-12 border-2 text-xs -mt-0 okInfo self-end text-blue-400 font-semibold rounded-md border-blue-400"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </header>
+    </nav>
+
+    <nav
+      id="dropdownMenu"
+      class="fixed z-40 top-[68px] -translate-y-[500px] rounded-md font-medium right-7 flex transition duration-300 ease-in-out items-center px-5 flex-col w-[280px] bg-opacity-90 border-l-2 bg-[#EBFEEB] drop-shadow-md"
+    >
+      <div>
+        <div
+          class="w-full relative ml-6 mt-20 h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+            <input type="checkbox" id="checkboxTransformasi2" class="hidden peer" disabled />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm font-medium ml-5">Pengertian Transformasi</div>
+          <div
+            class="px-4 py-2 bg-white absolute text-[14px] text-gray-400 font-bold -top-12 -left-8 rounded-md drop-shadow-md"
+          >
+            Sub Materi
+          </div>
+        </div>
+        <div
+          class="w-full relative ml-6 h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+            <input type="checkbox" class="hidden peer" disabled />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm leading-7 font-medium ml-5">
+            Pengertian Transformasi Geometri
+          </div>
+        </div>
+        <div
+          class="w-full relative ml-6 h-24 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <label class="inline-flex absolute drop-shadow-md -left-3 items-center">
+            <input type="checkbox" class="hidden peer" disabled />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm leading-7 font-medium ml-5">
+            Objek Sebelum dan Setelah Bertransformasi
+          </div>
+        </div>
+        <div
+          class="w-full relative pb-5 ml-6 h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+        >
+          <div class="absolute inset-y-1/2 -left-1 border-l-4 bg-[#EBFEEB] h-1/2"></div>
+          <label class="inline-flex drop-shadow-md absolute -left-3 items-center">
+            <input type="checkbox" class="hidden peer" disabled />
+            <div class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500"></div>
+          </label>
+          <div class="text-[#808080] text-sm font-medium leading-7 ml-5">
+            Uji Pemahaman Transformasi
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
+
+    <!-- Notifikasi -->
+    <audio id="myAudio" class="hidden">
+      <source src="../../sound/salah.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="myAudio2" class="hidden">
+      <source src="../../sound/benar.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="myAudio3" class="hidden">
+      <source src="../../sound/warning-sound-6686.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="notifnih" class="hidden">
+      <source src="../../sound/notif.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <div
+      id="notif"
+      class="fixed inset-0 bg-gray-100 z-50 hidden bg-opacity-50 flex items-center justify-center"
+    >
+      <div class="w-[280px] bg-[#FDFD97] mt-16 mx-auto p-3 rounded-lg shadow-lg relative">
+        <div
+          class="bg-[#FBFDFE] border-[1px] text-[13px] py-6 px-[20px] leading-6 text-center shadow-inner text-primary font-bold rounded-lg"
+        >
+          Kamu harus menyelesaikan halaman ini dulu!
+        </div>
+        <img src="../../img/info.png" class="absolute w-[70px] -top-6 -left-6" alt="" />
+      </div>
+    </div>
+    <!-- Akhir Notifikasi -->
+
+    <!-- Isi -->
+    <div class="container w-full flex">
+      <!-- Percakapan -->
+      <div>
+        <div
+          class="w-full z-50 bg-slate-50 bg-opacity-80 backdrop-blur-sm absolute top-0"
+          id="percakapan"
+        >
+          <div
+            class="container md:hidden drop-shadow-md max-w-[500px] mx-auto px-2 gap-2 h-screen flex items-center font-poppins justify-center"
+          >
+            <img src="../../img/Grafis/Halo.png" alt="" class="w-24 md:w-28 scale-x-[-1]" />
+            <div
+              class="lineCakap zoomIn md:font-semibold mt-12 tracking-wide md:text-left text-justify md:leading-7 text-[12px] md:text-[13px]"
+            >
+              <img
+                src="../../img/daftarMateri/1.png"
+                alt=""
+                class="relative -top-[20px] -left-2 md:w-72"
+                id="img1"
+              />
+              <img
+                src="../../img/daftarMateri/2.png"
+                alt=""
+                class="relative opacity-0 -mt-8 md:w-72"
+                id="img2"
+              />
+              <img
+                src="../../img/daftarMateri/3.png"
+                alt=""
+                class="relative opacity-0 -mt-3 -left-4 md:w-72"
+                id="img3"
+              />
+              <img
+                src="../../img/daftarMateri/4.png"
+                alt=""
+                class="relative opacity-0 -left-10 mt-2 md:w-72"
+                id="img4"
+              />
+
+              <button
+                class="rounded-full drop-shadow-md absolute top-14 left-52 opacity-50"
+                id="btn1"
+                onclick="btn1()"
+              >
+                <img src="../../img/daftarMateri/next.png" alt="" class="w-8" />
+                <img
+                  src="../../img/klik.png"
+                  class="absolute scale-x-[-1] top-2 -left-2 animate-pulse"
+                  alt=""
+                />
+              </button>
+              <button
+                onclick="lewati()"
+                id="lewati2"
+                class="underline text-gray-400 hover:text-green-500 absolute top-[65px] left-[140px]"
+              >
+                Lewati
+              </button>
+              <button
+                class="rounded-full drop-shadow-md absolute top-32 left-52 opacity-50 hidden"
+                id="btn2"
+                onclick="btn2()"
+              >
+                <img src="../../img/daftarMateri/next.png" alt="" class="w-8" />
+                <img
+                  src="../../img/klik.png"
+                  class="absolute scale-x-[-1] top-2 -left-2 animate-pulse"
+                  alt=""
+                />
+              </button>
+              <button
+                class="rounded-full drop-shadow-md absolute top-[235px] left-[220px] opacity-50 hidden"
+                id="btn3"
+                onclick="btn3()"
+              >
+                <img src="../../img/daftarMateri/next.png" alt="" class="w-8" />
+                <img
+                  src="../../img/klik.png"
+                  class="absolute scale-x-[-1] top-2 -left-2 animate-pulse"
+                  alt=""
+                />
+              </button>
+              <button
+                class="rounded-full drop-shadow-md absolute top-[300px] left-[110px] opacity-50 hidden"
+                id="btn4"
+                onclick="btn4()"
+              >
+                <img src="../../img/daftarMateri/next.png" alt="" class="w-8" />
+                <img
+                  src="../../img/klik.png"
+                  class="absolute scale-x-[-1] top-2 -left-2 animate-pulse"
+                  alt=""
+                />
+              </button>
+            </div>
+          </div>
+          <div class="md:block hidden">
+            <div
+              class="container drop-shadow-md max-w-[500px] mx-auto px-2 gap-2 h-screen flex items-center font-poppins justify-center"
+            >
+              <img src="../../img/Grafis/Halo.png" alt="" class="w-24 md:w-28 scale-x-[-1]" />
+              <div
+                class="lineCakap zoomIn md:font-semibold mt-12 tracking-wide md:text-left text-justify md:leading-7 text-[12px] md:text-[13px]"
+              >
+                <img
+                  src="../../img/daftarMateri/1nd.png"
+                  alt=""
+                  class="relative -top-[15px] -left-2 md:w-80"
+                  id="img5"
+                />
+                <img
+                  src="../../img/daftarMateri/2nd.png"
+                  alt=""
+                  class="relative opacity-0 -mt-8"
+                  id="img6"
+                />
+                <img
+                  src="../../img/daftarMateri/3nd.png"
+                  alt=""
+                  class="relative opacity-0 -mt-2 -left-4"
+                  id="img7"
+                />
+                <img
+                  src="../../img/daftarMateri/4nd.png"
+                  alt=""
+                  class="relative opacity-0 -left-10 mt-2 md:w-56"
+                  id="img8"
+                />
+
+                <button
+                  class="rounded-full drop-shadow-md absolute top-[70px] left-[270px] opacity-50"
+                  id="btn5"
+                  onclick="btn5()"
+                >
+                  <img src="../../img/daftarMateri/next.png" alt="" class="w-8" />
+                  <img
+                    src="../../img/klik.png"
+                    class="absolute scale-x-[-1] top-2 -left-2 animate-pulse"
+                    alt=""
+                  />
+                </button>
+                <button
+                  onclick="lewati()"
+                  id="lewati1"
+                  class="underline text-gray-400 hover:text-green-500 absolute top-[75px] left-[200px]"
+                >
+                  Lewati
+                </button>
+                <button
+                  class="rounded-full drop-shadow-md absolute top-[168px] left-[270px] opacity-50 hidden"
+                  id="btn6"
+                  onclick="btn6()"
+                >
+                  <img src="../../img/daftarMateri/next.png" alt="" class="w-8" />
+                  <img
+                    src="../../img/klik.png"
+                    class="absolute scale-x-[-1] top-2 -left-2 animate-pulse"
+                    alt=""
+                  />
+                </button>
+                <button
+                  class="rounded-full drop-shadow-md absolute top-[300px] left-[300px] opacity-50 hidden"
+                  id="btn7"
+                  onclick="btn7()"
+                >
+                  <img src="../../img/daftarMateri/next.png" alt="" class="w-8" />
+                  <img
+                    src="../../img/klik.png"
+                    class="absolute scale-x-[-1] top-2 -left-2 animate-pulse"
+                    alt=""
+                  />
+                </button>
+                <button
+                  class="rounded-full drop-shadow-md absolute top-[365px] left-[140px] opacity-50 hidden"
+                  id="btn8"
+                  onclick="btn8()"
+                >
+                  <img src="../../img/daftarMateri/next.png" alt="" class="w-8" />
+                  <img
+                    src="../../img/klik.png"
+                    class="absolute scale-x-[-1] top-2 -left-2 animate-pulse"
+                    alt=""
+                  />
+                </button>
+              </div>
+              <div
+                class="font-medium lineCakap zoomIn hidden md:font-semibold mt-12 tracking-wide md:text-left text-justify md:leading-7 leading-[24px] text-[13px] md:text-[13px]"
+              >
+                <div
+                  class="bg-[#B4FFB4] text-secondary border px-4 py-4 rounded-lg shadow-custom rounded-tl-none"
+                >
+                  Aku <span class="font-bold">Ali</span> yang akan menemani kamu menggunakan media
+                  pembelajaran ini.
+                </div>
+
+                <div class="flex gap-2 mt-3 okLine justify-end">
+                  <button
+                    class="py-[4px] inline-block px-5 bg-hijauMuda rounded-md shadow-xl font-bold text-white text-[12px]"
+                  >
+                    OK
+                  </button>
+                </div>
+              </div>
+              <div
+                class="font-medium lineCakap zoomIn hidden md:font-semibold mt-12 tracking-wide md:text-left text-justify md:leading-7 leading-[24px] text-[13px] md:text-[13px]"
+              >
+                <div
+                  class="bg-[#B4FFB4] text-secondary border px-4 py-4 rounded-lg shadow-custom rounded-bl-none"
+                >
+                  Saat ini kamu berada di halaman pertama materi Transformasi.
+                </div>
+                <div
+                  class="bg-[#B4FFB4] text-secondary mt-1 border px-4 py-4 rounded-lg shadow-custom rounded-tl-none"
+                >
+                  Ayo langsung saja kita masuk ke materinya!
+                </div>
+
+                <div class="flex gap-2 mt-3 okLine justify-end">
+                  <button
+                    class="py-[4px] inline-block px-5 bg-hijauMuda rounded-md shadow-xl font-bold text-white text-[12px]"
+                  >
+                    OK
+                  </button>
+                </div>
+              </div>
+              <div
+                class="font-medium lineCakap zoomIn hidden md:font-semibold mt-12 tracking-wide md:text-left text-justify md:leading-7 leading-[24px] text-[13px] md:text-[13px]"
+              >
+                <div
+                  class="bg-[#B4FFB4] text-secondary border lato px-4 py-4 rounded-lg shadow-custom rounded-tl-none"
+                >
+                  <div class="inline">Eh tunggu sebentar. Klik saja tombol ini</div>
+                  <img
+                    src="../../img/daftarMateri/info.png"
+                    class="w-6 h-6 inline-block mt-1"
+                    alt=""
+                  />
+                  jika ada fitur yang kamu bingungkan yaa.
+                </div>
+
+                <div class="flex gap-2 mt-3 okLine justify-end">
+                  <button
+                    onclick="okLast()"
+                    class="py-[4px] inline-block px-5 bg-hijauMuda rounded-md shadow-xl font-bold text-white text-[12px]"
+                  >
+                    OK
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fixed bottom-14 right-5 flex items-end z-50">
+          <!-- Character image -->
+
+          <!-- Chatbox container -->
+          <div
+            id="chatbox"
+            class="w-72 bg-gray-700 pindah hidden bg-opacity-70 rounded-lg p-4 text-white shadow-lg animate-fadeIn font-sans"
+          >
+            <!-- Chatbox header with title and close button -->
+            <div class="flex justify-between items-center mb-3">
+              <h2 class="text-lg font-bold">Berhasil!</h2>
+              <button id="closeChatbox" class="text-white text-2xl font-bold focus:outline-none">
+                &times;
+              </button>
+            </div>
+
+            <!-- Chatbox body -->
+            <div class="text-sm leading-7">
+              Yeay, kamu telah berhasil menyelesaikan sub materi pertama. Tekan tombol
+              <span
+                class="px-3 mt- py-2 text-xs bg-[#F7A072] drop-shadow-md rounded-md inline-block"
+                >Selanjutnya
+              </span>
+              untuk ke sub materi berikutnya!
+            </div>
+
+            <!-- Start button -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Akhir Percakapan -->
+
+      <!-- Indikator Pengetahuan -->
+      <div
+        id="Indikator"
+        class="w-1/5 pl-14 pr-10 fixed hidden md:block md:flex font-poppins bg-[#EBFEEB] pt-20 bg-opacity-80 flex justify-center items-center border-r-2 drop-shadow-md h-screen"
+      >
+        <div>
+          <div
+            class="w-full relative h-20 border-l-4 flex items-center drop-shadow-xl border-white"
+          >
+            <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+              <input type="checkbox" id="checkboxTransformasi1" class="hidden peer" disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm font-medium ml-5">Pengertian Transformasi</div>
+            <div
+              class="px-4 py-2 bg-white absolute text-[14px] text-gray-400 font-bold -top-10 -left-8 rounded-md drop-shadow-md"
+            >
+              Sub Materi
+            </div>
+          </div>
+          <div
+            class="w-full relative h-24 border-l-4 flex items-center drop-shadow-xl border-white"
+          >
+            <label class="inline-flex absolute -left-3 drop-shadow-md items-center">
+              <input type="checkbox" class="hidden peer" disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm leading-7 font-medium ml-5">
+              Pengertian Transformasi Geometri
+            </div>
+          </div>
+          <div
+            class="w-full relative h-24 border-l-4 flex items-center drop-shadow-xl border-white"
+          >
+            <label class="inline-flex absolute drop-shadow-md -left-3 items-center">
+              <input type="checkbox" class="hidden peer" disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm leading-7 font-medium ml-5">
+              Objek Sebelum dan Setelah Bertransformasi
+            </div>
+          </div>
+          <div
+            class="w-full relative h-24 border-l-4 inset-y-1/2 flex items-center drop-shadow-xl border-white"
+          >
+            <div class="absolute inset-y-1/2 -left-1 border-l-4 bg-[#EBFEEB] h-1/2"></div>
+            <label class="inline-flex drop-shadow-md absolute -left-3 items-center">
+              <input type="checkbox" class="hidden peer" disabled />
+              <div
+                class="w-5 h-5 bg-white rounded-full peer-checked:bg-orange-500 peer-checked:border-greenbg-green-500"
+              ></div>
+            </label>
+            <div class="text-[#808080] text-sm font-medium leading-7 ml-5">
+              Uji Pemahaman Transformasi
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Akhir Indikator Pengetahuan -->
+
+      <!-- Materi -->
+      <div
+        class="md:w-4/5 w-full absolute right-0 font-poppins font-medium text-sm pb-40 text-secondary"
+        id="isi"
+      >
+        <div class="mt-40 px-6">
+          <div class="max-w-2xl mx-auto">
+            <div class="text-primary font-extrabold text-base relative">
+              <div class="ml-3">Apa itu Transformasi?</div>
+              <img
+                src="../../img/tandatanya.png"
+                class="w-16 h-16 absolute md:-left-4 -top-16"
+                alt=""
+              />
+            </div>
+            <div
+              id="materi"
+              class="mt-4 border-2 border-[#629460] text-[12px] text- drop-shadow-xl leading-[22px] rounded-lg md:px-16 px-5"
+            >
+              <div class="flex items-center mt-6 w-full">
+                <img src="../../img/Grafis/hmm.png" alt="" class="w-24 md:w-24" />
+                <div class="ml-2">
+                  <div class="bg-[#ADF7B6] px-4 py-3 rounded-lg mt-1 rounded-tl-none">
+                    Pertama, ayo kita perhatikan es batu di bawah ini yang bertransformasi menjadi
+                    air.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex md:w-[250px] w-[160px] mt-8 md:-mt-3 mx-auto items-start justify-center"
+              >
+                <div class="relative cursor-pointer" onclick="playImg()" id="playImg">
+                  <img src="../../img/play.png" class="w-8 hover:scale-110 z-20" alt="" />
+                  <img
+                    src="../../img/klik.png"
+                    class="w-7 h-7 absolute scale-x-[-1] top-2 -left-2 animate-pulse"
+                    alt=""
+                  />
+                </div>
+                <div
+                  class="w-36 md:scale-110 flex justify-center h-44 md:w-44 md:-mt-0 mx-auto mt-4 relative -z-10"
+                >
+                  <img
+                    src="../../img/Transformasi/es.png"
+                    alt=""
+                    class="w-28 left- absolute opacity-100"
+                    id="imgSatu"
+                  />
+                  <img
+                    src="../../img/Transformasi/leleh.png"
+                    alt=""
+                    class="w-40 h-[80px] absolute opacity-0 top-5 left-2 origin-top"
+                    id="imgDua"
+                  />
+                  <img
+                    src="../../img/Transformasi/air.png"
+                    alt=""
+                    class="w-full absolute opacity-0 top-[75px]"
+                    id="imgTiga"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="mt-4 border-2 hidden border-[#629460] zoomIn text-[12px] pb-6 text- drop-shadow-xl leading-[22px] rounded-lg md:px-16 px-5"
+            >
+              <div class="flex items-center mt-6 w-full">
+                <img src="../../img/Grafis/Tanya.png" alt="" class="w-20 md:w-24" />
+                <div class="ml-2">
+                  <div class="bg-[#ADF7B6] px-4 py-3 rounded-lg mt-1 rounded-bl-none">
+                    Kenapa yah es batu di atas dikatakan bertransformasi?
+                  </div>
+                  <div class="bg-[#ADF7B6] px-4 py-3 rounded-lg mt-1 rounded-tl-none">
+                    Menurut kamu apa itu transformasi?
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 ml-[70px] text-[13px] md:-mt-4 md:ml-28" id="apaituTransformasi">
+                <div class="flex gap-2 cursor-pointer jawabanBenar">
+                  <div
+                    class="w-8 h-8 border-coklat relative border-2 flex items-center justify-center rounded-md"
+                  >
+                    <div>A</div>
+                    <img
+                      src="../../img/klik.png"
+                      class="absolute scale-x-[-1] animate-pulse -left-3 top-2"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="w-32 h-8 flex items-center rounded-md bg-orange-200 px-4 text-secondary"
+                  >
+                    Perubahan
+                  </div>
+                </div>
+
+                <div class="flex gap-2 mt-3 cursor-pointer jawabanSalah">
+                  <div
+                    class="w-8 h-8 border-coklat relative border-2 flex items-center justify-center rounded-md"
+                  >
+                    <div>B</div>
+                    <img
+                      src="../../img/klik.png"
+                      class="absolute scale-x-[-1] animate-pulse -left-3 top-2"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="w-32 h-8 flex items-center rounded-sm bg-orange-200 px-4 text-secondary"
+                  >
+                    Pengecilan
+                  </div>
+                </div>
+                <div class="flex gap-2 mt-3 cursor-pointer jawabanSalah">
+                  <div
+                    class="w-8 h-8 border-coklat relative border-2 flex items-center justify-center rounded-md"
+                  >
+                    <div>C</div>
+                    <img
+                      src="../../img/klik.png"
+                      class="absolute scale-x-[-1] animate-pulse -left-3 top-2"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="w-32 h-8 flex items-center rounded-sm bg-orange-200 px-4 text-secondary"
+                  >
+                    Pergantian
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex gap-2 justify-center md:justify-start md:-mt-4 md:ml-28 mt-5 items-center hidden"
+                id="perubahanBenar"
+              >
+                <div class="w-12 h-12 flex items-center justify-center rounded-sm">
+                  <img src="../../img/pencerminan/Benar.png" alt="" />
+                </div>
+                <div class="w-32 h-8 flex items-center rounded-sm bg-[#9CEAEF] px-4 text-primary">
+                  Perubahan
+                </div>
+              </div>
+              <div
+                class="flex absolute top-44 left-24 md:left-32 hidden zoomOut z-50 items-center justify-center"
+                id="salah"
+              >
+                <img src="../../img/pencerminan/ihi.png" class="w-32" alt="" />
+              </div>
+              <div
+                class="flex absolute top-44 left-24 md:left-32 z-50 hidden opacity-0 zoomOut items-center justify-center"
+                id="benar"
+              >
+                <img src="../../img/pencerminan/Benar.png" class="w-32" alt="" />
+              </div>
+            </div>
+            <div
+              class="mt-16 border-2 zoomIn hidden relative border-[#629460] text-[12px] pb-6 drop-shadow-xl leading-[22px] rounded-lg md:px-16 px-5"
+            >
+              <div
+                class="bg-orange-300 px-4 py-2 absolute -top-5 text-white font-semibold tracking-wider rounded-lg"
+              >
+                Kesimpulan
+              </div>
+              <div class="flex items-center mt-8 w-full">
+                <img src="../../img/Grafis/Nih.png" alt="" class="w-24 scale-x-[-1] md:w-28" />
+                <div class="ml-2">
+                  <div class="bg-[#ADF7B6] px-4 py-3 rounded-lg mt-1 rounded-tl-none">
+                    Jadi, kita telah tau bahwa transformasi itu adalah perubahan!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav
+          class="fixed font-poppins shadow-inner text-xs text-white bottom-0 w-full md:w-4/5 border-t-2 bg-[#F9F7F3]"
+        >
+          <footer
+            class="container bg-opacity-90 mx-auto flex flex-wrap py-5 px-5 items-center justify-end border-[#D1EBE8] md:px-10"
+          >
+            <div class="relative">
+              <img
+                src="../../img/klik.png"
+                class="absolute w-8 h-8 hidden scale-x-[-1] z-10 -top-2 -left-3 info cursor-pointer animate-pulse"
+                alt=""
+                id="klikNext"
+              />
+              <a class="px-3 py-2 bg-[#F7A072] drop-shadow-md rounded-md" id="tombolNext"
+                >Selanjutnya
+              </a>
+              <img
+                src="../../img/daftarMateri/info.png"
+                class="absolute w-8 h-8 -top-7 -left-3 info cursor-pointer animate-bounce"
+                id="tunjukNext"
+                alt=""
+              />
+              <div
+                class="absolute justify-end hidden flex flex-col -top-48 -left-44 -translate-x-12 border-r-[14px] zoominPalsu border-blue-400 bg-white pl-7 pr-5 pt-5 pb-3 rounded-lg drop-shadow-md"
+              >
+                <div class="">
+                  <a class="px-3 py-2 w-24 inline-block mt-1 bg-[#F7A072] rounded-md"
+                    >Selanjutnya
+                  </a>
+                </div>
+                <div class="text-secondary font-medium mt-3 leading-6">
+                  Tombol ini dapat kamu tekan saat telah menyelesaikan sub materi ini dan ingin ke
+                  sub materi berikutnya .
+                </div>
+                <button
+                  class="py-2 px-3 w-12 border-2 -mt-2 okInfo self-end text-blue-400 font-semibold rounded-md border-blue-400"
+                >
+                  OK
+                </button>
+              </div>
+            </div>
+          </footer>
+        </nav>
+      </div>
+
+      <!-- AKhir Materi -->
+    </div>
+    <!-- Akhir Isi -->
+
+    <script src="../../script/transformasi/tutorial.js"></script>
+  </body>
+</html>

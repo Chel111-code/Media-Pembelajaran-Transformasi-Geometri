@@ -1,0 +1,497 @@
+@keyframes aliGerak {
+  0% {
+    transform: translateX(0px);
+  }
+  68% {
+    transform: translateX(-53px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.aliGerak {
+  animation: aliGerak 5s infinite alternate;
+}
+
+@keyframes aliGerakminus {
+  0% {
+    transform: translateX(0px) scaleX(-1);
+  }
+  68% {
+    transform: translateX(53px) scaleX(-1);
+  }
+  100% {
+    transform: translateX(0px) scaleX(-1);
+  }
+}
+
+.aliGerakminus {
+  animation: aliGerakminus 5s infinite alternate;
+}
+
+@keyframes expandWidth {
+  0% {
+    width: 50px; /* Lebar awal di tengah */
+    margin-left: calc(50% - 25px);
+  }
+  100% {
+    width: 170px; /* Lebar akhir */
+    margin-left: calc(50% - 85px);
+  }
+}
+
+.expand-width {
+  animation: expandWidth 2.5s infinite alternate;
+}
+
+@keyframes zoomIn {
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 100;
+  }
+}
+
+.zoomIn {
+  animation: zoomIn 1s forwards;
+}
+
+@keyframes zoomIn2 {
+  50% {
+    transform: scale(1.5);
+    opacity: 100;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 100;
+  }
+}
+
+.zoomIn2 {
+  animation: zoomIn2 1s forwards;
+  animation-delay: 1s;
+}
+
+.zoomIn3 {
+  animation: zoomIn2 1s forwards;
+  animation-delay: 2s;
+}
+
+.zoomIn4 {
+  animation: zoomIn2 1s forwards;
+  animation-delay: 3s;
+}
+
+.zoomIn5 {
+  animation: zoomIn2 1s forwards;
+  animation-delay: 4s;
+}
+
+.muncul1 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 1s;
+}
+.muncul2 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 2s;
+}
+.muncul3 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 3s;
+}
+.muncul4 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 4s;
+}
+.muncul5 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 5s;
+}
+.muncul6 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 6s;
+}
+.muncul9 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 9s;
+}
+.muncul12 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 12s;
+}
+.muncul13 {
+  animation: zoomIn 1s forwards;
+  animation-delay: 13s;
+}
+
+@keyframes titikA {
+  100% {
+    transform: translateX(119px);
+  }
+}
+
+.titikA {
+  animation: titikA 3s forwards;
+  animation-delay: 3s;
+}
+
+@keyframes zoomIna {
+  50% {
+    transform: scale(1.1);
+    opacity: 100;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.muncul0a {
+  animation: zoomIna 1s forwards;
+  animation-delay: 0.5s;
+}
+
+.muncul1a {
+  animation: zoomIna 1s forwards;
+  animation-delay: 1s;
+}
+.muncul2a {
+  animation: zoomIna 1s forwards;
+  animation-delay: 2s;
+}
+.muncul6a {
+  animation: zoomIna 1s forwards;
+  animation-delay: 7s;
+}
+.muncul7a {
+  animation: zoomIna 1s forwards;
+  animation-delay: 8s;
+}
+.muncul3a {
+  animation: zoomIna 1s forwards;
+  animation-delay: 2s;
+}
+.muncul8a {
+  animation: zoomIna 1s forwards;
+  animation-delay: 8s;
+}
+.muncul13a {
+  animation: zoomIna 1s forwards;
+  animation-delay: 13s;
+}
+
+@keyframes titikB {
+  100% {
+    transform: translateX(52px) translateY(-52px);
+  }
+}
+
+.titikB {
+  animation: titikB 3s forwards;
+  animation-delay: 3s;
+}
+
+@keyframes zoomInb {
+  50% {
+    transform: scale(1) rotate(-45deg);
+    opacity: 100;
+  }
+  100% {
+    transform: scale(1) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes zoomInAB {
+  50% {
+    transform: scale(1.1) rotate(-45deg);
+    opacity: 100;
+  }
+  100% {
+    transform: scale(1) rotate(-45deg);
+    opacity: 100;
+  }
+}
+
+.muncul1b {
+  animation: zoomInb 1s forwards;
+  animation-delay: 1s;
+}
+.muncul2b {
+  animation: zoomInb 1s forwards;
+  animation-delay: 2s;
+}
+
+.muncul1AB {
+  animation: zoomInAB 1s forwards;
+  animation-delay: 1s;
+}
+.muncul2AB {
+  animation: zoomInAB 1s forwards;
+  animation-delay: 2s;
+}
+.muncul3AB {
+  animation: zoomInAB 1s forwards;
+  animation-delay: 3s;
+}
+.muncul5AB {
+  animation: zoomInAB 1s forwards;
+  animation-delay: 5s;
+}
+
+@keyframes garisB {
+  50% {
+    transform: scale(1.1) rotate(-45deg);
+  }
+  100% {
+    transform: scale(1) rotate(-45deg);
+    opacity: 100;
+  }
+}
+
+.garisB1 {
+  animation: garisB 1s forwards;
+  animation-delay: 6s;
+}
+
+.garisB2 {
+  animation: garisB 1s forwards;
+  animation-delay: 15s;
+}
+
+@keyframes garisC {
+  50% {
+    transform: scale(1.1) rotate(45deg);
+  }
+  100% {
+    transform: scale(1) rotate(45deg);
+    opacity: 100;
+  }
+}
+
+.garisC1 {
+  animation: garisC 1s forwards;
+  animation-delay: 15s;
+}
+
+.garisC4 {
+  animation: garisC 1s forwards;
+  animation-delay: 6s;
+}
+
+@keyframes titikC {
+  100% {
+    transform: translateY(60px);
+  }
+}
+
+.titikC {
+  animation: titikC 3s forwards;
+  animation-delay: 3s;
+}
+
+@keyframes garisAB {
+  0% {
+    transform: translateX(0) rotateY(0);
+  }
+  100% {
+    transform: translateX(88px) translateY(-88px) rotateZ(-90deg);
+  }
+}
+
+.garisAB {
+  animation: garisAB 3s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes titikAB {
+  99% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(58px) translateY(-58px);
+    opacity: 100;
+  }
+}
+
+.titikAB {
+  animation: titikAB 1s forwards;
+  animation-delay: 4s;
+}
+
+@keyframes titikAB2 {
+  99% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(118px) translateY(-118px);
+    opacity: 100;
+  }
+}
+
+.titikAB2 {
+  animation: titikAB2 1s forwards;
+  animation-delay: 4s;
+}
+
+/* keyfremaes cemrmin titik */
+@keyframes reflekA {
+  100% {
+    transform: translateX(118px) translateY(118px);
+  }
+}
+
+.reflekA {
+  animation: reflekA 3s forwards;
+  animation-delay: 3s;
+}
+
+@keyframes reflekB {
+  100% {
+    transform: translateX(118px) translateY(-118px);
+  }
+}
+
+.reflekB {
+  animation: reflekB 3s forwards;
+  animation-delay: 9s;
+}
+
+@keyframes panjangGarisAB {
+  to {
+    height: 119px;
+  }
+}
+
+.panjangGarisAB {
+  animation: panjangGarisAB 2s forwards;
+  animation-delay: 13s;
+}
+
+@keyframes titikE {
+  50% {
+    transform: translateX(52px) translateY(-51px);
+  }
+  100% {
+    transform: translateX(76px) translateY(-51px);
+  }
+}
+
+.titikE {
+  animation: titikE 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes reflekGarisABC {
+  0% {
+    transform: translateX(0) rotateY(0);
+  }
+  100% {
+    transform: translateY(99px) translateX(-2px) rotateX(180deg) rotateY(180deg);
+  }
+}
+
+.reflekGarisABC {
+  animation: reflekGarisABC 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes inilah {
+  0% {
+    transform: translateX(0) rotateX(0);
+  }
+  100% {
+    transform: translateX(95px) rotateY(180deg);
+  }
+}
+
+.inilah {
+  animation: inilah 4s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes muncul180 {
+  100% {
+    transform: scale(1) rotate(180deg);
+    opacity: 100;
+  }
+}
+
+.muncul10a {
+  animation: muncul180 1s forwards;
+  animation-delay: 5s;
+}
+
+@keyframes muncul18 {
+  100% {
+    transform: scale(1) rotateY(180deg);
+    opacity: 100;
+  }
+}
+
+.muncul10aa {
+  animation: muncul18 1s forwards;
+  animation-delay: 5s;
+}
+
+.aspect-ratio-iframe2 {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+}
+
+.aspect-ratio-iframe2 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.aspect-ratio-iframe {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+}
+
+.aspect-ratio-iframe iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes zoomOut {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.zoomOut {
+  animation: zoomOut 1s linear;
+}
+
+#canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
