@@ -14,6 +14,7 @@ function btn2() {
 }
 function btn3() {
   document.getElementById('percakapan').classList.add('hidden');
+  document.getElementById('materi').classList.remove('hidden');
 }
 
 function btn5() {
@@ -32,9 +33,11 @@ function btn6() {
 }
 function btn7() {
   document.getElementById('percakapan').classList.add('hidden');
+  document.getElementById('materi').classList.remove('hidden');
 }
 function lewati() {
   document.getElementById('percakapan').classList.add('hidden');
+  document.getElementById('materi').classList.remove('hidden');
 }
 
 const checkboxesPengertianTranslasi = document.querySelectorAll('.checkboxPengertianTranslasi');
@@ -68,6 +71,7 @@ document.getElementById('closeChatbox').addEventListener('click', () => {
 
 document.getElementById('closeChatbox2').addEventListener('click', () => {
   document.getElementById('chatbox2').classList.add('hidden');
+  document.getElementById('chatbox').classList.add('opacity-0', '-z-10');
 });
 
 observerPengertianTranslasi.observe(akhirPengertiantranslasi);
