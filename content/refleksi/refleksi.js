@@ -966,3 +966,53 @@ const observerCerminTitik = new IntersectionObserver(
 );
 
 observerCerminTitik.observe(akhirCerminTitik);
+
+function addEventListeners() {
+  const checkAnswerButtons = document.querySelectorAll('.checkAnswerButton');
+
+  checkAnswerButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      const inputElement = document.querySelectorAll('.answerInput')[index];
+      const userAnswer = inputElement.value;
+      const correctAnswer = inputElement.getAttribute('data-answer');
+
+      // Ambil elemen rightAnswer dan wrongAnswer global
+      const rightAnswer = document.querySelector('.rightAnswer');
+      const wrongAnswer = document.querySelector('.wrongAnswer');
+
+      if (userAnswer == correctAnswer) {
+        rightAnswer.classList.remove('hidden');
+
+        setTimeout(() => {
+          rightAnswer.classList.add('hidden');
+        }, 1000);
+
+        // Disable input dan sembunyikan tombol setelah jawaban benar
+        inputElement.disabled = true;
+        button.classList.add('hidden'); // Sembunyikan tombol setelah jawaban benar
+
+        const audioElement2 = document.getElementById('myAudio2');
+        audioElement2.play(); // Putar audio jawaban benar
+      } else {
+        wrongAnswer.classList.remove('hidden');
+        setTimeout(() => {
+          wrongAnswer.classList.add('hidden');
+        }, 1000);
+
+        const audioElement = document.getElementById('myAudio');
+        audioElement.play(); // Putar audio jawaban salah
+      }
+
+      // Check if all answers are correct (implementasi fungsi ini perlu disesuaikan dengan kebutuhan Anda)
+      checkAllAnswers();
+    });
+  });
+}
+
+// Panggil fungsi untuk menambahkan event listener setelah DOM siap
+document.addEventListener('DOMContentLoaded', addEventListeners);
+
+function checkAllAnswers() {
+  // Implementasikan logika untuk memeriksa apakah semua jawaban benar
+  // Ini bisa disesuaikan dengan kebutuhan aplikasi Anda
+}
