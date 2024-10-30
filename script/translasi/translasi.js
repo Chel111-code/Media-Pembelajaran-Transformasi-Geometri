@@ -402,18 +402,13 @@ document.querySelectorAll('.question-container2').forEach((container) => {
     const correctAnswer2 = container.querySelector('.benar2 .text-orange-300').textContent.trim(); // Get correct answer letter
     const rightAnswer = document.querySelector('.rightAnswer');
     const wrongAnswer = document.querySelector('.wrongAnswer');
-    const checkboxesJarakTranslasi = document.querySelectorAll('.checkboxJarakTranslasi');
 
     if (isCorrect2) {
       resultDiv2.innerHTML = 'Jawaban benar!';
       resultDiv2.classList.remove('hidden');
       resultDiv2.style.color = 'green';
       rightAnswer.classList.remove('hidden');
-      nextMateri.classList.remove('hidden');
-      checkboxesJarakTranslasi.forEach((checkbox) => {
-        checkbox.checked = true;
-        checkbox.disabled = false;
-      });
+
       setTimeout(() => {
         rightAnswer.classList.add('hidden');
       }, 1000);
@@ -424,11 +419,7 @@ document.querySelectorAll('.question-container2').forEach((container) => {
       resultDiv2.classList.remove('hidden');
       resultDiv2.style.color = 'red';
       wrongAnswer.classList.remove('hidden');
-      nextMateri.classList.remove('hidden');
-      checkboxesJarakTranslasi.forEach((checkbox) => {
-        checkbox.checked = true;
-        checkbox.disabled = false;
-      });
+
       setTimeout(() => {
         wrongAnswer.classList.add('hidden');
       }, 1000);
