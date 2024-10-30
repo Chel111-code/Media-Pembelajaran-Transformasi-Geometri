@@ -477,9 +477,30 @@ document.addEventListener('DOMContentLoaded', function () {
   canvas.addEventListener('mousemove', handleMove);
   canvas.addEventListener('mouseup', handleUp);
 
-  canvas.addEventListener('touchstart', handleDown, { passive: true });
-  canvas.addEventListener('touchmove', handleMove, { passive: true });
-  canvas.addEventListener('touchend', handleUp);
+  canvas.addEventListener(
+    'touchstart',
+    (e) => {
+      e.preventDefault();
+      handleDown(e);
+    },
+    { passive: false }
+  );
+  canvas.addEventListener(
+    'touchmove',
+    (e) => {
+      e.preventDefault();
+      handleMove(e);
+    },
+    { passive: false }
+  );
+  canvas.addEventListener(
+    'touchend',
+    (e) => {
+      e.preventDefault();
+      handleUp(e);
+    },
+    { passive: false }
+  );
 
   drawInitialState();
 });
