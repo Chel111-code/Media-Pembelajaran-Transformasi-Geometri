@@ -175,7 +175,7 @@
       <!-- Percakapan -->
       <div>
         <div
-          class="w-full z-50 bg-slate-50 bg-opacity-80 backdrop-blur-sm absolute top-0"
+          class="w-full hidden z-50 bg-slate-50 bg-opacity-80 backdrop-blur-sm absolute top-0"
           id="percakapan"
         >
           <div
@@ -833,7 +833,7 @@
                 </button>
               </div>
               <hr class="mt-6" />
-              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold">
+              <div class="flex items-center zoomIn drop-shadow-md mt-10 hidden md:font-semibold">
                 <img
                   src="../../img/Grafis/Nih.png"
                   alt=""
@@ -1064,7 +1064,7 @@
               </div>
               <hr class="mt-6" />
               <div
-                class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8"
+                class="flex hidden zoomIn items-center drop-shadow-md mt-10 md:font-semibold pb-8"
                 id="akhirJaraktranslasi"
               >
                 <img
@@ -1110,7 +1110,7 @@
                   <div
                     class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
                   >
-                    Perhatikan lagi meja yang digeser.
+                    Perhatikan lagi meja yang digeser sebelumnya.
                   </div>
                   <div
                     class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg mt-2 text-pretty max-w-xl rounded-bl-xl rounded-tl-none"
@@ -1319,6 +1319,7 @@
                   Cek jawaban
                 </button>
               </div>
+
               <div class="mt-12 md:ml-24 pb-4 border-l-2 ml-6 border-orange-300 drop-shadow-md">
                 <div
                   class="font-semibold text-[11px] ml-4 flex gap-2 text-orange-300 drop-shadow-none"
@@ -1398,7 +1399,7 @@
               </div>
               <hr class="mt-6" />
               <div
-                class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8"
+                class="flex items-center hidden zoomIn drop-shadow-md mt-10 md:font-semibold pb-8"
                 id="akhirArahTranslasi"
               >
                 <img src="../../img/Grafis/supermen.png" alt="" class="w-28 md:w-28 -ml-3" />
@@ -1406,28 +1407,16 @@
                   <div
                     class="bg-[#C9F2C7] px-4 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
                   >
-                    Hebat, kamu bisa menyelesaikan semuanya.
-                  </div>
-                  <div
-                    class="bg-[#C9F2C7] px-4 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
-                  >
-                    Ali ada permainan nih, klik tombol di bawah untuk mulai permainannya
+                    Setelah kamu bisa menyelesaikan semuanya, yuk kita ke sub materi berikutnya!
                   </div>
                 </div>
-              </div>
-              <div
-                onclick="mulai()"
-                id="mulai"
-                class="bg-orange-300 cursor-pointer text-white md:-mt-4 rounded-md mx-auto text-center font-semibold tracking-wider w-16 px-3 py-2"
-              >
-                Mulai
               </div>
             </div>
             <!-- Akhir Arah Translasi -->
 
             <!-- Penulisan Jarak dan Arah Translasi -->
             <div
-              class="mt-16 relative hidden zoomIn border border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
+              class="mt-16 relative zoomIn hidden border border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
             >
               <div
                 class="absolute px-5 py-2 bg-[#FFC09F] -top-4 rounded-md tracking-wide text-white"
@@ -1647,10 +1636,10 @@
                     bawah. Bagaimana penulisan Jarak dan arah translasi yang benar?
                   </div>
                 </div>
-                <div class="question-container">
+                <div class="question-container3">
                   <div class="max-w-[350px] ml-12 mt-4 options">
                     <div
-                      class="flex items-center gap-4 px-5 py-2 border-t border-b cursor-pointer pilihan benar"
+                      class="flex items-center gap-4 px-5 py-2 border-t border-b cursor-pointer pilihan3 benar3"
                     >
                       <div class="text-orange-300 font-semibold">A.</div>
                       <svg
@@ -1679,7 +1668,7 @@
                       </svg>
                     </div>
                     <div
-                      class="flex items-center gap-4 px-5 py-2 border-b border-t cursor-pointer pilihan"
+                      class="flex items-center gap-4 px-5 py-2 border-b border-t cursor-pointer pilihan3"
                     >
                       <div class="text-orange-300 font-semibold">B.</div>
                       <svg
@@ -1708,7 +1697,7 @@
                       </svg>
                     </div>
                     <div
-                      class="flex items-center gap-4 px-5 py-2 border-b border-t cursor-pointer pilihan"
+                      class="flex items-center gap-4 px-5 py-2 border-b border-t cursor-pointer pilihan3"
                     >
                       <div class="text-orange-300 font-semibold">C.</div>
                       <svg
@@ -1737,7 +1726,7 @@
                       </svg>
                     </div>
                     <div
-                      class="flex items-center gap-4 px-5 py-2 border-b border-t cursor-pointer pilihan"
+                      class="flex items-center gap-4 px-5 py-2 border-b border-t cursor-pointer pilihan3"
                     >
                       <div class="text-orange-300 font-semibold">D.</div>
                       <svg
@@ -1769,11 +1758,11 @@
 
                   <button
                     disabled
-                    class="px-3 py-1 cekJawaban bg-violet-400 ml-[50px] mt-4 text-white rounded-md text-[10px]"
+                    class="px-3 py-1 cekJawaban3 bg-violet-400 ml-[50px] mt-4 text-white rounded-md text-[10px]"
                   >
                     Cek jawaban
                   </button>
-                  <div class="ml-[50px] mt-4 jadiBenar hidden">
+                  <div class="ml-[50px] mt-4 jadiBenar3 hidden">
                     jawaban yang benar: <span class="text-orange-400 font-semibold">A</span>
                   </div>
                 </div>
@@ -1789,7 +1778,7 @@
             </div>
             <!-- Akhir Penulisan Jarak dan Arah Translasi -->
 
-            <div class="hidden">
+            <div class="">
               <!-- Ruas Garis dan Bangun Datar -->
               <div
                 class="mt-16 relative zoomIn border border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
@@ -2173,7 +2162,7 @@
                   </div>
                   <div class="flex gap-2 ml-12 item mt-3">
                     <div class="bg-blue-50 p-3 relative">
-                      <img src="../../img/grid6.jpeg" class="w-44" alt="" />
+                      <img src="../../img/Grid6.jpeg" class="w-44 h-44" alt="" />
                       <div>
                         <div
                           class="w-[6px] h-[6px] rounded-full bg-green-500 text-green-500 absolute bottom-[97px] left-[38px]"
@@ -2221,7 +2210,7 @@
                       />
                     </div>
                     <div class="bg-blue-50 p-3 relative zoomIn hidden">
-                      <img src="../../img/grid6.jpeg" class="w-44" alt="" />
+                      <img src="../../img/grid6.jpeg" class="w-44 h-44" alt="" />
                       <div>
                         <div
                           class="w-[6px] h-[6px] rounded-full zoomIn2 z-20 bg-green-500 text-green-500 absolute bottom-[97px] left-[38px]"
@@ -2270,7 +2259,7 @@
                       />
                     </div>
                     <div class="bg-blue-50 p-3 relative hidden zoomIn">
-                      <img src="../../img/grid6.jpeg" class="w-44" alt="" />
+                      <img src="../../img/grid6.jpeg" class="w-44 h-44" alt="" />
                       <div>
                         <div
                           class="w-[6px] h-[6px] rounded-full z-20 bg-gray-300 text-gray-300 absolute bottom-[97px] left-[38px]"
@@ -2333,7 +2322,7 @@
                       />
                     </div>
                     <div class="bg-blue-50 p-3 relative hidden zoomIn">
-                      <img src="../../img/grid6.jpeg" class="w-44" alt="" />
+                      <img src="../../img/grid6.jpeg" class="w-44 h-44" alt="" />
                       <div>
                         <div
                           class="w-[6px] h-[6px] rounded-full z-20 bg-gray-300 text-gray-300 absolute bottom-[97px] left-[38px]"
@@ -2403,7 +2392,7 @@
                       />
                     </div>
                     <div class="bg-blue-50 p-3 relative hidden zoomIn">
-                      <img src="../../img/grid6.jpeg" class="w-44" alt="" />
+                      <img src="../../img/grid6.jpeg" class="w-44 h-44" alt="" />
                       <div>
                         <div
                           class="w-[6px] h-[6px] rounded-full z-20 bg-gray-300 text-gray-300 absolute bottom-[97px] left-[38px]"
@@ -2519,7 +2508,7 @@
                       <br />
                     </div>
                   </div>
-                  <div class="question-container">
+                  <div class="question-container2">
                     <div class="max-w-[350px] ml-12 mt-4 options">
                       <div class="relative">
                         <div class="absolute cursor-pointer left-14 top-3 playPilgand">
@@ -2531,12 +2520,12 @@
                           />
                         </div>
                         <div
-                          class="flex items-center gap-3 px-2 py-4 border-t border-b cursor-pointer pilihan"
+                          class="flex items-center gap-3 px-2 py-4 border-t border-b cursor-pointer pilihan2"
                         >
                           <div class="text-orange-300 font-semibold">A.</div>
                           <div class="flex gap-2 mt-3 hidden zoomIn">
                             <div class="bg-blue-50 p-3 relative">
-                              <img src="../../img/grid7.jpeg" class="w-40" alt="" />
+                              <img src="../../img/grid7.jpeg" class="w-40 h-40" alt="" />
                               <div>
                                 <div
                                   class="absolute top-[35px] persegiABCD2 z-20 left-[34px] w-[46px] h-[47px] border-2 border-green-400"
@@ -2643,12 +2632,12 @@
                           />
                         </div>
                         <div
-                          class="flex items-center gap-3 px-2 py-4 border-b border-t cursor-pointer pilihan benar"
+                          class="flex items-center gap-3 px-2 py-4 border-b border-t cursor-pointer pilihan2 benar2"
                         >
                           <div class="text-orange-300 font-semibold">B.</div>
                           <div class="flex gap-2 hidden zoomIn mt-3">
                             <div class="bg-blue-50 p-3 relative">
-                              <img src="../../img/grid7.jpeg" class="w-40" alt="" />
+                              <img src="../../img/grid7.jpeg" class="w-40 h-40" alt="" />
                               <div>
                                 <div
                                   class="absolute bottom-[56px] z-20 right-[35px] persegiABCD w-[45px] h-[47px] border-2 border-green-400"
@@ -2755,12 +2744,12 @@
                           />
                         </div>
                         <div
-                          class="flex items-center gap-3 px-2 py-4 border-b border-t cursor-pointer pilihan"
+                          class="flex items-center gap-3 px-2 py-4 border-b border-t cursor-pointer pilihan2"
                         >
                           <div class="text-orange-300 font-semibold">C.</div>
                           <div class="flex gap-2 hidden zoomIn mt-3">
                             <div class="bg-blue-50 p-3 relative">
-                              <img src="../../img/grid7.jpeg" class="w-40" alt="" />
+                              <img src="../../img/grid7.jpeg" class="w-40 h-40" alt="" />
                               <div>
                                 <div
                                   class="absolute bottom-[56px] z-20 right-[35px] persegiABCD3 w-[45px] h-[47px] border-2 border-green-400"
@@ -2860,11 +2849,11 @@
                     </div>
                     <button
                       disabled
-                      class="px-3 py-1 cekJawaban bg-violet-400 ml-[50px] mt-4 text-white rounded-md text-[10px]"
+                      class="px-3 py-1 cekJawaban2 bg-violet-400 ml-[50px] mt-4 text-white rounded-md text-[10px]"
                     >
                       Cek jawaban
                     </button>
-                    <div class="ml-[50px] mt-4 jadiBenar hidden">
+                    <div class="ml-[50px] mt-4 jadiBenar2 hidden">
                       jawaban yang benar: <span class="text-orange-400 font-semibold">B</span>
                     </div>
                   </div>

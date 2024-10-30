@@ -70,7 +70,9 @@ function showTitikBayangan() {
     jadiTitik.scrollIntoView({ behavior: 'smooth' });
     setTimeout(() => {
       materi.nextElementSibling.classList.remove('hidden');
+
       materi.nextElementSibling.scrollIntoView({ behavior: 'smooth' });
+      window.scrollBy({ top: 200, behavior: 'smooth' });
     }, 1000); // waktu tambahan untuk animasi opacity
   }, 1000);
 }
@@ -177,6 +179,8 @@ function playImg3() {
     setTimeout(() => {
       materi.nextElementSibling.nextElementSibling.classList.remove('hidden');
       materi.nextElementSibling.nextElementSibling.scrollIntoView({ behavior: 'smooth' });
+
+      window.scrollBy({ top: 200, behavior: 'smooth' });
     }, 1000);
   }, 5000);
 }

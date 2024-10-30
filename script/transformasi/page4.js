@@ -218,6 +218,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const audioElement2 = document.getElementById('myAudio2');
       audioElement2.play();
       document.getElementById('tombolNext').classList.remove('hidden');
+      document.getElementById('klikNext').classList.remove('hidden');
       setTimeout(function () {
         popupBenar.classList.add('hidden');
       }, 1000);

@@ -42,11 +42,10 @@ function lewati() {
 
 const checkboxesPengertianTranslasi = document.querySelectorAll('.checkboxPengertianTranslasi');
 const akhirPengertiantranslasi = document.getElementById('akhirPengertiantranslasi');
-
 const nextMateri = document.getElementById('nextMateri');
 
 const observerPengertianTranslasi = new IntersectionObserver(
-  (entries) => {
+  (entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         checkboxesPengertianTranslasi.forEach((checkbox) => {
@@ -58,12 +57,40 @@ const observerPengertianTranslasi = new IntersectionObserver(
           document.getElementById('chatbox').classList.remove('hidden');
           const audioNotif = document.getElementById('notifnih');
           audioNotif.play();
-        }, 2000);
+        }, 1000);
+
+        // Memutus observer agar kode hanya berjalan sekali
+        observer.disconnect();
       }
     });
   },
   { threshold: 1.0 }
 );
+
+observerPengertianTranslasi.observe(akhirPengertiantranslasi);
+
+const checkboxesArahTranslasi = document.querySelectorAll('.checkboxArahTranslasi');
+const akhircheckboxArahTranslasi = document.getElementById('akhirArahTranslasi');
+
+const observerArahTranslasi = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        checkboxesArahTranslasi.forEach((checkbox) => {
+          checkbox.checked = true;
+          checkbox.disabled = false;
+        });
+        nextMateri.classList.remove('hidden');
+
+        // Memutus observer agar kode hanya berjalan sekali
+        observer.disconnect();
+      }
+    });
+  },
+  { threshold: 1.0 }
+);
+
+observerArahTranslasi.observe(akhirArahTranslasi);
 
 document.getElementById('closeChatbox').addEventListener('click', () => {
   document.getElementById('chatbox').classList.add('hidden');
@@ -71,10 +98,7 @@ document.getElementById('closeChatbox').addEventListener('click', () => {
 
 document.getElementById('closeChatbox2').addEventListener('click', () => {
   document.getElementById('chatbox2').classList.add('hidden');
-  document.getElementById('chatbox').classList.add('opacity-0', '-z-10');
 });
-
-observerPengertianTranslasi.observe(akhirPengertiantranslasi);
 
 const checkboxesJarakTranslasi = document.querySelectorAll('.checkboxJarakTranslasi');
 const akhirJaraktranslasi = document.getElementById('akhirJaraktranslasi');
@@ -133,6 +157,8 @@ function addEventListeners() {
 
       if (userAnswer == correctAnswer) {
         rightAnswer.classList.remove('hidden');
+        const oii = inputElement.closest('.drop-shadow-md').nextElementSibling.nextElementSibling;
+        oii.classList.remove('hidden');
         setTimeout(() => {
           rightAnswer.classList.add('hidden');
         }, 1000);
@@ -287,19 +313,22 @@ document.querySelectorAll('.question-container').forEach((container) => {
   const options = container.querySelectorAll('.pilihan');
   const checkAnswerButton = container.querySelector('.cekJawaban');
   const resultDiv = container.querySelector('.jadiBenar');
+  const akhirArahTranslasi2 = document.getElementById('akhirArahTranslasi'); // Tambahkan elemen akhirArahTranslasi
+
   let selectedOption = null;
   let answerChecked = false;
 
   options.forEach((option) => {
     option.addEventListener('click', () => {
-      if (answerChecked) return; // Disable option selection after answer check
+      if (answerChecked) return;
 
-      // Remove selection from other options
+      // Reset warna pilihan lain
       options.forEach((opt) => opt.classList.remove('bg-orange-100'));
-      // Mark the selected option
+
+      // Beri warna pada opsi yang dipilih
       option.classList.add('bg-orange-100');
       selectedOption = option;
-      checkAnswerButton.disabled = false; // Enable the check answer button
+      checkAnswerButton.disabled = false;
     });
   });
 
@@ -307,7 +336,7 @@ document.querySelectorAll('.question-container').forEach((container) => {
     if (!selectedOption || answerChecked) return;
 
     const isCorrect = selectedOption.classList.contains('benar');
-    const correctAnswer = container.querySelector('.benar .text-orange-300').textContent.trim(); // Get correct answer letter
+    const correctAnswer = container.querySelector('.benar .text-orange-300').textContent.trim();
     const rightAnswer = document.querySelector('.rightAnswer');
     const wrongAnswer = document.querySelector('.wrongAnswer');
 
@@ -316,16 +345,90 @@ document.querySelectorAll('.question-container').forEach((container) => {
       resultDiv.classList.remove('hidden');
       resultDiv.style.color = 'green';
       rightAnswer.classList.remove('hidden');
+
+      setTimeout(() => {
+        rightAnswer.classList.add('hidden');
+      }, 1000);
+
+      const audioElement2 = document.getElementById('myAudio2');
+      audioElement2.play();
+
+      // Tampilkan akhirArahTranslasi saat jawaban benar
+      akhirArahTranslasi2.classList.remove('hidden');
+    } else {
+      resultDiv.innerHTML = `Jawaban yang benar adalah ${correctAnswer}!`;
+      resultDiv.classList.remove('hidden');
+      resultDiv.style.color = 'red';
+      wrongAnswer.classList.remove('hidden');
+
+      setTimeout(() => {
+        wrongAnswer.classList.add('hidden');
+      }, 1000);
+
+      const audioElement = document.getElementById('myAudio');
+      audioElement.play();
+      akhirArahTranslasi2.classList.remove('hidden');
+    }
+
+    answerChecked = true;
+    checkAnswerButton.classList.add('hidden');
+  });
+});
+
+document.querySelectorAll('.question-container2').forEach((container) => {
+  const options2 = container.querySelectorAll('.pilihan2');
+  const checkAnswerButton2 = container.querySelector('.cekJawaban2');
+  const resultDiv2 = container.querySelector('.jadiBenar2');
+  let selectedOption2 = null;
+  let answerChecked2 = false;
+
+  options2.forEach((option) => {
+    option.addEventListener('click', () => {
+      if (answerChecked2) return; // Disable option selection after answer check
+
+      // Remove selection from other options
+      options2.forEach((opt) => opt.classList.remove('bg-orange-100'));
+      // Mark the selected option
+      option.classList.add('bg-orange-100');
+      selectedOption2 = option;
+      checkAnswerButton2.disabled = false; // Enable the check answer button
+    });
+  });
+
+  checkAnswerButton2.addEventListener('click', () => {
+    if (!selectedOption2 || answerChecked2) return;
+
+    const isCorrect2 = selectedOption2.classList.contains('benar2');
+    const correctAnswer2 = container.querySelector('.benar2 .text-orange-300').textContent.trim(); // Get correct answer letter
+    const rightAnswer = document.querySelector('.rightAnswer');
+    const wrongAnswer = document.querySelector('.wrongAnswer');
+    const checkboxesJarakTranslasi = document.querySelectorAll('.checkboxJarakTranslasi');
+
+    if (isCorrect2) {
+      resultDiv2.innerHTML = 'Jawaban benar!';
+      resultDiv2.classList.remove('hidden');
+      resultDiv2.style.color = 'green';
+      rightAnswer.classList.remove('hidden');
+      nextMateri.classList.remove('hidden');
+      checkboxesJarakTranslasi.forEach((checkbox) => {
+        checkbox.checked = true;
+        checkbox.disabled = false;
+      });
       setTimeout(() => {
         rightAnswer.classList.add('hidden');
       }, 1000);
       const audioElement2 = document.getElementById('myAudio2');
       audioElement2.play();
     } else {
-      resultDiv.innerHTML = `Jawaban yang benar adalah ${correctAnswer}!`;
-      resultDiv.classList.remove('hidden');
-      resultDiv.style.color = 'red';
+      resultDiv2.innerHTML = `Jawaban yang benar adalah ${correctAnswer2}!`;
+      resultDiv2.classList.remove('hidden');
+      resultDiv2.style.color = 'red';
       wrongAnswer.classList.remove('hidden');
+      nextMateri.classList.remove('hidden');
+      checkboxesJarakTranslasi.forEach((checkbox) => {
+        checkbox.checked = true;
+        checkbox.disabled = false;
+      });
       setTimeout(() => {
         wrongAnswer.classList.add('hidden');
       }, 1000);
@@ -334,129 +437,47 @@ document.querySelectorAll('.question-container').forEach((container) => {
       audioElement.play();
     }
 
-    answerChecked = true; // Disable further checking
-    checkAnswerButton.classList.add('hidden'); // Hide the button after checking
+    answerChecked2 = true; // Disable further checking
+    checkAnswerButton2.classList.add('hidden'); // Hide the button after checking
   });
 });
 
-function mulai() {
-  document.getElementById('games').classList.remove('hidden');
-  document.getElementById('mulai').classList.add('hidden');
-}
-function penjelasan() {
-  document.getElementById('penjelasan').classList.remove('hidden');
-  const checkboxPenulisan = document.querySelectorAll('.checkboxPenulisan');
-  checkboxPenulisan.forEach((checkbox) => {
-    checkbox.checked = true;
-    checkbox.disabled = false;
+document.querySelectorAll('.question-container3').forEach((container) => {
+  const options3 = container.querySelectorAll('.pilihan3');
+  const checkAnswerButton3 = container.querySelector('.cekJawaban3');
+  const resultDiv3 = container.querySelector('.jadiBenar3');
+  let selectedOption3 = null;
+  let answerChecked3 = false;
+
+  options3.forEach((option) => {
+    option.addEventListener('click', () => {
+      if (answerChecked3) return; // Disable option selection after answer check
+
+      // Remove selection from other options
+      options3.forEach((opt) => opt.classList.remove('bg-orange-100'));
+      // Mark the selected option
+      option.classList.add('bg-orange-100');
+      selectedOption3 = option;
+      checkAnswerButton3.disabled = false; // Enable the check answer button
+    });
   });
-  document.getElementById('nextMateri').classList.remove('hidden');
-}
-function ok() {
-  document.getElementById('penjelasan').classList.add('hidden');
-  document.querySelector('.imgklik').classList.add('hidden');
-}
 
-document.addEventListener('DOMContentLoaded', function () {
-  const canvas = document.getElementById('geometryCanvas');
-  const ctx = canvas.getContext('2d');
-  const gridSize = 48; // Ukuran grid dalam piksel
-  const img = new Image();
-  img.src = '../../img/anak1.png';
+  checkAnswerButton3.addEventListener('click', () => {
+    if (!selectedOption3 || answerChecked3) return;
 
-  let dragPoint = { x: 1 * gridSize, y: 4 * gridSize };
-  let isDragging = false;
-  const correctPosition = { x: 4 * gridSize, y: 1 * gridSize };
-
-  canvas.width = 5 * gridSize;
-  canvas.height = 5 * gridSize;
-
-  function drawGrid() {
-    ctx.strokeStyle = '#ddd';
-    for (let x = 0; x <= canvas.width; x += gridSize) {
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, canvas.height);
-      ctx.stroke();
-    }
-    for (let y = 0; y <= canvas.height; y += gridSize) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(canvas.width, y);
-      ctx.stroke();
-    }
-  }
-
-  function drawImage() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawGrid();
-    ctx.drawImage(img, dragPoint.x - gridSize / 2, dragPoint.y - gridSize / 2, gridSize, gridSize);
-  }
-
-  function handleMouseDown(e) {
-    const mousePos = getMousePos(canvas, e);
-    if (isInsideImage(mousePos)) {
-      isDragging = true;
-    }
-  }
-
-  function handleMouseMove(e) {
-    if (!isDragging) return;
-    const mousePos = getMousePos(canvas, e);
-    dragPoint.x = mousePos.x;
-    dragPoint.y = mousePos.y;
-    drawImage();
-  }
-
-  function handleMouseUp(e) {
-    if (isDragging) {
-      dragPoint = snapToGrid(dragPoint);
-      drawImage();
-    }
-    isDragging = false;
-  }
-
-  function handleTouchStart(e) {
-    e.preventDefault();
-    const touch = e.touches[0];
-    const mouseEvent = new MouseEvent('mousedown', {
-      clientX: touch.clientX,
-      clientY: touch.clientY,
-    });
-    canvas.dispatchEvent(mouseEvent);
-  }
-
-  function handleTouchMove(e) {
-    e.preventDefault();
-    const touch = e.touches[0];
-    const mouseEvent = new MouseEvent('mousemove', {
-      clientX: touch.clientX,
-      clientY: touch.clientY,
-    });
-    canvas.dispatchEvent(mouseEvent);
-  }
-
-  function handleTouchEnd(e) {
-    if (isDragging) {
-      dragPoint = snapToGrid(dragPoint);
-      drawImage();
-    }
-    isDragging = false;
-  }
-
-  function checkAnswer() {
-    const tolerance = gridSize / 2; // Toleransi untuk pergeseran gambar
-    const isCorrect =
-      Math.abs(dragPoint.x - correctPosition.x) < tolerance &&
-      Math.abs(dragPoint.y - correctPosition.y) < tolerance;
-
-    const messageElement = document.getElementById('message');
+    const isCorrect3 = selectedOption3.classList.contains('benar3');
+    const correctAnswer3 = container.querySelector('.benar3 .text-orange-300').textContent.trim(); // Get correct answer letter
     const rightAnswer = document.querySelector('.rightAnswer');
     const wrongAnswer = document.querySelector('.wrongAnswer');
-    const checkboxArahTranslasi = document.querySelectorAll('.checkboxArahTranslasi');
-    if (isCorrect) {
+    const checkboxPenulisan = document.querySelectorAll('.checkboxPenulisan');
+
+    if (isCorrect3) {
+      resultDiv3.innerHTML = 'Jawaban benar!';
+      resultDiv3.classList.remove('hidden');
+      resultDiv3.style.color = 'green';
       rightAnswer.classList.remove('hidden');
-      checkboxArahTranslasi.forEach((checkbox) => {
+
+      checkboxPenulisan.forEach((checkbox) => {
         checkbox.checked = true;
         checkbox.disabled = false;
       });
@@ -466,11 +487,16 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 1000);
       const audioElement2 = document.getElementById('myAudio2');
       audioElement2.play();
-      setTimeout(() => {
-        document.getElementById('games').classList.add('hidden');
-      }, 2000);
     } else {
+      resultDiv3.innerHTML = `Jawaban yang benar adalah ${correctAnswer3}!`;
+      resultDiv3.classList.remove('hidden');
+      resultDiv3.style.color = 'red';
       wrongAnswer.classList.remove('hidden');
+      checkboxPenulisan.forEach((checkbox) => {
+        checkbox.checked = true;
+        checkbox.disabled = false;
+      });
+      document.getElementById('nextMateri').classList.remove('hidden');
       setTimeout(() => {
         wrongAnswer.classList.add('hidden');
       }, 1000);
@@ -478,51 +504,19 @@ document.addEventListener('DOMContentLoaded', function () {
       const audioElement = document.getElementById('myAudio');
       audioElement.play();
     }
-  }
 
-  canvas.addEventListener('mousedown', handleMouseDown);
-  canvas.addEventListener('mousemove', handleMouseMove);
-  canvas.addEventListener('mouseup', handleMouseUp);
-  canvas.addEventListener('touchstart', handleTouchStart, false);
-  canvas.addEventListener('touchmove', handleTouchMove, false);
-  canvas.addEventListener('touchend', handleTouchEnd, false);
-
-  document.getElementById('cekAnswerGames').addEventListener('click', checkAnswer);
-
-  img.onload = function () {
-    drawImage(); // Gambar ditampilkan setelah dimuat
-  };
-
-  function getMousePos(canvas, evt) {
-    const rect = canvas.getBoundingClientRect();
-    return {
-      x: evt.clientX - rect.left,
-      y: evt.clientY - rect.top,
-    };
-  }
-
-  function isInsideImage(mousePos) {
-    return (
-      mousePos.x >= dragPoint.x - gridSize / 2 &&
-      mousePos.x <= dragPoint.x + gridSize / 2 &&
-      mousePos.y >= dragPoint.y - gridSize / 2 &&
-      mousePos.y <= dragPoint.y + gridSize / 2
-    );
-  }
-
-  function snapToGrid(point) {
-    point.x = Math.round(point.x / gridSize) * gridSize;
-    point.y = Math.round(point.y / gridSize) * gridSize;
-
-    // Menjaga agar gambar tetap berada dalam batas kanvas
-    if (point.x >= canvas.width) point.x = canvas.width - gridSize;
-    if (point.y >= canvas.height) point.y = canvas.height - gridSize;
-    if (point.x < 0) point.x = 0;
-    if (point.y < 0) point.y = 0;
-
-    return point;
-  }
+    answerChecked3 = true; // Disable further checking
+    checkAnswerButton3.classList.add('hidden'); // Hide the button after checking
+  });
 });
+
+function penjelasan() {
+  document.getElementById('penjelasan').classList.remove('hidden');
+}
+function ok() {
+  document.getElementById('penjelasan').classList.add('hidden');
+  document.querySelector('.imgklik').classList.add('hidden');
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   const canvas = document.getElementById('tesCanvas');

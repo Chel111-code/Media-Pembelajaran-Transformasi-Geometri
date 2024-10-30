@@ -25,6 +25,19 @@
   animation: pindah 0.5s forwards;
 }
 
+@keyframes pindah2 {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(300px);
+  }
+}
+
+.pindah2 {
+  animation: pindah2 0.5s forwards;
+}
+
 @keyframes zoomOut {
   0% {
     transform: scale(0.5);
