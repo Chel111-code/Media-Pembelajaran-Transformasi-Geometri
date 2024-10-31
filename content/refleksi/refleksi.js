@@ -679,6 +679,139 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
+  const startElement = document.getElementById('materi'); // Element sebelum yang ingin ditampilkan
+  let currentElement = startElement.nextElementSibling; // Mulai dari elemen setelah #materi
+
+  const button = document.getElementById('showNextDivButton');
+  button.addEventListener('click', function () {
+    if (currentElement && currentElement.classList.contains('hidden')) {
+      currentElement.classList.remove('hidden');
+
+      // Scroll elemen ke tampilan dengan smooth behavior
+      currentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Menunggu sebentar sebelum menggulir ke atas
+      setTimeout(() => {
+        window.scrollBy(0, 500); // Scroll 200px ke atas
+      }); // Sesuaikan waktu tunggu jika perlu
+      nextMateri.classList.add('hidden');
+      currentElement = currentElement.nextElementSibling; // Pindah ke elemen berikutnya
+    }
+  });
+});
+
+const checkboxesPengertianTranslasi = document.querySelectorAll('.checkboxPengertianTranslasi');
+const akhirPengertiantranslasi = document.getElementById('akhirPengertiantranslasi');
+const nextMateri = document.getElementById('nextMateri');
+
+const observerPengertianTranslasi = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        checkboxesPengertianTranslasi.forEach((checkbox) => {
+          checkbox.checked = true;
+          checkbox.disabled = false;
+        });
+        nextMateri.classList.remove('hidden');
+      }
+    });
+  },
+  { threshold: 1.0 }
+);
+
+observerPengertianTranslasi.observe(akhirPengertiantranslasi);
+
+const checkboxesJarakTranslasi = document.querySelectorAll('.checkboxJarakTranslasi');
+const akhirJaraktranslasi = document.getElementById('akhirJaraktranslasi');
+
+const observerJarakTranslasi = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        checkboxesJarakTranslasi.forEach((checkbox) => {
+          checkbox.checked = true;
+          checkbox.disabled = false;
+        });
+        nextMateri.classList.remove('hidden');
+      }
+    });
+  },
+  { threshold: 1.0 }
+);
+
+observerJarakTranslasi.observe(akhirJaraktranslasi);
+
+const checkboxArahTranslasi = document.querySelectorAll('.checkboxArahTranslasi');
+const akhirCerminTitik = document.getElementById('akhirCerminTitik');
+
+const observerCerminTitik = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        checkboxArahTranslasi.forEach((checkbox) => {
+          checkbox.checked = true;
+          checkbox.disabled = false;
+        });
+        nextMateri.classList.remove('hidden');
+      }
+    });
+  },
+  { threshold: 1.0 }
+);
+
+observerCerminTitik.observe(akhirCerminTitik);
+
+function addEventListeners() {
+  const checkAnswerButtons = document.querySelectorAll('.checkAnswerButton');
+
+  checkAnswerButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      const inputElement = document.querySelectorAll('.answerInput')[index];
+      const userAnswer = inputElement.value;
+      const correctAnswer = inputElement.getAttribute('data-answer');
+
+      // Ambil elemen rightAnswer dan wrongAnswer global
+      const rightAnswer = document.querySelector('.rightAnswer');
+      const wrongAnswer = document.querySelector('.wrongAnswer');
+
+      if (userAnswer == correctAnswer) {
+        rightAnswer.classList.remove('hidden');
+
+        setTimeout(() => {
+          rightAnswer.classList.add('hidden');
+        }, 1000);
+
+        // Disable input dan sembunyikan tombol setelah jawaban benar
+        inputElement.disabled = true;
+        button.classList.add('hidden'); // Sembunyikan tombol setelah jawaban benar
+
+        const audioElement2 = document.getElementById('myAudio2');
+        audioElement2.play(); // Putar audio jawaban benar
+      } else {
+        wrongAnswer.classList.remove('hidden');
+        setTimeout(() => {
+          wrongAnswer.classList.add('hidden');
+        }, 1000);
+
+        const audioElement = document.getElementById('myAudio');
+        audioElement.play(); // Putar audio jawaban salah
+      }
+
+      // Check if all answers are correct (implementasi fungsi ini perlu disesuaikan dengan kebutuhan Anda)
+      checkAllAnswers();
+    });
+  });
+}
+
+// Panggil fungsi untuk menambahkan event listener setelah DOM siap
+document.addEventListener('DOMContentLoaded', addEventListeners);
+
+function checkAllAnswers() {
+  // Implementasikan logika untuk memeriksa apakah semua jawaban benar
+  // Ini bisa disesuaikan dengan kebutuhan aplikasi Anda
+}
+
+document.addEventListener('DOMContentLoaded', function () {
   const canvas6 = document.getElementById('geometryCanvas6');
   const ctx6 = canvas6.getContext('2d');
   const gridSize6 = 25; // Ukuran grid dalam piksel
@@ -869,136 +1002,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
   drawInitialState6();
 });
-
-document.addEventListener('DOMContentLoaded', function () {
-  const startElement = document.getElementById('materi'); // Element sebelum yang ingin ditampilkan
-  let currentElement = startElement.nextElementSibling; // Mulai dari elemen setelah #materi
-
-  const button = document.getElementById('showNextDivButton');
-  button.addEventListener('click', function () {
-    if (currentElement && currentElement.classList.contains('hidden')) {
-      currentElement.classList.remove('hidden');
-
-      // Scroll elemen ke tampilan dengan smooth behavior
-      currentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-      // Menunggu sebentar sebelum menggulir ke atas
-      setTimeout(() => {
-        window.scrollBy(0, 500); // Scroll 200px ke atas
-      }); // Sesuaikan waktu tunggu jika perlu
-      nextMateri.classList.add('hidden');
-      currentElement = currentElement.nextElementSibling; // Pindah ke elemen berikutnya
-    }
-  });
-});
-
-const checkboxesPengertianTranslasi = document.querySelectorAll('.checkboxPengertianTranslasi');
-const akhirPengertiantranslasi = document.getElementById('akhirPengertiantranslasi');
-const nextMateri = document.getElementById('nextMateri');
-
-const observerPengertianTranslasi = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        checkboxesPengertianTranslasi.forEach((checkbox) => {
-          checkbox.checked = true;
-          checkbox.disabled = false;
-        });
-        nextMateri.classList.remove('hidden');
-      }
-    });
-  },
-  { threshold: 1.0 }
-);
-
-observerPengertianTranslasi.observe(akhirPengertiantranslasi);
-
-const checkboxesJarakTranslasi = document.querySelectorAll('.checkboxJarakTranslasi');
-const akhirJaraktranslasi = document.getElementById('akhirJaraktranslasi');
-
-const observerJarakTranslasi = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        checkboxesJarakTranslasi.forEach((checkbox) => {
-          checkbox.checked = true;
-          checkbox.disabled = false;
-        });
-        nextMateri.classList.remove('hidden');
-      }
-    });
-  },
-  { threshold: 1.0 }
-);
-
-observerJarakTranslasi.observe(akhirJaraktranslasi);
-
-const checkboxArahTranslasi = document.querySelectorAll('.checkboxArahTranslasi');
-const akhirCerminTitik = document.getElementById('akhirCerminTitik');
-
-const observerCerminTitik = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        checkboxArahTranslasi.forEach((checkbox) => {
-          checkbox.checked = true;
-          checkbox.disabled = false;
-        });
-        nextMateri.classList.remove('hidden');
-      }
-    });
-  },
-  { threshold: 1.0 }
-);
-
-observerCerminTitik.observe(akhirCerminTitik);
-
-function addEventListeners() {
-  const checkAnswerButtons = document.querySelectorAll('.checkAnswerButton');
-
-  checkAnswerButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      const inputElement = document.querySelectorAll('.answerInput')[index];
-      const userAnswer = inputElement.value;
-      const correctAnswer = inputElement.getAttribute('data-answer');
-
-      // Ambil elemen rightAnswer dan wrongAnswer global
-      const rightAnswer = document.querySelector('.rightAnswer');
-      const wrongAnswer = document.querySelector('.wrongAnswer');
-
-      if (userAnswer == correctAnswer) {
-        rightAnswer.classList.remove('hidden');
-
-        setTimeout(() => {
-          rightAnswer.classList.add('hidden');
-        }, 1000);
-
-        // Disable input dan sembunyikan tombol setelah jawaban benar
-        inputElement.disabled = true;
-        button.classList.add('hidden'); // Sembunyikan tombol setelah jawaban benar
-
-        const audioElement2 = document.getElementById('myAudio2');
-        audioElement2.play(); // Putar audio jawaban benar
-      } else {
-        wrongAnswer.classList.remove('hidden');
-        setTimeout(() => {
-          wrongAnswer.classList.add('hidden');
-        }, 1000);
-
-        const audioElement = document.getElementById('myAudio');
-        audioElement.play(); // Putar audio jawaban salah
-      }
-
-      // Check if all answers are correct (implementasi fungsi ini perlu disesuaikan dengan kebutuhan Anda)
-      checkAllAnswers();
-    });
-  });
-}
-
-// Panggil fungsi untuk menambahkan event listener setelah DOM siap
-document.addEventListener('DOMContentLoaded', addEventListeners);
-
-function checkAllAnswers() {
-  // Implementasikan logika untuk memeriksa apakah semua jawaban benar
-  // Ini bisa disesuaikan dengan kebutuhan aplikasi Anda
-}
