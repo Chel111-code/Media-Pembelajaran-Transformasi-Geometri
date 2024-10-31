@@ -501,47 +501,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-const checkboxesPengertianTranslasi = document.querySelectorAll('.checkboxPengertianTranslasi');
-const akhirPengertiantranslasi = document.getElementById('akhirPengertiantranslasi');
-const nextMateri = document.getElementById('nextMateri');
-
-const observerPengertianTranslasi = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        checkboxesPengertianTranslasi.forEach((checkbox) => {
-          checkbox.checked = true;
-          checkbox.disabled = false;
-        });
-        nextMateri.classList.remove('hidden');
-      }
-    });
-  },
-  { threshold: 1.0 }
-);
-
-observerPengertianTranslasi.observe(akhirPengertiantranslasi);
-
-const checkboxPenulisan = document.querySelectorAll('.checkboxPenulisan');
-const akhirSudutRotasi = document.getElementById('akhirSudutRotasi');
-
-const observerSudutRotasi = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        checkboxPenulisan.forEach((checkbox) => {
-          checkbox.checked = true;
-          checkbox.disabled = false;
-        });
-        nextMateri.classList.remove('hidden');
-      }
-    });
-  },
-  { threshold: 1.0 }
-);
-
-observerSudutRotasi.observe(akhirSudutRotasi);
-
 document.addEventListener('DOMContentLoaded', function () {
   const canvas6 = document.getElementById('geometryCanvas6');
   const ctx6 = canvas6.getContext('2d');
@@ -728,3 +687,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
   drawInitialState6();
 });
+
+const checkboxesPengertianTranslasi = document.querySelectorAll('.checkboxPengertianTranslasi');
+const akhirPengertiantranslasi = document.getElementById('akhirPengertiantranslasi');
+const nextMateri = document.getElementById('nextMateri');
+
+const observerPengertianTranslasi = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        checkboxesPengertianTranslasi.forEach((checkbox) => {
+          checkbox.checked = true;
+          checkbox.disabled = false;
+        });
+        nextMateri.classList.remove('hidden');
+      }
+    });
+  },
+  { threshold: 1.0 }
+);
+
+observerPengertianTranslasi.observe(akhirPengertiantranslasi);
+
+const checkboxPenulisan = document.querySelectorAll('.checkboxPenulisan');
+const akhirSudutRotasi = document.getElementById('akhirSudutRotasi');
+
+const observerSudutRotasi = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        checkboxPenulisan.forEach((checkbox) => {
+          checkbox.checked = true;
+          checkbox.disabled = false;
+        });
+        nextMateri.classList.remove('hidden');
+      }
+    });
+  },
+  { threshold: 1.0 }
+);
+
+observerSudutRotasi.observe(akhirSudutRotasi);
