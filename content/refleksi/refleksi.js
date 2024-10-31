@@ -508,13 +508,11 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   const canvas2 = document.getElementById('geometryCanvas2');
   const ctx2 = canvas2.getContext('2d');
-  const gridSize2 = 25; // Ukuran grid dalam piksel
+  const gridSize2 = 25;
 
-  // canvas2 dimensions
   canvas2.width = 200;
   canvas2.height = 200;
 
-  // triangle2 coordinates and draggable points2
   const triangle2 = [
     { x: 1 * gridSize2, y: 1 * gridSize2 },
     { x: 4 * gridSize2, y: 3 * gridSize2 },
@@ -528,19 +526,16 @@ document.addEventListener('DOMContentLoaded', function () {
   ];
 
   const labels2 = ['A', 'B', 'C'];
-  const updateLabels2 = ["A'", "B'", "C'"]; // Label setelah segitiga digeser
+  const updateLabels2 = ["A'", "B'", "C'"];
   let isMoved2 = false;
-
   let dragPoint2 = null;
 
-  // Target coordinates - target spesifik untuk setiap titik
   const targetPoint2 = [
-    { x: 175, y: 175 }, // Target untuk titik A
-    { x: 100, y: 125 }, // Target untuk titik B
-    { x: 25, y: 175 }, // Target untuk titik C
+    { x: 175, y: 175 },
+    { x: 100, y: 125 },
+    { x: 25, y: 175 },
   ];
 
-  // Function to draw grid
   function drawGrid() {
     ctx2.strokeStyle = '#f9fafb';
 
@@ -559,57 +554,53 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Function to draw the initial state
   function drawInitialState() {
     ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
     drawGrid();
-
-    drawTriangle(triangle2, '#D8D7D7', labels2, '#D8D7D7'); // Static triangle2 with label color D8D7D7
-    drawTriangle(points2, '#77F477', isMoved2 ? updateLabels2 : labels2, '#4ade80'); // Draggable triangle2
+    drawTriangle(triangle2, '#D8D7D7', labels2, '#D8D7D7');
+    drawTriangle(points2, '#77F477', isMoved2 ? updateLabels2 : labels2, '#4ade80');
   }
 
-  function drawTriangle(points2, color, labels2, labelColor) {
+  function drawTriangle(points, color, labels, labelColor) {
     ctx2.beginPath();
-    ctx2.moveTo(points2[0].x, points2[0].y);
-    points2.forEach((point) => ctx2.lineTo(point.x, point.y));
+    ctx2.moveTo(points[0].x, points[0].y);
+    points.forEach((point) => ctx2.lineTo(point.x, point.y));
     ctx2.closePath();
     ctx2.strokeStyle = color;
     ctx2.stroke();
 
-    // Draw points2 and labels2
-    points2.forEach((point, index) => {
+    points.forEach((point, index) => {
       ctx2.beginPath();
       ctx2.arc(point.x, point.y, 4, 0, Math.PI * 2);
       ctx2.fillStyle = color;
       ctx2.fill();
       ctx2.stroke();
 
-      // Draw labels2
       ctx2.font = '12px Arial';
-      ctx2.fillStyle = labelColor; // Label color parameter
-      ctx2.fillText(labels2[index], point.x + 5, point.y - 5);
+      ctx2.fillStyle = labelColor;
+      ctx2.fillText(labels[index], point.x + 5, point.y - 5);
     });
   }
 
-  // Mouse and touch event handlers
-  function handleMouseDown(e) {
-    const mousePos = getMousePos(canvas2, e);
-    dragPoint2 = getDragPoint(mousePos);
+  function handleDown(e) {
+    e.preventDefault();
+    const pos = getEventPos(canvas2, e);
+    dragPoint2 = getDragPoint(pos);
   }
 
-  function handleMouseMove(e) {
+  function handleMove(e) {
     if (!dragPoint2) return;
-    const mousePos = getMousePos(canvas2, e);
-    dragPoint2.x = mousePos.x;
-    dragPoint2.y = mousePos.y;
-    isMoved2 = true; // Set flag to true when the triangle2 is moved
+    e.preventDefault();
+    const pos = getEventPos(canvas2, e);
+    dragPoint2.x = pos.x;
+    dragPoint2.y = pos.y;
+    isMoved2 = true;
     drawInitialState();
-
-    // Aktifkan tombol "Check" setelah segitiga dipindahkan
     document.getElementById('Check4').disabled = false;
   }
 
-  function handleMouseUp() {
+  function handleUp(e) {
+    e.preventDefault();
     if (dragPoint2) {
       const snappedPos = snapToGrid(dragPoint2);
       dragPoint2.x = snappedPos.x;
@@ -619,18 +610,18 @@ document.addEventListener('DOMContentLoaded', function () {
     drawInitialState();
   }
 
-  function getMousePos(canvas2, evt) {
-    const rect = canvas2.getBoundingClientRect();
+  function getEventPos(canvas, evt) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = evt.touches ? evt.touches[0].clientX : evt.clientX;
+    const clientY = evt.touches ? evt.touches[0].clientY : evt.clientY;
     return {
-      x: evt.clientX - rect.left,
-      y: evt.clientY - rect.top,
+      x: clientX - rect.left,
+      y: clientY - rect.top,
     };
   }
 
-  function getDragPoint(mousePos) {
-    return points2.find(
-      (point) => Math.sqrt((point.x - mousePos.x) ** 2 + (point.y - mousePos.y) ** 2) < 10
-    );
+  function getDragPoint(pos) {
+    return points2.find((point) => Math.sqrt((point.x - pos.x) ** 2 + (point.y - pos.y) ** 2) < 10);
   }
 
   function snapToGrid(point) {
@@ -640,7 +631,6 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   }
 
-  // Function to check if each point is on its specific target
   function updateNotification() {
     const checkButton = document.getElementById('Check4');
     if (!checkButton.clicked) {
@@ -649,7 +639,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const tolerance = 10;
     const correctPosition = points2.every((point, index) => {
-      const targetPoint = targetPoint2[index]; // Compare each point to its corresponding target
+      const targetPoint = targetPoint2[index];
       return (
         Math.abs(point.x - targetPoint.x) < tolerance &&
         Math.abs(point.y - targetPoint.y) < tolerance
@@ -657,27 +647,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     if (correctPosition) {
-      const rightAnswer = document.querySelector('.rightAnswer');
       document.getElementById('benar4').classList.remove('hidden');
       document.getElementById('benar4').classList.add('inline-block');
       document.getElementById('salah4').classList.add('hidden');
-      rightAnswer.classList.remove('hidden');
-      setTimeout(() => {
-        rightAnswer.classList.add('hidden');
-      }, 1000);
-      const audioElement2 = document.getElementById('myAudio2');
-      audioElement2.play(); // Putar audio jawaban benar
+      document.getElementById('myAudio2').play();
     } else {
-      const wrongAnswer = document.querySelector('.wrongAnswer');
       document.getElementById('salah4').classList.remove('hidden');
       document.getElementById('salah4').classList.add('inline-block');
       document.getElementById('benar4').classList.add('hidden');
-      wrongAnswer.classList.remove('hidden');
-      setTimeout(() => {
-        wrongAnswer.classList.add('hidden');
-      }, 1000);
-      const audioElement = document.getElementById('myAudio');
-      audioElement.play(); // Putar audio jawaban salah
+      document.getElementById('myAudio').play();
     }
     checkButton.clicked = false;
   }
@@ -687,12 +665,15 @@ document.addEventListener('DOMContentLoaded', function () {
     updateNotification();
   });
 
-  // Set initial state of "Check" button to disabled
   document.getElementById('Check4').disabled = true;
 
-  canvas2.addEventListener('mousedown', handleMouseDown);
-  canvas2.addEventListener('mousemove', handleMouseMove);
-  canvas2.addEventListener('mouseup', handleMouseUp);
+  canvas2.addEventListener('mousedown', handleDown);
+  canvas2.addEventListener('mousemove', handleMove);
+  canvas2.addEventListener('mouseup', handleUp);
+
+  canvas2.addEventListener('touchstart', handleDown, { passive: false });
+  canvas2.addEventListener('touchmove', handleMove, { passive: false });
+  canvas2.addEventListener('touchend', handleUp, { passive: false });
 
   drawInitialState();
 });
@@ -700,13 +681,13 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   const canvas6 = document.getElementById('geometryCanvas6');
   const ctx6 = canvas6.getContext('2d');
-  const gridSize6 = 25; // Ukuran grid dalam piksel
+  const gridSize6 = 25; // Grid size in pixels
 
-  // canvas6 dimensions
+  // Set canvas6 dimensions
   canvas6.width = 200;
   canvas6.height = 200;
 
-  // triangle6 coordinates and draggable points6
+  // Triangle6 coordinates and draggable points6
   const triangle6 = [
     { x: 3 * gridSize6, y: 1 * gridSize6 },
     { x: 1 * gridSize6, y: 3 * gridSize6 },
@@ -720,20 +701,19 @@ document.addEventListener('DOMContentLoaded', function () {
   ];
 
   const labels6 = ['A', 'B', 'C'];
-  const updateLabels6 = ["A'", "B'", "C'"]; // Label setelah segitiga digeser
+  const updateLabels6 = ["A'", "B'", "C'"]; // Updated labels after moving triangle
   let isMoved6 = false;
 
   let dragPoint6 = null;
 
-  // Target coordinates - target spesifik untuk setiap titik
+  // Target coordinates for each point
   const targetPoint6 = [
-    // Target untuk titik A
-    { x: 175, y: 125 }, // Target untuk titik B
-    { x: 125, y: 175 },
-    { x: 125, y: 125 }, // Target untuk titik C
+    { x: 175, y: 125 }, // Target for point A
+    { x: 125, y: 175 }, // Target for point B
+    { x: 125, y: 125 }, // Target for point C
   ];
 
-  // Function to draw grid
+  // Draw grid function
   function drawGrid6() {
     ctx6.strokeStyle = 'transparent';
 
@@ -752,13 +732,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Function to draw the initial state
+  // Draw the initial state
   function drawInitialState6() {
     ctx6.clearRect(0, 0, canvas6.width, canvas6.height);
     drawGrid6();
 
-    drawTriangle6(triangle6, '#D8D7D7', labels6, '#D8D7D7'); // Static triangle6 with label color D8D7D7
-    drawTriangle6(points6, '#77F477', isMoved6 ? updateLabels6 : labels6, '#4ade80'); // Draggable triangle6
+    drawTriangle6(triangle6, '#D8D7D7', labels6, '#D8D7D7'); // Static triangle6 with grey labels
+    drawTriangle6(points6, '#77F477', isMoved6 ? updateLabels6 : labels6, '#4ade80'); // Draggable triangle6 with green labels
   }
 
   function drawTriangle6(points6, color, labels6, labelColor) {
@@ -779,12 +759,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Draw labels6
       ctx6.font = '12px Arial';
-      ctx6.fillStyle = labelColor; // Label color parameter
+      ctx6.fillStyle = labelColor;
       ctx6.fillText(labels6[index], point.x + 5, point.y - 5);
     });
   }
 
-  // Mouse and touch event handlers
+  // Mouse event handlers
   function handleMouseDown6(e) {
     const mousePos = getMousePos6(canvas6, e);
     dragPoint6 = getDragPoint6(mousePos);
@@ -795,10 +775,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const mousePos = getMousePos6(canvas6, e);
     dragPoint6.x = mousePos.x;
     dragPoint6.y = mousePos.y;
-    isMoved6 = true; // Set flag to true when the triangle6 is moved
+    isMoved6 = true; // Flag that triangle6 has been moved
     drawInitialState6();
 
-    // Aktifkan tombol "Check" setelah segitiga dipindahkan
+    // Enable "Check" button after moving triangle6
     document.getElementById('Check6').disabled = false;
   }
 
@@ -833,7 +813,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   }
 
-  // Function to check if each point is on its specific target
+  // Check if each point is at its specific target
   function updateNotification6() {
     const checkButton = document.getElementById('Check6');
     if (!checkButton.clicked) {
@@ -842,7 +822,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const tolerance = 10;
     const correctPosition6 = points6.every((point, index) => {
-      const targetPoint = targetPoint6[index]; // Compare each point to its corresponding target
+      const targetPoint = targetPoint6[index];
       return (
         Math.abs(point.x - targetPoint.x) < tolerance &&
         Math.abs(point.y - targetPoint.y) < tolerance
@@ -861,7 +841,7 @@ document.addEventListener('DOMContentLoaded', function () {
         rightAnswer.classList.add('hidden');
       }, 1000);
       const audioElement2 = document.getElementById('myAudio2');
-      audioElement2.play(); // Putar audio jawaban benar
+      audioElement2.play(); // Play correct answer audio
       const checkboxPenulisan = document.querySelectorAll('.checkboxPenulisan');
       checkboxPenulisan.forEach((checkbox) => {
         checkbox.checked = true;
@@ -878,7 +858,7 @@ document.addEventListener('DOMContentLoaded', function () {
         wrongAnswer.classList.add('hidden');
       }, 1000);
       const audioElement = document.getElementById('myAudio');
-      audioElement.play(); // Putar audio jawaban salah
+      audioElement.play(); // Play incorrect answer audio
     }
     checkButton.clicked = false;
   }
@@ -888,7 +868,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateNotification6();
   });
 
-  // Set initial state of "Check" button to disabled
+  // Disable "Check" button initially
   document.getElementById('Check6').disabled = true;
 
   canvas6.addEventListener('mousedown', handleMouseDown6);

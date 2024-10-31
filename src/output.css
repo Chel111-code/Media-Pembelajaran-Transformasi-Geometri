@@ -2429,6 +2429,10 @@ video {
   height: 1rem;
 }
 
+.h-40 {
+  height: 10rem;
+}
+
 .h-44 {
   height: 11rem;
 }
@@ -2603,10 +2607,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-40 {
-  height: 10rem;
 }
 
 .w-0 {
