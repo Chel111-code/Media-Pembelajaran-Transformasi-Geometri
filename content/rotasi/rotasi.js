@@ -117,13 +117,13 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   const canvas6 = document.getElementById('geometryCanvas6');
   const ctx6 = canvas6.getContext('2d');
-  const gridSize6 = 25; // Ukuran grid dalam piksel
+  const gridSize6 = 25; // Grid size in pixels
 
-  // canvas6 dimensions
+  // Set canvas dimensions
   canvas6.width = 200;
   canvas6.height = 200;
 
-  // triangle6 coordinates and draggable points6
+  // Initial triangle coordinates and draggable points
   const triangle6 = [
     { x: 1 * gridSize6, y: 1 * gridSize6 },
     { x: 1 * gridSize6, y: 3 * gridSize6 },
@@ -137,30 +137,26 @@ document.addEventListener('DOMContentLoaded', function () {
   ];
 
   const labels6 = ['A', 'B', 'C'];
-  const updateLabels6 = ["A'", "B'", "C'"]; // Label setelah segitiga digeser
+  const updateLabels6 = ["A'", "B'", "C'"];
   let isMoved6 = false;
 
   let dragPoint6 = null;
 
-  // Target coordinates - target spesifik untuk setiap titik
   const targetPoint6 = [
-    // Target untuk titik A
-    { x: 25, y: 175 }, // Target untuk titik B
+    { x: 25, y: 175 },
     { x: 75, y: 175 },
-    { x: 75, y: 125 }, // Target untuk titik C
+    { x: 75, y: 125 },
   ];
 
-  // Function to draw grid
+  // Draw grid function
   function drawGrid6() {
     ctx6.strokeStyle = 'transparent';
-
     for (let x = 0; x <= canvas6.width; x += gridSize6) {
       ctx6.beginPath();
       ctx6.moveTo(x, 0);
       ctx6.lineTo(x, canvas6.height);
       ctx6.stroke();
     }
-
     for (let y = 0; y <= canvas6.height; y += gridSize6) {
       ctx6.beginPath();
       ctx6.moveTo(0, y);
@@ -169,13 +165,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Function to draw the initial state
+  // Draw initial state
   function drawInitialState6() {
     ctx6.clearRect(0, 0, canvas6.width, canvas6.height);
     drawGrid6();
-
-    drawTriangle6(triangle6, '#D8D7D7', labels6, '#D8D7D7'); // Static triangle6 with label color D8D7D7
-    drawTriangle6(points6, '#77F477', isMoved6 ? updateLabels6 : labels6, '#4ade80'); // Draggable triangle6
+    drawTriangle6(triangle6, '#D8D7D7', labels6, '#D8D7D7');
+    drawTriangle6(points6, '#77F477', isMoved6 ? updateLabels6 : labels6, '#4ade80');
   }
 
   function drawTriangle6(points6, color, labels6, labelColor) {
@@ -186,40 +181,37 @@ document.addEventListener('DOMContentLoaded', function () {
     ctx6.strokeStyle = color;
     ctx6.stroke();
 
-    // Draw points6 and labels6
     points6.forEach((point, index) => {
       ctx6.beginPath();
       ctx6.arc(point.x, point.y, 4, 0, Math.PI * 2);
       ctx6.fillStyle = color;
       ctx6.fill();
       ctx6.stroke();
-
-      // Draw labels6
       ctx6.font = '12px Arial';
-      ctx6.fillStyle = labelColor; // Label color parameter
+      ctx6.fillStyle = labelColor;
       ctx6.fillText(labels6[index], point.x + 5, point.y - 5);
     });
   }
 
-  // Mouse and touch event handlers
-  function handleMouseDown6(e) {
-    const mousePos = getMousePos6(canvas6, e);
-    dragPoint6 = getDragPoint6(mousePos);
+  // Handle mouse and touch events
+  function handlePointerDown6(e) {
+    e.preventDefault();
+    const pos = getPointerPos6(canvas6, e);
+    dragPoint6 = getDragPoint6(pos);
   }
 
-  function handleMouseMove6(e) {
+  function handlePointerMove6(e) {
     if (!dragPoint6) return;
-    const mousePos = getMousePos6(canvas6, e);
-    dragPoint6.x = mousePos.x;
-    dragPoint6.y = mousePos.y;
-    isMoved6 = true; // Set flag to true when the triangle6 is moved
+    e.preventDefault();
+    const pos = getPointerPos6(canvas6, e);
+    dragPoint6.x = pos.x;
+    dragPoint6.y = pos.y;
+    isMoved6 = true;
     drawInitialState6();
-
-    // Aktifkan tombol "Check" setelah segitiga dipindahkan
     document.getElementById('Check6').disabled = false;
   }
 
-  function handleMouseUp6() {
+  function handlePointerUp6() {
     if (dragPoint6) {
       const snappedPos6 = snapToGrid6(dragPoint6);
       dragPoint6.x = snappedPos6.x;
@@ -229,18 +221,16 @@ document.addEventListener('DOMContentLoaded', function () {
     drawInitialState6();
   }
 
-  function getMousePos6(canvas6, evt) {
+  function getPointerPos6(canvas6, evt) {
     const rect = canvas6.getBoundingClientRect();
     return {
-      x: evt.clientX - rect.left,
-      y: evt.clientY - rect.top,
+      x: (evt.clientX || evt.touches[0].clientX) - rect.left,
+      y: (evt.clientY || evt.touches[0].clientY) - rect.top,
     };
   }
 
-  function getDragPoint6(mousePos) {
-    return points6.find(
-      (point) => Math.sqrt((point.x - mousePos.x) ** 2 + (point.y - mousePos.y) ** 2) < 10
-    );
+  function getDragPoint6(pos) {
+    return points6.find((point) => Math.sqrt((point.x - pos.x) ** 2 + (point.y - pos.y) ** 2) < 10);
   }
 
   function snapToGrid6(point) {
@@ -250,16 +240,14 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   }
 
-  // Function to check if each point is on its specific target
+  // Update notification based on correct/incorrect position
   function updateNotification6() {
     const checkButton = document.getElementById('Check6');
-    if (!checkButton.clicked) {
-      return;
-    }
+    if (!checkButton.clicked) return;
 
     const tolerance = 10;
     const correctPosition6 = points6.every((point, index) => {
-      const targetPoint = targetPoint6[index]; // Compare each point to its corresponding target
+      const targetPoint = targetPoint6[index];
       return (
         Math.abs(point.x - targetPoint.x) < tolerance &&
         Math.abs(point.y - targetPoint.y) < tolerance
@@ -267,9 +255,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     if (correctPosition6) {
-      const rightAnswer = document.querySelector('.rightAnswer');
-      document.getElementById('benar6').classList.remove('hidden');
-      document.getElementById('benar6').classList.add('inline-block');
+      document.getElementById('benar6').classList.replace('hidden', 'inline-block');
       document.getElementById('salah6').classList.add('hidden');
       const checkboxKordinat = document.querySelectorAll('.checkboxKordinat');
       checkboxKordinat.forEach((checkbox) => {
@@ -279,12 +265,8 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('showNextDivButton').classList.add('hidden');
       document.getElementById('showaja').classList.remove('hidden');
       nextMateri.classList.remove('hidden');
-      rightAnswer.classList.remove('hidden');
-      setTimeout(() => {
-        rightAnswer.classList.add('hidden');
-      }, 1000);
       const audioElement2 = document.getElementById('myAudio2');
-      audioElement2.play(); // Putar audio jawaban benar
+      audioElement2.play();
       const checkboxPenulisan = document.querySelectorAll('.checkboxPenulisan');
       checkboxPenulisan.forEach((checkbox) => {
         checkbox.checked = true;
@@ -292,16 +274,10 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       document.getElementById('nextMateri').classList.remove('hidden');
     } else {
-      const wrongAnswer = document.querySelector('.wrongAnswer');
-      document.getElementById('salah6').classList.remove('hidden');
-      document.getElementById('salah6').classList.add('inline-block');
+      document.getElementById('salah6').classList.replace('hidden', 'inline-block');
       document.getElementById('benar6').classList.add('hidden');
-      wrongAnswer.classList.remove('hidden');
-      setTimeout(() => {
-        wrongAnswer.classList.add('hidden');
-      }, 1000);
       const audioElement = document.getElementById('myAudio');
-      audioElement.play(); // Putar audio jawaban salah
+      audioElement.play();
     }
     checkButton.clicked = false;
   }
@@ -311,12 +287,16 @@ document.addEventListener('DOMContentLoaded', function () {
     updateNotification6();
   });
 
-  // Set initial state of "Check" button to disabled
+  // Initialize "Check" button as disabled
   document.getElementById('Check6').disabled = true;
 
-  canvas6.addEventListener('mousedown', handleMouseDown6);
-  canvas6.addEventListener('mousemove', handleMouseMove6);
-  canvas6.addEventListener('mouseup', handleMouseUp6);
+  // Event listeners for mouse and touch
+  canvas6.addEventListener('mousedown', handlePointerDown6);
+  canvas6.addEventListener('mousemove', handlePointerMove6);
+  canvas6.addEventListener('mouseup', handlePointerUp6);
+  canvas6.addEventListener('touchstart', handlePointerDown6);
+  canvas6.addEventListener('touchmove', handlePointerMove6);
+  canvas6.addEventListener('touchend', handlePointerUp6);
 
   drawInitialState6();
 });
