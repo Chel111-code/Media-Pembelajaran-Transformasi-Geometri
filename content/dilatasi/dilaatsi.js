@@ -118,6 +118,201 @@ document.querySelectorAll('.question-container').forEach((container) => {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
+  const canvas6 = document.getElementById('geometryCanvas6');
+  const ctx6 = canvas6.getContext('2d');
+  const gridSize6 = 25; // Ukuran grid dalam piksel
+
+  // canvas6 dimensions
+  canvas6.width = 200;
+  canvas6.height = 200;
+
+  // triangle6 coordinates and draggable points6
+  const triangle6 = [
+    { x: 3 * gridSize6, y: 1 * gridSize6 },
+    { x: 1 * gridSize6, y: 4 * gridSize6 },
+    { x: 4 * gridSize6, y: 4 * gridSize6 },
+  ];
+
+  let points6 = [
+    { x: 75, y: 25 },
+    { x: 25, y: 100 },
+    { x: 100, y: 100 },
+  ];
+
+  const labels6 = ['A', 'B', 'C'];
+  const updateLabels6 = ["A'", "B'", "C'"]; // Label setelah segitiga digeser
+  let isMoved6 = false;
+
+  let dragPoint6 = null;
+
+  // Target coordinates - target spesifik untuk setiap titik
+  const targetPoint6 = [
+    { x: 125, y: 25 },
+    { x: 25, y: 175 },
+    { x: 175, y: 175 },
+  ];
+
+  // Function to draw grid
+  function drawGrid6() {
+    ctx6.strokeStyle = 'transparent';
+    for (let x = 0; x <= canvas6.width; x += gridSize6) {
+      ctx6.beginPath();
+      ctx6.moveTo(x, 0);
+      ctx6.lineTo(x, canvas6.height);
+      ctx6.stroke();
+    }
+    for (let y = 0; y <= canvas6.height; y += gridSize6) {
+      ctx6.beginPath();
+      ctx6.moveTo(0, y);
+      ctx6.lineTo(canvas6.width, y);
+      ctx6.stroke();
+    }
+  }
+
+  // Function to draw the initial state
+  function drawInitialState6() {
+    ctx6.clearRect(0, 0, canvas6.width, canvas6.height);
+    drawGrid6();
+    drawTriangle6(triangle6, '#D8D7D7', labels6, '#D8D7D7');
+    drawTriangle6(points6, '#77F477', isMoved6 ? updateLabels6 : labels6, '#4ade80');
+  }
+
+  function drawTriangle6(points6, color, labels6, labelColor) {
+    ctx6.beginPath();
+    ctx6.moveTo(points6[0].x, points6[0].y);
+    points6.forEach((point) => ctx6.lineTo(point.x, point.y));
+    ctx6.closePath();
+    ctx6.strokeStyle = color;
+    ctx6.stroke();
+
+    points6.forEach((point, index) => {
+      ctx6.beginPath();
+      ctx6.arc(point.x, point.y, 4, 0, Math.PI * 2);
+      ctx6.fillStyle = color;
+      ctx6.fill();
+      ctx6.stroke();
+
+      ctx6.font = '12px Arial';
+      ctx6.fillStyle = labelColor;
+      ctx6.fillText(labels6[index], point.x + 5, point.y - 5);
+    });
+  }
+
+  // Mouse and touch event handlers
+  function handleMouseDown6(e) {
+    e.preventDefault();
+    const mousePos = getMousePos6(canvas6, e);
+    dragPoint6 = getDragPoint6(mousePos);
+  }
+
+  function handleMouseMove6(e) {
+    if (!dragPoint6) return;
+    e.preventDefault();
+    const mousePos = getMousePos6(canvas6, e);
+    dragPoint6.x = mousePos.x;
+    dragPoint6.y = mousePos.y;
+    isMoved6 = true;
+    drawInitialState6();
+    document.getElementById('Check6').disabled = false;
+  }
+
+  function handleMouseUp6(e) {
+    e.preventDefault();
+    if (dragPoint6) {
+      const snappedPos6 = snapToGrid6(dragPoint6);
+      dragPoint6.x = snappedPos6.x;
+      dragPoint6.y = snappedPos6.y;
+    }
+    dragPoint6 = null;
+    drawInitialState6();
+  }
+
+  function getMousePos6(canvas6, evt) {
+    const rect = canvas6.getBoundingClientRect();
+    const clientX = evt.touches ? evt.touches[0].clientX : evt.clientX;
+    const clientY = evt.touches ? evt.touches[0].clientY : evt.clientY;
+    return {
+      x: clientX - rect.left,
+      y: clientY - rect.top,
+    };
+  }
+
+  function getDragPoint6(mousePos) {
+    return points6.find(
+      (point) => Math.sqrt((point.x - mousePos.x) ** 2 + (point.y - mousePos.y) ** 2) < 10
+    );
+  }
+
+  function snapToGrid6(point) {
+    return {
+      x: Math.round(point.x / gridSize6) * gridSize6,
+      y: Math.round(point.y / gridSize6) * gridSize6,
+    };
+  }
+
+  // Function to check if each point is on its specific target
+  function updateNotification6() {
+    const checkButton = document.getElementById('Check6');
+    if (!checkButton.clicked) {
+      return;
+    }
+
+    const tolerance = 10;
+    const correctPosition6 = points6.every((point, index) => {
+      const targetPoint = targetPoint6[index];
+      return (
+        Math.abs(point.x - targetPoint.x) < tolerance &&
+        Math.abs(point.y - targetPoint.y) < tolerance
+      );
+    });
+
+    if (correctPosition6) {
+      document.getElementById('benar6').classList.remove('hidden');
+      document.getElementById('benar6').classList.add('inline-block');
+      document.getElementById('salah6').classList.add('hidden');
+      document.getElementById('showaja').classList.remove('hidden');
+      document.getElementById('nextMateri').classList.remove('hidden');
+      document.getElementById('showNextDivButton').classList.add('hidden');
+      setTimeout(() => {
+        document.getElementById('chatbox').classList.remove('hidden');
+        document.getElementById('notifnih').play();
+      }, 1000);
+      setTimeout(() => {
+        document.querySelector('.rightAnswer').classList.add('hidden');
+      }, 1000);
+      document.getElementById('myAudio2').play();
+      document.querySelectorAll('.checkboxPenulisan').forEach((checkbox) => {
+        checkbox.checked = true;
+        checkbox.disabled = false;
+      });
+    } else {
+      document.getElementById('salah6').classList.remove('hidden');
+      document.getElementById('salah6').classList.add('inline-block');
+      document.getElementById('benar6').classList.add('hidden');
+      document.getElementById('myAudio').play();
+    }
+    checkButton.clicked = false;
+  }
+
+  document.getElementById('Check6').addEventListener('click', function () {
+    this.clicked = true;
+    updateNotification6();
+  });
+
+  document.getElementById('Check6').disabled = true;
+
+  canvas6.addEventListener('mousedown', handleMouseDown6);
+  canvas6.addEventListener('mousemove', handleMouseMove6);
+  canvas6.addEventListener('mouseup', handleMouseUp6);
+
+  canvas6.addEventListener('touchstart', handleMouseDown6);
+  canvas6.addEventListener('touchmove', handleMouseMove6);
+  canvas6.addEventListener('touchend', handleMouseUp6);
+
+  drawInitialState6();
+});
+
+document.addEventListener('DOMContentLoaded', function () {
   var canvas3 = document.getElementById('canvas3');
   var ctx3 = canvas3.getContext('2d');
   var gridSize3 = 25; // Ukuran grid
@@ -703,199 +898,4 @@ observerJarakTranslasi.observe(akhirJarakTranslasi);
 
 document.getElementById('closeChatbox').addEventListener('click', () => {
   document.getElementById('chatbox').classList.add('hidden');
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  const canvas6 = document.getElementById('geometryCanvas6');
-  const ctx6 = canvas6.getContext('2d');
-  const gridSize6 = 25; // Ukuran grid dalam piksel
-
-  // canvas6 dimensions
-  canvas6.width = 200;
-  canvas6.height = 200;
-
-  // triangle6 coordinates and draggable points6
-  const triangle6 = [
-    { x: 3 * gridSize6, y: 1 * gridSize6 },
-    { x: 1 * gridSize6, y: 4 * gridSize6 },
-    { x: 4 * gridSize6, y: 4 * gridSize6 },
-  ];
-
-  let points6 = [
-    { x: 75, y: 25 },
-    { x: 25, y: 100 },
-    { x: 100, y: 100 },
-  ];
-
-  const labels6 = ['A', 'B', 'C'];
-  const updateLabels6 = ["A'", "B'", "C'"]; // Label setelah segitiga digeser
-  let isMoved6 = false;
-
-  let dragPoint6 = null;
-
-  // Target coordinates - target spesifik untuk setiap titik
-  const targetPoint6 = [
-    { x: 125, y: 25 },
-    { x: 25, y: 175 },
-    { x: 175, y: 175 },
-  ];
-
-  // Function to draw grid
-  function drawGrid6() {
-    ctx6.strokeStyle = 'transparent';
-    for (let x = 0; x <= canvas6.width; x += gridSize6) {
-      ctx6.beginPath();
-      ctx6.moveTo(x, 0);
-      ctx6.lineTo(x, canvas6.height);
-      ctx6.stroke();
-    }
-    for (let y = 0; y <= canvas6.height; y += gridSize6) {
-      ctx6.beginPath();
-      ctx6.moveTo(0, y);
-      ctx6.lineTo(canvas6.width, y);
-      ctx6.stroke();
-    }
-  }
-
-  // Function to draw the initial state
-  function drawInitialState6() {
-    ctx6.clearRect(0, 0, canvas6.width, canvas6.height);
-    drawGrid6();
-    drawTriangle6(triangle6, '#D8D7D7', labels6, '#D8D7D7');
-    drawTriangle6(points6, '#77F477', isMoved6 ? updateLabels6 : labels6, '#4ade80');
-  }
-
-  function drawTriangle6(points6, color, labels6, labelColor) {
-    ctx6.beginPath();
-    ctx6.moveTo(points6[0].x, points6[0].y);
-    points6.forEach((point) => ctx6.lineTo(point.x, point.y));
-    ctx6.closePath();
-    ctx6.strokeStyle = color;
-    ctx6.stroke();
-
-    points6.forEach((point, index) => {
-      ctx6.beginPath();
-      ctx6.arc(point.x, point.y, 4, 0, Math.PI * 2);
-      ctx6.fillStyle = color;
-      ctx6.fill();
-      ctx6.stroke();
-
-      ctx6.font = '12px Arial';
-      ctx6.fillStyle = labelColor;
-      ctx6.fillText(labels6[index], point.x + 5, point.y - 5);
-    });
-  }
-
-  // Mouse and touch event handlers
-  function handleMouseDown6(e) {
-    e.preventDefault();
-    const mousePos = getMousePos6(canvas6, e);
-    dragPoint6 = getDragPoint6(mousePos);
-  }
-
-  function handleMouseMove6(e) {
-    if (!dragPoint6) return;
-    e.preventDefault();
-    const mousePos = getMousePos6(canvas6, e);
-    dragPoint6.x = mousePos.x;
-    dragPoint6.y = mousePos.y;
-    isMoved6 = true;
-    drawInitialState6();
-    document.getElementById('Check6').disabled = false;
-  }
-
-  function handleMouseUp6(e) {
-    e.preventDefault();
-    if (dragPoint6) {
-      const snappedPos6 = snapToGrid6(dragPoint6);
-      dragPoint6.x = snappedPos6.x;
-      dragPoint6.y = snappedPos6.y;
-    }
-    dragPoint6 = null;
-    drawInitialState6();
-  }
-
-  function getMousePos6(canvas6, evt) {
-    const rect = canvas6.getBoundingClientRect();
-    const clientX = evt.touches ? evt.touches[0].clientX : evt.clientX;
-    const clientY = evt.touches ? evt.touches[0].clientY : evt.clientY;
-    return {
-      x: clientX - rect.left,
-      y: clientY - rect.top,
-    };
-  }
-
-  function getDragPoint6(mousePos) {
-    return points6.find(
-      (point) => Math.sqrt((point.x - mousePos.x) ** 2 + (point.y - mousePos.y) ** 2) < 10
-    );
-  }
-
-  function snapToGrid6(point) {
-    return {
-      x: Math.round(point.x / gridSize6) * gridSize6,
-      y: Math.round(point.y / gridSize6) * gridSize6,
-    };
-  }
-
-  // Function to check if each point is on its specific target
-  function updateNotification6() {
-    const checkButton = document.getElementById('Check6');
-    if (!checkButton.clicked) {
-      return;
-    }
-
-    const tolerance = 10;
-    const correctPosition6 = points6.every((point, index) => {
-      const targetPoint = targetPoint6[index];
-      return (
-        Math.abs(point.x - targetPoint.x) < tolerance &&
-        Math.abs(point.y - targetPoint.y) < tolerance
-      );
-    });
-
-    if (correctPosition6) {
-      document.getElementById('benar6').classList.remove('hidden');
-      document.getElementById('benar6').classList.add('inline-block');
-      document.getElementById('salah6').classList.add('hidden');
-      document.getElementById('showaja').classList.remove('hidden');
-      document.getElementById('nextMateri').classList.remove('hidden');
-      document.getElementById('showNextDivButton').classList.add('hidden');
-      setTimeout(() => {
-        document.getElementById('chatbox').classList.remove('hidden');
-        document.getElementById('notifnih').play();
-      }, 1000);
-      setTimeout(() => {
-        document.querySelector('.rightAnswer').classList.add('hidden');
-      }, 1000);
-      document.getElementById('myAudio2').play();
-      document.querySelectorAll('.checkboxPenulisan').forEach((checkbox) => {
-        checkbox.checked = true;
-        checkbox.disabled = false;
-      });
-    } else {
-      document.getElementById('salah6').classList.remove('hidden');
-      document.getElementById('salah6').classList.add('inline-block');
-      document.getElementById('benar6').classList.add('hidden');
-      document.getElementById('myAudio').play();
-    }
-    checkButton.clicked = false;
-  }
-
-  document.getElementById('Check6').addEventListener('click', function () {
-    this.clicked = true;
-    updateNotification6();
-  });
-
-  document.getElementById('Check6').disabled = true;
-
-  canvas6.addEventListener('mousedown', handleMouseDown6);
-  canvas6.addEventListener('mousemove', handleMouseMove6);
-  canvas6.addEventListener('mouseup', handleMouseUp6);
-
-  canvas6.addEventListener('touchstart', handleMouseDown6);
-  canvas6.addEventListener('touchmove', handleMouseMove6);
-  canvas6.addEventListener('touchend', handleMouseUp6);
-
-  drawInitialState6();
 });
