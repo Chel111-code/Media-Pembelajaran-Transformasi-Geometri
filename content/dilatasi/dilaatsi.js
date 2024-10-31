@@ -91,23 +91,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Target coordinates - target spesifik untuk setiap titik
   const targetPoint6 = [
-    // Target untuk titik A
-    { x: 125, y: 25 }, // Target untuk titik B
+    { x: 125, y: 25 },
     { x: 25, y: 175 },
-    { x: 175, y: 175 }, // Target untuk titik C
+    { x: 175, y: 175 },
   ];
 
   // Function to draw grid
   function drawGrid6() {
     ctx6.strokeStyle = 'transparent';
-
     for (let x = 0; x <= canvas6.width; x += gridSize6) {
       ctx6.beginPath();
       ctx6.moveTo(x, 0);
       ctx6.lineTo(x, canvas6.height);
       ctx6.stroke();
     }
-
     for (let y = 0; y <= canvas6.height; y += gridSize6) {
       ctx6.beginPath();
       ctx6.moveTo(0, y);
@@ -120,9 +117,8 @@ document.addEventListener('DOMContentLoaded', function () {
   function drawInitialState6() {
     ctx6.clearRect(0, 0, canvas6.width, canvas6.height);
     drawGrid6();
-
-    drawTriangle6(triangle6, '#D8D7D7', labels6, '#D8D7D7'); // Static triangle6 with label color D8D7D7
-    drawTriangle6(points6, '#77F477', isMoved6 ? updateLabels6 : labels6, '#4ade80'); // Draggable triangle6
+    drawTriangle6(triangle6, '#D8D7D7', labels6, '#D8D7D7');
+    drawTriangle6(points6, '#77F477', isMoved6 ? updateLabels6 : labels6, '#4ade80');
   }
 
   function drawTriangle6(points6, color, labels6, labelColor) {
@@ -133,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function () {
     ctx6.strokeStyle = color;
     ctx6.stroke();
 
-    // Draw points6 and labels6
     points6.forEach((point, index) => {
       ctx6.beginPath();
       ctx6.arc(point.x, point.y, 4, 0, Math.PI * 2);
@@ -141,32 +136,32 @@ document.addEventListener('DOMContentLoaded', function () {
       ctx6.fill();
       ctx6.stroke();
 
-      // Draw labels6
       ctx6.font = '12px Arial';
-      ctx6.fillStyle = labelColor; // Label color parameter
+      ctx6.fillStyle = labelColor;
       ctx6.fillText(labels6[index], point.x + 5, point.y - 5);
     });
   }
 
   // Mouse and touch event handlers
   function handleMouseDown6(e) {
+    e.preventDefault();
     const mousePos = getMousePos6(canvas6, e);
     dragPoint6 = getDragPoint6(mousePos);
   }
 
   function handleMouseMove6(e) {
     if (!dragPoint6) return;
+    e.preventDefault();
     const mousePos = getMousePos6(canvas6, e);
     dragPoint6.x = mousePos.x;
     dragPoint6.y = mousePos.y;
-    isMoved6 = true; // Set flag to true when the triangle6 is moved
+    isMoved6 = true;
     drawInitialState6();
-
-    // Aktifkan tombol "Check" setelah segitiga dipindahkan
     document.getElementById('Check6').disabled = false;
   }
 
-  function handleMouseUp6() {
+  function handleMouseUp6(e) {
+    e.preventDefault();
     if (dragPoint6) {
       const snappedPos6 = snapToGrid6(dragPoint6);
       dragPoint6.x = snappedPos6.x;
@@ -178,9 +173,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function getMousePos6(canvas6, evt) {
     const rect = canvas6.getBoundingClientRect();
+    const clientX = evt.touches ? evt.touches[0].clientX : evt.clientX;
+    const clientY = evt.touches ? evt.touches[0].clientY : evt.clientY;
     return {
-      x: evt.clientX - rect.left,
-      y: evt.clientY - rect.top,
+      x: clientX - rect.left,
+      y: clientY - rect.top,
     };
   }
 
@@ -206,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const tolerance = 10;
     const correctPosition6 = points6.every((point, index) => {
-      const targetPoint = targetPoint6[index]; // Compare each point to its corresponding target
+      const targetPoint = targetPoint6[index];
       return (
         Math.abs(point.x - targetPoint.x) < tolerance &&
         Math.abs(point.y - targetPoint.y) < tolerance
@@ -214,41 +211,29 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     if (correctPosition6) {
-      const rightAnswer = document.querySelector('.rightAnswer');
       document.getElementById('benar6').classList.remove('hidden');
       document.getElementById('benar6').classList.add('inline-block');
       document.getElementById('salah6').classList.add('hidden');
       document.getElementById('showaja').classList.remove('hidden');
-      nextMateri.classList.remove('hidden');
+      document.getElementById('nextMateri').classList.remove('hidden');
       document.getElementById('showNextDivButton').classList.add('hidden');
-      rightAnswer.classList.remove('hidden');
       setTimeout(() => {
         document.getElementById('chatbox').classList.remove('hidden');
-        const audioNotif = document.getElementById('notifnih');
-        audioNotif.play();
+        document.getElementById('notifnih').play();
       }, 1000);
       setTimeout(() => {
-        rightAnswer.classList.add('hidden');
+        document.querySelector('.rightAnswer').classList.add('hidden');
       }, 1000);
-      const audioElement2 = document.getElementById('myAudio2');
-      audioElement2.play(); // Putar audio jawaban benar
-      const checkboxPenulisan = document.querySelectorAll('.checkboxPenulisan');
-      checkboxPenulisan.forEach((checkbox) => {
+      document.getElementById('myAudio2').play();
+      document.querySelectorAll('.checkboxPenulisan').forEach((checkbox) => {
         checkbox.checked = true;
         checkbox.disabled = false;
       });
-      document.getElementById('nextMateri').classList.remove('hidden');
     } else {
-      const wrongAnswer = document.querySelector('.wrongAnswer');
       document.getElementById('salah6').classList.remove('hidden');
       document.getElementById('salah6').classList.add('inline-block');
       document.getElementById('benar6').classList.add('hidden');
-      wrongAnswer.classList.remove('hidden');
-      setTimeout(() => {
-        wrongAnswer.classList.add('hidden');
-      }, 1000);
-      const audioElement = document.getElementById('myAudio');
-      audioElement.play(); // Putar audio jawaban salah
+      document.getElementById('myAudio').play();
     }
     checkButton.clicked = false;
   }
@@ -258,12 +243,15 @@ document.addEventListener('DOMContentLoaded', function () {
     updateNotification6();
   });
 
-  // Set initial state of "Check" button to disabled
   document.getElementById('Check6').disabled = true;
 
   canvas6.addEventListener('mousedown', handleMouseDown6);
   canvas6.addEventListener('mousemove', handleMouseMove6);
   canvas6.addEventListener('mouseup', handleMouseUp6);
+
+  canvas6.addEventListener('touchstart', handleMouseDown6);
+  canvas6.addEventListener('touchmove', handleMouseMove6);
+  canvas6.addEventListener('touchend', handleMouseUp6);
 
   drawInitialState6();
 });
