@@ -1,66 +1,3 @@
-dropdownButton.addEventListener('click', function () {
-  // Tampilkan atau sembunyikan menu dropdown
-  dropdownMenu.classList.toggle('-translate-y-[600px]');
-  dropdownButton.classList.toggle('bg-gray-200');
-});
-
-window.addEventListener('click', function (e) {
-  if (!dropdownButton.contains(e.target)) {
-    dropdownMenu.classList.add('-translate-y-[600px]');
-    dropdownButton.classList.remove('bg-gray-200');
-  }
-});
-
-const wahyu = document.querySelector('.wahyu');
-function sudah() {
-  wahyu.classList.remove('hidden');
-  document.querySelector('.sudah').classList.remove('hidden');
-  document.getElementById('sudah').classList.add('hidden');
-  document.getElementById('belum').classList.add('hidden');
-  setTimeout(() => {
-    wahyu.nextElementSibling.nextElementSibling.classList.remove('hidden');
-  }, 1000);
-}
-function belum() {
-  wahyu.nextElementSibling.classList.remove('hidden');
-  document.querySelector('.belum').classList.remove('hidden');
-  document.getElementById('sudah').classList.add('hidden');
-  document.getElementById('belum').classList.add('hidden');
-  setTimeout(() => {
-    wahyu.nextElementSibling.nextElementSibling.classList.remove('hidden');
-  }, 1000);
-}
-
-function trueButton() {
-  document.getElementById('titikB_yesno').classList.add('hidden');
-  const rightAnswer = document.querySelector('.rightAnswer');
-  rightAnswer.classList.remove('hidden');
-  const audioElement2 = document.getElementById('myAudio2');
-  audioElement2.play();
-  document.getElementById('resultMessage1').classList.remove('hidden');
-  setTimeout(() => {
-    rightAnswer.classList.add('hidden');
-  }, 1000);
-  setTimeout(() => {
-    document.getElementById('nextresultMessage1').classList.remove('hidden');
-  }, 2000);
-}
-
-function falseButton() {
-  document.getElementById('titikB_yesno').classList.add('hidden');
-  const wrongAnswer = document.querySelector('.wrongAnswer');
-  wrongAnswer.classList.remove('hidden');
-  const audioElement = document.getElementById('myAudio');
-  audioElement.play();
-  document.getElementById('resultMessage1').classList.remove('hidden');
-  setTimeout(() => {
-    wrongAnswer.classList.add('hidden');
-  }, 1000);
-  setTimeout(() => {
-    document.getElementById('nextresultMessage1').classList.remove('hidden');
-  }, 2000);
-}
-
 document.addEventListener('DOMContentLoaded', function () {
   const canvas6 = document.getElementById('geometryCanvas6');
   const ctx6 = canvas6.getContext('2d');
@@ -255,6 +192,69 @@ document.addEventListener('DOMContentLoaded', function () {
 
   drawInitialState6();
 });
+
+dropdownButton.addEventListener('click', function () {
+  // Tampilkan atau sembunyikan menu dropdown
+  dropdownMenu.classList.toggle('-translate-y-[600px]');
+  dropdownButton.classList.toggle('bg-gray-200');
+});
+
+window.addEventListener('click', function (e) {
+  if (!dropdownButton.contains(e.target)) {
+    dropdownMenu.classList.add('-translate-y-[600px]');
+    dropdownButton.classList.remove('bg-gray-200');
+  }
+});
+
+const wahyu = document.querySelector('.wahyu');
+function sudah() {
+  wahyu.classList.remove('hidden');
+  document.querySelector('.sudah').classList.remove('hidden');
+  document.getElementById('sudah').classList.add('hidden');
+  document.getElementById('belum').classList.add('hidden');
+  setTimeout(() => {
+    wahyu.nextElementSibling.nextElementSibling.classList.remove('hidden');
+  }, 1000);
+}
+function belum() {
+  wahyu.nextElementSibling.classList.remove('hidden');
+  document.querySelector('.belum').classList.remove('hidden');
+  document.getElementById('sudah').classList.add('hidden');
+  document.getElementById('belum').classList.add('hidden');
+  setTimeout(() => {
+    wahyu.nextElementSibling.nextElementSibling.classList.remove('hidden');
+  }, 1000);
+}
+
+function trueButton() {
+  document.getElementById('titikB_yesno').classList.add('hidden');
+  const rightAnswer = document.querySelector('.rightAnswer');
+  rightAnswer.classList.remove('hidden');
+  const audioElement2 = document.getElementById('myAudio2');
+  audioElement2.play();
+  document.getElementById('resultMessage1').classList.remove('hidden');
+  setTimeout(() => {
+    rightAnswer.classList.add('hidden');
+  }, 1000);
+  setTimeout(() => {
+    document.getElementById('nextresultMessage1').classList.remove('hidden');
+  }, 2000);
+}
+
+function falseButton() {
+  document.getElementById('titikB_yesno').classList.add('hidden');
+  const wrongAnswer = document.querySelector('.wrongAnswer');
+  wrongAnswer.classList.remove('hidden');
+  const audioElement = document.getElementById('myAudio');
+  audioElement.play();
+  document.getElementById('resultMessage1').classList.remove('hidden');
+  setTimeout(() => {
+    wrongAnswer.classList.add('hidden');
+  }, 1000);
+  setTimeout(() => {
+    document.getElementById('nextresultMessage1').classList.remove('hidden');
+  }, 2000);
+}
 
 document.querySelectorAll('.question-container').forEach((container) => {
   const options = container.querySelectorAll('.pilihan');
