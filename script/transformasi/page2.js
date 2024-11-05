@@ -109,9 +109,6 @@ jawabanBenar.addEventListener('click', () => {
   document.getElementById('perubahanBenar').classList.remove('hidden');
   audioElement2.play();
   benarElement.classList.remove('hidden');
-  isNextDisable = true;
-  document.getElementById('tombolNext').setAttribute('href', 'page3.html');
-  checkCheckbox();
   setTimeout(() => {
     benarElement.classList.add('hidden');
     benarElement.classList.add('opacity-0');
@@ -121,7 +118,7 @@ jawabanBenar.addEventListener('click', () => {
       materi.nextElementSibling.nextElementSibling.classList.remove('hidden');
       materi.nextElementSibling.nextElementSibling.scrollIntoView({ behavior: 'smooth' });
       setTimeout(() => {
-        document.getElementById('klikNext').classList.remove('hidden');
+        document.getElementById('akhirbanget').classList.remove('hidden');
       }, 1000);
     }, 1000);
   }, 1000);
@@ -139,3 +136,20 @@ document.getElementById('tombolNext').addEventListener('click', function () {
     }, 3000);
   }
 });
+
+const nihAkhir = document.getElementById('nihAkhir');
+const observerJarakTranslasi = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        isNextDisable = true;
+        document.getElementById('tombolNext').setAttribute('href', 'page3.html');
+        checkCheckbox();
+        document.getElementById('klikNext').classList.remove('hidden');
+      }
+    });
+  },
+  { threshold: 1.0 }
+);
+
+observerJarakTranslasi.observe(nihAkhir);

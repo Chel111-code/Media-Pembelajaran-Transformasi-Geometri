@@ -204,3 +204,58 @@
   animation: kebalikan 1s linear forwards;
   animation-delay: 3s;
 }
+
+@keyframes translasi {
+  37% {
+    transform: translateX(87px);
+  }
+  75% {
+    transform: translateX(87px) translateY(45px);
+  }
+  100% {
+    transform: translateX(87px) translateY(45px);
+  }
+}
+
+.translasi {
+  animation: translasi 4s infinite;
+}
+
+@keyframes refleksi {
+  75% {
+    transform: translateX(87px) rotateY(180deg);
+  }
+  100% {
+    transform: translateX(87px) rotateY(180deg);
+  }
+}
+
+.refleksi {
+  animation: refleksi 4s infinite;
+}
+
+@keyframes rotasi {
+  75% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.rotasi {
+  animation: rotasi 4s infinite;
+}
+
+@keyframes dilatasi {
+  75% {
+    transform: scale(2) translateX(11px) translateY(5px);
+  }
+  100% {
+    transform: scale(2) translateX(11px) translateY(5px);
+  }
+}
+
+.dilatasi {
+  animation: dilatasi 4s infinite;
+}
