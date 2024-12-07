@@ -69,29 +69,6 @@ const observerPengertianTranslasi = new IntersectionObserver(
 
 observerPengertianTranslasi.observe(akhirPengertiantranslasi);
 
-const checkboxesArahTranslasi = document.querySelectorAll('.checkboxArahTranslasi');
-const akhircheckboxArahTranslasi = document.getElementById('akhirArahTranslasi');
-
-const observerArahTranslasi = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        checkboxesArahTranslasi.forEach((checkbox) => {
-          checkbox.checked = true;
-          checkbox.disabled = false;
-        });
-        nextMateri.classList.remove('hidden');
-
-        // Memutus observer agar kode hanya berjalan sekali
-        observer.disconnect();
-      }
-    });
-  },
-  { threshold: 1.0 }
-);
-
-observerArahTranslasi.observe(akhirArahTranslasi);
-
 document.getElementById('closeChatbox').addEventListener('click', () => {
   document.getElementById('chatbox').classList.add('hidden');
 });
@@ -918,3 +895,79 @@ resetBtn.addEventListener('click', () => {
   isTranslating = false; // Reset translation status
   draw();
 });
+
+function petunjukButton() {
+  const kuis = document.getElementById('petunjukMenu');
+  const icon = document.getElementById('dropdownIcon');
+
+  if (kuis.style.maxHeight) {
+    // Tutup dropdown
+    kuis.style.opacity = '0'; // Fade-out
+    kuis.style.maxHeight = null; // Hapus tinggi agar collapse
+    icon.classList.add('-rotate-90'); // Kembalikan posisi ikon
+  } else {
+    // Buka dropdown
+    kuis.style.maxHeight = kuis.scrollHeight + 'px'; // Set tinggi dinamis
+    kuis.style.opacity = '1'; // Fade-in
+    icon.classList.remove('-rotate-90'); // Putar ikon ke bawah
+    document.getElementById('petunjuk1').classList.add('hidden');
+  }
+}
+function checkAnswer1(element) {
+  const isCorrect11 = element.getAttribute('data-answer') === 'true';
+  const rightAnswer = document.querySelector('.rightAnswer');
+  const wrongAnswer = document.querySelector('.wrongAnswer');
+  const checkboxesArahTranslasi = document.querySelectorAll('.checkboxArahTranslasi');
+
+  if (isCorrect11) {
+    // Jika jawaban benar
+
+    element.classList.remove('bg-[#F8F5F5]');
+    element.classList.add('bg-green-400');
+    rightAnswer.classList.remove('hidden');
+    setTimeout(() => {
+      rightAnswer.classList.add('hidden');
+    }, 1000);
+    setTimeout(() => {
+      document.getElementById('games').classList.add('hidden');
+    }, 2000);
+    checkboxesArahTranslasi.forEach((checkbox) => {
+      checkbox.checked = true;
+      checkbox.disabled = false;
+    });
+    const audioElement2 = document.getElementById('myAudio2');
+    audioElement2.play(); // Highlight jawaban
+    nextMateri.classList.remove('hidden');
+  } else {
+    // Jika jawaban salah
+
+    element.remove();
+    wrongAnswer.classList.remove('hidden');
+    setTimeout(() => {
+      wrongAnswer.classList.add('hidden');
+    }, 1000);
+
+    const audioElement = document.getElementById('myAudio');
+    audioElement.play(); // Putar audio jawaban salah // Hapus elemen yang dipilih
+  }
+}
+function dropupbutton() {
+  const kuis2 = document.getElementById('dropupmenu');
+  const icon2 = document.getElementById('dropupIcon');
+  if (kuis2.style.maxHeight === '0px') {
+    // Jika tertutup, buka kuis2
+    kuis2.style.maxHeight = kuis2.scrollHeight + 'px';
+    // Tinggi sesuai konten
+    icon2.style.transform = 'rotate(0deg)';
+    // Rotasi ikon ke atas
+  } else {
+    // Jika terbuka, tutup kuis2
+    kuis2.style.maxHeight = '0px'; // Tinggi menjadi nol
+    icon2.style.transform = 'rotate(-90deg)';
+    kuis2.classList.remove('pb-4'); // Rotasi ikon ke bawah
+  }
+}
+function mulaiKuis() {
+  document.getElementById('games').classList.remove('hidden');
+  document.getElementById('mulaiKuis').classList.add('hidden');
+}

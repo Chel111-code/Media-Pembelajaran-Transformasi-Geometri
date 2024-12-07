@@ -23,7 +23,7 @@
   </head>
   <body class="bg-[#F9F7F3]">
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 bg-opacity-85 drop-shadow-md bg-[#F9F7F3]" id="navbar">
+    <nav class="fixed top-0 w-full z-30 bg-opacity-85 drop-shadow-md bg-[#F9F7F3]" id="navbar">
       <header
         class="container bg-opacity-90 mx-auto flex flex-wrap py-3 px-5 items-center justify-between border-[#D1EBE8] md:justify-center max-w-5xl md:px-10"
       >
@@ -190,6 +190,91 @@
         </div>
 
         <!-- Start button -->
+      </div>
+    </div>
+    <div
+      class="w-full h-full hidden z-40 bg-[#FCF5C7] zoomIn bg-opacity-90 backdrop-blur-sm fixed top-0"
+      id="games"
+    >
+      <div class="drop-shadow-md font-poppins">
+        <h1 class="text-center mt-8 text-2xl font-extrabold text-[#808080]">KUIS</h1>
+        <div
+          class="flex flex-wrap justify-center md:justify-center md:gap-10 md:mt-10 mx-auto max-w-3xl"
+        >
+          <div class="relative">
+            <img
+              src="../../img/dilatasi/pemandangan.png"
+              class="drop-shadow-xl w-54 md:w- mt-8"
+              alt=""
+            />
+            <div class="text-sm absolute left-20 mt-1">8 cm</div>
+            <div class="text-sm absolute -left-10 top-36 -rotate-90 z-50">12 cm</div>
+          </div>
+
+          <div>
+            <div
+              class="bg-white mt-16 md:mt-8 w-80 pl-4 pr-5 pt-4 pb-4 mx-auto drop-shadow-lg rounded-md"
+            >
+              <div class="flex gap-2 cursor-pointer relative" onclick="dropupbutton()">
+                <svg
+                  class="-mr-1 ml-2 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  id="dropupIcon"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <div class="text-sm font-semibold">Pertanyaan</div>
+                <!-- <img src="img/klik.png" class="absolute w-8 animate-pulse left-20" alt="" /> -->
+              </div>
+              <div
+                id="dropupmenu"
+                class="text-[12px] ml-4 pb-4 max-h-[500px] overflow-hidden transition-all duration-500 ease-in-out text-gray-500 font-medium transform"
+              >
+                <p class="ml-4 text-justify leading-6 py-2">
+                  Sebuah gambar pemandangan berukuran 12 cm x 8 cm akan dicetak dengan skala 0,5.
+                  Berapa ukuran gambar setelah dicetak?
+                </p>
+                <div class="flex flex-wrap gap-5 justify-center mt-4">
+                  <div
+                    class="w-24 rounded-md cursor-pointer hover:scale-110 hover:border drop-shadow-md"
+                    data-answer="false"
+                    onclick="checkAnswer1(this)"
+                  >
+                    <img src="../../img/dilatasi/Group 12.png" alt="" />
+                  </div>
+                  <div
+                    class="w-24 rounded-md cursor-pointer hover:scale-110 hover:border drop-shadow-md"
+                    data-answer="true"
+                    onclick="checkAnswer1(this)"
+                  >
+                    <img src="../../img/dilatasi/Group 13.png" alt="" />
+                  </div>
+                  <div
+                    class="w-[110px] rounded-md cursor-pointer hover:scale-110 hover:border drop-shadow-md"
+                    data-answer="false"
+                    onclick="checkAnswer1(this)"
+                  >
+                    <img src="../../img/dilatasi/Group 14.png" alt="" />
+                  </div>
+                  <div
+                    class="w-[110px] rounded-md cursor-pointer hover:scale-110 hover:border drop-shadow-md"
+                    data-answer="false"
+                    onclick="checkAnswer1(this)"
+                  >
+                    <img src="../../img/dilatasi/Group 15.png" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Akhir Notifikasi -->
@@ -3226,6 +3311,31 @@
                     jawaban yang benar: <span class="text-orange-400 font-semibold">B</span>
                   </div>
                 </div>
+              </div>
+              <hr class="mt-6" />
+              <div class="flex items-center drop-shadow-md mt-10 md:font-semibold pb-8">
+                <img
+                  src="../../img/Grafis/bengis.png"
+                  alt=""
+                  class="w-32 scale-x-[-1] -ml-6 md:w-32 md:mr-2"
+                />
+                <div class="ml-">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-2 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Seperti biasa, sebelum kita memberikan contoh di kordinat kartesius kamu harus
+                    menyelesaikan kuis.
+                  </div>
+                </div>
+              </div>
+              <div class="flex justify-center">
+                <button
+                  onclick="mulaiKuis()"
+                  id="mulaiKuis"
+                  class="bg-purple-500 text-white text-[12px] font-bold py-3 px-6 rounded-lg shadow-lg transform hover:translate-y-[-3px] transition duration-300"
+                >
+                  Mulai Kuis
+                </button>
               </div>
             </div>
             <!-- Akhir Skala Dilatasi -->

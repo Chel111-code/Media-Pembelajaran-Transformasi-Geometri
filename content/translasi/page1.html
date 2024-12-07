@@ -20,7 +20,7 @@
   </head>
   <body class="bg-[#F9F7F3]">
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 bg-opacity-85 drop-shadow-md bg-[#F9F7F3]" id="navbar">
+    <nav class="fixed top-0 w-full z-30 bg-opacity-85 drop-shadow-md bg-[#F9F7F3]" id="navbar">
       <header
         class="container bg-opacity-90 mx-auto flex flex-wrap py-3 px-5 items-center justify-between border-[#D1EBE8] md:justify-center max-w-5xl md:px-10"
       >
@@ -529,38 +529,124 @@
       </div>
 
       <div
-        class="w-full z-40 bg-gray-50 zoomIn hidden bg-opacity-80 backdrop-blur-sm fixed top-0"
+        class="w-full h-full hidden z-40 bg-[#FCF5C7] zoomIn bg-opacity-90 backdrop-blur-sm fixed top-0"
         id="games"
       >
-        <div
-          class="container drop-shadow-md max-w-[500px] mx-auto px-7 gap-2 text-pretty h-screen flex items-center font-poppins justify-center"
-        >
-          <div class="">
-            <div
-              class="text-[12px] font-medium border text-pretty leading-6 text-primary bg-white rounded-md border-orange-300 py-4 px-6"
-            >
-              Ali menemukan surat yang berisi petunjuk untuk menemukan harta karun. Surat itu
-              mengatakan bahwa untuk menemukan harta karunnya, Ali harus bergerak 3 satuan ke arah
-              kanan, lalu 3 satuan ke arah atas.
-            </div>
-            <div
-              class="font-semibold text-secondary tracking-wider text-[11px] ml-2 mt-6 flex gap-2"
-            >
-              <div>//</div>
-              <div>
-                Pindahkan Ali ke tempat yang dimaksud (cara memindahkannya adalah tekan Ali dan
-                tahan lalu pindahkan ke tempat yang kamu mau).
+        <div class="drop-shadow-md font-poppins">
+          <h1 class="text-center mt-8 text-2xl font-bold text-[#808080]">KUIS</h1>
+          <div
+            class="flex flex-wrap justify-center md:justify-evenly md:mt-10 md:items-center mx-auto max-w-3xl"
+          >
+            <img
+              src="../../img/translasi/Group 5.png"
+              class="border-8 rounded-xl drop-shadow-xl border-white w-72 md:w-80 h-72 mt-8"
+              alt=""
+            />
+            <div>
+              <div class="bg-white mt-8 w-72 pl-4 pr-5 py-4 mx-auto drop-shadow-lg rounded-md">
+                <div
+                  class="flex gap-2 cursor-pointer relative"
+                  id="petunjukButton"
+                  onclick="petunjukButton()"
+                >
+                  <svg
+                    class="-mr-1 ml-2 h-5 w-5 -rotate-90"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    id="dropdownIcon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <div class="text-sm font-semibold">Petunjuk</div>
+                  <img
+                    src="../../img/klik.png"
+                    class="absolute w-8 animate-pulse left-20"
+                    id="petunjuk1"
+                    alt=""
+                  />
+                </div>
+                <div
+                  id="petunjukMenu"
+                  class="text-[12px] ml-4 max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out text-gray-500 font-medium border-l-4 drop-shadow-md border-green-300 transform"
+                >
+                  <p class="ml-4 text-justify leading-6 py-1">
+                    Saat ini Ali berada di depan rumahnya dan ia ingin ke rumah neneknya. Untuk ke
+                    rumah nenek, Ali harus berjalan ke atas melewati 2 rumah, lalu ke arah kanan
+                    melewati 1 rumah lagi.
+                  </p>
+                </div>
+              </div>
+              <div class="bg-white mt-8 w-72 pl-4 pr-5 pt-4 pb-4 mx-auto drop-shadow-lg rounded-md">
+                <div class="flex gap-2 cursor-pointer relative" onclick="dropupbutton()">
+                  <svg
+                    class="-mr-1 ml-2 h-5 w-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    id="dropupIcon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <div class="text-sm font-semibold">Pertanyaan</div>
+                  <!-- <img src="img/klik.png" class="absolute w-8 animate-pulse left-20" alt="" /> -->
+                </div>
+                <div
+                  id="dropupmenu"
+                  class="text-[12px] ml-4 pb-4 max-h-[500px] overflow-hidden transition-all duration-500 ease-in-out text-gray-500 font-medium transform"
+                >
+                  <p class="ml-4 text-justify leading-6 py-2">Yang manakah rumah nenek Ali?</p>
+                  <div class="flex flex-wrap gap-5 justify-center mt-4">
+                    <div
+                      class="w-20 h-20 bg-[#F8F5F5] rounded-md cursor-pointer hover:scale-110 hover:border drop-shadow-md"
+                      data-answer="false"
+                      onclick="checkAnswer1(this)"
+                    >
+                      <img src="../../img/translasi/rumah2 1.png" alt="" />
+                    </div>
+                    <div
+                      class="w-20 h-20 bg-[#F8F5F5] rounded-md cursor-pointer hover:scale-110 hover:border drop-shadow-md"
+                      data-answer="false"
+                      onclick="checkAnswer1(this)"
+                    >
+                      <img src="../../img/translasi/rumah3 1.png" alt="" />
+                    </div>
+                    <div
+                      class="w-20 h-20 bg-[#F8F5F5] rounded-md cursor-pointer flex items-center hover:scale-110 hover:border drop-shadow-md"
+                      data-answer="true"
+                      onclick="checkAnswer1(this)"
+                    >
+                      <img
+                        src="../../img/translasi/rumahan4 1.png"
+                        class="w-16 h-10 mx-auto"
+                        alt=""
+                      />
+                    </div>
+                    <div
+                      class="w-20 h-20 bg-[#F8F5F5] rounded-md cursor-pointer flex items-center hover:scale-110 hover:border drop-shadow-md"
+                      data-answer="false"
+                      onclick="checkAnswer1(this)"
+                    >
+                      <img
+                        src="../../img/translasi/rumahan5 1.png"
+                        class="w-16 h-10 mx-auto"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="p-4 w-fit mt-4 ml-6 bg-green-100 relative">
-              <canvas id="geometryCanvas" class="bg-white" width="300" height="300"></canvas>
-            </div>
-            <button
-              id="cekAnswerGames"
-              class="px-3 py-2 bg-green-400 ml-6 translate-x-1 mt-4 text-white rounded-md text-[12px]"
-            >
-              Cek jawaban
-            </button>
           </div>
         </div>
       </div>
@@ -649,7 +735,7 @@
 
       <!-- Materi -->
       <div
-        class="md:w-4/5 w-full mat absolute right-0 font-poppins font-medium text-sm pb-40 text-secondary"
+        class="md:w-4/5 w-full absolute right-0 font-poppins font-medium text-sm pb-40 text-secondary"
       >
         <div class="mt-28 px-3">
           <div class="max-w-3xl mx-auto">
@@ -1086,7 +1172,7 @@
             <!-- Arah Translasi -->
             <div
               id="arahTranslasi"
-              class="mt-16 relative zoomIn hidden border border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
+              class="mt-16 relative zoomIn border hidden border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
             >
               <div
                 class="absolute px-5 py-2 bg-[#FFC09F] -top-4 rounded-md tracking-wide text-white"
@@ -1399,7 +1485,7 @@
               </div>
               <hr class="mt-6" />
               <div
-                class="flex items-center hidden zoomIn drop-shadow-md mt-10 md:font-semibold pb-8"
+                class="flex items-center zoomIn drop-shadow-md mt-10 md:font-semibold pb-8"
                 id="akhirArahTranslasi"
               >
                 <img src="../../img/Grafis/supermen.png" alt="" class="w-28 md:w-28 -ml-3" />
@@ -1407,9 +1493,24 @@
                   <div
                     class="bg-[#C9F2C7] px-4 py-3 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
                   >
-                    Setelah kamu bisa menyelesaikan semuanya, yuk kita ke sub materi berikutnya!
+                    Setelah kamu menyelesaikan ketiga contoh kasus tersebut, Ali punya kuis nih yang
+                    perlu kamu selesaikan.
+                  </div>
+                  <div
+                    class="bg-[#C9F2C7] px-4 py-3 mt-2 rounded-lg text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Tekan tombol di bawah ini untuk membuka kuisnya!
                   </div>
                 </div>
+              </div>
+              <div class="flex justify-center">
+                <button
+                  onclick="mulaiKuis()"
+                  id="mulaiKuis"
+                  class="bg-purple-500 text-white text-[12px] font-bold py-3 px-6 rounded-lg shadow-lg transform hover:translate-y-[-3px] transition duration-300"
+                >
+                  Mulai Kuis
+                </button>
               </div>
             </div>
             <!-- Akhir Arah Translasi -->

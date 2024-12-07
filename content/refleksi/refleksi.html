@@ -28,7 +28,7 @@
   </head>
   <body class="bg-[#F9F7F3]">
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 bg-opacity-85 drop-shadow-md bg-[#F9F7F3]" id="navbar">
+    <nav class="fixed top-0 w-full z-30 bg-opacity-85 drop-shadow-md bg-[#F9F7F3]" id="navbar">
       <header
         class="container bg-opacity-90 mx-auto flex flex-wrap py-3 px-5 items-center justify-between border-[#D1EBE8] md:justify-center max-w-5xl md:px-10"
       >
@@ -115,6 +115,7 @@
         </div>
       </div>
     </nav>
+
     <!-- Akhir Navbar -->
 
     <!-- Notifikasi -->
@@ -151,6 +152,78 @@
             class="w-32 zoomOut opacity-0"
             alt="Jawaban Salah"
           />
+        </div>
+      </div>
+      <div
+        class="w-full h-full hidden z-40 bg-[#FCF5C7] zoomIn bg-opacity-90 backdrop-blur-sm fixed top-0"
+        id="games"
+      >
+        <div class="drop-shadow-md font-poppins">
+          <h1 class="text-center mt-8 text-2xl font-extrabold text-[#808080]">KUIS</h1>
+          <div
+            class="flex flex-wrap justify-center md:justify-center md:gap-10 md:mt-10 md:items- mx-auto max-w-3xl"
+          >
+            <img
+              src="../../img/pencerminan/kosong.jpeg"
+              class="border-8 rounded-xl drop-shadow-xl border-white w-60 md:w- h-60 mt-8"
+              alt=""
+            />
+            <div>
+              <div class="bg-white mt-8 w-80 pl-4 pr-5 pt-4 pb-4 mx-auto drop-shadow-lg rounded-md">
+                <div class="flex gap-2 cursor-pointer relative" onclick="dropupbutton()">
+                  <svg
+                    class="-mr-1 ml-2 h-5 w-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    id="dropupIcon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <div class="text-sm font-semibold">Pertanyaan</div>
+                  <!-- <img src="img/klik.png" class="absolute w-8 animate-pulse left-20" alt="" /> -->
+                </div>
+                <div
+                  id="dropupmenu"
+                  class="text-[12px] ml-4 pb-4 max-h-[500px] overflow-hidden transition-all duration-500 ease-in-out text-gray-500 font-medium transform"
+                >
+                  <p class="ml-4 text-justify leading-6 py-2">
+                    Seorang anak bernama Wahyu sedang bersiap untuk pergi ke sekolah. Sebelum
+                    berangkat, dia ingin bercermin dulu. Saat bercermin, bagaimana bayangan Wahyu
+                    seharusnya?
+                  </p>
+                  <div class="flex flex-wrap gap-5 justify-center mt-4">
+                    <div
+                      class="w-24 bg-[#F8F5F5] p-1 rounded-md cursor-pointer hover:scale-110 hover:border drop-shadow-md"
+                      data-answer="true"
+                      onclick="checkAnswer1(this)"
+                    >
+                      <img src="../../img/pencerminan/utuh.jpeg" alt="" />
+                    </div>
+                    <div
+                      class="w-24 bg-[#F8F5F5] p-1 rounded-md cursor-pointer hover:scale-110 hover:border drop-shadow-md"
+                      data-answer="false"
+                      onclick="checkAnswer1(this)"
+                    >
+                      <img src="../../img/pencerminan/supermen.jpeg" alt="" />
+                    </div>
+                    <div
+                      class="w-24 bg-[#F8F5F5] p-1 rounded-md cursor-pointer hover:scale-110 hover:border drop-shadow-md"
+                      data-answer="false"
+                      onclick="checkAnswer1(this)"
+                    >
+                      <img src="../../img/pencerminan/balik.jpeg" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -358,7 +431,7 @@
 
             <!-- Pencerminan terhadap Garis -->
             <div
-              class="mt-16 zoomIn relative hidden border border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
+              class="mt-16 zoomIn hidden relative border border-[#629460] pb-6 text-[12px] shadow-xl tracking-wide leading-[22px] rounded-lg md:px-16 px-5"
             >
               <div
                 class="absolute px-5 py-2 bg-[#FFC09F] -top-4 rounded-md tracking-wide text-white"
@@ -1732,27 +1805,56 @@
                 </div>
               </div>
               <hr class="mt-6" />
-              <div class="flex items-center drop-shadow-md mt-12 md:font-semibold pb-8">
+              <div class="flex items-center drop-shadow-md mt-12 md:font-semibold pb-8" id="awwww">
                 <img
                   src="../../img/Grafis/Halo.png"
                   alt=""
-                  class="w-28 md:w-28 scale-x-[-1] -ml- md:mr-2"
+                  class="w-[105px] md:w-28 scale-x-[-1] -ml- md:mr-2"
                 />
                 <div class="ml-2">
                   <div
-                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                    class="bg-[#C9F2C7] pl-4 pr-3 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
                   >
-                    Ali rasa sudah cukup untuk membahasa pencerminan terhadap garis.
+                    Sudah cukup kita membahas pencerminan terhadap garis, Ali rasa kamu sudah mampu
+                    menjawab kuis di bawah ini.
+                  </div>
+                </div>
+              </div>
+              <div class="flex justify-center">
+                <button
+                  onclick="mulaiKuis()"
+                  id="mulaiKuis"
+                  class="bg-purple-500 text-white text-[12px] font-bold py-3 px-6 rounded-lg shadow-lg transform hover:translate-y-[-3px] transition duration-300"
+                >
+                  Mulai Kuis
+                </button>
+              </div>
+              <div
+                class="flex items-center hidden drop-shadow-md mt-12 md:font-semibold pb-8"
+                id="akhirawww"
+              >
+                <img
+                  src="../../img/Grafis/bagus.png"
+                  alt=""
+                  class="w-[105px] md:w-28 scale-x-[-1] -ml- md:mr-2"
+                />
+                <div class="ml-2">
+                  <div
+                    class="bg-[#C9F2C7] pl-4 pr-3 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                  >
+                    Hebat, kamu berhasil menjawab kuisnya.
                   </div>
                   <div
-                    class="bg-[#C9F2C7] pl-4 pr-1 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
+                    class="bg-[#C9F2C7] pl-4 pr-3 py-3 rounded-lg mt-2 text-pretty max-w-[400px] rounded-bl-xl rounded-tl-none"
                   >
-                    Ali sudah siapkan konten yang semoga bisa memperlancar pemahaman kamu.
+                    Ali juga sudah siapkan nih konten yang semoga bisa memperlancar pemahaman kamu
+                    tentang pencerminan.
                   </div>
                 </div>
               </div>
               <div
-                class="mt- md:-mt-2 pb-8 md:ml-32 border-l-2 ml-6 border-orange-300 drop-shadow-sm"
+                class="mt- md:-mt-2 hidden pb-8 md:ml-32 border-l-2 ml-6 border-orange-300 drop-shadow-sm"
+                id="aww2"
               >
                 <div class="font-semibold drop-shadow-none text-[11px] ml-4 flex gap-2">
                   <div>//</div>
