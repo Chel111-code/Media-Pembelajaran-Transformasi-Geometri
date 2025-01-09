@@ -146,6 +146,11 @@ const observerJarakTranslasi = new IntersectionObserver(
         document.getElementById('tombolNext').setAttribute('href', 'page3.html');
         checkCheckbox();
         document.getElementById('klikNext').classList.remove('hidden');
+        setTimeout(() => {
+          document.getElementById('chatbox').classList.remove('hidden');
+          const audioNotif = document.getElementById('notifnih');
+          audioNotif.play();
+        }, 500);
       }
     });
   },
@@ -153,3 +158,7 @@ const observerJarakTranslasi = new IntersectionObserver(
 );
 
 observerJarakTranslasi.observe(nihAkhir);
+
+function lewati() {
+  document.getElementById('percakapan').classList.add('hidden');
+}
